@@ -17,6 +17,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -33,8 +34,10 @@ public class Window extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Game");
         Button chooseMapButton = new Button();
+        chooseMapButton.setMinWidth(200);
         chooseMapButton.setText("Choose Map file");
         Button writeMapButton = new Button();
+        writeMapButton.setMinWidth(200);
         writeMapButton.setText("Save Map file");
         chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -44,6 +47,7 @@ public class Window extends Application {
                 	 LoadMap loadMap = new LoadMap(file);
                      loadMap.load(); 
                 }
+                primaryStage.setScene(new MapEditor().getMapEditorView());
             }
         });
         
@@ -68,6 +72,7 @@ public class Window extends Application {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         primaryStage.setScene(new Scene(gridPane, 300, 250));
+         
         primaryStage.show();
     }
 }
