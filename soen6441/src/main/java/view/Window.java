@@ -25,14 +25,17 @@ import javafx.stage.Stage;
 public class Window extends Application {
 	
     final FileChooser fileChooser = new FileChooser();
-	
+    static MapEditorView mapEditor = null;
+    static Scene welcomeScreen = null;
+    static Stage window  = null;
     public static void main(String[] args) {
         launch(args);
     }
     
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Game");
+    public void start(final Stage primaryStage) {
+    	window = primaryStage;
+    	window.setTitle("Game");
         Button chooseMapButton = new Button();
         chooseMapButton.setMinWidth(200);
         chooseMapButton.setText("Choose Map file");
@@ -42,12 +45,12 @@ public class Window extends Application {
         chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
-                File file = fileChooser.showOpenDialog(primaryStage);
+                File file = fileChooser.showOpenDialog(window);
                 if(file != null){
                 	 LoadMap loadMap = new LoadMap(file);
                      loadMap.load(); 
                 }
-                primaryStage.setScene(new MapEditor().getMapEditorView());
+                loadEditorView();
             }
         });
         
@@ -56,7 +59,7 @@ public class Window extends Application {
             public void handle(ActionEvent event){
             	fileChooser.setInitialFileName("NewMap.map");
             	fileChooser.setSelectedExtensionFilter(new ExtensionFilter("Map File", "map"));
-                File file = fileChooser.showSaveDialog(primaryStage);
+                File file = fileChooser.showSaveDialog(window);
                 if(file != null){
                 	System.out.println(file);
                     WriteMap writeMap = new WriteMap(file);
@@ -71,8 +74,21 @@ public class Window extends Application {
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        primaryStage.setScene(new Scene(gridPane, 300, 250));
-         
-        primaryStage.show();
+        welcomeScreen = new Scene(gridPane, 300, 250);
+        window.setScene(welcomeScreen);         
+        window.show();
     }
+    
+    
+    public static void loadEditorView(){
+    	mapEditor = new MapEditorView(); 
+    	window.setScene(mapEditor.getMapEditorView());
+    	mapEditor.getCloseButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+            	window.setScene(welcomeScreen); 
+            }
+    	});
+    } 
+    
 }

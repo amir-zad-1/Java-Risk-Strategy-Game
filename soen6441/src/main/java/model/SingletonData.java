@@ -11,8 +11,6 @@ import java.util.HashMap;
  *
  */
 public final class SingletonData {
-
 	public static HashMap<String, ArrayList<Territory>> continents = new HashMap<String, ArrayList<Territory>>();
-	public static HashMap<String, Integer> continentValues = new HashMap<String, Integer>();
-	
+	public static HashMap<String, Integer> continentValues = new HashMap<String, Integer>();	
 }
