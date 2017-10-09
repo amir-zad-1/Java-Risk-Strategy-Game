@@ -63,7 +63,23 @@ public class MapEditorView {
                 "-fx-border-width: 0 0 1 0;" +  
                 "-fx-border-color: black;");
          gridPane.setStyle("-fx-padding:10");
-	     mainLayout.getChildren().addAll(hb,gridPane);
+         HBox footer = new HBox();
+         footer.getChildren().add(getCloseButton());
+         footer.setStyle( 
+                "-fx-border-style: solid inside;" + 
+                "-fx-border-width: 1 0 0 0;" +  
+                "-fx-border-color: black;");
+         gridPane.setStyle("-fx-padding:10");
+	     Button startGame = new Button();
+	     startGame.setText("Start Game");
+	     startGame.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event){
+	            	
+	            }
+	     });
+	     footer.getChildren().add(startGame);
+	     mainLayout.getChildren().addAll(hb,gridPane,footer);
 	     editorScene = new Scene(mainLayout, 500, 500);
 	     return editorScene;		
 	}
