@@ -1,12 +1,9 @@
 /**
  * 
  */
-package controller;
+package model;
 
 import java.util.ArrayList;
-
-import model.SingletonData;
-import model.Territory;
 
 /**
  * @author SA

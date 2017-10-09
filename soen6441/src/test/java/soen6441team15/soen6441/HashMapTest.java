@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import controller.LoadMap;
+import model.LoadMap;
 import model.SingletonData;
 import model.Territory;
 

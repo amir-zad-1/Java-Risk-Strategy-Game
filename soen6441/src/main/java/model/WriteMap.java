@@ -1,16 +1,13 @@
 /**
  * 
  */
-package controller;
+package model;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import model.SingletonData;
-import model.Territory;
 
 /**
  * @author SA
