@@ -3,10 +3,13 @@
  */
 package view;
 
+
 import java.util.ArrayList;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableMap;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,24 +38,46 @@ public class MapEditorView {
 	
 	
 	public Scene getMapEditorView(){
-		 ObservableMap<String, ArrayList<Territory>> scores = FXCollections.observableHashMap();		 
-		 scores.putAll(SingletonData.continents);
+		
+		 ObservableList<String> continents = FXCollections.observableArrayList();		 
+		 ObservableList<String> contries = FXCollections.observableArrayList();
+		 
+		 continents.addAll(model.SingletonData.continentValues.keySet());
 		 GridPane gridPane = new GridPane();
 		 gridPane.setHgap(10);
 	     gridPane.setVgap(10);
 	     
-	     ChoiceBox<String> entries = new ChoiceBox<String>();
+	     ChoiceBox<String> continentChoiceBox = new ChoiceBox<String>();
+	     ChoiceBox<String> contriesChoiceBox = new ChoiceBox<String>();
 	     
-	     entries.setTooltip(new Tooltip("Select the Continent"));
-	     entries.getItems().add("Continents");
-	     entries.setValue("Continents");
-	     entries.getItems().addAll(scores.keySet());
+	     continentChoiceBox.setTooltip(new Tooltip("Select the Continent"));
+	     continentChoiceBox.getItems().add("Continents");
+	     continentChoiceBox.setValue("Continents");
+	     continentChoiceBox.getItems().addAll(continents);
+	     continentChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue observable, String oldValue, String newValue) {
+				System.out.println(newValue); 
+				ArrayList<Territory> territories = model.SingletonData.continents.get(newValue);
+				contries.clear();
+				for(Territory t:territories){
+					contries.add(t.getTerritoryName());
+				}
+				contriesChoiceBox.getItems().add("Contries");			    
+				contriesChoiceBox.getItems().addAll(contries);
+				contriesChoiceBox.setValue("Contries");
+				
+			}
+		});
+
+	     
 	     BorderPane borderPane = new BorderPane();
 
 	     Image imageOk = new Image(getClass().getResourceAsStream("/icons8-Back Arrow-35.png")); 
 	     closeButton = new Button();
 	     getCloseButton().setGraphic(new ImageView(imageOk));
-	     gridPane.add(entries,0,0);
+	     gridPane.add(continentChoiceBox,0,0);
+	     gridPane.add(contriesChoiceBox,1,0);
          ToolBar header = new ToolBar(closeButton);
          header.setStyle( 
                 "-fx-border-style: solid inside;" + 
@@ -61,7 +86,10 @@ public class MapEditorView {
          gridPane.setStyle("-fx-padding:10");
          borderPane.setTop(header);
          HBox footer = new HBox();
-        
+         
+         
+         
+         
          footer.getChildren().add(getCloseButton());
          footer.setStyle( 
                 "-fx-border-style: solid inside;" + 
