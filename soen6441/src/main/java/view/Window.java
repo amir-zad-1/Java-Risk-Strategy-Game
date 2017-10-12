@@ -5,6 +5,7 @@ package view;
 
 
 import controller.RWMapController;
+import controller.ReadController;
 /**
  * @author SA
  *
@@ -19,6 +20,8 @@ public class Window extends Application {
 	
     static WelcomeView welcomeView  = null;
     static MapEditorView mapEditorView = null;
+    ReadController readController = new ReadController();
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -26,7 +29,7 @@ public class Window extends Application {
     @Override
     public void start(final Stage window) {    
     	window.setTitle("Game");
-    	mapEditorView = new MapEditorView();
+    	mapEditorView = new MapEditorView(readController);
     	welcomeView = new WelcomeView(window,new RWMapController(), mapEditorView); 
         
     	mapEditorView.getStartGame().setOnAction(new EventHandler<ActionEvent>() {

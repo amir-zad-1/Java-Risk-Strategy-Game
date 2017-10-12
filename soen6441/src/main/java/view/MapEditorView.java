@@ -6,6 +6,7 @@ package view;
 
 import java.util.ArrayList;
 
+import controller.ReadController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -22,21 +24,27 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.SingletonData;
 import model.Territory;
 
 /**
- * @author SA
+ * @author Team15
  *
  */
 public class MapEditorView {
 	
 	private Button closeButton;	
 	private static Scene editorScene = null;
-	
+	ReadController readController = null;
+	private static String country,continent = null; 
 	private Button startGame = new Button();
 	
 	
+	public MapEditorView(ReadController new_readController) {
+		readController = new_readController;
+	}
+
+
+
 	public Scene getMapEditorView(){
 		
 		 ObservableList<String> continents = FXCollections.observableArrayList();		 
@@ -50,6 +58,14 @@ public class MapEditorView {
 	     ChoiceBox<String> continentChoiceBox = new ChoiceBox<String>();
 	     ChoiceBox<String> contriesChoiceBox = new ChoiceBox<String>();
 	     
+	     Button  deleteContent = new Button("Delete Continent");	     
+	     Button deleteCountry = new Button("Delete Country");
+	     
+	     TextField editCountryName = new TextField ();
+	     TextField editadjacentContries = new TextField ();
+	     
+	     editadjacentContries.setPrefWidth(800);
+	     
 	     continentChoiceBox.setTooltip(new Tooltip("Select the Continent"));
 	     continentChoiceBox.getItems().add("Continents");
 	     continentChoiceBox.setValue("Continents");
@@ -57,19 +73,33 @@ public class MapEditorView {
 	     continentChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue observable, String oldValue, String newValue) {
-				System.out.println(newValue); 
 				ArrayList<Territory> territories = model.SingletonData.continents.get(newValue);
 				contries.clear();
+				contriesChoiceBox.getItems().clear();
 				for(Territory t:territories){
 					contries.add(t.getTerritoryName());
 				}
-				contriesChoiceBox.getItems().add("Contries");			    
+				continent = newValue;
+				contriesChoiceBox.getItems().add("Countries");			    
 				contriesChoiceBox.getItems().addAll(contries);
-				contriesChoiceBox.setValue("Contries");
+				contriesChoiceBox.setValue("Countries");
 				
 			}
 		});
 
+	     
+	     contriesChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue observable, String oldValue, String newValue) {
+					
+					if(newValue != null && !newValue.equals("Countries")){
+					editCountryName.setText(newValue);
+					country = newValue;
+					System.out.println(continent +country);
+					editadjacentContries.setText(readController.getAdjacentTerritories(continent, country).toString());
+					}
+				}
+	     });
 	     
 	     BorderPane borderPane = new BorderPane();
 
@@ -78,6 +108,12 @@ public class MapEditorView {
 	     getCloseButton().setGraphic(new ImageView(imageOk));
 	     gridPane.add(continentChoiceBox,0,0);
 	     gridPane.add(contriesChoiceBox,1,0);
+	     gridPane.add(editCountryName, 2, 0);
+	     gridPane.add(editadjacentContries, 0, 1,3,1);
+	     gridPane.add(deleteContent, 0,2);
+	     gridPane.add(deleteCountry, 1,2);
+	     
+	     
          ToolBar header = new ToolBar(closeButton);
          header.setStyle( 
                 "-fx-border-style: solid inside;" + 
@@ -94,7 +130,7 @@ public class MapEditorView {
          footer.setStyle( 
                 "-fx-border-style: solid inside;" + 
                 "-fx-border-width: 1 0 0 0;" +
-                "-fx-padding:10"+
+                "-fx-padding:10;"+
                 "-fx-border-color: black;");
          gridPane.setStyle("-fx-padding:10");
 	     startGame = new Button();
