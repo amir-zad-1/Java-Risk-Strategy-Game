@@ -7,7 +7,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author SA
@@ -34,15 +34,16 @@ public class WriteMap {
 			bw.write("[Territories]");
 			bw.newLine();
 			for(String key : SingletonData.continents.keySet()){
-                ArrayList<Territory> adjacentTerritories = SingletonData.continents.get(key);
-                for(Territory t: adjacentTerritories){
+                HashMap<String,Territory> territories = SingletonData.continents.get(key);
+                for(Territory t:territories.values()){
                 	String tmpStorage = "";
-                	for(String s: t.getAdjacentTerritories()){
-			    		tmpStorage +=","+s; 
-			    	}
-			    	bw.write(t.getTerritoryName()+","+t.getCoordinates()+","+t.getContinentName()+","+tmpStorage);
-			    	bw.newLine();
-			    }
+                	for(String s:t.getAdjacentTerritories()){
+                		tmpStorage +=","+s; 
+                	}
+                	bw.write(t.getTerritoryName()+","+t.getCoordinates()+","+t.getContinentName()+","+tmpStorage);
+    			    bw.newLine();
+    			}
+			    
 			}
 			bw.close();
 			fw.close();

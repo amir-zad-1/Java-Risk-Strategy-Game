@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -24,8 +25,8 @@ public class HashMapTest {
 	public void test() {
 		LoadMap loadMap = new LoadMap(new File("E:\\Compressed\\_61_ CASTLE MOONBAT\\_61_ CASTLE MOONBAT.map"));
         loadMap.load();
-		ArrayList<Territory> terrotories= SingletonData.continents.get("Tower Left Top");
-		for(Territory t: terrotories){
+		HashMap<String, Territory> terrotories= SingletonData.continents.get("Tower Left Top");
+		for(Territory t: terrotories.values()){
 			System.out.println("\n Name "+t.getTerritoryName());
 			ArrayList<String> adjacents= t.getAdjacentTerritories();
 			for(String s:adjacents){
