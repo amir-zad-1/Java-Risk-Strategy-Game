@@ -46,6 +46,12 @@ public class WelcomeView {
 	        Button writeMapButton = new Button();
 	        writeMapButton.setMinWidth(200);
 	        writeMapButton.setText("Save Map file");
+	        
+	        Button createMapButton = new Button();
+	        createMapButton.setMinWidth(200);
+	        createMapButton.setText("Create Map file");
+	        
+	        
 	        chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
@@ -69,9 +75,18 @@ public class WelcomeView {
 	            }
 	        });
 	        
+	        
+	        createMapButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event){
+	            	loadEditorView();
+	            }
+	        });
+	        
 	        GridPane gridPane = new GridPane();
 	        gridPane.add(chooseMapButton,0,0);
 	        gridPane.add(writeMapButton,0,1);
+	        gridPane.add(createMapButton,0,2);
 	        gridPane.setAlignment(Pos.CENTER);
 	        gridPane.setHgap(10);
 	        gridPane.setVgap(10);

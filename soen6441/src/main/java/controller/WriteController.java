@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+
 import model.SingletonData;
 import model.Territory;
 
@@ -21,63 +23,56 @@ public class WriteController {
 	}
 
 	/**
-	 * @param continents
-	 * @param contries
 	 * @param editedadjacentCountries
 	 * @param continent
 	 * @param country
 	 * @param continentValue
 	 */
-	public void saveData(List<String> continents, List<String> contries, String editedadjacentCountries,String continent,String country,String continentValue){
+	public void addData(String editedadjacentCountries,String continent,String country,String continentValue,boolean isdeleteContinent,boolean isdeleteCountry){
 		
 		editedadjacentCountries = editedadjacentCountries.replace("[", "").replace("]", "");
 		ArrayList<String> new_adjacentContries = new ArrayList<>(Arrays.asList(editedadjacentCountries.split(",")));
-		
-		if(continents.size() != SingletonData.continents.size()){
-			continents.removeAll(SingletonData.continents.keySet());
-		}else{
-			continents.clear();
+
+		if(isdeleteContinent){
+			Set<String> contriesContinenthas = SingletonData.continents.get(continent).keySet();
+			SingletonData.continentValues.remove(continent);
+			for(HashMap<String,Territory> contries  : SingletonData.continents.values()){
+			   	for(Territory t:contries.values()){
+			   		for(String s:contriesContinenthas){
+			   			if(t.getAdjacentTerritories().contains(s)){
+				   			t.getAdjacentTerritories().remove(s); 
+				   		}
+			   		}
+			   	}
+			}
+			SingletonData.continents.remove(continent);
+		}else if(isdeleteCountry){
+			for(HashMap<String,Territory> contries  : SingletonData.continents.values()){
+			   	for(Territory t:contries.values()){
+			   			if(t.getAdjacentTerritories().contains(country)){
+				   			t.getAdjacentTerritories().remove(country); 
+			   		}
+			   	}
+			}
+			SingletonData.continents.get(continent).remove(country);
+			
 		}
-		
-		if(!SingletonData.continents.containsKey(continent)){
-			SingletonData.continents.put(continent, new HashMap<String,Territory>());     	
+		else if(!SingletonData.continents.containsKey(continent)){
+			SingletonData.continents.put(continent, new HashMap<String,Territory>());
+			if(!country.isEmpty() && !country.equals("Countries")){
+				Territory territory =  new Territory(continent, country, "x,y", new_adjacentContries);
+				territory.setAdjacentTerritories(new_adjacentContries);
+				SingletonData.continents.get(continent).put(country, territory);
+			}
+			SingletonData.continentValues.put(continent, Integer.parseInt(continentValue));
+		} else if(!SingletonData.continents.get(continent).containsKey(country)){
+			Territory territory =  new Territory(continent, country, "x,y", new_adjacentContries);
+			territory.setAdjacentTerritories(new_adjacentContries);
+			SingletonData.continents.get(continent).put(country, territory);
+		}else{
+			SingletonData.continents.get(continent).get(country).setAdjacentTerritories(new_adjacentContries);
 		}		
 		
-		if(contries.size() != SingletonData.continents.get(continent).size()){
-			contries.removeAll(SingletonData.continents.get(continent).keySet());
-		}else{
-			contries.clear();
-		}
-		
-		if(new_adjacentContries.size() != SingletonData.continents.get(continent).get(country).getAdjacentTerritories().size()){
-			new_adjacentContries.removeAll(SingletonData.continents.get(continent).get(country).getAdjacentTerritories());
-		}else{
-			new_adjacentContries.clear();
-		}
-		
-		if(continents.size() > 0){
-			for(String new_continent: continents){
-				HashMap<String,Territory> temp = new HashMap<String,Territory>(); 
-				for(String new_contry:contries){
-					temp.put(new_contry, new Territory(new_continent, new_contry, "x,y", new_adjacentContries));
-				}
-				SingletonData.continents.put(new_continent,temp);				
-			}
-		}else if(contries.size() > 0){
-			for(String new_contry:contries){
-				SingletonData.continents.get(continent).put(new_contry, new Territory(continent, new_contry, "x,y", new_adjacentContries));
-			}
-		} else if(new_adjacentContries.size() > 0){
-		   SingletonData.continents.get(continent).get(country).getAdjacentTerritories().addAll(new_adjacentContries);
-		} else{
-           		     	
-		}
-		
-		SingletonData.continentValues.put(continent, Integer.getInteger(continentValue));
-		
-		System.out.println(Arrays.toString(continents.toArray()));
-		System.out.println(Arrays.toString(contries.toArray()));
-		System.out.println(Arrays.toString(new_adjacentContries.toArray()));
 	}
 	
 	

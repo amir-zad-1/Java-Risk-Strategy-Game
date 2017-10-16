@@ -6,6 +6,7 @@ package controller;
 import java.io.File;
 
 import model.LoadMap;
+import model.SingletonData;
 import model.WriteMap;
 
 /**
@@ -35,11 +36,10 @@ public class RWMapController {
 	 * @param file
 	 */
 	public void writeMap(File file) {
-		// TODO Auto-generated method stub
         WriteMap writeMap = new WriteMap(file);
         writeMap.write(); 
-
 	}
+
 	
 
 }
