@@ -40,10 +40,9 @@ public class WriteMap {
                 	for(String s:t.getAdjacentTerritories()){
                 		tmpStorage +=","+s; 
                 	}
-                	bw.write(t.getTerritoryName()+","+t.getCoordinates()+","+t.getContinentName()+","+tmpStorage);
+                	bw.write(t.getTerritoryName()+","+t.getCoordinates()+","+t.getContinentName()+tmpStorage);
     			    bw.newLine();
     			}
-			    
 			}
 			bw.close();
 			fw.close();

@@ -4,8 +4,8 @@
 package view;
 
 
-import java.awt.Adjustable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -31,7 +31,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.Territory;
 
 /**
  * @author Team15
@@ -57,7 +56,6 @@ public class MapEditorView {
 
 
 	public Scene getMapEditorView(){
-		
 		 ObservableList<String> continents = FXCollections.observableArrayList();		 
 		 ObservableList<String> contries = FXCollections.observableArrayList();
 		 
@@ -75,10 +73,10 @@ public class MapEditorView {
 	     Button deleteCountry = new Button("Delete Country");
 	     Button saveChanges = new Button("Save Changes");
 	     
-	     TextField editCountryName = new TextField ();
 	     TextField editadjacentContries = new TextField ();
-	     
 	     editadjacentContries.setPrefWidth(800);
+	     TextField editContinentValue = new TextField ();
+	     
 	     
 	     addContent.setOnAction(new EventHandler<ActionEvent>() {			
 			@Override
@@ -95,24 +93,37 @@ public class MapEditorView {
 					String tmp = getUserInput("Enter contry Value");
 					contriesChoiceBox.getItems().add(tmp);
 				}
-			});
+		 });
 	     
 	     
 
 	     saveChanges.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent event) {
-			  
-			}
-		});
+	 		public void handle(ActionEvent event) {
+	               List<String> continents = new ArrayList<String>();
+	               for(String continent: continentChoiceBox.getItems()){
+	            	   if(!continent.equals("Continents"))
+	            		    continents.add(continent);
+	               }
+	               List<String> contries = new ArrayList<String>();
+	               for(String contry: contriesChoiceBox.getItems()){
+	            	   if(!contry.equals("Countries"))
+	            		   contries.add(contry);
+	               }       
+	               writeController.saveData(continents,contries,editadjacentContries.getText(),continent,country,editContinentValue.getText());
+			 }
+		  });
 	     
 	     continentChoiceBox.setTooltip(new Tooltip("Select the Continent"));
 	     continentChoiceBox.getItems().add("Continents");
 	     continentChoiceBox.setValue("Continents");
 	     continentChoiceBox.getItems().addAll(continents);
+	     
+	     
+	     
 	     continentChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
-			public void changed(ObservableValue observable, String oldValue, String newValue) {
+			public void changed(ObservableValue observable, String oldValue, String newValue){
 				continent = newValue;
 				ArrayList<String> territories = readController.getTerritoriesNames(continent);
 				contries.clear();
@@ -120,6 +131,8 @@ public class MapEditorView {
 				if(territories != null){
 					contries.addAll(territories);
 				}
+				editContinentValue.setText(""+readController.getContinentValue(continent));
+				editadjacentContries.setText("");
 				contriesChoiceBox.getItems().add("Countries");			    
 				contriesChoiceBox.getItems().addAll(contries);
 				contriesChoiceBox.setValue("Countries");
@@ -131,10 +144,8 @@ public class MapEditorView {
 				@Override
 				public void changed(ObservableValue observable, String oldValue, String newValue) {
 					if(newValue != null && !newValue.equals("Countries")){
-						editCountryName.setText(newValue);
 						country = newValue;
-						System.out.println(continent +country);
-						editadjacentContries.setText(readController.getAdjacentTerritories(continent, country).toString());
+						editadjacentContries.setText(readController.getAdjacentTerritories(continent, country).toString().replaceAll(" ", ""));
 					}
 				}
 	     });
@@ -145,9 +156,11 @@ public class MapEditorView {
 	     Image imageOk = new Image(getClass().getResourceAsStream("/icons8-Back Arrow-35.png")); 
 	     closeButton = new Button();
 	     getCloseButton().setGraphic(new ImageView(imageOk));
+	     
 	     gridPane.add(continentChoiceBox,0,0);
 	     gridPane.add(contriesChoiceBox,1,0);
-	     gridPane.add(editCountryName, 2, 0);
+	     gridPane.add(editContinentValue, 2, 0);
+	     
 	     gridPane.add(editadjacentContries, 0, 1,3,1);
 	     
 	     gridPane.add(addContent, 0,2);
@@ -164,9 +177,6 @@ public class MapEditorView {
          gridPane.setStyle("-fx-padding:10");
          borderPane.setTop(header);
          HBox footer = new HBox();
-         
-         
-         
          
          footer.setStyle( 
                 "-fx-border-style: solid inside;" + 

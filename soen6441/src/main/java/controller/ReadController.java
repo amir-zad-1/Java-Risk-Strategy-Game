@@ -23,7 +23,6 @@ public class ReadController {
 		}else{
 			System.out.println("got countrie");
 		for(String teritory_name:countries.keySet()){
-			
 		   if(teritory_name.equals(country)){
 			   return countries.get(country).getAdjacentTerritories();
 		   }
@@ -47,6 +46,25 @@ public class ReadController {
 		}else{
 			return new ArrayList<String>(countries.keySet());
 		}
+	}
+
+
+
+	public boolean hasContinent(String continentName){
+		return model.SingletonData.continentValues.containsKey(continentName);		
+	}
+
+
+	/**
+	 * Returns continent value
+	 * @param continent
+	 * @return
+	 */
+	public int getContinentValue(String continentName) {
+		if(hasContinent(continentName))
+			return model.SingletonData.continentValues.get(continentName);
+		else
+			return 0;
 	}
 	
 	
