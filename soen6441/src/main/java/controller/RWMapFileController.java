@@ -1,26 +1,15 @@
-/**
- * 
- */
 package controller;
 
 import java.io.File;
 
 import model.LoadMap;
-import model.SingletonData;
 import model.WriteMap;
 
 /**
  * @author SA
  *
  */
-public class RWMapController {
-
-	/**
-	 * 
-	 */
-	public RWMapController() {
-		// TODO Auto-generated constructor stub
-	}
+public class RWMapFileController{
 
 	/**
 	 * @param file
@@ -38,8 +27,6 @@ public class RWMapController {
 	public void writeMap(File file) {
         WriteMap writeMap = new WriteMap(file);
         writeMap.write(); 
-	}
-
-	
+	}	
 
 }

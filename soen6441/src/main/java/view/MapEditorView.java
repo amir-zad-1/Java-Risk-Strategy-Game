@@ -1,16 +1,12 @@
-/**
- * 
- */
 package view;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-
 
 import controller.ReadController;
 import controller.WriteController;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -34,9 +30,9 @@ import javafx.scene.layout.HBox;
 
 /**
  * @author Team15
- *
+ * Responsible for generating Map editor view
  */
-public class MapEditorView {
+public class MapEditorView implements IView{
 	
 	private Button closeButton;	
 	private static Scene editorScene = null;
@@ -55,11 +51,15 @@ public class MapEditorView {
 
 
 
-	public Scene getMapEditorView(){
+	/**
+	 * @return {@link Scene} instance 
+	 * @see view.IView#getView()
+	 */
+	public Scene getView(){
 		 ObservableList<String> continents = FXCollections.observableArrayList();		 
 		 ObservableList<String> contries = FXCollections.observableArrayList();
 		
-		 continents.addAll(model.SingletonData.continentValues.keySet());
+		 continents.addAll(model.MapDataBase.continentValues.keySet());
 		 GridPane gridPane = new GridPane();
 		 gridPane.setHgap(10);
 	     gridPane.setVgap(10);

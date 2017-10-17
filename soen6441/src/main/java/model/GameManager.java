@@ -12,7 +12,7 @@ public class GameManager {
     private static int MIN_PLAYERS = 2;
     private static int MAX_PLAYERS = 6;
 
-    private SingletonData map;
+    private MapDataBase map;
     private int numberOfPlayers = 0;
     private Dice dice;
 

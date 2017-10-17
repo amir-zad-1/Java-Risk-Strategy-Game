@@ -27,14 +27,14 @@ public class WriteMap {
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write("[Continents]");
 			bw.newLine();
-			for(String key : SingletonData.continentValues.keySet()){
-				bw.write(key+"="+SingletonData.continentValues.get(key));
+			for(String key : MapDataBase.continentValues.keySet()){
+				bw.write(key+"="+MapDataBase.continentValues.get(key));
 				bw.newLine();
 			}
 			bw.write("[Territories]");
 			bw.newLine();
-			for(String key : SingletonData.continents.keySet()){
-                HashMap<String,Territory> territories = SingletonData.continents.get(key);
+			for(String key : MapDataBase.continents.keySet()){
+                HashMap<String,Territory> territories = MapDataBase.continents.get(key);
                 for(Territory t:territories.values()){
                 	String tmpStorage = "";
                 	for(String s:t.getAdjacentTerritories()){

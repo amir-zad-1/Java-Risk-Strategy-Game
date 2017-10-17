@@ -5,7 +5,7 @@ package view;
 
 import java.io.File;
 
-import controller.RWMapController;
+import controller.RWMapFileController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,29 +18,38 @@ import javafx.stage.Stage;
 
 
 /**
- * @author SA
- *
+ * All the UI related to Welcome View,
+ * This is starting UI, which calls other Views
+ * @author Team15
  */
-public class WelcomeView {
 
-	RWMapController maprwController;
+public class WelcomeView implements IView{
+
+	RWMapFileController maprwController;
 	static Scene welcomeScreen = null;
 	final FileChooser fileChooser = new FileChooser();
 	static MapEditorView mapEditorView = null;
 	Stage window = null;
+	
 	/**
-	 * 
-	 */
-	public WelcomeView(Stage n_window,RWMapController n_maprwController, MapEditorView n_mapEditorView) {
-		window  = n_window;
-		maprwController = n_maprwController; 
-		mapEditorView = n_mapEditorView;
+	 * Constructor which injects Controllers and View
+	 * @param new_window is the main window on the UI check {@link javafx.stage.Stage}}
+	 * @param new_maprwController is the map file read and write controller, check {@link RWMapFileController} 
+	 * @param new_mapEditorView is the map editor view, welcome view is responsible to start Map Editor View
+	*/
+	public WelcomeView(Stage new_window,RWMapFileController new_maprwController, MapEditorView new_mapEditorView) {
+		window  = new_window;
+		maprwController = new_maprwController; 
+		mapEditorView = new_mapEditorView;
 	}
 	
 	
-	public Scene getWelcomeView(){
-		
-		 Button chooseMapButton = new Button();
+	/**
+	 * @return Welcome view Scene, which has UI elements and event listeners 
+	 * @see Scene
+	 */
+	public Scene getView(){
+		    Button chooseMapButton = new Button();
 	        chooseMapButton.setMinWidth(200);
 	        chooseMapButton.setText("Choose Map file");
 	        Button writeMapButton = new Button();
@@ -59,7 +68,7 @@ public class WelcomeView {
 	                if(file != null){
 	                	maprwController.loadMap(file); 
 	                }
-	                loadEditorView();
+	                loadAnotherView(mapEditorView.getView());
 	            }
 	        });
 	        
@@ -79,7 +88,7 @@ public class WelcomeView {
 	        createMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
-	            	loadEditorView();
+	            	loadAnotherView(mapEditorView.getView());
 	            }
 	        });
 	        
@@ -95,14 +104,17 @@ public class WelcomeView {
 	}
 	
 	
-	 public  void loadEditorView(){
-	    	window.setScene(mapEditorView.getMapEditorView());
+	 /**
+	 * Loads new Scene(UI Container) into window
+	 */
+	public  void loadAnotherView(Scene scene){
+	    	window.setScene(scene);
 	    	mapEditorView.getCloseButton().setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
 	            	window.setScene(welcomeScreen); 
 	            }
 	    	});
-	    } 
+	  } 
 	
 }
