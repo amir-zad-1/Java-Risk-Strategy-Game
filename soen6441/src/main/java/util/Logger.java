@@ -7,13 +7,13 @@ public class Logger {
         switch (tag)
         {
             case INFO:
-                logTag = "[I] ";
+                logTag = "[:)] ";
                 break;
             case WARNING:
-                logTag = "[W] ";
+                logTag = "[:|] ";
                 break;
             case ERROT:
-                logTag = "[X] ";
+                logTag = "[:(] ";
                 break;
         }
         System.out.println("");

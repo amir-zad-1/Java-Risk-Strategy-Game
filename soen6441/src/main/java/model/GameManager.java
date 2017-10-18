@@ -7,6 +7,7 @@ import model.contract.IPlayer;
 import model.contract.ITerritory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import util.Color;
+import util.Helpers;
 import util.LogMessageEnum;
 import util.Logger;
 import util.expetion.InvalidNumOfPlayersException;
@@ -84,6 +85,7 @@ public class GameManager {
     private void play()
     {
         this.resetTurn();
+        int i = 0;
 
         while(this.isGameOn)
         {
@@ -91,9 +93,13 @@ public class GameManager {
             reinforcement(p);
             attack(p);
             fortification(p);
+            i++;
+            if (i==1)
+                this.isGameOn=false;
         }
 
     }
+
 
     /**
      * This will handle attack phase but not implemented yet
@@ -103,13 +109,20 @@ public class GameManager {
     {
         //todo: Implement attach phase.
         Logger.log(String.format("============%s ATTACK STARTS===========", p.getName()));
-        Logger.log(LogMessageEnum.ERROT, "Jump from attack phase. :)");
+        Logger.log(LogMessageEnum.WARNING, "Jump from attack phase. :)");
         Logger.log(String.format("============%s ATTACK DONE===========", p.getName()));
     }
 
     private void fortification(IPlayer p)
     {
         Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
+
+        ITerritory from = p.getRandomTerritory();
+        ITerritory to = p.getRandomTerritory();
+        int number = Helpers.getRandomInt(from.getArmies(),1);
+        p.moveArmies(from, to, number);
+
+
         Logger.log(String.format("============%s FORTIFICATION DONE===========", p.getName()));
     }
 

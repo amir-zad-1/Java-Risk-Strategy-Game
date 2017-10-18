@@ -31,4 +31,6 @@ public interface IPlayer {
 
     ITerritory getRandomTerritory();
 
+    ActionResponse moveArmies(ITerritory from, ITerritory to, int number);
+
 }

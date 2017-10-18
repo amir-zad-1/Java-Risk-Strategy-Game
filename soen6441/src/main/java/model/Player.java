@@ -6,6 +6,7 @@ import model.contract.ITerritory;
 import model.contract.IPlayer;
 import util.ActionResponse;
 import util.Color;
+import util.LogMessageEnum;
 import util.Logger;
 import util.expetion.NoSufficientArmiesExption;
 
@@ -162,6 +163,32 @@ public class Player implements IPlayer {
     public ITerritory getRandomTerritory() {
         int max = this.getTerritories().size()-1;
         return this.getTerritories().get(util.Helpers.getRandomInt(max,0));
+    }
+
+    @Override
+    public ActionResponse moveArmies(ITerritory from, ITerritory to, int number) {
+        ActionResponse result = new ActionResponse();
+
+        if(from.hasAdjacencyWith(to))
+        {
+            Logger.log(this.getState());
+            ActionResponse r = from.removeArmies(number);
+            if (r.getOk())
+            {
+                to.placeArmies(number);
+                Logger.log(String.format("%s moved %s armies from %s to %s.", this.getName(),
+                        number, from.getName(),to.getName()));
+                Logger.log(this.getState());
+            }
+        }
+        else
+        {
+            Logger.log(LogMessageEnum.ERROT, String.format(
+                    "%s wanted to move %s armies from %s to %s, but there is no adjacencies.", this.getName()
+                    , number, from.getName(), to.getName() ));
+        }
+
+        return result;
     }
 
 }

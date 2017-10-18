@@ -1,5 +1,7 @@
 package model.contract;
 
+import util.ActionResponse;
+
 public interface ITerritory {
 
     void setOwner(IPlayer player);
@@ -8,5 +10,7 @@ public interface ITerritory {
 
     int getArmies();
     void placeArmies(int count);
+    ActionResponse removeArmies(int count);
+    boolean hasAdjacencyWith(ITerritory t);
 
 }

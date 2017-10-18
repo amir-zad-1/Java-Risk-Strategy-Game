@@ -2,6 +2,8 @@ package model;
 
 import model.contract.IPlayer;
 import model.contract.ITerritory;
+import util.ActionResponse;
+import util.LogMessageEnum;
 import util.Logger;
 
 import java.util.ArrayList;
@@ -131,5 +133,31 @@ public class Territory implements ITerritory {
     public void placeArmies(int count) {
         this.numberOfArmies += count;
     }
+
+
+	@Override
+	public ActionResponse removeArmies(int count) {
+		ActionResponse res = new ActionResponse();
+
+		if ((this.getArmies() - count) >= 1  || true)
+		{
+			this.setNumberOfArmies(this.getArmies() - count);
+			res.setOk(true);
+			Logger.log(String.format("%s armies left %s", count, this.getName()));
+		}
+		else
+		{
+			Logger.log(LogMessageEnum.ERROT, String.format("%s!, At least 1 army should be in %s", count, this.getName()));
+			res.setOk(false);
+		}
+
+		return res;
+	}
+
+	@Override
+	public boolean hasAdjacencyWith(ITerritory t) {
+		return true;
+		//todo: must be implemented
+	}
     //todo: added by Amir ends
 }
