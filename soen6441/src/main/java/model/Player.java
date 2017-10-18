@@ -78,8 +78,8 @@ public class Player implements IPlayer {
         StringBuilder sb = new StringBuilder();
         sb.append(this.getName());
         sb.append(delimiter);
-        sb.append(this.getColor().getName());
-        sb.append(delimiter);
+        //sb.append(this.getColor().getName());
+        //sb.append(delimiter);
         sb.append("Territories:");
         sb.append(this.getTerritories().size());
         sb.append(delimiter);
@@ -156,6 +156,12 @@ public class Player implements IPlayer {
     @Override
     public int calculateReinforcementArmies() {
         return 0;
+    }
+
+    @Override
+    public ITerritory getRandomTerritory() {
+        int max = this.getTerritories().size()-1;
+        return this.getTerritories().get(util.Helpers.getRandomInt(max,0));
     }
 
 }

@@ -22,6 +22,11 @@ public class Map implements IMap {
         return this.continents;
     }
 
+    @Override
+    public void loadMap(String fullpath) {
+        //todo: loadMap
+    }
+
     private void fakeData()
     {
         this.continents = new ArrayList<>();

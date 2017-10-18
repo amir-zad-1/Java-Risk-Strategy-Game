@@ -161,16 +161,20 @@ public class GameManager {
         while(i<armiesToPlace )
         {
             Logger.log(p.getState());
-            Scanner sc = new Scanner(System.in);
-            Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
-            String n = sc.nextLine();
-            String[] inp = n.split(",");
+//            Scanner sc = new Scanner(System.in);
+//            Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
+//            String n = sc.nextLine();
+//            String[] inp = n.split(",");
+//
+//            int r = Integer.parseInt(inp[1]);
+//
+//            ITerritory t = p.getTerritoryByName(inp[0]);
+            ITerritory playerRandomTerritory = p.getRandomTerritory();
+            int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
 
-            int r = Integer.parseInt(inp[1]);
+            p.placeArmy(randomArmy, playerRandomTerritory);
+            i += randomArmy;
 
-            ITerritory t = p.getTerritoryByName(inp[0]);
-            p.placeArmy(r, t );
-            i += r;
             Logger.log(p.getState());
         }
 
@@ -191,16 +195,18 @@ public class GameManager {
                 continue;
 
             Logger.log(p.getState());
-            Scanner sc = new Scanner(System.in);
-            Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
-            String n = sc.nextLine();
-            String[] inp = n.split(",");
+            //Scanner sc = new Scanner(System.in);
+            //Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
+            //String n = sc.nextLine();
+            //String[] inp = n.split(",");
+            //int r = Integer.parseInt(inp[1]);
 
-            int r = Integer.parseInt(inp[1]);
+            ITerritory playerRandomTerritory  = p.getRandomTerritory();
+            int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
 
-            ITerritory t = p.getTerritoryByName(inp[0]);
-            p.placeArmy(r, t );
-            i += r;
+            p.placeArmy(randomArmy, playerRandomTerritory  );
+            i += randomArmy;
+
             Logger.log(p.getState());
         }
 
@@ -285,7 +291,7 @@ public class GameManager {
 
         try
         {
-            IMap m = new Map("");
+            IMap m = new Map("/home/tony/Workspace/6441/projectFinal/6441-project/world.map");
             GameManager gm = new GameManager(m, 3);
         }
         catch (InvalidNumOfPlayersException e)

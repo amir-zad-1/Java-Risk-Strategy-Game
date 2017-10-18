@@ -29,4 +29,6 @@ public interface IPlayer {
 
     int calculateReinforcementArmies();
 
+    ITerritory getRandomTerritory();
+
 }
