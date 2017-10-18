@@ -66,15 +66,19 @@ public class GameManager {
     private void initGame() throws InvalidNumOfPlayersException
     {
         //Step 1: Add players and give each them armies according to the rules
+        Logger.log("====1. Adding Players====");
         addPlayers();
 
         //Step 2: Allocate initial armies according to the rules
+        Logger.log("====2. Allocating Initial Armies====");
         allocateInitialArmies();
 
         //Step 3: Randomly allocate the countries in the map
+        Logger.log("====3. Allocating Territories====");
         allocateTerritories();
 
         //Step 4: Place armies into territories in turn
+        Logger.log("====4. Placing armies one by one into territories====");
         placeInitialArmies();
 
     }
@@ -85,16 +89,17 @@ public class GameManager {
     private void play()
     {
         this.resetTurn();
-        int i = 0;
-
+        int i = 1;
+        Logger.log("====5. PLAYING====");
         while(this.isGameOn)
         {
+            Logger.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
             reinforcement(p);
             attack(p);
             fortification(p);
             i++;
-            if (i==1)
+            if (i==2)
                 this.isGameOn=false;
         }
 
@@ -216,6 +221,7 @@ public class GameManager {
 
             ITerritory playerRandomTerritory  = p.getRandomTerritory();
             int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
+            randomArmy = 1;
 
             p.placeArmy(randomArmy, playerRandomTerritory  );
             i += randomArmy;
@@ -274,6 +280,7 @@ public class GameManager {
         {
             p.setUnusedArmies(initialArmies);
         }
+        Logger.log(String.format("%s armies allocated to each player.", initialArmies));
     }
 
     private void allocateTerritories()

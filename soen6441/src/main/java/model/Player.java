@@ -102,7 +102,7 @@ public class Player implements IPlayer {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
-        Logger.log(this.getName() + " placed " + Integer.toString(count)+" armies  into " + territory.getName());
+        Logger.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
         Logger.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );
         return new ActionResponse(true, String.format("%d armies placed in %s", count, territory.getName()));
