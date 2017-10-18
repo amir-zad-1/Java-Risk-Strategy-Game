@@ -7,6 +7,7 @@ import model.contract.IPlayer;
 import model.contract.ITerritory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import util.Color;
+import util.LogMessageEnum;
 import util.Logger;
 import util.expetion.InvalidNumOfPlayersException;
 
@@ -89,6 +90,7 @@ public class GameManager {
             IPlayer p = nextPlayer();
             reinforcement(p);
             attack(p);
+            fortification(p);
         }
 
     }
@@ -99,7 +101,16 @@ public class GameManager {
      */
     private void attack(IPlayer p)
     {
-        throw new NotImplementedException();
+        //todo: Implement attach phase.
+        Logger.log(String.format("============%s ATTACK STARTS===========", p.getName()));
+        Logger.log(LogMessageEnum.ERROT, "Jump from attack phase. :)");
+        Logger.log(String.format("============%s ATTACK DONE===========", p.getName()));
+    }
+
+    private void fortification(IPlayer p)
+    {
+        Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
+        Logger.log(String.format("============%s FORTIFICATION DONE===========", p.getName()));
     }
 
     /**
@@ -110,7 +121,7 @@ public class GameManager {
      */
     private void reinforcement(IPlayer p)
     {
-        System.out.println(String.format("============%s REINFORCEMENT STARTS===========", p.getName()));
+        Logger.log(String.format("============%s REINFORCEMENT STARTS===========", p.getName()));
 
         //Step 1: Reinforcement
         int newArmies = calculateReinforcementArmies(p);
@@ -118,7 +129,7 @@ public class GameManager {
 
         //Step 2: Place armies
         this.placeArmies(p);
-        System.out.println(String.format("============%s REINFORCEMENT DONE===========", p.getName()));
+        Logger.log(String.format("============%s REINFORCEMENT DONE===========", p.getName()));
     }
 
     /**
@@ -129,13 +140,16 @@ public class GameManager {
     private int calculateReinforcementArmies(IPlayer p)
     {
         int result = 0;
+
         //Step 1: calculate based on occupied territories
         result += p.getTerritories().size() / 3;
+        if(result<3)
+            result = 3; //Since the minimum is 3 armies.
 
         //Step 2: in addition based on controlled continents
         //for(IContinent c:this.map.getContinents())
         //{
-            //System.out.println(c.controlByOnePlayer()==null);
+            //Logger.log(c.controlByOnePlayer()==null);
         //}
         return result;
     }
@@ -146,9 +160,9 @@ public class GameManager {
         int i = 0;
         while(i<armiesToPlace )
         {
-            System.out.print(p.getState());
+            Logger.log(p.getState());
             Scanner sc = new Scanner(System.in);
-            System.out.print(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
+            Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
             String n = sc.nextLine();
             String[] inp = n.split(",");
 
@@ -157,7 +171,7 @@ public class GameManager {
             ITerritory t = p.getTerritoryByName(inp[0]);
             p.placeArmy(r, t );
             i += r;
-            System.out.print(p.getState());
+            Logger.log(p.getState());
         }
 
     }
@@ -176,9 +190,9 @@ public class GameManager {
             if(p.getUnusedArmies()==0)
                 continue;
 
-            System.out.print(p.getState());
+            Logger.log(p.getState());
             Scanner sc = new Scanner(System.in);
-            System.out.print(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
+            Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
             String n = sc.nextLine();
             String[] inp = n.split(",");
 
@@ -187,7 +201,7 @@ public class GameManager {
             ITerritory t = p.getTerritoryByName(inp[0]);
             p.placeArmy(r, t );
             i += r;
-            System.out.print(p.getState());
+            Logger.log(p.getState());
         }
 
     }
@@ -276,7 +290,7 @@ public class GameManager {
         }
         catch (InvalidNumOfPlayersException e)
         {
-            System.out.println(e.getMessage());
+            Logger.log(LogMessageEnum.ERROT, e.getMessage());
         }
     }
 

@@ -16,6 +16,7 @@ public class Logger {
                 logTag = "[X] ";
                 break;
         }
+        System.out.println("");
         System.out.println(logTag + message);
     }
 
