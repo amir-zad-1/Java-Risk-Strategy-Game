@@ -1,8 +1,12 @@
 package model;
 
+import model.contract.IPlayer;
+import model.contract.ITerritory;
+import util.Logger;
+
 import java.util.ArrayList;
 
-public class Territory {
+public class Territory implements ITerritory {
     private String continentName;
 	private String territoryName;
 	private String coordinates;
@@ -100,8 +104,32 @@ public class Territory {
 	public void setCoordinates(String coordinates) {
 		this.coordinates = coordinates;
 	}
-    
-    
-    
-    
+
+
+    @Override
+    public void setOwner(IPlayer player) {
+        this.owner = player;
+        Logger.log(this.territoryName + " is owned by " + player.getName());
+    }
+
+    @Override
+    public IPlayer getOwner() {
+        return this.owner;
+    }
+
+    //todo: added by Amir starts
+    private IPlayer owner;
+    public Territory(String name, String continentName){ this.territoryName=name; this.continentName=continentName; }
+    public String getName(){ return this.territoryName; }
+
+    @Override
+    public int getArmies() {
+        return this.numberOfArmies;
+    }
+
+    @Override
+    public void placeArmies(int count) {
+        this.numberOfArmies += count;
+    }
+    //todo: added by Amir ends
 }
