@@ -23,11 +23,10 @@ public class ReadController{
 	 * @return ArrayList of adjacent countries names
 	 */
 	public ArrayList<String> getAdjacentTerritories(String continent,String country){		
-		if(!dataReader.hasContinent(continent)){
-			return new ArrayList<String>();
+		if(dataReader.hasContinent(continent)){
+			return dataReader.getAdjacentTerritories(continent,country);			
 		}else{			
-			return dataReader.getAdjacentTerritories(continent,country);
-			
+			return new ArrayList<String>();
 		}
 	}
 	

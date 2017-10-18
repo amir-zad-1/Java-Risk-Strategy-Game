@@ -19,11 +19,10 @@ public class WindowManager extends Application {
 	
     static WelcomeView welcomeView  = null;
     static MapEditorView mapEditorView = null;
-    RWMapFileController rwMapFileController;
-	ReadController readController;
-	WriteController writeController;
-   
-   
+    
+    static RWMapFileController rwMapFileController;
+	static ReadController readController;
+	static WriteController writeController;   
     
     @Override
     public void start(final Stage window) {    
@@ -42,13 +41,12 @@ public class WindowManager extends Application {
     }
 
 
-
 	/**
 	 * @param new_rwMapFileController
 	 * @param new_readController
 	 * @param new_writeController
 	 */
-	public void addRWControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
+	public static void addRWControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
 			WriteController new_writeController) {
 		
 		rwMapFileController = new_rwMapFileController;

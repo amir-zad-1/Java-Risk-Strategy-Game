@@ -50,7 +50,6 @@ public class MapEditorView implements IView{
 	}
 
 
-
 	/**
 	 * @return {@link Scene} instance 
 	 * @see view.IView#getView()
