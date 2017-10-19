@@ -45,11 +45,20 @@ public class GameManager {
      * @param players number of players
      * @throws InvalidNumOfPlayersException
      */
-    public GameManager(IMap map, int players) throws InvalidNumOfPlayersException {
+    public GameManager(IMap map, int players) {
 
         this.numberOfPlayers = players;
         this.map = map;
 
+
+    }
+
+    /**
+     * Start the game
+     * @throws InvalidNumOfPlayersException
+     */
+    public void start() throws InvalidNumOfPlayersException
+    {
         this.initGame();
         this.isGameOn = true;
         this.play();
@@ -63,7 +72,7 @@ public class GameManager {
      * Step 4: Place armies onto territories in turn
      * @throws InvalidNumOfPlayersException
      */
-    private void initGame() throws InvalidNumOfPlayersException
+    public void initGame() throws InvalidNumOfPlayersException
     {
         //Step 1: Add players and give each them armies according to the rules
         Logger.log("====1. Adding Players====");
@@ -86,7 +95,7 @@ public class GameManager {
     /**
      * this is the method that handles the game play
      */
-    private void play()
+    public void play()
     {
         this.resetTurn();
         int i = 1;
@@ -110,7 +119,7 @@ public class GameManager {
      * This will handle attack phase but not implemented yet
      * @param p
      */
-    private void attack(IPlayer p)
+    public void attack(IPlayer p)
     {
         //todo: Implement attach phase.
         Logger.log(String.format("============%s ATTACK STARTS===========", p.getName()));
@@ -118,7 +127,7 @@ public class GameManager {
         Logger.log(String.format("============%s ATTACK DONE===========", p.getName()));
     }
 
-    private void fortification(IPlayer p)
+    public void fortification(IPlayer p)
     {
         Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
 
@@ -137,7 +146,7 @@ public class GameManager {
      * let the given player decide where to place the given armies
      * @param p the player that should do the reinforcement
      */
-    private void reinforcement(IPlayer p)
+    public void reinforcement(IPlayer p)
     {
         Logger.log(String.format("============%s REINFORCEMENT STARTS===========", p.getName()));
 
@@ -155,7 +164,7 @@ public class GameManager {
      * @param p player
      * @return number or armies the player should get
      */
-    private int calculateReinforcementArmies(IPlayer p)
+    public int calculateReinforcementArmies(IPlayer p)
     {
         int result = 0;
 
@@ -172,7 +181,7 @@ public class GameManager {
         return result;
     }
 
-    private void placeArmies(IPlayer p)
+    public void placeArmies(IPlayer p)
     {
         int armiesToPlace = p.getUnusedArmies();
         int i = 0;
@@ -198,7 +207,7 @@ public class GameManager {
 
     }
 
-    private void placeInitialArmies()
+    public void placeInitialArmies()
     {
 
         int armiesToPlace = 0;
@@ -231,7 +240,7 @@ public class GameManager {
 
     }
 
-    private void addPlayers() throws InvalidNumOfPlayersException {
+    public void addPlayers() throws InvalidNumOfPlayersException {
 
         if (this.numberOfPlayers > MAX_PLAYERS || this.numberOfPlayers < MIN_PLAYERS)
             throw new InvalidNumOfPlayersException();
@@ -246,7 +255,7 @@ public class GameManager {
         colorManager = null;
     }
 
-    private int calculateInitialArmies()
+    public int calculateInitialArmies()
     {
         int result = 0;
 
@@ -273,7 +282,7 @@ public class GameManager {
         return result;
     }
 
-    private void allocateInitialArmies()
+    public void allocateInitialArmies()
     {
         int initialArmies = calculateInitialArmies();
         for(IPlayer p : this.playerlist)
@@ -283,7 +292,7 @@ public class GameManager {
         Logger.log(String.format("%s armies allocated to each player.", initialArmies));
     }
 
-    private void allocateTerritories()
+    public void allocateTerritories()
     {
 
         for(IContinent c:this.map.getContinents())
@@ -313,6 +322,7 @@ public class GameManager {
         {
             IMap m = new Map("/home/tony/Workspace/6441/projectFinal/6441-project/world.map");
             GameManager gm = new GameManager(m, 3);
+            gm.start();
         }
         catch (InvalidNumOfPlayersException e)
         {
