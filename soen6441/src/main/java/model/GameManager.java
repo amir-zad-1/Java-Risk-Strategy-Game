@@ -198,14 +198,6 @@ public class GameManager {
         while(i<armiesToPlace )
         {
             Logger.log(p.getState());
-//            Scanner sc = new Scanner(System.in);
-//            Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
-//            String n = sc.nextLine();
-//            String[] inp = n.split(",");
-//
-//            int r = Integer.parseInt(inp[1]);
-//
-//            ITerritory t = p.getTerritoryByName(inp[0]);
             ITerritory playerRandomTerritory = p.getRandomTerritory();
             int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
 
@@ -236,15 +228,9 @@ public class GameManager {
                 continue;
 
             Logger.log(p.getState());
-            //Scanner sc = new Scanner(System.in);
-            //Logger.log(String.format("\n%s, place the desired number of armies on your territory. (e.g Russia,1):", p.getName()));
-            //String n = sc.nextLine();
-            //String[] inp = n.split(",");
-            //int r = Integer.parseInt(inp[1]);
 
             ITerritory playerRandomTerritory  = p.getRandomTerritory();
-            int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
-            randomArmy = 1;
+            int randomArmy = 1;
 
             p.placeArmy(randomArmy, playerRandomTerritory  );
             i += randomArmy;
@@ -285,9 +271,8 @@ public class GameManager {
         switch (this.numberOfPlayers)
         {
             case 2:
-                result = 0;
-                //todo: not implemented
-                throw new NotImplementedException();
+                result = 40;
+                break;
             case 3:
                 result = 35;
                 break;

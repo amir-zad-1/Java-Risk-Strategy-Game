@@ -1,10 +1,17 @@
 package model.contract;
 
+import util.ActionResponse;
+
 import java.util.ArrayList;
 
 public interface IMap {
 
     ArrayList<IContinent> getContinents();
-    void loadMap(String fullpath);
+    ActionResponse loadMap(String fullpath);
+    ActionResponse saveMap(String fullpath);
+    ActionResponse validateMap();
+
+    ActionResponse removeTerritory(ITerritory t);
+    ActionResponse addTerritory(ITerritory t);
 
 }

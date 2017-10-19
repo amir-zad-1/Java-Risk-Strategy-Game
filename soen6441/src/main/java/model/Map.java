@@ -2,6 +2,8 @@ package model;
 
 import model.contract.IContinent;
 import model.contract.IMap;
+import model.contract.ITerritory;
+import util.ActionResponse;
 
 import java.util.ArrayList;
 
@@ -23,8 +25,28 @@ public class Map implements IMap {
     }
 
     @Override
-    public void loadMap(String fullpath) {
+    public ActionResponse loadMap(String fullpath) {
         //todo: loadMap
+    }
+
+    @Override
+    public ActionResponse saveMap(String fullpath) {
+        return null;
+    }
+
+    @Override
+    public ActionResponse validateMap() {
+        return null;
+    }
+
+    @Override
+    public ActionResponse removeTerritory(ITerritory t) {
+        return null;
+    }
+
+    @Override
+    public ActionResponse addTerritory(ITerritory t) {
+        return null;
     }
 
     private void fakeData()

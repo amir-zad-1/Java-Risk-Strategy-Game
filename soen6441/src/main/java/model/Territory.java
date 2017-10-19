@@ -24,6 +24,7 @@ public class Territory implements ITerritory {
 	}
 
 	/**
+	 * returns name of the continent
 	 * @return the continentName
 	 */
 	public String getContinentName() {
@@ -31,6 +32,7 @@ public class Territory implements ITerritory {
 	}
 
 	/**
+	 * set name of the continent
 	 * @param continentName the continentName to set
 	 */
 	public void setContinentName(String continentName) {
@@ -38,6 +40,7 @@ public class Territory implements ITerritory {
 	}
 
 	/**
+	 * returns name of the territory
 	 * @return the territoryName
 	 */
 	public String getTerritoryName() {
@@ -45,6 +48,7 @@ public class Territory implements ITerritory {
 	}
 
 	/**
+     * sets name of the territory
 	 * @param territoryName the territoryName to set
 	 */
 	public void setTerritoryName(String territoryName) {
@@ -66,7 +70,7 @@ public class Territory implements ITerritory {
 	}
 
 	/**
-	 * @return the numberOfArmies
+	 * @return the numberOfArmies territory has
 	 */
 	public int getNumberOfArmies() {
 		return numberOfArmies;
@@ -108,12 +112,20 @@ public class Territory implements ITerritory {
 	}
 
 
-    @Override
+    /**
+     * sets the owner of the territory
+     * @param player new owner
+     */
+	@Override
     public void setOwner(IPlayer player) {
         this.owner = player;
         Logger.log(this.territoryName + " is owned by " + player.getName());
     }
 
+    /**
+     * sets owner of the territory
+     * @return
+     */
     @Override
     public IPlayer getOwner() {
         return this.owner;
@@ -121,21 +133,51 @@ public class Territory implements ITerritory {
 
     //todo: added by Amir starts
     private IPlayer owner;
-    public Territory(String name, String continentName){ this.territoryName=name; this.continentName=continentName; }
-    public String getName(){ return this.territoryName; }
 
+    /**
+     * Constructor
+     * @param name name of territory
+     * @param continentName continent name
+     */
+    public Territory(String name, String continentName)
+    {
+        this.territoryName=name;
+        this.continentName=continentName;
+    }
+
+    /**
+     * @return name of the territory
+     */
+    public String getName()
+    {
+        return this.territoryName;
+    }
+
+    /**
+     * @return number of armies in the territory
+     */
     @Override
     public int getArmies() {
         return this.numberOfArmies;
     }
 
+    /**
+     * adds given number of armies to the current armies
+     * @param count number of armies to add
+     */
     @Override
     public void placeArmies(int count) {
         this.numberOfArmies += count;
     }
 
 
-	@Override
+    /**
+     * Checks if there are at least one army in the territory then
+     * removes armies from the territory
+     * @param count number or armies to remove
+     * @return remove process result
+     */
+    @Override
 	public ActionResponse removeArmies(int count) {
 		ActionResponse res = new ActionResponse();
 
@@ -154,6 +196,11 @@ public class Territory implements ITerritory {
 		return res;
 	}
 
+    /**
+     * checks if this territory has Adjacency with the given territory
+     * @param t second territory to check
+     * @return if there is or not
+     */
 	@Override
 	public boolean hasAdjacencyWith(ITerritory t) {
 		return true;
