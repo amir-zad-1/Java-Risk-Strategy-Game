@@ -95,7 +95,6 @@ public class WelcomeView implements IView{
 		                	maprwController.writeMap(file);
 		                }	
 	            	}else{
-	            		 gobackButton.setVisible(true);
 	            		 alert.showAndWait();
 	            	}	            	
 	            }
@@ -104,7 +103,8 @@ public class WelcomeView implements IView{
 	        mapEditorView.getCloseButton().setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
-	            	window.setScene(welcomeScreen);
+	            	loadAnotherView(welcomeScreen);
+	            	gobackButton.setVisible(true);
 	            }
 	    	});
 	        
@@ -130,6 +130,7 @@ public class WelcomeView implements IView{
 	        gridPane.add(chooseMapButton,0,0);
 	        gridPane.add(saveMapButton,0,1);
 	        gridPane.add(createMapButton,0,2);
+	        gridPane.add(gobackButton,0,3);
 	        gridPane.setAlignment(Pos.CENTER);
 	        gridPane.setHgap(10);
 	        gridPane.setVgap(10);

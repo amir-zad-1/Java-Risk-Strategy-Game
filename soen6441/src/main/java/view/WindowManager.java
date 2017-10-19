@@ -29,6 +29,11 @@ public class WindowManager extends Application {
 	static ReadController readController;
 	static WriteController writeController;   
     
+    /**
+     * Starts the main UI window
+     * and initializes the Editor and Welcome View
+     * @see javafx.application.Application#start(javafx.stage.Stage)
+     */
     @Override
     public void start(final Stage window) {    
     	window.setTitle("Game");

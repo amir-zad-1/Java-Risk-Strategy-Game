@@ -216,15 +216,15 @@ public class Territory implements ITerritory {
 	 * @return all adjacent territories Objects
 	 */
 	public ArrayList<ITerritory> getAdjacentTerritoryObjects(){
-		ArrayList<ITerritory> adjacentTerritories = new ArrayList<ITerritory>();
+		ArrayList<ITerritory> adjacentTerritoriesObjects = new ArrayList<ITerritory>();
 		for(HashMap<String,Territory> territories : MapDataBase.continents.values()){
 			for(Territory territory:territories.values()){
 				if(adjacentTerritories.contains(territory.getTerritoryName())){
-					adjacentTerritories.add(territory);
+					adjacentTerritoriesObjects.add(territory);
 				}
 			}
 		}
-		return adjacentTerritories;		
+		return adjacentTerritoriesObjects;		
 	}
    
 }
