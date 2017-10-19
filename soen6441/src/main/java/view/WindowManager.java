@@ -13,6 +13,11 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import model.GameManager;
+import model.Map;
+import model.contract.IMap;
+import util.LogMessageEnum;
+import util.expetion.InvalidNumOfPlayersException;
  
 public class WindowManager extends Application {
 	
@@ -29,10 +34,21 @@ public class WindowManager extends Application {
     	window.setTitle("Game");
     	mapEditorView = new MapEditorView(readController,writeController);
 		welcomeView = new WelcomeView(window, rwMapFileController, mapEditorView); 
-        mapEditorView.getStartGame().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+        mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {
+            
+        	@Override
             public void handle(ActionEvent event){
-            	//start Game play here
+            	 try
+                 {
+                     IMap m = new Map();
+                     int numberOfPlayers = mapEditorView.getNumberOfPlayers();
+                     GameManager gm = new GameManager(m, numberOfPlayers);
+                     gm.start();
+                 }
+                 catch (InvalidNumOfPlayersException e)
+                 {
+                     Logger.log(LogMessageEnum.ERROT, e.getMessage());
+                 }
             }
     	});   
     	

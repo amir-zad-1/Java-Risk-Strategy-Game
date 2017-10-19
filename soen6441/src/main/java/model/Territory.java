@@ -4,7 +4,7 @@ import model.contract.IPlayer;
 import model.contract.ITerritory;
 import util.ActionResponse;
 import util.LogMessageEnum;
-import util.Logger;
+import view.Logger;
 
 import java.util.ArrayList;
 

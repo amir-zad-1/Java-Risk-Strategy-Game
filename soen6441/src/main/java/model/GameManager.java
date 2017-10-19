@@ -9,8 +9,8 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import util.Color;
 import util.Helpers;
 import util.LogMessageEnum;
-import util.Logger;
 import util.expetion.InvalidNumOfPlayersException;
+import view.Logger;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -340,22 +340,6 @@ public class GameManager {
      */
     private void resetTurn() { this.turn = -1; }
 
-    /**
-     * starts the game
-     * @param args not applicable
-     */
-    public static void main(String[]  args){
-
-        try
-        {
-            IMap m = new Map();
-            GameManager gm = new GameManager(m, 3);
-            gm.start();
-        }
-        catch (InvalidNumOfPlayersException e)
-        {
-            Logger.log(LogMessageEnum.ERROT, e.getMessage());
-        }
-    }
+    
 
 }

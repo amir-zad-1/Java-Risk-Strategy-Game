@@ -1,4 +1,6 @@
-package util;
+package view;
+
+import util.LogMessageEnum;
 
 /**
  * Class used to log into the console

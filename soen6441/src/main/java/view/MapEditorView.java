@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToolBar;
@@ -35,12 +36,15 @@ import javafx.scene.layout.HBox;
 public class MapEditorView implements IView{
 	
 	private Button closeButton;	
+	
 	private static Scene editorScene = null;
+	private static String country,continent = null;
+	
 	private ReadController readController = null;
 	private WriteController writeController = null;
-	private static String country,continent = null; 
-	
-	private Button startGame = new Button();
+	private Button startGameButton = new Button();
+	private TextField numberOfPlayerInput = new TextField();
+	 
 	TextInputDialog dialog = new TextInputDialog();
 	boolean isDeletedContinent= false,isDeletedContry=false;
 	
@@ -51,7 +55,8 @@ public class MapEditorView implements IView{
 
 
 	/**
-	 * @return {@link Scene} instance 
+	 * Returns container having Map Editor UI elements
+	 * @return {@link Scene} instance
 	 * @see view.IView#getView()
 	 */
 	public Scene getView(){
@@ -77,6 +82,8 @@ public class MapEditorView implements IView{
 	     editadjacentContries.setPromptText("Adjacent Countries");
 	     TextField editContinentValue = new TextField ();
 	     editContinentValue.setPromptText("Continent Value");
+	     numberOfPlayerInput = new TextField ();
+	     numberOfPlayerInput.setPromptText("Number Of Players");
 	     
 	     addContent.setOnAction(new EventHandler<ActionEvent>() {			
 			@Override
@@ -176,19 +183,21 @@ public class MapEditorView implements IView{
 	     Image imageOk = new Image(getClass().getResourceAsStream("/icons8-Back Arrow-35.png")); 
 	     closeButton = new Button();
 	     getCloseButton().setGraphic(new ImageView(imageOk));
-	     
+	     //Adding to row 1 to UI grid
 	     gridPane.add(continentChoiceBox,0,0);
 	     gridPane.add(countriesChoiceBox,1,0);
 	     gridPane.add(editContinentValue, 2, 0);
-	     
+	     //Adding to row 2 to UI grid
 	     gridPane.add(editadjacentContries, 0, 1,3,1);
-	     
+	     //Adding to row 3 to UI grid
 	     gridPane.add(addContent, 0,2);
 	     gridPane.add(addCountry, 1,2);
 	     gridPane.add(deleteContent, 2,2);
 	     gridPane.add(deleteCountry, 3,2);
-	     
-	     
+	     //Adding to row 4 to UI grid
+	     gridPane.add(new Label("Number of Players"), 1, 3);
+	     gridPane.add(numberOfPlayerInput, 2,3);
+	    
          ToolBar header = new ToolBar(closeButton);
          header.setStyle( 
                 "-fx-border-style: solid inside;" + 
@@ -204,11 +213,10 @@ public class MapEditorView implements IView{
                 "-fx-padding:10;"+
                 "-fx-border-color: black;");
          gridPane.setStyle("-fx-padding:10");
-	     startGame = new Button();
-	     startGame.setText("Start Game");
+	     startGameButton.setText("Start Game");
 	     footer.setAlignment(Pos.CENTER_RIGHT);
 	     footer.setPadding(new Insets(15, 12, 15, 12));
-	     footer.getChildren().addAll(startGame,saveChanges);
+	     footer.getChildren().addAll(startGameButton,saveChanges);
          
 	     borderPane.setBottom(footer);
 	     borderPane.setCenter(gridPane);
@@ -227,10 +235,19 @@ public class MapEditorView implements IView{
 
 
 	/**
-	 * @return the startGame
+	 * @return the startGameButton
 	 */
-	public Button getStartGame() {
-		return startGame;
+	public Button getStartGameButton() {
+		return startGameButton;
+	}
+
+
+	
+	/**
+	 * @return the numberOfPlayers given by user
+	 */
+	public int getNumberOfPlayers() {
+		return Integer.parseInt(numberOfPlayerInput.getText());
 	}
 
 

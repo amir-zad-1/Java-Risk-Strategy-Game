@@ -58,7 +58,7 @@ public class Map implements IMap {
     		for(Territory territory: MapDataBase.continents.get(continent).values()){    			
     			c.addTerritory(new Territory(territory.getTerritoryName(),territory.getContinentName()));	
     		}
-    		
+    		this.continents.add(c);	
     	}
     }
     

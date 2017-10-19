@@ -7,8 +7,8 @@ import model.contract.IPlayer;
 import util.ActionResponse;
 import util.Color;
 import util.LogMessageEnum;
-import util.Logger;
 import util.expetion.NoSufficientArmiesExption;
+import view.Logger;
 
 import java.util.ArrayList;
 
