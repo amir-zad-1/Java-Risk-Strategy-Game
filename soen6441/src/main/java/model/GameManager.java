@@ -127,6 +127,11 @@ public class GameManager {
         Logger.log(String.format("============%s ATTACK DONE===========", p.getName()));
     }
 
+    /**
+     * does the fortification phase and randomly move armies to another territories
+     * owned by the player
+     * @param p player
+     */
     public void fortification(IPlayer p)
     {
         Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
@@ -181,6 +186,11 @@ public class GameManager {
         return result;
     }
 
+
+    /**
+     * this method helps players to move armies from a territory to another
+     * @param p player
+     */
     public void placeArmies(IPlayer p)
     {
         int armiesToPlace = p.getUnusedArmies();
@@ -207,6 +217,10 @@ public class GameManager {
 
     }
 
+    /**
+     * This method automatically place initial armies into territories one by one
+     * according to the game rules
+     */
     public void placeInitialArmies()
     {
 
@@ -240,6 +254,11 @@ public class GameManager {
 
     }
 
+    /**
+     * this method add players to the game
+     * it uses the number which is given while creating game instance.
+     * @throws InvalidNumOfPlayersException
+     */
     public void addPlayers() throws InvalidNumOfPlayersException {
 
         if (this.numberOfPlayers > MAX_PLAYERS || this.numberOfPlayers < MIN_PLAYERS)
@@ -255,6 +274,10 @@ public class GameManager {
         colorManager = null;
     }
 
+    /**
+     * calculates initial armies according to the game rules
+     * @return number of armies
+     */
     public int calculateInitialArmies()
     {
         int result = 0;
@@ -282,6 +305,10 @@ public class GameManager {
         return result;
     }
 
+    /**
+     * calculates initial armies by calling the appropriate method then
+     * sets the return number for each player
+     */
     public void allocateInitialArmies()
     {
         int initialArmies = calculateInitialArmies();
@@ -292,6 +319,10 @@ public class GameManager {
         Logger.log(String.format("%s armies allocated to each player.", initialArmies));
     }
 
+
+    /**
+     * Randomly allocates territories to players
+     */
     public void allocateTerritories()
     {
 
@@ -305,6 +336,10 @@ public class GameManager {
         }
     }
 
+    /**
+     * returns next player based on turns
+     * @return player object
+     */
     public IPlayer nextPlayer()
     {
         if(this.turn == this.numberOfPlayers-1)
@@ -314,8 +349,16 @@ public class GameManager {
 
     }
 
+    /**
+     * reset the turn
+     * @see GameManager#nextPlayer()
+     */
     private void resetTurn() { this.turn = -1; }
 
+    /**
+     * starts the game
+     * @param args not applicable
+     */
     public static void main(String[]  args){
 
         try
