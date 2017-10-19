@@ -47,19 +47,24 @@ public class WelcomeView implements IView{
 	
 	
 	/**
-	 * @return Welcome view Scene, which has UI elements and event listeners 
+	 * @return Welcome view Scene, a container which has UI elements and event listeners 
 	 * @see Scene
 	 */
 	public Scene getView(){
 		    Button chooseMapButton = new Button();
 	        chooseMapButton.setMinWidth(200);
 	        chooseMapButton.setText("Choose Map file");
-	        Button writeMapButton = new Button();
-	        writeMapButton.setMinWidth(200);
-	        writeMapButton.setText("Save Map file");
+	        Button saveMapButton = new Button();
+	        saveMapButton.setMinWidth(200);
+	        saveMapButton.setText("Save Map file");
 	        Button createMapButton = new Button();
 	        createMapButton.setMinWidth(200);
 	        createMapButton.setText("Create Map file");
+	        Button gobackButton = new Button();
+	        gobackButton.setMinWidth(200);
+	        gobackButton.setText("Prevoius View");
+	        
+	        gobackButton.setVisible(false);
 	        
 	        Alert alert = new Alert(AlertType.ERROR);
 	        alert.setHeaderText("Map file is not valid");
@@ -79,29 +84,51 @@ public class WelcomeView implements IView{
 	            }
 	        });
 	        
-	        writeMapButton.setOnAction(new EventHandler<ActionEvent>() {
+	        saveMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
-	            	fileChooser.setInitialFileName("NewMap.map");
-	            	fileChooser.setSelectedExtensionFilter(new ExtensionFilter("Map File", "map"));
-	                File file = fileChooser.showSaveDialog(window);
-	                if(file != null){
-	                	maprwController.writeMap(file);
-	                }
+	            	if(maprwController.validateMap()){
+	            		fileChooser.setInitialFileName("NewMap.map");
+		            	fileChooser.setSelectedExtensionFilter(new ExtensionFilter("Map File", "map"));
+		                File file = fileChooser.showSaveDialog(window);
+		                if(file != null){
+		                	maprwController.writeMap(file);
+		                }	
+	            	}else{
+	            		 gobackButton.setVisible(true);
+	            		 alert.showAndWait();
+	            	}	            	
+	            }
+	        });
+	        
+	        mapEditorView.getCloseButton().setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event){
+	            	window.setScene(welcomeScreen);
+	            }
+	    	});
+	        
+	        createMapButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event){
+	            	maprwController.clearData();
+	            	loadAnotherView(mapEditorView.getView());
 	            }
 	        });
 	        
 	        
-	        createMapButton.setOnAction(new EventHandler<ActionEvent>() {
+	        gobackButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
 	            	loadAnotherView(mapEditorView.getView());
 	            }
 	        });
 	        
+	       
+	        
 	        GridPane gridPane = new GridPane();
 	        gridPane.add(chooseMapButton,0,0);
-	        gridPane.add(writeMapButton,0,1);
+	        gridPane.add(saveMapButton,0,1);
 	        gridPane.add(createMapButton,0,2);
 	        gridPane.setAlignment(Pos.CENTER);
 	        gridPane.setHgap(10);
@@ -113,15 +140,11 @@ public class WelcomeView implements IView{
 	
 	 /**
 	 * Loads new Scene(UI Container) into the window
+	 * @param scene will be showed in window
+	 * @see java.fx.Scene 
 	 */
 	public  void loadAnotherView(Scene scene){
-	    	window.setScene(scene);
-	    	mapEditorView.getCloseButton().setOnAction(new EventHandler<ActionEvent>() {
-	            @Override
-	            public void handle(ActionEvent event){
-	            	window.setScene(welcomeScreen); 
-	            }
-	    	});
+	    	window.setScene(scene);	
 	  } 
 	
 }

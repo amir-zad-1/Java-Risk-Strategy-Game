@@ -7,6 +7,8 @@ import util.LogMessageEnum;
 import view.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 public class Territory implements ITerritory {
     private String continentName;
@@ -207,6 +209,22 @@ public class Territory implements ITerritory {
 			return true;
 		}
 		return false;		
+	}
+	
+	
+	/**
+	 * @return all adjacent territories Objects
+	 */
+	public ArrayList<ITerritory> getAdjacentTerritoryObjects(){
+		ArrayList<ITerritory> adjacentTerritories = new ArrayList<ITerritory>();
+		for(HashMap<String,Territory> territories : MapDataBase.continents.values()){
+			for(Territory territory:territories.values()){
+				if(adjacentTerritories.contains(territory.getTerritoryName())){
+					adjacentTerritories.add(territory);
+				}
+			}
+		}
+		return adjacentTerritories;		
 	}
    
 }

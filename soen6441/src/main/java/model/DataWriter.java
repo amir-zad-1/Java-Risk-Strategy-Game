@@ -25,7 +25,6 @@ public class DataWriter {
 	 * @param continent
 	 */
 	public void deleteContinent(String continent) {
-		System.out.println(MapDataBase.continents.containsKey(continent)+"sddsf "+continent);
 		Set<String> contriesContinenthas = MapDataBase.continents.get(continent).keySet();
 		MapDataBase.continentValues.remove(continent);
 		for(HashMap<String,Territory> contries  : MapDataBase.continents.values()){
