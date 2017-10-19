@@ -126,7 +126,7 @@ public class Territory implements ITerritory {
 
     /**
      * sets owner of the territory
-     * @return
+     * @return owner
      */
     @Override
     public IPlayer getOwner() {

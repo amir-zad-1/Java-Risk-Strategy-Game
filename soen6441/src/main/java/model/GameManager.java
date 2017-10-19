@@ -43,7 +43,7 @@ public class GameManager {
      * finally game is started
      * @param map the map file containing game map
      * @param players number of players
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public GameManager(IMap map, int players) {
 
@@ -55,7 +55,7 @@ public class GameManager {
 
     /**
      * Start the game
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public void start() throws InvalidNumOfPlayersException
     {
@@ -70,7 +70,7 @@ public class GameManager {
      * Step 2: Randomly allocate the countries in the map
      * Step 3: Allocate initial armies according to the rules
      * Step 4: Place armies onto territories in turn
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public void initGame() throws InvalidNumOfPlayersException
     {
@@ -108,7 +108,7 @@ public class GameManager {
             attack(p);
             fortification(p);
             i++;
-            if (i==2)
+            if (i==this.numberOfPlayers)
                 this.isGameOn=false;
         }
 
@@ -117,7 +117,7 @@ public class GameManager {
 
     /**
      * This will handle attack phase but not implemented yet
-     * @param p
+     * @param p player
      */
     public void attack(IPlayer p)
     {
@@ -137,7 +137,14 @@ public class GameManager {
         Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
 
         ITerritory from = p.getRandomTerritory();
-        ITerritory to = p.getRandomTerritory();
+        ITerritory to;
+
+        ArrayList<ITerritory> neighbours = from.getAdjacentTerritoryObjects();
+        if(neighbours.size()>0)
+            to = neighbours.get(0);
+        else
+            to = p.getRandomTerritory();
+
         int number = Helpers.getRandomInt(from.getArmies(),1);
         p.moveArmies(from, to, number);
 
@@ -176,13 +183,8 @@ public class GameManager {
         //Step 1: calculate based on occupied territories
         result += p.getTerritories().size() / 3;
         if(result<3)
-            result = 3; //Since the minimum is 3 armies.
+            result = 3; // Since the minimum is 3 armies.
 
-        //Step 2: in addition based on controlled continents
-        //for(IContinent c:this.map.getContinents())
-        //{
-            //Logger.log(c.controlByOnePlayer()==null);
-        //}
         return result;
     }
 
@@ -243,7 +245,7 @@ public class GameManager {
     /**
      * this method add players to the game
      * it uses the number which is given while creating game instance.
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public void addPlayers() throws InvalidNumOfPlayersException {
 

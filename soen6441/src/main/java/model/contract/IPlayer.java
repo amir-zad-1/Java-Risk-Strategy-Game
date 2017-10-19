@@ -27,8 +27,6 @@ public interface IPlayer {
 
     ITerritory getTerritoryByName(String territoryName);
 
-    int calculateReinforcementArmies();
-
     ITerritory getRandomTerritory();
 
     ActionResponse moveArmies(ITerritory from, ITerritory to, int number);

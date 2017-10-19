@@ -2,6 +2,8 @@ package model.contract;
 
 import util.ActionResponse;
 
+import java.util.ArrayList;
+
 public interface ITerritory {
 
     void setOwner(IPlayer player);
@@ -12,5 +14,6 @@ public interface ITerritory {
     void placeArmies(int count);
     ActionResponse removeArmies(int count);
     boolean hasAdjacencyWith(ITerritory t);
+    ArrayList<ITerritory> getAdjacentTerritoryObjects();
 
 }
