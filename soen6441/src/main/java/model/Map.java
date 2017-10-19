@@ -62,7 +62,12 @@ public class Map implements IMap {
     	}
     }
     
-    private void fakeData()
+    public void clearData()
+    {
+        this.continents = new ArrayList<>();
+    }
+
+    public void fakeData()
     {
         this.continents = new ArrayList<>();
 

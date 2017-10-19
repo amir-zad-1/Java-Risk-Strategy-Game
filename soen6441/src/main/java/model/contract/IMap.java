@@ -11,6 +11,9 @@ public interface IMap {
     ActionResponse saveMap(String fullpath);
     ActionResponse validateMap();
 
+    void clearData();
+    void fakeData();
+
     ActionResponse removeTerritory(ITerritory t);
     ActionResponse addTerritory(ITerritory t);
 
