@@ -47,7 +47,7 @@ public class Continent implements IContinent {
 
     /**
      * sets value of the continent
-     * @param value
+     * @param value name of the continent
      */
     @Override
     public void setContinentValue(int value) {

@@ -10,7 +10,7 @@ public class Card {
 
     /**
      * draws a card from a deck of cards
-     * @return
+     * @return card
      */
     public Card drawCard(){
         //todo: not implemented yet

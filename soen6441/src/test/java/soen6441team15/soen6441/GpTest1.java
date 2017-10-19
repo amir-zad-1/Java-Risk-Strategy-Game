@@ -10,7 +10,7 @@ public class GpTest1 {
 
     /**
      * creates a game with 1 player
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     @Test(expected = InvalidNumOfPlayersException.class)
     public void testMinPlayers() throws InvalidNumOfPlayersException

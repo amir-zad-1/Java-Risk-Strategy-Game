@@ -43,7 +43,7 @@ public class GameManager {
      * finally game is started
      * @param map the map file containing game map
      * @param players number of players
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public GameManager(IMap map, int players) {
 
@@ -55,7 +55,7 @@ public class GameManager {
 
     /**
      * Start the game
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public void start() throws InvalidNumOfPlayersException
     {
@@ -70,7 +70,7 @@ public class GameManager {
      * Step 2: Randomly allocate the countries in the map
      * Step 3: Allocate initial armies according to the rules
      * Step 4: Place armies onto territories in turn
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public void initGame() throws InvalidNumOfPlayersException
     {
@@ -117,7 +117,7 @@ public class GameManager {
 
     /**
      * This will handle attack phase but not implemented yet
-     * @param p
+     * @param p player
      */
     public void attack(IPlayer p)
     {
@@ -245,7 +245,7 @@ public class GameManager {
     /**
      * this method add players to the game
      * it uses the number which is given while creating game instance.
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException be careful
      */
     public void addPlayers() throws InvalidNumOfPlayersException {
 

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 /**
  * This is player class
  *
- * @Author Amir
- * @Version 0.1.0
+ * @author Amir
+ * @version 0.1.0
  */
 public class Player implements IPlayer {
 
@@ -121,7 +121,7 @@ public class Player implements IPlayer {
 
     /**
      * fancy representation of the player status
-     * @return
+     * @return fancy toString
      */
     @Override
     public String toString(){
