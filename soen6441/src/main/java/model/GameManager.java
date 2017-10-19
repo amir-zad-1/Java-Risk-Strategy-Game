@@ -108,7 +108,7 @@ public class GameManager {
             attack(p);
             fortification(p);
             i++;
-            if (i==2)
+            if (i==this.numberOfPlayers)
                 this.isGameOn=false;
         }
 
