@@ -229,6 +229,7 @@ public class Player implements IPlayer {
         return this.getTerritories().get(util.Helpers.getRandomInt(max,0));
     }
 
+
     /**
      * move armies from a territory to another
      * @param from origin territory

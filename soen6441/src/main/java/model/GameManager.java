@@ -137,7 +137,14 @@ public class GameManager {
         Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
 
         ITerritory from = p.getRandomTerritory();
-        ITerritory to = p.getRandomTerritory();
+        ITerritory to;
+
+        ArrayList<ITerritory> neighbours = from.getAdjacentTerritoryObjects();
+        if(neighbours.size()>0)
+            to = neighbours.get(0);
+        else
+            to = p.getRandomTerritory();
+
         int number = Helpers.getRandomInt(from.getArmies(),1);
         p.moveArmies(from, to, number);
 
