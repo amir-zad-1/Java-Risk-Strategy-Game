@@ -16,6 +16,8 @@ public class GpTest5 {
     public void test() throws InvalidNumOfPlayersException
     {
         IMap m = new Map();
+        m.clearData();
+        m.fakeData();
         GameManager gm = new GameManager(m, 3);
         gm.initGame();
         Assert.assertEquals(0, gm.nextPlayer().getUnusedArmies());
