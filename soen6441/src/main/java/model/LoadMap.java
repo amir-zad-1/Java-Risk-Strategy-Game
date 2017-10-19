@@ -3,7 +3,6 @@ package model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class LoadMap {
@@ -12,10 +11,20 @@ public class LoadMap {
     private Scanner txtScanner = null;
     
     
+	/**
+	 * Constructor takes map file pointer
+	 * @param file instance of {@link File} 
+	 */
 	public LoadMap(File file){
 		mapFileLocation = file;
 	}
+		
 	
+	/**
+	 * @param data is a line of text from .map file 
+	 * @param context tells whether the line is saying about a continent value or territory.
+	 * @return
+	 */
 	private boolean loadMapToModel(String data,String context){
 		boolean isValidMap = true;
 		switch(context){
@@ -34,6 +43,11 @@ public class LoadMap {
 		return true;
 	}
 	
+	/**
+	 * @return false is map is not valid
+	 * Note: beforeContext tells whether a reading line belongs to continent values 
+	 * or territories declarations. 
+	 */
 	public boolean load(){
 		try {
 			txtScanner = new Scanner(new FileInputStream(mapFileLocation));
@@ -59,23 +73,8 @@ public class LoadMap {
 			   	
 			}
 		}
-		isValidAdjacency();
-		return true;
-	}
-	
-	
-	public boolean isValidAdjacency(){
-		for(HashMap<String,Territory> territories : MapDataBase.continents.values()){
-			for(Territory territory:territories.values()){
-			     for(String s : territory.getAdjacentTerritories()){
-			    	    if(!MapDataBase.continents.get(territory.getContinentName()).containsKey(s))
-			    	    	return false;
-			     }			    	 
-			}
-			
-		}
 		
-		return true;
+		return MapDataBase.isValidAdjacency();
 	}
 	
 }

@@ -34,8 +34,8 @@ public class WindowManager extends Application {
     	window.setTitle("Game");
     	mapEditorView = new MapEditorView(readController,writeController);
 		welcomeView = new WelcomeView(window, rwMapFileController, mapEditorView); 
-        mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {
-            
+		
+        mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
             	 try
@@ -52,7 +52,7 @@ public class WindowManager extends Application {
             }
     	});   
     	
-    	window.setScene(welcomeView.getView());         
+        window.setScene(welcomeView.getView());
         window.show();
     }
 
