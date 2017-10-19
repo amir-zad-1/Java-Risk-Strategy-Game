@@ -10,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -55,20 +57,25 @@ public class WelcomeView implements IView{
 	        Button writeMapButton = new Button();
 	        writeMapButton.setMinWidth(200);
 	        writeMapButton.setText("Save Map file");
-	        
 	        Button createMapButton = new Button();
 	        createMapButton.setMinWidth(200);
 	        createMapButton.setText("Create Map file");
 	        
-	        
+	        Alert alert = new Alert(AlertType.ERROR);
+	        alert.setHeaderText("Map file is not valid");
+
 	        chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
 	                File file = fileChooser.showOpenDialog(window);
 	                if(file != null){
-	                	maprwController.loadMap(file); 
+	                  boolean isValid = maprwController.loadMap(file); 
+	                  if(isValid)
+	                	  loadAnotherView(mapEditorView.getView());
+	                  else
+	                	 alert.showAndWait();	                  
 	                }
-	                loadAnotherView(mapEditorView.getView());
+	                
 	            }
 	        });
 	        
@@ -105,7 +112,7 @@ public class WelcomeView implements IView{
 	
 	
 	 /**
-	 * Loads new Scene(UI Container) into window
+	 * Loads new Scene(UI Container) into the window
 	 */
 	public  void loadAnotherView(Scene scene){
 	    	window.setScene(scene);

@@ -3,13 +3,13 @@ package model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class LoadMap {
     
 	private File mapFileLocation = null;
     private Scanner txtScanner = null;
-    //private boolean isContinentsLoaded = false;
     
     
 	public LoadMap(File file){
@@ -38,12 +38,11 @@ public class LoadMap {
 		try {
 			txtScanner = new Scanner(new FileInputStream(mapFileLocation));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		String currentLine = null;
-		String beforeContext = null;
+		String beforeContext = "none";
 		
 		while(txtScanner.hasNextLine()){
 			currentLine = txtScanner.nextLine().trim();
@@ -51,15 +50,29 @@ public class LoadMap {
 				beforeContext = "map";	
 			}else if(currentLine.equalsIgnoreCase("[continents]")){
 				beforeContext = "continents";
-				//isContinentsLoaded = true;
 			} else if(currentLine.equalsIgnoreCase("[territories]")){
 				beforeContext = "territories";
 			}else if(currentLine.length() != 0){
 				if(!loadMapToModel(currentLine, beforeContext))
-					break;
+					return false;					
 			}else{
 			   	
 			}
+		}
+		isValidAdjacency();
+		return true;
+	}
+	
+	
+	public boolean isValidAdjacency(){
+		for(HashMap<String,Territory> territories : MapDataBase.continents.values()){
+			for(Territory territory:territories.values()){
+			     for(String s : territory.getAdjacentTerritories()){
+			    	    if(!MapDataBase.continents.get(territory.getContinentName()).containsKey(s))
+			    	    	return false;
+			     }			    	 
+			}
+			
 		}
 		
 		return true;

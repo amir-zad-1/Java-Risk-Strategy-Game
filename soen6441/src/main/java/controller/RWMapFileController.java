@@ -12,17 +12,17 @@ import model.WriteMap;
 public class RWMapFileController{
 
 	/**
-	 * @param file
+	 * @param file instance of {@link File} points to .map file
 	 */
-	public void loadMap(File file) {
+	public boolean loadMap(File file) {
 		LoadMap loadMap = new LoadMap(file);
-        loadMap.load();		
+        return loadMap.load();		
 	}
 
 	
 
 	/**
-	 * @param file
+	 * @param file instance of {@link File} points to new .map file
 	 */
 	public void writeMap(File file) {
         WriteMap writeMap = new WriteMap(file);

@@ -6,7 +6,6 @@ import model.contract.ITerritory;
 import util.ActionResponse;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Map implements IMap {
 
@@ -16,7 +15,6 @@ public class Map implements IMap {
     public Map()
     {
         this.loadData();
-        //this.fakeData();
     }
 
 
