@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
                       GpTest5.class,
                       GpTest6.class,
                       GpTest7.class,
+                      GpTest8.class,
                     })
 
 
