@@ -8,11 +8,17 @@ import util.ActionResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * represents Map in the game
+ */
 public class Map implements IMap {
 
 
     private ArrayList<IContinent> continents = new ArrayList<>();
 
+    /**
+     * Constructor
+     */
     public Map()
     {
         this.loadData();
@@ -20,32 +26,60 @@ public class Map implements IMap {
     }
 
 
+    /**
+     *
+     * @return list of continents in the map
+     */
     @Override
     public ArrayList<IContinent> getContinents() {
         return this.continents;
     }
 
+    /**
+     *
+     * @param fullpath full path of the map file
+     * @return if the map is loaded or not
+     */
     @Override
     public ActionResponse loadMap(String fullpath) {
         //todo: loadMap
     	return null;
     }
 
+    /**
+     *
+     * @param fullpath full path of the map file
+     * @return if the map has been saved or not
+     */
     @Override
     public ActionResponse saveMap(String fullpath) {
         return null;
     }
 
+    /**
+     *
+     * @return if the map is valid or not
+     */
     @Override
     public ActionResponse validateMap() {
         return null;
     }
 
+    /**
+     *
+     * @param t territory to be removed
+     * @return if the territory has been removed or not
+     */
     @Override
     public ActionResponse removeTerritory(ITerritory t) {
         return null;
     }
 
+    /**
+     *
+     * @param t territory to be added
+     * @return if the territory has been added or not
+     */
     @Override
     public ActionResponse addTerritory(ITerritory t) {
         return null;
@@ -61,12 +95,18 @@ public class Map implements IMap {
     		this.continents.add(c);	
     	}
     }
-    
+
+    /**
+     * clears the continents from the map
+     */
     public void clearData()
     {
         this.continents = new ArrayList<>();
     }
 
+    /**
+     * fills the map with the fake data
+     */
     public void fakeData()
     {
         this.continents = new ArrayList<>();

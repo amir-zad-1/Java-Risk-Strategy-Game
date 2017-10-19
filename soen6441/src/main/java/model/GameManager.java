@@ -176,13 +176,8 @@ public class GameManager {
         //Step 1: calculate based on occupied territories
         result += p.getTerritories().size() / 3;
         if(result<3)
-            result = 3; //Since the minimum is 3 armies.
+            result = 3; // Since the minimum is 3 armies.
 
-        //Step 2: in addition based on controlled continents
-        //for(IContinent c:this.map.getContinents())
-        //{
-            //Logger.log(c.controlByOnePlayer()==null);
-        //}
         return result;
     }
 

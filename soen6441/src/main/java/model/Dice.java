@@ -2,6 +2,9 @@ package model;
 
 import static util.Helpers.getRandomInt;
 
+/**
+ * represents Dice
+ */
 public class Dice {
 
     public Dice() {

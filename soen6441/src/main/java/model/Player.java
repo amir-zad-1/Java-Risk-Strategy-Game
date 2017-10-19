@@ -27,39 +27,80 @@ public class Player implements IPlayer {
     private int usedArmies = 0;
     private ArrayList<ITerritory> territories;
 
+    /**
+     * Constructor
+     * @param name  player name
+     * @param color player color
+     */
     public Player(String name, Color color){
         this.name = name;
         this.color = color;
         this.territories = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return player name
+     */
     @Override
     public String getName(){
         return this.name;
     }
 
+    /**
+     *
+     * @param newName new name for the  player
+     */
     @Override
     public void setName(String newName){
         this.name = newName;
     }
 
 
+    /**
+     * set number of unused arimes for player
+     * @param armies number of new armies
+     */
     @Override
     public void setUnusedArmies(int armies) { this.unusedArmies = armies; }
 
+    /**
+     * set number of unused arimes for player
+     */
     @Override
     public int getUnusedArmies(){ return this.unusedArmies; }
 
-
+    /**
+     *
+     * @param armies number or unused armies to be set
+     */
     @Override
     public void setUsedArmies(int armies) { this.usedArmies = armies; }
 
+    /**
+     * sets number of new armies
+     * @return new armies
+     */
     @Override
     public int getUsedArmies(){ return this.usedArmies; }
 
+    /**
+     *
+     * @param color new color
+     */
     public void setColor(Color color){ this.color = color; }
+
+    /**
+     *
+     * @return player's color
+     */
     public Color getColor() { return this.color; }
 
+    /**
+     *
+     * @param territory territory to be owned
+     * @return if the operation was successful or not
+     */
     @Override
     public ActionResponse ownTerritory(ITerritory territory) {
         territory.setOwner(this);
@@ -68,11 +109,20 @@ public class Player implements IPlayer {
         return new ActionResponse(true, String.format("%s owns %s", this.getName(),territory.getName()) );
     }
 
+    /**
+     *
+     * @return list of player territories
+     */
     @Override
     public ArrayList<ITerritory> getTerritories() {
         return this.territories;
     }
 
+
+    /**
+     * fancy representation of the player status
+     * @return
+     */
     @Override
     public String toString(){
         String delimiter = ", ";
@@ -92,6 +142,12 @@ public class Player implements IPlayer {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param count number of armies to be place into the territory
+     * @param territory the territory
+     * @return if the action is done or not
+     */
     @Override
     public ActionResponse placeArmy(int count, ITerritory territory) {
 
@@ -108,6 +164,10 @@ public class Player implements IPlayer {
         return new ActionResponse(true, String.format("%d armies placed in %s", count, territory.getName()));
     }
 
+    /**
+     * another fancy representation of player status
+     * @return table
+     */
     @Override
     public String getState()
     {
@@ -143,6 +203,11 @@ public class Player implements IPlayer {
         return sb.toString();
     }
 
+    /**
+     * finds a territory by its name
+     * @param territoryName name
+     * @return the territory
+     */
     @Override
     public ITerritory getTerritoryByName(String territoryName)
     {
@@ -154,17 +219,23 @@ public class Player implements IPlayer {
 
     }
 
-    @Override
-    public int calculateReinforcementArmies() {
-        return 0;
-    }
-
+    /**
+     *
+     * @return randomly selected territory
+     */
     @Override
     public ITerritory getRandomTerritory() {
         int max = this.getTerritories().size()-1;
         return this.getTerritories().get(util.Helpers.getRandomInt(max,0));
     }
 
+    /**
+     * move armies from a territory to another
+     * @param from origin territory
+     * @param to destination territory
+     * @param number number of armies
+     * @return if the operation is done or not
+     */
     @Override
     public ActionResponse moveArmies(ITerritory from, ITerritory to, int number) {
         ActionResponse result = new ActionResponse();
