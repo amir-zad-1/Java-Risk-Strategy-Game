@@ -348,7 +348,7 @@ public class GameManager {
 
         try
         {
-            IMap m = new Map("/home/tony/Workspace/6441/projectFinal/6441-project/world.map");
+            IMap m = new Map();
             GameManager gm = new GameManager(m, 3);
             gm.start();
         }

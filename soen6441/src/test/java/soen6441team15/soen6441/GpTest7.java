@@ -18,7 +18,7 @@ public class GpTest7 {
     @Test()
     public void test() throws InvalidNumOfPlayersException
     {
-        IMap m = new Map("");
+        IMap m = new Map();
         GameManager gm = new GameManager(m, 3);
         gm.initGame();
 

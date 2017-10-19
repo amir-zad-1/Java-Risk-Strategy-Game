@@ -203,8 +203,10 @@ public class Territory implements ITerritory {
      */
 	@Override
 	public boolean hasAdjacencyWith(ITerritory t) {
-		return true;
-		//todo: must be implemented
+		if(this.adjacentTerritories.contains(t.getName())){
+			return true;
+		}
+		return false;		
 	}
-    //todo: added by Amir ends
+   
 }

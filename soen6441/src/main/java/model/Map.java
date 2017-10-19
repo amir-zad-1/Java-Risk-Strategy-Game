@@ -6,16 +6,17 @@ import model.contract.ITerritory;
 import util.ActionResponse;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Map implements IMap {
 
-    private String mapFile;
+
     private ArrayList<IContinent> continents = new ArrayList<>();
 
-    public Map(String mapfile)
+    public Map()
     {
-        this.mapFile = mapfile;
-        this.fakeData();
+        this.loadData();
+        //this.fakeData();
     }
 
 
@@ -27,6 +28,7 @@ public class Map implements IMap {
     @Override
     public ActionResponse loadMap(String fullpath) {
         //todo: loadMap
+    	return null;
     }
 
     @Override
@@ -49,6 +51,17 @@ public class Map implements IMap {
         return null;
     }
 
+    private void loadData(){
+    	this.continents = new ArrayList<>();
+    	for(String continent: MapDataBase.continents.keySet()){
+    		IContinent c = new Continent(continent);
+    		for(Territory territory: MapDataBase.continents.get(continent).values()){    			
+    			c.addTerritory(new Territory(territory.getTerritoryName(),territory.getContinentName()));	
+    		}
+    		
+    	}
+    }
+    
     private void fakeData()
     {
         this.continents = new ArrayList<>();
