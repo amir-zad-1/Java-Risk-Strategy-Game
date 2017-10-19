@@ -2,6 +2,9 @@ package util;
 
 import java.util.ArrayList;
 
+/** Color Manager class provides some method
+ * for using colors.
+ */
 public class Color {
 
     private String code;
@@ -22,6 +25,10 @@ public class Color {
         this.name = name;
     }
 
+    /**
+     * provides a random color
+     * @return color
+     */
     public Color getRandomColor()
     {
         this.lastIndex++;
@@ -29,9 +36,21 @@ public class Color {
 
     }
 
+    /**
+     * returns hexa decimal code of the color
+     * @return hexa decimal code of the color. like #232323
+     */
     public String getCode(){ return this.code; }
+
+    /**
+     * returns name of the color
+     * @return name of the color. like Green
+     */
     public String getName(){ return this.name; }
 
+    /**
+     * fills color repository
+     */
     private void fillColors(){
         colors.add(new Color("White", "#ffffff"));
         colors.add(new Color("Black", "#000000"));
