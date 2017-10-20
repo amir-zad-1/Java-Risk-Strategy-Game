@@ -33,62 +33,13 @@ public class Map implements IMap {
         return this.continents;
     }
 
-    /**
-     *
-     * @param fullpath full path of the map file
-     * @return if the map is loaded or not
-     */
-    @Override
-    public ActionResponse loadMap(String fullpath) {
-        //todo: loadMap
-    	return null;
-    }
-
-    /**
-     *
-     * @param fullpath full path of the map file
-     * @return if the map has been saved or not
-     */
-    @Override
-    public ActionResponse saveMap(String fullpath) {
-        return null;
-    }
-
-    /**
-     *
-     * @return if the map is valid or not
-     */
-    @Override
-    public ActionResponse validateMap() {
-        return null;
-    }
-
-    /**
-     *
-     * @param t territory to be removed
-     * @return if the territory has been removed or not
-     */
-    @Override
-    public ActionResponse removeTerritory(ITerritory t) {
-        return null;
-    }
-
-    /**
-     *
-     * @param t territory to be added
-     * @return if the territory has been added or not
-     */
-    @Override
-    public ActionResponse addTerritory(ITerritory t) {
-        return null;
-    }
 
     private void loadData(){
     	this.continents = new ArrayList<>();
     	for(String continent: MapDataBase.continents.keySet()){
     		IContinent c = new Continent(continent);
     		for(Territory territory: MapDataBase.continents.get(continent).values()){    			
-    			c.addTerritory(new Territory(territory.getTerritoryName(),territory.getContinentName()));	
+    			c.addTerritory(territory);
     		}
     		this.continents.add(c);	
     	}

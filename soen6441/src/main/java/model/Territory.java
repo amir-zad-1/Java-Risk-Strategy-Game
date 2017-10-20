@@ -184,7 +184,7 @@ public class Territory implements ITerritory {
 	public ActionResponse removeArmies(int count) {
 		ActionResponse res = new ActionResponse();
 
-		if ((this.getArmies() - count) >= 1  || true)
+		if ((this.getArmies() - count) >= 1)
 		{
 			this.setNumberOfArmies(this.getArmies() - count);
 			res.setOk(true);
@@ -220,7 +220,7 @@ public class Territory implements ITerritory {
 		ArrayList<ITerritory> adjacentTerritoriesObjects = new ArrayList<ITerritory>();
 		for(HashMap<String,Territory> territories : MapDataBase.continents.values()){
 			for(Territory territory:territories.values()){
-				if(adjacentTerritories.contains(territory.getTerritoryName())){
+				if(this.adjacentTerritories.contains(territory.getTerritoryName())){
 					adjacentTerritoriesObjects.add(territory);
 				}
 			}
