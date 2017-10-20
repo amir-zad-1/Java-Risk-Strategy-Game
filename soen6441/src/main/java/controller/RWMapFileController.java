@@ -8,7 +8,7 @@ import model.WriteMap;
 
 /**
  * @author SA
- *
+ * This class controls read and writes on the map
  */
 public class RWMapFileController{
 

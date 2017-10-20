@@ -5,15 +5,15 @@ import model.contract.IContinent;
 import model.contract.IMap;
 import model.contract.IPlayer;
 import model.contract.ITerritory;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import util.Color;
 import util.Helpers;
 import util.LogMessageEnum;
 import util.expetion.InvalidNumOfPlayersException;
-import view.Logger;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import controller.LoggerController;
+
 
 /**
  * This is the main game manager that controls the game
@@ -45,11 +45,17 @@ public class GameManager {
      * @param players number of players
      * @throws InvalidNumOfPlayersException be careful
      */
-    public GameManager(IMap map, int players) {
+    public GameManager(int players) {
 
         this.numberOfPlayers = players;
-        this.map = map;
+        this.map = new Map();
+    }
+    
+    
+    public GameManager(IMap m,int players) {
 
+        this.numberOfPlayers = players;
+        this.map = m;
 
     }
 
@@ -75,19 +81,19 @@ public class GameManager {
     public void initGame() throws InvalidNumOfPlayersException
     {
         //Step 1: Add players and give each them armies according to the rules
-        Logger.log("====1. Adding Players====");
+        LoggerController.log("====1. Adding Players====");
         addPlayers();
 
         //Step 2: Allocate initial armies according to the rules
-        Logger.log("====2. Allocating Initial Armies====");
+        LoggerController.log("====2. Allocating Initial Armies====");
         allocateInitialArmies();
 
         //Step 3: Randomly allocate the countries in the map
-        Logger.log("====3. Allocating Territories====");
+        LoggerController.log("====3. Allocating Territories====");
         allocateTerritories();
 
         //Step 4: Place armies into territories in turn
-        Logger.log("====4. Placing armies one by one into territories====");
+        LoggerController.log("====4. Placing armies one by one into territories====");
         placeInitialArmies();
 
     }
@@ -99,10 +105,10 @@ public class GameManager {
     {
         this.resetTurn();
         int i = 1;
-        Logger.log("====5. PLAYING====");
+        LoggerController.log("====5. PLAYING====");
         while(this.isGameOn)
         {
-            Logger.log(String.format("====Turn %s====", i));
+            LoggerController.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
             reinforcement(p);
             attack(p);
@@ -122,9 +128,9 @@ public class GameManager {
     public void attack(IPlayer p)
     {
         //todo: Implement attach phase.
-        Logger.log(String.format("============%s ATTACK STARTS===========", p.getName()));
-        Logger.log(LogMessageEnum.WARNING, "Jump from attack phase. :)");
-        Logger.log(String.format("============%s ATTACK DONE===========", p.getName()));
+        LoggerController.log(String.format("============%s ATTACK STARTS===========", p.getName()));
+        LoggerController.log(LogMessageEnum.WARNING, "Jump from attack phase. :)");
+        LoggerController.log(String.format("============%s ATTACK DONE===========", p.getName()));
     }
 
     /**
@@ -134,7 +140,7 @@ public class GameManager {
      */
     public void fortification(IPlayer p)
     {
-        Logger.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
+        LoggerController.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
 
         ITerritory from = p.getRandomTerritory();
         ITerritory to;
@@ -149,7 +155,7 @@ public class GameManager {
         p.moveArmies(from, to, number);
 
 
-        Logger.log(String.format("============%s FORTIFICATION DONE===========", p.getName()));
+        LoggerController.log(String.format("============%s FORTIFICATION DONE===========", p.getName()));
     }
 
     /**
@@ -160,7 +166,7 @@ public class GameManager {
      */
     public void reinforcement(IPlayer p)
     {
-        Logger.log(String.format("============%s REINFORCEMENT STARTS===========", p.getName()));
+        LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", p.getName()));
 
         //Step 1: Reinforcement
         int newArmies = calculateReinforcementArmies(p);
@@ -168,7 +174,7 @@ public class GameManager {
 
         //Step 2: Place armies
         this.placeArmies(p);
-        Logger.log(String.format("============%s REINFORCEMENT DONE===========", p.getName()));
+        LoggerController.log(String.format("============%s REINFORCEMENT DONE===========", p.getName()));
     }
 
     /**
@@ -199,14 +205,14 @@ public class GameManager {
         int i = 0;
         while(i<armiesToPlace )
         {
-            Logger.log(p.getState());
+            LoggerController.log(p.getState());
             ITerritory playerRandomTerritory = p.getRandomTerritory();
             int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
 
             p.placeArmy(randomArmy, playerRandomTerritory);
             i += randomArmy;
 
-            Logger.log(p.getState());
+            LoggerController.log(p.getState());
         }
 
     }
@@ -229,7 +235,7 @@ public class GameManager {
             if(p.getUnusedArmies()==0)
                 continue;
 
-            Logger.log(p.getState());
+            LoggerController.log(p.getState());
 
             ITerritory playerRandomTerritory  = p.getRandomTerritory();
             int randomArmy = 1;
@@ -237,7 +243,7 @@ public class GameManager {
             p.placeArmy(randomArmy, playerRandomTerritory  );
             i += randomArmy;
 
-            Logger.log(p.getState());
+            LoggerController.log(p.getState());
         }
 
     }
@@ -257,7 +263,7 @@ public class GameManager {
         for (int i=1; i<=this.numberOfPlayers; i++) {
             IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor());
             this.playerlist.add(p);
-            Logger.log(p.toString() + " was added to the game.");
+            LoggerController.log(p.toString() + " was added to the game.");
         }
         colorManager = null;
     }
@@ -303,7 +309,7 @@ public class GameManager {
         {
             p.setUnusedArmies(initialArmies);
         }
-        Logger.log(String.format("%s armies allocated to each player.", initialArmies));
+        LoggerController.log(String.format("%s armies allocated to each player.", initialArmies));
     }
 
 

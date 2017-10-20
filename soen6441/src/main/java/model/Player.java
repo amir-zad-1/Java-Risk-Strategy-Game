@@ -2,13 +2,14 @@ package model;
 
 
 import com.sun.javafx.binding.StringFormatter;
+
+import controller.LoggerController;
 import model.contract.ITerritory;
 import model.contract.IPlayer;
 import util.ActionResponse;
 import util.Color;
 import util.LogMessageEnum;
 import util.expetion.NoSufficientArmiesExption;
-import view.Logger;
 
 import java.util.ArrayList;
 
@@ -158,8 +159,8 @@ public class Player implements IPlayer {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
-        Logger.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
-        Logger.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
+        LoggerController.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
+        LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );
         return new ActionResponse(true, String.format("%d armies placed in %s", count, territory.getName()));
     }
@@ -243,19 +244,19 @@ public class Player implements IPlayer {
 
         if(from.hasAdjacencyWith(to))
         {
-            Logger.log(this.getState());
+            LoggerController.log(this.getState());
             ActionResponse r = from.removeArmies(number);
             if (r.getOk())
             {
                 to.placeArmies(number);
-                Logger.log(String.format("%s moved %s armies from %s to %s.", this.getName(),
+                LoggerController.log(String.format("%s moved %s armies from %s to %s.", this.getName(),
                         number, from.getName(),to.getName()));
-                Logger.log(this.getState());
+                LoggerController.log(this.getState());
             }
         }
         else
         {
-            Logger.log(LogMessageEnum.ERROT, String.format(
+            LoggerController.log(LogMessageEnum.ERROT, String.format(
                     "%s wanted to move %s armies from %s to %s, but there is no adjacencies.", this.getName()
                     , number, from.getName(), to.getName() ));
         }

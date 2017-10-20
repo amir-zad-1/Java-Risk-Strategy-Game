@@ -3,12 +3,11 @@ package view;
 import util.LogMessageEnum;
 
 /**
- * Class used to log into the console
- * @author Amir
+ * @author m_guntur
+ * Used to Log the messages on Command Prompt
  */
 public class Logger {
-
-    /**
+	 /**
      * place a new log
      * @param tag log message type
      * @param message message content

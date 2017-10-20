@@ -4,11 +4,12 @@ import model.contract.IPlayer;
 import model.contract.ITerritory;
 import util.ActionResponse;
 import util.LogMessageEnum;
-import view.Logger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+
+import controller.LoggerController;
 
 public class Territory implements ITerritory {
     private String continentName;
@@ -121,7 +122,7 @@ public class Territory implements ITerritory {
 	@Override
     public void setOwner(IPlayer player) {
         this.owner = player;
-        Logger.log(this.territoryName + " is owned by " + player.getName());
+        LoggerController.log(this.territoryName + " is owned by " + player.getName());
     }
 
     /**
@@ -187,11 +188,11 @@ public class Territory implements ITerritory {
 		{
 			this.setNumberOfArmies(this.getArmies() - count);
 			res.setOk(true);
-			Logger.log(String.format("%s armies left %s", count, this.getName()));
+			LoggerController.log(String.format("%s armies left %s", count, this.getName()));
 		}
 		else
 		{
-			Logger.log(LogMessageEnum.ERROT, String.format("%s!, At least 1 army should be in %s", count, this.getName()));
+			LoggerController.log(LogMessageEnum.ERROT, String.format("%s!, At least 1 army should be in %s", count, this.getName()));
 			res.setOk(false);
 		}
 

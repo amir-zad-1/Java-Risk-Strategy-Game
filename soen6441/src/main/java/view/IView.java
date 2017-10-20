@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 
 /**
  * @author SA
- * To enforce every view to return its view(UI Scene)
+ * <p>To enforce every view to return its view(UI Scene)</p>
  */
 public interface IView {
 	public Scene getView();

@@ -1,24 +1,20 @@
-
 package view;
 
-
+import controller.GameController;
 import controller.RWMapFileController;
 import controller.ReadController;
 import controller.WriteController;
-/**
- * @author SA
- * 
- */
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.GameManager;
-import model.Map;
-import model.contract.IMap;
-import util.LogMessageEnum;
-import util.expetion.InvalidNumOfPlayersException;
+
  
+/**
+ * @author Team15
+ * Is the glue between the views
+ */
 public class WindowManager extends Application {
 	
 	
@@ -27,6 +23,7 @@ public class WindowManager extends Application {
     
     static RWMapFileController rwMapFileController;
 	static ReadController readController;
+	static GameController gameController;
 	static WriteController writeController;   
     
     /**
@@ -43,17 +40,8 @@ public class WindowManager extends Application {
         mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
-            	 try
-                 {
-                     IMap m = new Map();
-                     int numberOfPlayers = mapEditorView.getNumberOfPlayers();
-                     GameManager gm = new GameManager(m, numberOfPlayers);
-                     gm.start();
-                 }
-                 catch (InvalidNumOfPlayersException e)
-                 {
-                     Logger.log(LogMessageEnum.ERROT, e.getMessage());
-                 }
+        		 int numberOfPlayers = mapEditorView.getNumberOfPlayers();
+            	gameController.startGame(numberOfPlayers);
             }
     	});   
     	
@@ -68,11 +56,11 @@ public class WindowManager extends Application {
 	 * @param new_writeController
 	 */
 	public static void addRWControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
-			WriteController new_writeController) {
-		
+			WriteController new_writeController,GameController new_gameController) {		
 		rwMapFileController = new_rwMapFileController;
 		readController = new_readController;
-		writeController = new_writeController;		
+		writeController = new_writeController;
+		gameController = new_gameController; 
 	}
     
        

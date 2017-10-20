@@ -16,7 +16,7 @@ public class GpTest3 {
     public void test() throws InvalidNumOfPlayersException
     {
         IMap m = new Map();
-        GameManager gm = new GameManager(m, 3);
+        GameManager gm = new GameManager(3);
         int expected_armies = gm.calculateInitialArmies();
         Assert.assertEquals(35, expected_armies);
     }

@@ -14,7 +14,7 @@ public class GpTest4 {
     @Test(expected = Exception.class)
     public void test() throws InvalidNumOfPlayersException
     {
-        GameManager gm = new GameManager(null, 3);
+        GameManager gm = new GameManager(3);
         gm.start();
     }
 

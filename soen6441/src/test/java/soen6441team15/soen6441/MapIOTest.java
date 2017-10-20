@@ -39,7 +39,7 @@ public class MapIOTest {
 	public void setUpBeforeClass()
 	{
 		 RWMapFileController rw = new RWMapFileController();
-	     rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Annys World\\Annys World.map"));
+	     rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Earth Alternate\\Earth Alternate.map"));
 	     DataReader dataReader = new DataReader();
 	     readController = new ReadController(dataReader);
 	     DataWriter dataWriter = new DataWriter();
@@ -50,8 +50,8 @@ public class MapIOTest {
 	
 	@Test
 	public void readerTest(){
-	     assertFalse(readController.getContinentValue("annys world") == 4);
-	     assertTrue(readController.dataReader.hasContinent("afrika"));
+	     assertFalse(readController.getContinentValue("north america") == 5);
+	     assertTrue(readController.dataReader.hasContinent("north america"));
 	}
 	
 	@Test
@@ -72,9 +72,9 @@ public class MapIOTest {
 	
 	@Test
 	public void adjacencyTest(){
-		Territory t= MapDataBase.continents.get("atlantis").get("was");
+		ITerritory t= MapDataBase.continents.get("africa").get("east africa");
 		ArrayList<ITerritory> tmp= t.getAdjacentTerritoryObjects();
-		System.out.println(tmp.size());
+		assertTrue(tmp.size() > 0);
 		for(ITerritory t2:tmp){
 			System.out.println(t2.getName());
 		}

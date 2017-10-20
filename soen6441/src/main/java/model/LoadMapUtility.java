@@ -1,10 +1,7 @@
-/**
- * 
- */
+
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -15,7 +12,6 @@ public final class LoadMapUtility {
 
 	
 	/**
-	 * 
 	 * @param line, is a text line from .map file
 	 * @return false if unable to split by '='
 	 */

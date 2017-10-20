@@ -10,18 +10,25 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
+ * Write a new map to specified #outputPath
  * @author SA
- *
  */
 public class WriteMap {
 
 	File outputPath;
 	
+	/**
+	 * @param file takes file path of destination
+	 */
 	public WriteMap(File file){
 		outputPath  = file;
 	}
 	
-	public boolean write(){		
+	
+	/**
+	 *  write a new map at #outputPath from MapDataBase
+	 */
+	public void write(){		
 		try {
 			FileWriter fw = new FileWriter(outputPath);
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -47,11 +54,8 @@ public class WriteMap {
 			bw.close();
 			fw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return false;
 	}
 	
 }
