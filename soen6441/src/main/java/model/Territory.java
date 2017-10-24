@@ -7,11 +7,12 @@ import util.LogMessageEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
 import java.util.Set;
 
 import controller.LoggerController;
 
-public class Territory implements ITerritory {
+public class Territory extends Observable implements ITerritory {
     private String continentName;
 	private String territoryName;
 	private String coordinates;

@@ -34,13 +34,18 @@ public class WriteController{
 	 * @param continent should be the Continent Name
 	 * @param country should be the Country Name
 	 * @param continentValue is the continent Value
-	 * @param isdeleteContinent is true is a continent is deleted by user
-	 * @param isdeleteCountry is true is a country is deleted by user 
+	 * @param isdeleteContinent is true if a continent is deleted by user
+	 * @param isdeleteCountry is true if a country is deleted by user 
 	 */
 	public void addData(String editedadjacentCountries,String continent,String country,String continentValue,boolean isdeleteContinent,boolean isdeleteCountry){
 		
 		editedadjacentCountries = editedadjacentCountries.replace("[", "").replace("]", "");
-		ArrayList<String> new_adjacentContries = new ArrayList<>(Arrays.asList(editedadjacentCountries.split(",")));
+		ArrayList<String> new_adjacentContries = null;
+		if(editedadjacentCountries.length() > 2){
+			new_adjacentContries = new ArrayList<>(Arrays.asList(editedadjacentCountries.split(",")));
+		}else{
+			new_adjacentContries = new ArrayList<String>();
+		}		 
         if(isdeleteContinent){
 			dataWriter.deleteContinent(continent);
 		}else if(isdeleteCountry){
@@ -51,7 +56,6 @@ public class WriteController{
 		} 
 		
 	}
-	
 	
 	
 }

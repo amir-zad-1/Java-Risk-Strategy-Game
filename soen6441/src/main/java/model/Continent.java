@@ -5,11 +5,12 @@ import model.contract.IPlayer;
 import model.contract.ITerritory;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * Continent class
  */
-public class Continent implements IContinent {
+public class Continent extends Observable implements IContinent {
 
     private String name;
     private ArrayList<ITerritory> territories;
