@@ -7,5 +7,14 @@
 * Views are also decoupled from controllers by using dependecy injection.
 * Class whose name starts with I is interface.
 * `bootstrap.StartGame` is the class which bootstraps loads the entire program.
-* variables always follows lowerCamelCase.
 * controllers, views and models are decopuled, `bootstrap.StartGame` injects dependencies. 
+* PhaseViewer, CardExchangeView and PlayersDomination View should be Observers.
+
+
+##Coding Standards
+
+* Use javadoc for every method and class
+* If a method has complex functionalities, do inline comments.
+* Method and variables should follow lowerCamelCase.
+* Constants should be uppercase, words separated by `_`.
+* Interfaces start with letter I. 
