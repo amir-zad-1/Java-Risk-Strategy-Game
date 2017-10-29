@@ -35,9 +35,7 @@ public class PhaseView implements IView,Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-        Territory t = (Territory) arg0; 
         
-        label.setText(t.getCurrentPlayer());
 	}
 
 	

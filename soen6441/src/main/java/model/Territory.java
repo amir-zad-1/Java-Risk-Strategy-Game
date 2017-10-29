@@ -12,7 +12,7 @@ import java.util.Set;
 
 import controller.LoggerController;
 
-public class Territory extends Observable implements ITerritory {
+public class Territory extends Model implements ITerritory {
     private String continentName;
 	private String territoryName;
 	private String coordinates;
@@ -150,6 +150,13 @@ public class Territory extends Observable implements ITerritory {
     }
 
     /**
+	 * 
+	 */
+	public Territory() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * @return name of the territory
      */
     public String getName()
@@ -171,7 +178,12 @@ public class Territory extends Observable implements ITerritory {
      */
     @Override
     public void placeArmies(int count) {
-        this.numberOfArmies += count;
+    	this.numberOfArmies += count;
+    	// specify that my state was changed  
+    	setChanged();
+    	// notify all attached Observers of a change
+    	notifyObservers(this);
+        
     }
 
 

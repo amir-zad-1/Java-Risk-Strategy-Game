@@ -7,6 +7,8 @@ import controller.ReadController;
 import controller.WriteController;
 import model.DataReader;
 import model.DataWriter;
+import model.Territory;
+import view.PhaseView;
 import view.WindowManager;
 
 /**
@@ -26,6 +28,8 @@ public class StartGame {
 		 GameController gameController = new GameController();
 		 ReadController readController = new ReadController(new DataReader());
 		 WriteController writeController = new WriteController(new DataWriter());
+		 
+		
 		 WindowManager.addRWControllers(rwMapFileController,readController,writeController,gameController);
 		 javafx.application.Application.launch(WindowManager.class);
 	}

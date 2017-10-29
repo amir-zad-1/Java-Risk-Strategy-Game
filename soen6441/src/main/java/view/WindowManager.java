@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import model.Territory;
 
  
 /**
@@ -36,15 +37,18 @@ public class WindowManager extends Application {
     	window.setTitle("Game");
     	mapEditorView = new MapEditorView(readController,writeController);
 		welcomeView = new WelcomeView(window, rwMapFileController, mapEditorView); 
-		
+		 PhaseView phaseView = new PhaseView();
         mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
         		 int numberOfPlayers = mapEditorView.getNumberOfPlayers();
             	gameController.startGame(numberOfPlayers);
+            	window.setScene(phaseView.getView());
             }
     	});   
-    	
+       
+		 Territory territory = new Territory();
+		 territory.addObserver(phaseView);	
         window.setScene(welcomeView.getView());
         window.show();
     }
