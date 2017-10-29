@@ -26,8 +26,8 @@ public class Logger {
                 logTag = "[:(] ";
                 break;
         }
-        System.out.println("");
-        System.out.println(logTag + message);
+        //System.out.println("");
+        //System.out.println(logTag + message);
     }
 
     /**

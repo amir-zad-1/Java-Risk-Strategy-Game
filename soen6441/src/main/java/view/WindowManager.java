@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import model.Model;
 import model.Territory;
 
  
@@ -21,6 +22,8 @@ public class WindowManager extends Application {
 	
     static WelcomeView welcomeView  = null;
     static MapEditorView mapEditorView = null;
+    public static PhaseView phaseView = null;
+    
     
     static RWMapFileController rwMapFileController;
 	static ReadController readController;
@@ -37,19 +40,20 @@ public class WindowManager extends Application {
     	window.setTitle("Game");
     	mapEditorView = new MapEditorView(readController,writeController);
 		welcomeView = new WelcomeView(window, rwMapFileController, mapEditorView); 
-		 PhaseView phaseView = new PhaseView();
-        mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
+		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
-        		 int numberOfPlayers = mapEditorView.getNumberOfPlayers();
-            	gameController.startGame(numberOfPlayers);
+        		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
+        		phaseView = new PhaseView();
+                gameController.startGame(numberOfPlayers);
             	window.setScene(phaseView.getView());
-            }
+            	Model territory = new Model();
+        		territory.addObserver(phaseView);	
+                
+        	}
     	});   
        
-		 Territory territory = new Territory();
-		 territory.addObserver(phaseView);	
-        window.setScene(welcomeView.getView());
+		window.setScene(welcomeView.getView());
         window.show();
     }
 

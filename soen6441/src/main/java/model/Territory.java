@@ -12,12 +12,13 @@ import java.util.Set;
 
 import controller.LoggerController;
 
-public class Territory extends Model implements ITerritory {
+public class Territory extends Observable implements ITerritory {
     private String continentName;
 	private String territoryName;
 	private String coordinates;
     private ArrayList<String> adjacentTerritories = new ArrayList<String>();    
     private int numberOfArmies;
+    private Model model;
     private String currentPlayer;
 	
     public Territory(String n_continentName, String n_territoryName,String n_coordinates, ArrayList<String> n_adjacentTerritories) {
@@ -25,6 +26,7 @@ public class Territory extends Model implements ITerritory {
 		this.territoryName = n_territoryName;
 		this.coordinates = n_coordinates;
 		this.adjacentTerritories = n_adjacentTerritories;
+		model = new Model();
 	}
 
 	/**
@@ -147,6 +149,7 @@ public class Territory extends Model implements ITerritory {
     {
         this.territoryName=name;
         this.continentName=continentName;
+        model = new Model();
     }
 
     /**
@@ -179,11 +182,9 @@ public class Territory extends Model implements ITerritory {
     @Override
     public void placeArmies(int count) {
     	this.numberOfArmies += count;
-    	// specify that my state was changed  
     	setChanged();
-    	// notify all attached Observers of a change
-    	notifyObservers(this);
-        
+		notifyObservers();
+	
     }
 
 

@@ -4,6 +4,7 @@ import model.contract.IContinent;
 import model.contract.IMap;
 import model.contract.ITerritory;
 import util.ActionResponse;
+import view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,8 @@ public class Map implements IMap {
     	this.continents = new ArrayList<>();
     	for(String continent: MapDataBase.continents.keySet()){
     		IContinent c = new Continent(continent);
-    		for(Territory territory: MapDataBase.continents.get(continent).values()){    			
+    		for(Territory territory: MapDataBase.continents.get(continent).values()){
+    			territory.addObserver(WindowManager.phaseView);
     			c.addTerritory(territory);
     		}
     		this.continents.add(c);	

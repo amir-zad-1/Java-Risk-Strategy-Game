@@ -35,7 +35,10 @@ public class PhaseView implements IView,Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-        
+		System.out.println("Chnaged");
+		Territory T = ((Territory) arg0);
+		label.setText(label.getText()+"\n"+T.getName()+" Armies: "+T.getArmies());
+        //System.out.println("dd "+((Territory) arg0).getName());
 	}
 
 	
