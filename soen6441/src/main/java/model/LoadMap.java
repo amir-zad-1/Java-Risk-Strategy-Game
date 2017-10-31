@@ -54,7 +54,7 @@ public class LoadMap {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+		MapDataBase.clear();
 		String currentLine = null;
 		String beforeContext = "none";
 		

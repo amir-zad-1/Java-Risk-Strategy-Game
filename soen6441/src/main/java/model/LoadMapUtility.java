@@ -41,6 +41,10 @@ public final class LoadMapUtility {
 		for(int i=4;i<tmpArray.length;i++){
 			adjacentTerritories.add(tmpArray[i].toLowerCase().trim());
 		}
+		
+		if(adjacentTerritories.size() == 0){
+			return false;
+		}
 		MapDataBase.continents.get(tmpArray[3].toLowerCase()).put(tmpArray[0].toLowerCase(),
 				new Territory(tmpArray[3].trim().toLowerCase(), 
 						tmpArray[0].toLowerCase(),
