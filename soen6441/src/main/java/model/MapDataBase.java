@@ -39,15 +39,15 @@ public final class MapDataBase {
 			}
 			
 		}
-		isAnyDiconnectivity();
+		
 		return true;
 	}
 
 	
 	
-	public static void isAnyDiconnectivity(){		
+	public static boolean isAnyDiconnectivity(){		
 		HashSet<String> allAdjacencies = new HashSet<>();
-		HashSet<String> waitingForConnection = new HashSet<>();
+		HashMap<String,String> waitingForConnection = new HashMap<>();
 		
 		ArrayList<String> tmp = new ArrayList<>();
 		for(String continent : continents.keySet()){
@@ -58,14 +58,20 @@ public final class MapDataBase {
 				tmp.addAll(continents.get(continent).get(territory).getAdjacentTerritories());
 				
 				if(!allAdjacencies.contains(territory)){
-					waitingForConnection.add(territory);
+					waitingForConnection.put(territory,continent);
 				}else{
 					waitingForConnection.remove(territory);
 				}
 			
 				for(String s: tmp){
-					if(waitingForConnection.contains(s))
-						waitingForConnection.remove(s);
+					if(waitingForConnection.containsKey(s)){
+						String c = waitingForConnection.get(s);
+						if(MapDataBase.continents.get(c).get(s).getAdjacentTerritories().size() != 1 
+								&& !MapDataBase.continents.get(c).get(s).getAdjacentTerritories().get(0).equals(territory) ){
+							waitingForConnection.remove(s);	
+						}
+						
+					}						
 				}
 				
 				allAdjacencies.addAll(tmp);	
@@ -75,6 +81,11 @@ public final class MapDataBase {
 			}
 			
 		}
+		if(waitingForConnection.size() != 0)
+			return false;
+		else
+			return true;
+		
 	}
 
 	/**
