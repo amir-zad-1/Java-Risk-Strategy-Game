@@ -23,8 +23,7 @@ import model.MapDataBase;
  */
 public class MapValidation {
 
-	static WriteController writeController;
-	static ReadController readController;
+	RWMapFileController rw;
 	
 	/**
 	 * Load map file from it location path
@@ -34,16 +33,9 @@ public class MapValidation {
 	public void setUpBeforeClass()
 	{
 		 //Load map file
-		 RWMapFileController rw = new RWMapFileController();
+		 rw = new RWMapFileController();
 	     rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Earth Alternate\\Earth Alternate.map"));
-	     
-	     //DataReader only do read operation on map 
-	     DataReader dataReader = new DataReader();
-	     readController = new ReadController(dataReader);
-	     
-	     //DataWriter only do write operations on map
-	     DataWriter dataWriter = new DataWriter();
-	     writeController = new WriteController(dataWriter); 
+	  
 	}
 
 	
@@ -73,5 +65,24 @@ public class MapValidation {
 	public void mapClearTest(){
 		 MapDataBase.clear();
 	     assertFalse(MapDataBase.continentValues.containsKey("Africa"));
+	}
+	
+	/**
+	 * Check if able able to detect a invalid Map
+	 */
+	@Test
+	public void checkIfValidMap(){		 
+		boolean isValid = rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Earth Alternate\\Earth Alternate.map"));
+		assertTrue(isValid);
+	}
+	
+	
+	/**
+	 * Check if able able to detect a invalid Map
+	 */
+	@Test
+	public void checkIfValidMap2(){		 
+		boolean isValid = rw.loadMap(new File("C:\\Users\\SA\\Downloads\\World\\sample.map"));
+		assertFalse(isValid);
 	}
 }
