@@ -47,9 +47,6 @@ public class WindowManager extends Application {
         		phaseView = new PhaseView();
                 gameController.startGame(numberOfPlayers);
             	window.setScene(phaseView.getView());
-            	Model territory = new Model();
-        		territory.addObserver(phaseView);	
-                
         	}
     	});   
        
