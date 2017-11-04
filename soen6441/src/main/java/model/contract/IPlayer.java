@@ -1,5 +1,6 @@
 package model.contract;
 
+import model.GameManager;
 import util.ActionResponse;
 
 import java.util.ArrayList;
@@ -30,5 +31,13 @@ public interface IPlayer {
     ITerritory getRandomTerritory();
 
     ActionResponse moveArmies(ITerritory from, ITerritory to, int number);
+
+    void setGameManager(GameManager gm);
+    GameManager getGameManager();
+
+    void reinforcement();
+    void attack();
+    void fortification();
+
 
 }

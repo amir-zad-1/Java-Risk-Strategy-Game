@@ -8,6 +8,7 @@ import model.contract.ITerritory;
 import model.contract.IPlayer;
 import util.ActionResponse;
 import util.Color;
+import util.Helpers;
 import util.LogMessageEnum;
 import util.expetion.NoSufficientArmiesExption;
 
@@ -27,6 +28,7 @@ public class Player implements IPlayer {
     private int unusedArmies = 0;
     private int usedArmies = 0;
     private ArrayList<ITerritory> territories;
+    private GameManager gm;
 
     /**
      * Constructor
@@ -263,5 +265,71 @@ public class Player implements IPlayer {
 
         return result;
     }
+
+    @Override
+    public void setGameManager(GameManager gm) {
+        this.gm = gm;
+    }
+
+    @Override
+    public GameManager getGameManager() {
+        return this.gm;
+    }
+
+    /**
+     * Handles reinforcement phase by :
+     * calculating the number of armies each player should get
+     * let the given player decide where to place the given armies
+     */
+    public void reinforcement()
+    {
+        LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", this.getName()));
+
+        //Step 1: Reinforcement
+        int newArmies = this.gm.calculateReinforcementArmies(this);
+        this.setUnusedArmies(newArmies);
+
+        //Step 2: Place armies
+        this.gm.placeArmies(this);
+        LoggerController.log(String.format("============%s REINFORCEMENT DONE===========", this.getName()));
+    }
+
+
+    /**
+     * This will handle attack phase but not implemented yet
+     */
+    public void attack()
+    {
+        //todo: Implement attach phase.
+        LoggerController.log(String.format("============%s ATTACK STARTS===========", this.getName()));
+        LoggerController.log(LogMessageEnum.WARNING, "Jump from attack phase. :)");
+        LoggerController.log(String.format("============%s ATTACK DONE===========", this.getName()));
+    }
+
+
+    /**
+     * does the fortification phase and randomly move armies to another territories
+     * owned by the player
+     */
+    public void fortification()
+    {
+        LoggerController.log(String.format("============%s FORTIFICATION STARTS===========", this.getName()));
+
+        ITerritory from = this.getRandomTerritory();
+        ITerritory to;
+
+        ArrayList<ITerritory> neighbours = from.getAdjacentTerritoryObjects();
+        if(neighbours.size()>0)
+            to = neighbours.get(0);
+        else
+            to = this.getRandomTerritory();
+
+        int number = Helpers.getRandomInt(from.getArmies(),1);
+        this.moveArmies(from, to, number);
+
+
+        LoggerController.log(String.format("============%s FORTIFICATION DONE===========", this.getName()));
+    }
+
 
 }

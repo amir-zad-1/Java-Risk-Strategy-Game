@@ -41,7 +41,6 @@ public class GameManager {
      * allocate default armies to each player then
      * allocate countries randomly to players
      * finally game is started
-     * @param map the map file containing game map
      * @param players number of players
      * @throws InvalidNumOfPlayersException be careful
      */
@@ -110,9 +109,9 @@ public class GameManager {
         {
             LoggerController.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
-            reinforcement(p);
-            attack(p);
-            fortification(p);
+            p.reinforcement();
+            p.attack();
+            p.fortification();
             i++;
             if (i==this.numberOfPlayers)
                 this.isGameOn=false;
@@ -120,62 +119,6 @@ public class GameManager {
 
     }
 
-
-    /**
-     * This will handle attack phase but not implemented yet
-     * @param p player
-     */
-    public void attack(IPlayer p)
-    {
-        //todo: Implement attach phase.
-        LoggerController.log(String.format("============%s ATTACK STARTS===========", p.getName()));
-        LoggerController.log(LogMessageEnum.WARNING, "Jump from attack phase. :)");
-        LoggerController.log(String.format("============%s ATTACK DONE===========", p.getName()));
-    }
-
-    /**
-     * does the fortification phase and randomly move armies to another territories
-     * owned by the player
-     * @param p player
-     */
-    public void fortification(IPlayer p)
-    {
-        LoggerController.log(String.format("============%s FORTIFICATION STARTS===========", p.getName()));
-
-        ITerritory from = p.getRandomTerritory();
-        ITerritory to;
-
-        ArrayList<ITerritory> neighbours = from.getAdjacentTerritoryObjects();
-        if(neighbours.size()>0)
-            to = neighbours.get(0);
-        else
-            to = p.getRandomTerritory();
-
-        int number = Helpers.getRandomInt(from.getArmies(),1);
-        p.moveArmies(from, to, number);
-
-
-        LoggerController.log(String.format("============%s FORTIFICATION DONE===========", p.getName()));
-    }
-
-    /**
-     * Handles reinforcement phase by :
-     * calculating the number of armies each player should get
-     * let the given player decide where to place the given armies
-     * @param p the player that should do the reinforcement
-     */
-    public void reinforcement(IPlayer p)
-    {
-        LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", p.getName()));
-
-        //Step 1: Reinforcement
-        int newArmies = calculateReinforcementArmies(p);
-        p.setUnusedArmies(newArmies);
-
-        //Step 2: Place armies
-        this.placeArmies(p);
-        LoggerController.log(String.format("============%s REINFORCEMENT DONE===========", p.getName()));
-    }
 
     /**
      * calculates reinforcement armies for each player
@@ -262,6 +205,7 @@ public class GameManager {
         Color colorManager = new Color();
         for (int i=1; i<=this.numberOfPlayers; i++) {
             IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor());
+            p.setGameManager(this);
             this.playerlist.add(p);
             LoggerController.log(p.toString() + " was added to the game.");
         }
