@@ -25,6 +25,7 @@ import model.Player;
 public class PhaseView implements IView,Observer{
 
 	HashMap<String,TextArea> playersViews= new HashMap();
+	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap();
 	Label phase;
 	int numberOfPlayers;
 	
@@ -56,12 +57,20 @@ public class PhaseView implements IView,Observer{
 	    	VBox vbox= new VBox();
 	    	TextArea tmp = new TextArea();
 	    	vbox.getChildren().add(tmp);
+	    	PlayerStatisticsView pview = new PlayerStatisticsView();
+	    	pview.setActorName("Player "+i);
 	    	vbox.setStyle( 
 					"-fx-border-style: solid inside;" + 
 							"-fx-border-width: 0 1 0 0;" +  
 					"-fx-border-color: black;");
 			tmp.setStyle("-fx-padding:10");
-	    	playerHbox.getChildren().add(tmp);
+	    	
+			vbox.getChildren().add(pview.getPlayerBox());
+			
+			
+			playerHbox.getChildren().add(vbox);
+	    
+	    	playersStatistics.put("Player "+i, pview);
 	    	playersViews.put("Player "+i, tmp);
 	    }
 	    borderPane.setCenter(playerHbox);

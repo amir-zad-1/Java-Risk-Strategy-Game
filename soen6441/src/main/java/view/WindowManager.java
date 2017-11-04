@@ -38,7 +38,7 @@ public class WindowManager extends Application {
     @Override
     public void start(final Stage window) {    
     	window.setTitle("Game");
-    	window.setFullScreen(true);
+    	
     	mapEditorView = new MapEditorView(readController,writeController);
 		welcomeView = new WelcomeView(window, rwMapFileController, mapEditorView); 
 		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            

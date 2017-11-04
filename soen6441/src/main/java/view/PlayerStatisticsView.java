@@ -3,8 +3,14 @@
  */
 package view;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * Gives a player statistic view
@@ -12,6 +18,34 @@ import javafx.scene.layout.VBox;
  */
 public class PlayerStatisticsView {
 
+	
+	VBox playerBox = null;
+	Label actorName = null;
+	Label currentContry = null;
+	Label countriesWon = null;
+	
+	/**
+	 * 
+	 */
+	public PlayerStatisticsView() {
+		this.playerBox = new VBox();
+		playerBox.setPadding(new Insets(5));
+		this.actorName = new Label();
+		actorName.setFont(new Font("Cambria", 32));
+		actorName.setTextFill(Color.web("#0076a3"));
+		actorName.setPadding(new Insets(10));
+		HBox profilepicContainer = new HBox(); 
+		Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
+		profilepicContainer.getChildren().add(new ImageView(profileImage));
+		profilepicContainer.getChildren().add(actorName);
+		this.currentContry = new Label();
+		this.countriesWon = new Label();
+		this.playerBox.getChildren().add(profilepicContainer);
+		this.playerBox.getChildren().add(currentContry);
+		this.playerBox.getChildren().add(countriesWon);
+	}
+	
+	
 	/**
 	 * @return the playerBox
 	 */
@@ -33,8 +67,8 @@ public class PlayerStatisticsView {
 	/**
 	 * @param actorName the actorName to set
 	 */
-	public void setActorName(Label actorName) {
-		this.actorName = actorName;
+	public void setActorName(String actorName) {
+		this.actorName.setText(actorName);
 	}
 	/**
 	 * @return the currentContry
@@ -60,11 +94,5 @@ public class PlayerStatisticsView {
 	public void setCountriesWon(Label countriesWon) {
 		this.countriesWon = countriesWon;
 	}
-	VBox playerBox = new VBox();
-	Label actorName = new Label();
-	Label currentContry = new Label();
-	Label countriesWon = new Label();
-	
-	
 	
 }
