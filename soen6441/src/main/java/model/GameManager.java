@@ -11,6 +11,7 @@ import util.LogMessageEnum;
 import util.expetion.InvalidNumOfPlayersException;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import controller.LoggerController;
 
@@ -20,7 +21,7 @@ import controller.LoggerController;
  * @author Amir
  * @version 0.1.0
  */
-public class GameManager {
+public class GameManager extends Observable {
 
     private static int MIN_PLAYERS = 2;
     private static int MAX_PLAYERS = 6;
@@ -32,6 +33,7 @@ public class GameManager {
 
     private IMap map;
     private ArrayList<IPlayer> playerlist = new ArrayList<IPlayer>();
+    private String currentPhase = "";
 
 
     /**
@@ -64,8 +66,10 @@ public class GameManager {
      */
     public void start() throws InvalidNumOfPlayersException
     {
+        this.setPhase("Startup");
         this.initGame();
         this.isGameOn = true;
+        this.setPhase("GamePlay");
         this.play();
     }
 
@@ -109,9 +113,16 @@ public class GameManager {
         {
             LoggerController.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
+
+            this.setPhase(String.format("   %s Reinforcement", p.getName()));
             p.reinforcement();
+
+            this.setPhase(String.format("   %s Attack", p.getName()));
             p.attack();
+
+            this.setPhase(String.format("   %s Fortification", p.getName()));
             p.fortification();
+
             i++;
             if (i==this.numberOfPlayers)
                 this.isGameOn=false;
@@ -292,6 +303,12 @@ public class GameManager {
      */
     private void resetTurn() { this.turn = -1; }
 
-    
+
+    public String getPhase() { return this.currentPhase; }
+    public void setPhase(String value) {
+        this.currentPhase = value;
+        this.setChanged();
+        this.notifyObservers();
+    }
 
 }
