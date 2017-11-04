@@ -226,7 +226,7 @@ public class MapEditorView implements IView{
 
 		borderPane.setBottom(footer);
 		borderPane.setCenter(gridPane);
-		editorScene = new Scene(borderPane, 500, 500);
+		editorScene = new Scene(borderPane, 800, 600);
 		return editorScene;		
 	}
 

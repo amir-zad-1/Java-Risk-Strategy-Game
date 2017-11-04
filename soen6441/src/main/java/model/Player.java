@@ -188,7 +188,6 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
-        sendNotification("Player", this);
         LoggerController.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
         LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );
@@ -328,7 +327,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     {
         LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", this.getName()));
         this.gm.setPhase("REINFORCEMENT PHASE");
-
+        sendNotification("PhaseChange", "PhaseChange:"+this.getName()+" Reinforcement");
         //Step 1: Reinforcement
         int newArmies = this.gm.calculateReinforcementArmies(this);
         this.setUnusedArmies(newArmies);
@@ -341,6 +340,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
     public void attack()
     {
+    	sendNotification("PhaseChange", "PhaseChange:"+this.getName()+" Attack");
         this.attack(strategy.getAttackAttempts());
     }
 
@@ -484,7 +484,8 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     {
         LoggerController.log(String.format("============%s FORTIFICATION STARTS===========", this.getName()));
         this.gm.setPhase("FORTIFICATION PHASE");
-
+        sendNotification("PhaseChange", "PhaseChange:"+this.getName()+" Fortification");
+        
         ITerritory from = this.getRandomTerritory();
         ITerritory to;
 
