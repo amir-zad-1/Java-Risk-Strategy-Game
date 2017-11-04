@@ -75,9 +75,6 @@ public final class MapDataBase {
 				}
 				
 				allAdjacencies.addAll(tmp);	
-				System.out.println(territory);
-				System.out.println(allAdjacencies);
-				System.out.println(waitingForConnection);
 			}
 			
 		}
