@@ -129,8 +129,8 @@ public class GameManager extends Observable {
                 this.isGameOn=false;
         }
 
-
-        LoggerController.log(this.domitantionResult(true));
+        //LoggerController.log(this.domitantionResult(true));
+        //LoggerController.log(this.getWinner().getName());
 
     }
 
@@ -332,6 +332,7 @@ public class GameManager extends Observable {
         }
 
         Collections.sort(this.playerlist);
+        Collections.reverse(this.playerlist);
 
         if(verbos) {
         for(IPlayer p:this.playerlist)
@@ -342,6 +343,17 @@ public class GameManager extends Observable {
             sb.append("=====================");
 
         return sb.toString();
+
+    }
+
+    public IPlayer getWinner()
+    {
+        IPlayer winner = null;
+        this.domitantionResult(false);
+        if(this.playerlist.get(0).getDomination() > this.playerlist.get(1).getDomination())
+            winner = this.playerlist.get(0);
+
+        return winner;
 
     }
 
