@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * @author Amir
  * @version 0.1.0
  */
-public class Player implements IPlayer {
+public class Player implements IPlayer, Comparable<IPlayer> {
 
 
     private String name;
@@ -29,6 +29,7 @@ public class Player implements IPlayer {
     private int usedArmies = 0;
     private ArrayList<ITerritory> territories;
     private GameManager gm;
+    private double domination = 0.0;
 
     /**
      * Constructor
@@ -57,6 +58,16 @@ public class Player implements IPlayer {
     @Override
     public void setName(String newName){
         this.name = newName;
+    }
+
+    @Override
+    public double getDomination() {
+        return this.domination;
+    }
+
+    @Override
+    public void setDomination(double value) {
+        this.domination = value;
     }
 
 
@@ -332,4 +343,8 @@ public class Player implements IPlayer {
     }
 
 
+    @Override
+    public int compareTo(IPlayer o) {
+        return (int)(this.getDomination() - o.getDomination());
+    }
 }

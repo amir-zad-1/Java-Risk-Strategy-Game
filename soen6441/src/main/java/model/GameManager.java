@@ -11,6 +11,7 @@ import util.LogMessageEnum;
 import util.expetion.InvalidNumOfPlayersException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Observable;
 
 import controller.LoggerController;
@@ -127,6 +128,9 @@ public class GameManager extends Observable {
             if (i==this.numberOfPlayers)
                 this.isGameOn=false;
         }
+
+
+        LoggerController.log(this.domitantionResult(true));
 
     }
 
@@ -309,6 +313,36 @@ public class GameManager extends Observable {
         this.currentPhase = value;
         this.setChanged();
         this.notifyObservers();
+    }
+
+    public String domitantionResult(boolean verbos)
+    {
+        StringBuilder sb = new StringBuilder();
+        if(verbos)
+            sb.append("===DOMINATION VIEW===\n");
+
+        int total_territories = 0;
+        for(IPlayer p:this.playerlist)
+            total_territories+=p.getTerritories().size();
+
+        for(IPlayer p:this.playerlist)
+        {
+            double control_percent = Math.round(((double) p.getTerritories().size() / (double) total_territories) * 100) ;
+            p.setDomination(control_percent);
+        }
+
+        Collections.sort(this.playerlist);
+
+        if(verbos) {
+        for(IPlayer p:this.playerlist)
+            sb.append(String.format("%s controls %s of the map.\n", p.getName(), p.getDomination()));
+        }
+
+        if(verbos)
+            sb.append("=====================");
+
+        return sb.toString();
+
     }
 
 }

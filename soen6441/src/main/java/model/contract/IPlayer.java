@@ -5,7 +5,7 @@ import util.ActionResponse;
 
 import java.util.ArrayList;
 
-public interface IPlayer {
+public interface IPlayer extends Comparable<IPlayer> {
 
     ActionResponse ownTerritory(ITerritory territory);
     ArrayList<ITerritory> getTerritories();
@@ -13,6 +13,8 @@ public interface IPlayer {
 
     String getName();
     void setName(String newName);
+    double getDomination();
+    void setDomination(double value);
 
     void setUnusedArmies(int armies);
     int getUnusedArmies();
@@ -39,5 +41,5 @@ public interface IPlayer {
     void attack();
     void fortification();
 
-
+    int compareTo(IPlayer o);
 }
