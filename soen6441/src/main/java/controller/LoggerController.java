@@ -3,7 +3,8 @@ package controller;
 import util.LogMessageEnum;
 
 /**
- * Controller sends print messages to View(View here is just a console)
+ * Controller sending print messages to View
+ * <i>View here is just a console</i>
  * @author Amir
  */
 public class LoggerController {

@@ -8,22 +8,32 @@ import model.WriteMap;
 
 /**
  * @author SA
- * This class controls read and writes on the map
+ * <p>
+ * To Load and Save a .map file into {@link MapDataBase}
+ * A view should call this class methods to load, save and clear a .map file
+ * </p> 
  */
 public class RWMapFileController{
 
 	/**
-	 * @param file instance of {@link File} points to .map file
+	 * @param file which has path to .map file
+	 * @return true is .map file is valid else false
+	 * <p>
+	 * If a map is disconnected it return false for more see
+	 * <a href="http://www.windowsgames.co.uk/conquest_create.html">here</a>
+	 * </p>
 	 */
 	public boolean loadMap(File file) {
 		LoadMap loadMap = new LoadMap(file);
-        return loadMap.load();		
+        boolean isValid = loadMap.load();
+		return isValid;		
 	}
 
 	
 
 	/**
-	 * @param file instance of {@link File} points to new .map file
+	 * This method writes the edited map to the location passed
+	 * @param file instance of {@link File} points to save destination
 	 */
 	public void writeMap(File file) {
         WriteMap writeMap = new WriteMap(file);
@@ -31,7 +41,15 @@ public class RWMapFileController{
 	}
 
 
+	/**
+	 * Clears the previously loaded data from Map
+	 */
+	public void clearData() {
+		MapDataBase.clear();		
+	}
 
+	
+	
 	/**
 	 * Checks the case whether adjacent territories are valid 
 	 * @return true if map satisfies above case
@@ -40,13 +58,5 @@ public class RWMapFileController{
 		return MapDataBase.isValidAdjacency();		
 	}
 
-
-
-	/**
-	 * Clears the previously loaded data from Map
-	 */
-	public void clearData() {
-		MapDataBase.clear();		
-	}	
 
 }

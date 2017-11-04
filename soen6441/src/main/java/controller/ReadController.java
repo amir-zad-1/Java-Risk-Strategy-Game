@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import model.DataReader;
 import model.MapDataBase;
@@ -8,12 +9,19 @@ import model.MapDataBase;
 /**
  * @author Team15
  * Does read operations on {@link MapDataBase}
+ * For every read operation view should call this controller methods
  */
 public class ReadController{
+	
 
+	/**
+	 * Model wrapper that do's different read operations on Map
+	 */
 	public DataReader dataReader;
 	
+	
 	/**
+	 * Constructor to initialize {{@link #dataReader} 
 	 * @param new_dataReader instance of {@link model.DataReader}
 	 */
 	public ReadController(DataReader new_dataReader){
@@ -21,9 +29,10 @@ public class ReadController{
 	}
 	
 	/**
+	 * Return adjacent territories of specified country
 	 * @param continent should be the Continent Name
 	 * @param country should be the Country Name
-	 * @return ArrayList of adjacent countries names
+	 * @return {@link ArrayList} of adjacent countries names
 	 */
 	public ArrayList<String> getAdjacentTerritories(String continent,String country){		
 		if(dataReader.hasContinent(continent)){
@@ -35,6 +44,7 @@ public class ReadController{
 	
 
 	/**
+	 * Returns names of all territories in a continent
 	 * @param continent should be the Continent Name
 	 * @return ArrayList of territories names in a continent
 	 */
@@ -47,11 +57,10 @@ public class ReadController{
 	}
 
 
-
 	/**
-	 * Returns continent value
+	 * Returns the continent value associated with passed continent name
 	 * @param continent should be the Continent Name
-	 * @return the continent value
+	 * @return the continent value if continent exist else 0
 	 */
 	public int getContinentValue(String continentName) {
 		if(dataReader.hasContinent(continentName))
@@ -59,6 +68,13 @@ public class ReadController{
 		else
 			return 0;
 	}
-	
+
+	/**
+	 * @return the set of continent names 
+	 */
+	public Set<String> getAllContinentNames(){
+		return dataReader.getContinents();
+	}
+
 	
 }

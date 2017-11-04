@@ -8,7 +8,7 @@ import util.LogMessageEnum;
  */
 public class Logger {
 	 /**
-     * place a new log
+     * place a new log on Command Prompt
      * @param tag log message type
      * @param message message content
      */

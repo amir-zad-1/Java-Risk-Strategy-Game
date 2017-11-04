@@ -10,14 +10,14 @@ import model.DataReader;
 import model.DataWriter;
 import model.Model;
 import model.Notifier;
-import view.IView;
+import view.DominationView;
 import view.PhaseView;
 import view.WindowManager;
 
 /**
  * @author Manohar Guntur
  * This class starts the game
- * This class gives connection between View, Controller, Model Objects.
+ * And gives connection between View, Controller and Model Objects.
  */
 public class StartGame {
 
@@ -43,10 +43,7 @@ public class StartGame {
 		 Notifier notifier = new Notifier();		 
 		 model.setNotifier(notifier);
 		 
-		 /**
-		  * Creates Domination View and make it Observer and give it to PhaseView 
-		  * which holds the DominationView 
-		 */
+		 //Creates Domination View and make it Observer
 		 DominationView dominationView = new DominationView();
 		 notifier.addObserver(dominationView);
 		 
@@ -56,6 +53,7 @@ public class StartGame {
 		 
 		 GameController gameController = new GameController();
 		 
+		 //Sends all controllers to view manager, such that views can contact
 		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController);
 		 WindowManager.setView(phaseView,"phaseview");
 		 

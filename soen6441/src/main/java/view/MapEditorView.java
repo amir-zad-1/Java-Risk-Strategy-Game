@@ -35,23 +35,43 @@ import javafx.scene.layout.HBox;
  */
 public class MapEditorView implements IView{		
 
+	
+	/**
+	 * A {@link Scene} object that has  UI
+	 */
 	private static Scene editorScene = null;
+	
+	/**
+	 * String that stores current selected continent and country
+	 */
 	private static String country,continent = null;
-
+	
+	
+	/**
+	 * read and write updates only through Controllers
+	 */
 	private ReadController readController = null;
 	private WriteController writeController = null;
-	private Button startGameButton = new Button();
-	private Button closeButton = new Button();
+	
+	/**
+	 * TextField to take number of players input
+	 */
 	private TextField numberOfPlayerInput = new TextField();
-
-	TextInputDialog dialog = new TextInputDialog();
+	
+	/**
+	 * Flags to check if a continent or country is deleted
+	 */
 	boolean isDeletedContinent= false,isDeletedContry=false;
 
+	TextInputDialog dialog = new TextInputDialog();
+	private Button startGameButton = new Button();
+	private Button closeButton = new Button();
 
 
-	/**Constructor used to inject dependencies
-	 * @param new_readController
-	 * @param new_writeController
+	/**
+	 * Constructor used to inject controller dependencies
+	 * @param new_readController, get called to do read operations 
+	 * @param new_writeController, get called to do write operations
 	 */
 	public MapEditorView(ReadController new_readController,WriteController new_writeController) {
 		readController = new_readController;
@@ -60,15 +80,18 @@ public class MapEditorView implements IView{
 
 
 	/**
-	 * Returns container having Map Editor UI elements
+	 * Returns Scene object a container having Map Editor UI elements
 	 * @return {@link Scene} instance
 	 * @see view.IView#getView()
 	 */
 	public Scene getView(){
+		
+		//We use ObservableList in order to attach listeners to choice box
 		ObservableList<String> continents = FXCollections.observableArrayList();		 
 		ObservableList<String> contries = FXCollections.observableArrayList();
 
-		continents.addAll(model.MapDataBase.continentValues.keySet());
+		continents.addAll(readController.getAllContinentNames());
+		
 		GridPane gridPane = new GridPane();
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
@@ -187,8 +210,8 @@ public class MapEditorView implements IView{
 
 		BorderPane borderPane = new BorderPane();
 
-		Image imageOk = new Image(getClass().getResourceAsStream("/icons8-Back Arrow-35.png")); 
-		getCloseButton().setGraphic(new ImageView(imageOk));
+		Image backIcon = new Image(getClass().getResourceAsStream("/icons8-Back Arrow-35.png")); 
+		getCloseButton().setGraphic(new ImageView(backIcon));
 		//Adding to row 1 to UI grid
 		gridPane.add(continentChoiceBox,0,0);
 		gridPane.add(countriesChoiceBox,1,0);
@@ -211,8 +234,8 @@ public class MapEditorView implements IView{
 				"-fx-border-color: black;");
 		gridPane.setStyle("-fx-padding:10");
 		borderPane.setTop(header);
+		
 		HBox footer = new HBox();
-
 		footer.setStyle( 
 				"-fx-border-style: solid inside;" + 
 						"-fx-border-width: 1 0 0 0;" +
@@ -226,7 +249,9 @@ public class MapEditorView implements IView{
 
 		borderPane.setBottom(footer);
 		borderPane.setCenter(gridPane);
+		
 		editorScene = new Scene(borderPane, 800, 600);
+		
 		return editorScene;		
 	}
 
