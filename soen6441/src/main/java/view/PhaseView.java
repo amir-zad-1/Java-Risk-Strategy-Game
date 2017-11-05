@@ -18,8 +18,8 @@ public class PhaseView implements IView,Observer{
 
 	Label label = new Label("Player one");
 	
-	/* (non-Javadoc)
-	 * @see view.IView#getView()
+	/** 
+	 * @return {@link Scene} which contains UI elements 
 	 */
 	@Override
 	public Scene getView() {		
@@ -29,14 +29,14 @@ public class PhaseView implements IView,Observer{
 		return scene;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	/**
+	 * Get called whenever model pushes a change
+	 * @param model the model that pushed the update 
+	 * @param object optional Object that is passed to notifyObservers
 	 */
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		
+	public void update(Observable model, Object object) {
+		label.setText(object.toString());
 	}
-
-	
 	
 }

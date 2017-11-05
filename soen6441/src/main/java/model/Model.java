@@ -8,7 +8,7 @@ package model;
  * @author SA
  *
  */
-public abstract class Model{
+public class Model{
 
     private static Notifier notifier = null;
     
@@ -19,8 +19,8 @@ public abstract class Model{
 		}	
 	}
 	
-	public  void notifyModel(Object t){
-           notifier.notifyListners();
+	public void sendNotification(String type,Object object){
+           notifier.notifyListners(type,object);
 	}
 	
 }

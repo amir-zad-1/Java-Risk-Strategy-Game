@@ -8,7 +8,10 @@ import controller.WriteController;
 
 import model.DataReader;
 import model.DataWriter;
+import model.Model;
 import model.Notifier;
+import view.IView;
+import view.PhaseView;
 import view.WindowManager;
 
 /**
@@ -35,13 +38,20 @@ public class StartGame {
 		 //Creates controller, which is responsible to redirect Write operations
 		 WriteController writeController = new WriteController(new DataWriter());
 		 
-		 //Create Notifier -A model class which sends updates to Views
-		 Notifier notifier = new Notifier();
+		 //Create Notifier: A model class which sends updates to Views
+		 Model model = new Model();
+		 Notifier notifier = new Notifier();		 
+		 model.setNotifier(notifier);
+		 
+		 //Creates phaseView make it Observer
+		 PhaseView phaseView = new PhaseView();
+		 notifier.addObserver(phaseView);
 		 
 		 GameController gameController = new GameController();
 		 
+		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController);
+		 WindowManager.setView(phaseView,"phaseview");
 		 
-		 WindowManager.addRWControllers(rwMapFileController,readController,writeController,gameController);
 		 javafx.application.Application.launch(WindowManager.class);
 	}
 
