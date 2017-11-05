@@ -12,21 +12,20 @@ import java.util.Set;
 
 import controller.LoggerController;
 
-public class Territory extends Observable implements ITerritory {
+public class Territory extends Model implements ITerritory {
     private String continentName;
 	private String territoryName;
 	private String coordinates;
     private ArrayList<String> adjacentTerritories = new ArrayList<String>();    
     private int numberOfArmies;
-    private Model model;
+    private Notifier notifier;
     private String currentPlayer;
 	
     public Territory(String n_continentName, String n_territoryName,String n_coordinates, ArrayList<String> n_adjacentTerritories) {
-		this.continentName = n_continentName;
+    	this.continentName = n_continentName;
 		this.territoryName = n_territoryName;
 		this.coordinates = n_coordinates;
 		this.adjacentTerritories = n_adjacentTerritories;
-		model = new Model();
 	}
 
 	/**
@@ -149,15 +148,9 @@ public class Territory extends Observable implements ITerritory {
     {
         this.territoryName=name;
         this.continentName=continentName;
-        model = new Model();
     }
 
-    /**
-	 * 
-	 */
-	public Territory() {
-		// TODO Auto-generated constructor stub
-	}
+   
 
 	/**
      * @return name of the territory
@@ -181,10 +174,7 @@ public class Territory extends Observable implements ITerritory {
      */
     @Override
     public void placeArmies(int count) {
-    	this.numberOfArmies += count;
-    	setChanged();
-		notifyObservers();
-	
+    	this.numberOfArmies += count;	
     }
 
 
