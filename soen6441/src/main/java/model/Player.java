@@ -34,6 +34,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     private double domination = 0.0;
     private ArrayList<Card> cards = new ArrayList<>();
     IStrategy strategy;
+    private boolean status = true;
 
     /**
      * Constructor
@@ -515,5 +516,15 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     @Override
     public void setStrategy(IStrategy strategy) {
         this.strategy = strategy;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean getStatus() {
+        return this.status;
     }
 }

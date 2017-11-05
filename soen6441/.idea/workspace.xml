@@ -26,12 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+            <state relative-caret-position="94">
+              <caret line="377" column="0" lean-forward="false" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhaseView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/PhaseView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <element signature="e#944#945#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,46 +74,35 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="190" column="13" lean-forward="false" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
+            <state relative-caret-position="512">
+              <caret line="526" column="29" lean-forward="false" selection-start-line="526" selection-start-column="29" selection-end-line="526" selection-end-column="29" />
               <folding>
-                <element signature="e#1257#1258#0" expanded="true" />
-                <element signature="e#1289#1290#0" expanded="true" />
-                <element signature="e#1415#1416#0" expanded="true" />
+                <element signature="e#1292#1293#0" expanded="true" />
+                <element signature="e#1324#1325#0" expanded="true" />
                 <element signature="e#1450#1451#0" expanded="true" />
-                <element signature="e#1501#1502#0" expanded="true" />
-                <element signature="e#1539#1540#0" expanded="true" />
-                <element signature="e#1600#1601#0" expanded="true" />
-                <element signature="e#1639#1640#0" expanded="true" />
-                <element signature="e#3445#3446#0" expanded="true" />
-                <element signature="e#3484#3485#0" expanded="true" />
-                <element signature="e#9412#9413#0" expanded="true" />
-                <element signature="e#9469#9470#0" expanded="true" />
-                <marker date="1509921078942" expanded="false" signature="8554:8565" ph=" { " />
-                <marker date="1509921078942" expanded="false" signature="8578:8584" ph=" }" />
-                <marker date="1509921078942" expanded="false" signature="8639:8650" ph=" { " />
-                <marker date="1509921078942" expanded="false" signature="8665:8671" ph=" }" />
-                <marker date="1509921078942" expanded="false" signature="16410:16421" ph=" { " />
-                <marker date="1509921078942" expanded="false" signature="16476:16482" ph=" }" />
-                <marker date="1509921078942" expanded="false" signature="16532:16543" ph=" { " />
-                <marker date="1509921078942" expanded="false" signature="16564:16570" ph=" }" />
-                <marker date="1509921078942" expanded="false" signature="16633:16644" ph=" { " />
-                <marker date="1509921078942" expanded="false" signature="16669:16675" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-              <folding>
-                <element signature="e#264#265#0" expanded="true" />
-                <element signature="e#316#317#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#435#436#0" expanded="true" />
+                <element signature="e#1485#1486#0" expanded="true" />
+                <element signature="e#1536#1537#0" expanded="true" />
+                <element signature="e#1574#1575#0" expanded="true" />
+                <element signature="e#1635#1636#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
+                <element signature="e#3480#3481#0" expanded="true" />
+                <element signature="e#3519#3520#0" expanded="true" />
+                <element signature="e#9447#9448#0" expanded="true" />
+                <element signature="e#9504#9505#0" expanded="true" />
+                <element signature="e#16768#16769#0" expanded="true" />
+                <element signature="e#16804#16805#0" expanded="true" />
+                <element signature="e#16852#16853#0" expanded="true" />
+                <element signature="e#16886#16887#0" expanded="true" />
+                <marker date="1509923863117" expanded="false" signature="8589:8600" ph=" { " />
+                <marker date="1509923863117" expanded="false" signature="8613:8619" ph=" }" />
+                <marker date="1509923863117" expanded="false" signature="8674:8685" ph=" { " />
+                <marker date="1509923863117" expanded="false" signature="8700:8706" ph=" }" />
+                <marker date="1509923863117" expanded="false" signature="16445:16456" ph=" { " />
+                <marker date="1509923863117" expanded="false" signature="16511:16517" ph=" }" />
+                <marker date="1509923863117" expanded="false" signature="16567:16578" ph=" { " />
+                <marker date="1509923863117" expanded="false" signature="16599:16605" ph=" }" />
+                <marker date="1509923863117" expanded="false" signature="16668:16679" ph=" { " />
+                <marker date="1509923863117" expanded="false" signature="16704:16710" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -137,6 +138,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="IPlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="530">
+              <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -163,7 +174,6 @@
       <find>80</find>
       <find>addPla</find>
       <find>toS</find>
-      <find>nextPla</find>
       <find>next</find>
       <find>add</find>
       <find>domi</find>
@@ -179,6 +189,7 @@
       <find>atta</find>
       <find>8</find>
       <find>play()</find>
+      <find>nextPla</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -212,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/main/java/model/AttackPlan.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/ITerritory.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Territory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Defensive.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Normal.java" />
@@ -224,10 +234,11 @@
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest10.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest5.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/NotificationType.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/NotificationType.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Model.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
       </list>
     </option>
@@ -509,7 +520,7 @@
       <workItem from="1508449955557" duration="7543000" />
       <workItem from="1509806570853" duration="37840000" />
       <workItem from="1509889835922" duration="15422000" />
-      <workItem from="1509917501531" duration="5542000" />
+      <workItem from="1509917501531" duration="6748000" />
     </task>
     <servers />
   </component>
@@ -546,7 +557,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90856000" />
+    <option name="totallyTimeSpent" value="92062000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -581,7 +592,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4579288" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4579288" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -599,7 +610,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="42" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/GameManager.java</url>
+          <line>345</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="43" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -648,14 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/PhaseView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="25" column="46" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/glass/ui/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
@@ -682,6 +693,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="3756" column="0" lean-forward="false" selection-start-line="3756" selection-start-column="0" selection-end-line="3756" selection-end-column="0" />
+          <folding>
+            <element signature="e#66617#66618#0" expanded="false" />
+            <element signature="e#66663#66664#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -710,6 +725,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="8412" column="0" lean-forward="false" selection-start-line="8412" selection-start-column="0" selection-end-line="8412" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -835,14 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -886,7 +894,7 @@
         <state relative-caret-position="188">
           <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -971,37 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="190" column="13" lean-forward="false" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
-          <folding>
-            <element signature="e#1257#1258#0" expanded="true" />
-            <element signature="e#1289#1290#0" expanded="true" />
-            <element signature="e#1415#1416#0" expanded="true" />
-            <element signature="e#1450#1451#0" expanded="true" />
-            <element signature="e#1501#1502#0" expanded="true" />
-            <element signature="e#1539#1540#0" expanded="true" />
-            <element signature="e#1600#1601#0" expanded="true" />
-            <element signature="e#1639#1640#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3484#3485#0" expanded="true" />
-            <element signature="e#9412#9413#0" expanded="true" />
-            <element signature="e#9469#9470#0" expanded="true" />
-            <marker date="1509921078942" expanded="false" signature="8554:8565" ph=" { " />
-            <marker date="1509921078942" expanded="false" signature="8578:8584" ph=" }" />
-            <marker date="1509921078942" expanded="false" signature="8639:8650" ph=" { " />
-            <marker date="1509921078942" expanded="false" signature="8665:8671" ph=" }" />
-            <marker date="1509921078942" expanded="false" signature="16410:16421" ph=" { " />
-            <marker date="1509921078942" expanded="false" signature="16476:16482" ph=" }" />
-            <marker date="1509921078942" expanded="false" signature="16532:16543" ph=" { " />
-            <marker date="1509921078942" expanded="false" signature="16564:16570" ph=" }" />
-            <marker date="1509921078942" expanded="false" signature="16633:16644" ph=" { " />
-            <marker date="1509921078942" expanded="false" signature="16669:16675" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
@@ -1029,19 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding>
-            <element signature="e#264#265#0" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/NotificationType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1050,11 +1014,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state relative-caret-position="94">
+          <caret line="377" column="0" lean-forward="false" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#264#265#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="526" column="29" lean-forward="false" selection-start-line="526" selection-start-column="29" selection-end-line="526" selection-end-column="29" />
+          <folding>
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1324#1325#0" expanded="true" />
+            <element signature="e#1450#1451#0" expanded="true" />
+            <element signature="e#1485#1486#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1635#1636#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#3480#3481#0" expanded="true" />
+            <element signature="e#3519#3520#0" expanded="true" />
+            <element signature="e#9447#9448#0" expanded="true" />
+            <element signature="e#9504#9505#0" expanded="true" />
+            <element signature="e#16768#16769#0" expanded="true" />
+            <element signature="e#16804#16805#0" expanded="true" />
+            <element signature="e#16852#16853#0" expanded="true" />
+            <element signature="e#16886#16887#0" expanded="true" />
+            <marker date="1509923863117" expanded="false" signature="8589:8600" ph=" { " />
+            <marker date="1509923863117" expanded="false" signature="8613:8619" ph=" }" />
+            <marker date="1509923863117" expanded="false" signature="8674:8685" ph=" { " />
+            <marker date="1509923863117" expanded="false" signature="8700:8706" ph=" }" />
+            <marker date="1509923863117" expanded="false" signature="16445:16456" ph=" { " />
+            <marker date="1509923863117" expanded="false" signature="16511:16517" ph=" }" />
+            <marker date="1509923863117" expanded="false" signature="16567:16578" ph=" { " />
+            <marker date="1509923863117" expanded="false" signature="16599:16605" ph=" }" />
+            <marker date="1509923863117" expanded="false" signature="16668:16679" ph=" { " />
+            <marker date="1509923863117" expanded="false" signature="16704:16710" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/PhaseView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#944#945#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

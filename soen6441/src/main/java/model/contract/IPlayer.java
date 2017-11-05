@@ -51,4 +51,6 @@ public interface IPlayer extends Comparable<IPlayer> {
 
     IStrategy getStrategy();
     void setStrategy(IStrategy strategy);
+    void setStatus(boolean status);
+    boolean getStatus();
 }

@@ -338,16 +338,26 @@ public class GameManager extends Model {
         {
             if((p.getTerritories().size() == 0) && !this.getPhase().equals("Startup"))
             {
-                this.playerlist.remove(p);
+                p.setStatus(false);
             }
         }
 
+        IPlayer result=null;
+        while(result==null)
+        {
+            if(this.turn == this.numberOfPlayers-1)
+                turn = -1;
+            turn++;
+            IPlayer tmp = this.playerlist.get(turn);
+            if (tmp.getStatus())
+                result = tmp;
+        }
 
-
-        if(this.turn == this.numberOfPlayers-1)
-            turn = -1;
-        turn++;
-        return this.playerlist.get(turn);
+//        if(this.turn == this.numberOfPlayers-1)
+//            turn = -1;
+//        turn++;
+//        return this.playerlist.get(turn);
+        return result;
 
     }
 
