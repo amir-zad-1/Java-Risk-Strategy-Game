@@ -10,6 +10,7 @@ import util.expetion.InvalidNumOfPlayersException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Observable;
 
 import controller.LoggerController;
@@ -36,7 +37,7 @@ public class GameManager extends Observable {
     private boolean isGameOn=false;
 
     private IMap map;
-    private ArrayList<IPlayer> playerlist = new ArrayList<IPlayer>();
+    private ArrayList<IPlayer> playerlist = new ArrayList<>();
     private String currentPhase = "";
 
 
@@ -69,6 +70,9 @@ public class GameManager extends Observable {
 
         this.numberOfPlayers = players;
         this.map = m;
+        strategies.add(new Normal());
+        strategies.add(new Defensive());
+        strategies.add(new Aggressive());
     }
 
     /**
@@ -178,8 +182,11 @@ public class GameManager extends Observable {
             }
 
             if (isKing)
-                result += c.getContinentValue();
+                result = c.getContinentValue();
         }
+
+        //Step 3: card exchanging
+        //todo: which is not implemented.
 
         return result;
     }
@@ -329,11 +336,13 @@ public class GameManager extends Observable {
     {
         for(IPlayer p: this.playerlist)
         {
-            if(p.getTerritories().size()==0 && this.getPhase() != "Startup" )
+            if((p.getTerritories().size() == 0) && !this.getPhase().equals("Startup"))
             {
                 this.playerlist.remove(p);
             }
         }
+
+
 
         if(this.turn == this.numberOfPlayers-1)
             turn = -1;
