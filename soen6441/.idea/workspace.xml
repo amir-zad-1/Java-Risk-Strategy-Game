@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="417" column="51" lean-forward="false" selection-start-line="417" selection-start-column="51" selection-end-line="417" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -99,12 +99,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="188">
-              <caret line="342" column="20" lean-forward="false" selection-start-line="342" selection-start-column="16" selection-end-line="342" selection-end-column="20" />
-              <folding />
+              <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+              <folding>
+                <element signature="e#1257#1258#0" expanded="true" />
+                <element signature="e#1289#1290#0" expanded="true" />
+                <element signature="e#1415#1416#0" expanded="true" />
+                <element signature="e#1450#1451#0" expanded="true" />
+                <element signature="e#1501#1502#0" expanded="true" />
+                <element signature="e#1539#1540#0" expanded="true" />
+                <element signature="e#1600#1601#0" expanded="true" />
+                <element signature="e#1639#1640#0" expanded="true" />
+                <element signature="e#3445#3446#0" expanded="true" />
+                <element signature="e#3484#3485#0" expanded="true" />
+                <element signature="e#9412#9413#0" expanded="true" />
+                <element signature="e#9469#9470#0" expanded="true" />
+                <marker date="1509921078942" expanded="false" signature="8554:8565" ph=" { " />
+                <marker date="1509921078942" expanded="false" signature="8578:8584" ph=" }" />
+                <marker date="1509921078942" expanded="false" signature="8639:8650" ph=" { " />
+                <marker date="1509921078942" expanded="false" signature="8665:8671" ph=" }" />
+                <marker date="1509921078942" expanded="false" signature="16410:16421" ph=" { " />
+                <marker date="1509921078942" expanded="false" signature="16476:16482" ph=" }" />
+                <marker date="1509921078942" expanded="false" signature="16532:16543" ph=" { " />
+                <marker date="1509921078942" expanded="false" signature="16564:16570" ph=" }" />
+                <marker date="1509921078942" expanded="false" signature="16633:16644" ph=" { " />
+                <marker date="1509921078942" expanded="false" signature="16669:16675" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,7 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ownTer</find>
       <find>ownTerritory</find>
       <find>startu</find>
       <find>place</find>
@@ -171,6 +193,7 @@
       <find>initG</find>
       <find>play()</find>
       <find>atta</find>
+      <find>8</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -211,12 +234,12 @@
         <option value="$PROJECT_DIR$/src/main/java/model/CardManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Card.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/CardDeck.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest7.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest9.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest10.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest5.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
       </list>
     </option>
@@ -350,7 +373,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GamePlayTests">
+  <component name="RunManager" selected="Application.Window">
     <configuration name="GameManager" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="model.GameManager" />
@@ -511,7 +534,7 @@
       <workItem from="1508449955557" duration="7543000" />
       <workItem from="1509806570853" duration="37840000" />
       <workItem from="1509889835922" duration="15422000" />
-      <workItem from="1509917501531" duration="3515000" />
+      <workItem from="1509917501531" duration="3795000" />
     </task>
     <servers />
   </component>
@@ -548,7 +571,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88829000" />
+    <option name="totallyTimeSpent" value="89109000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -999,14 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest6.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1018,7 +1033,38 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
-          <caret line="342" column="20" lean-forward="false" selection-start-line="342" selection-start-column="16" selection-end-line="342" selection-end-column="20" />
+          <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding>
+            <element signature="e#1257#1258#0" expanded="true" />
+            <element signature="e#1289#1290#0" expanded="true" />
+            <element signature="e#1415#1416#0" expanded="true" />
+            <element signature="e#1450#1451#0" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="e#1539#1540#0" expanded="true" />
+            <element signature="e#1600#1601#0" expanded="true" />
+            <element signature="e#1639#1640#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3484#3485#0" expanded="true" />
+            <element signature="e#9412#9413#0" expanded="true" />
+            <element signature="e#9469#9470#0" expanded="true" />
+            <marker date="1509921078942" expanded="false" signature="8554:8565" ph=" { " />
+            <marker date="1509921078942" expanded="false" signature="8578:8584" ph=" }" />
+            <marker date="1509921078942" expanded="false" signature="8639:8650" ph=" { " />
+            <marker date="1509921078942" expanded="false" signature="8665:8671" ph=" }" />
+            <marker date="1509921078942" expanded="false" signature="16410:16421" ph=" { " />
+            <marker date="1509921078942" expanded="false" signature="16476:16482" ph=" }" />
+            <marker date="1509921078942" expanded="false" signature="16532:16543" ph=" { " />
+            <marker date="1509921078942" expanded="false" signature="16564:16570" ph=" }" />
+            <marker date="1509921078942" expanded="false" signature="16633:16644" ph=" { " />
+            <marker date="1509921078942" expanded="false" signature="16669:16675" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="417" column="51" lean-forward="false" selection-start-line="417" selection-start-column="51" selection-end-line="417" selection-end-column="51" />
           <folding />
         </state>
       </provider>
