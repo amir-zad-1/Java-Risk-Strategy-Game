@@ -26,51 +26,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="417" column="51" lean-forward="false" selection-start-line="417" selection-start-column="51" selection-end-line="417" selection-end-column="51" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GpTest8.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest8.java">
+      <file leaf-file-name="NotificationType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/NotificationType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest9.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest9.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest10.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest10.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="5" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest11.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+            <state relative-caret-position="36">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -89,8 +59,8 @@
       <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+            <state relative-caret-position="278">
+              <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="40" />
               <folding>
                 <element signature="e#395#396#0" expanded="true" />
                 <element signature="e#426#427#0" expanded="true" />
@@ -103,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="188">
-              <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+              <caret line="190" column="13" lean-forward="false" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
               <folding>
                 <element signature="e#1257#1258#0" expanded="true" />
                 <element signature="e#1289#1290#0" expanded="true" />
@@ -128,6 +98,41 @@
                 <marker date="1509921078942" expanded="false" signature="16633:16644" ph=" { " />
                 <marker date="1509921078942" expanded="false" signature="16669:16675" ph=" }" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+              <folding>
+                <element signature="e#264#265#0" expanded="true" />
+                <element signature="e#316#317#0" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#435#436#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoggerController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoggerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogMessageEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/util/LogMessageEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -241,6 +246,9 @@
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest5.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NotificationType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/NotificationType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Model.java" />
       </list>
     </option>
   </component>
@@ -315,22 +323,9 @@
               <item name="soen6441" type="b2602c69:ProjectViewProjectNode" />
               <item name="soen6441" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="soen6441" type="b2602c69:ProjectViewProjectNode" />
-              <item name="soen6441" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="soen6441" type="b2602c69:ProjectViewProjectNode" />
-              <item name="soen6441" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="soen6441" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -348,7 +343,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="SearchEverywhereHistoryKey" value="player&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/Player.java&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Map.java&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;terri&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Territory.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
+    <property name="SearchEverywhereHistoryKey" value="Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/Player.java&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Map.java&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;terri&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Territory.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -534,7 +529,7 @@
       <workItem from="1508449955557" duration="7543000" />
       <workItem from="1509806570853" duration="37840000" />
       <workItem from="1509889835922" duration="15422000" />
-      <workItem from="1509917501531" duration="3795000" />
+      <workItem from="1509917501531" duration="5001000" />
     </task>
     <servers />
   </component>
@@ -571,7 +566,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89109000" />
+    <option name="totallyTimeSpent" value="90315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -639,37 +634,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/MapDataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/WriteMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="15" column="68" lean-forward="true" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MapEditorView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1044">
@@ -737,6 +701,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="380" column="0" lean-forward="false" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -786,6 +751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -815,6 +781,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="e#6461#6462#0" expanded="false" />
+            <element signature="e#6511#6512#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -845,6 +815,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1011,17 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding>
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest6.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1030,10 +990,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/util/LogMessageEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
-          <caret line="190" column="0" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <caret line="190" column="13" lean-forward="false" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
           <folding>
             <element signature="e#1257#1258#0" expanded="true" />
             <element signature="e#1289#1290#0" expanded="true" />
@@ -1061,10 +1037,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="417" column="51" lean-forward="false" selection-start-line="417" selection-start-column="51" selection-end-line="417" selection-end-column="51" />
+        <state relative-caret-position="278">
+          <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="40" />
+          <folding>
+            <element signature="e#395#396#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/NotificationType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding>
+            <element signature="e#264#265#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoggerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
           <folding />
         </state>
       </provider>

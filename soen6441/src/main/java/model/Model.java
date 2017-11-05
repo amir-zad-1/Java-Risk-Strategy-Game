@@ -20,5 +20,9 @@ public class Model{
 	public void sendNotification(String type,Object object){
            notifier.notifyListners(type,object);
 	}
+
+	public void sendNotification(NotificationType type,Object object){
+           notifier.notifyListners("",object);
+	}
 	
 }
