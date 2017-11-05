@@ -11,7 +11,7 @@ public class Aggressive implements IStrategy {
 
     @Override
     public int getAttackAttempts() {
-        return 4;
+        return 6;
     }
 
     @Override

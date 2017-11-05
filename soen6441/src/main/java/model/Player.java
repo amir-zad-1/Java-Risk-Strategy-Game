@@ -34,6 +34,7 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     private ArrayList<ITerritory> territories;
     private GameManager gm;
     private double domination = 0.0;
+    private ArrayList<Card> cards = new ArrayList<>();
     IStrategy strategy;
 
     /**
@@ -142,7 +143,7 @@ public class Player implements IPlayer, Comparable<IPlayer> {
 
     /**
      *
-     * @return list of player territories
+     * @return strategies of player territories
      */
     @Override
     public ArrayList<ITerritory> getTerritories() {
@@ -160,8 +161,8 @@ public class Player implements IPlayer, Comparable<IPlayer> {
         StringBuilder sb = new StringBuilder();
         sb.append(this.getName());
         sb.append(delimiter);
-        //sb.append(this.getColor().getName());
-        //sb.append(delimiter);
+        sb.append(this.getStrategy().getName());
+        sb.append(delimiter);
         sb.append("Territories:");
         sb.append(this.getTerritories().size());
         sb.append(delimiter);
@@ -428,6 +429,10 @@ public class Player implements IPlayer, Comparable<IPlayer> {
                             LoggerController.log(attackFrom.getOwner().getState());
                             attackTo.getOwner().lostTerritory(attackTo);
                             attackFrom.getOwner().ownTerritory(attackTo);
+                            Card crd = this.gm.pickACard();
+                            this.cards.add(crd);
+                            LoggerController.log(String.format("%s gets one card %s, %s", this.getName(),
+                                    crd.getCardTerritoryName(), crd.getCardValue()));
                             LoggerController.log(attackFrom.getOwner().getState());
                         }
                     }

@@ -27,7 +27,7 @@ public class Map implements IMap {
 
     /**
      *
-     * @return list of continents in the map
+     * @return strategies of continents in the map
      */
     @Override
     public ArrayList<IContinent> getContinents() {

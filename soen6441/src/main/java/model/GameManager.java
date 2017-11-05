@@ -3,10 +3,9 @@ package model;
 
 import model.contract.*;
 import model.strategy.Aggressive;
+import model.strategy.Defensive;
 import model.strategy.Normal;
 import util.Color;
-import util.Helpers;
-import util.LogMessageEnum;
 import util.expetion.InvalidNumOfPlayersException;
 
 import java.util.ArrayList;
@@ -29,6 +28,11 @@ public class GameManager extends Observable {
     private int numberOfPlayers = 0;
     private int turn = -1;
 
+    private int strategyTurn = -1;
+    ArrayList<IStrategy> strategies = new ArrayList<>();
+
+    private CardDeck cardDeck = new CardDeck();
+
     private boolean isGameOn=false;
 
     private IMap map;
@@ -50,14 +54,21 @@ public class GameManager extends Observable {
 
         this.numberOfPlayers = players;
         this.map = new Map();
+        strategies.add(new Normal());
+        strategies.add(new Defensive());
+        strategies.add(new Aggressive());
     }
-    
-    
+
+
+    /**
+     * constructor
+     * @param m selected map
+     * @param players number of players
+     */
     public GameManager(IMap m,int players) {
 
         this.numberOfPlayers = players;
         this.map = m;
-
     }
 
     /**
@@ -135,7 +146,7 @@ public class GameManager extends Observable {
                 this.isGameOn=false;
         }
 
-        LoggerController.log(this.domitantionResult(true));
+        LoggerController.log(this.domitantionResult(true, i));
         //LoggerController.log(this.getWinner().getName());
 
     }
@@ -154,6 +165,20 @@ public class GameManager extends Observable {
         result += p.getTerritories().size() / 3;
         if(result<3)
             result = 3; // Since the minimum is 3 armies.
+
+        //Step 2: if player has occupied all the continent
+        for(IContinent c: this.map.getContinents() )
+        {
+            boolean isKing = true;
+            for(ITerritory t : c.getTerritories())
+            {
+                if (t.getOwner() != this)
+                    isKing = false;
+            }
+
+            if (isKing)
+                result += c.getContinentValue();
+        }
 
         return result;
     }
@@ -225,7 +250,7 @@ public class GameManager extends Observable {
 
         Color colorManager = new Color();
         for (int i=1; i<=this.numberOfPlayers; i++) {
-            IStrategy strategy = new Aggressive();
+            IStrategy strategy = getRandomStrategy();
             IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
             p.setGameManager(this);
             this.playerlist.add(p);
@@ -323,6 +348,10 @@ public class GameManager extends Observable {
     private void resetTurn() { this.turn = -1; }
 
 
+    /**
+     * what phase is the game in now
+     * @return phase name
+     */
     public String getPhase() { return this.currentPhase; }
     public void setPhase(String value) {
         this.currentPhase = value;
@@ -330,11 +359,17 @@ public class GameManager extends Observable {
         this.notifyObservers();
     }
 
-    public String domitantionResult(boolean verbos)
+
+    /**
+     * Generate domination view string
+     * @param verbos to generate texts or just calculate winner
+     * @return domination view
+     */
+    public String domitantionResult(boolean verbos, int trn)
     {
         StringBuilder sb = new StringBuilder();
         if(verbos)
-            sb.append("===DOMINATION VIEW===\n");
+            sb.append(String.format("===DOMINATION VIEW AT TURN %s===\n", trn));
 
         int total_territories = 0;
         for(IPlayer p:this.playerlist)
@@ -351,7 +386,7 @@ public class GameManager extends Observable {
 
         if(verbos) {
         for(IPlayer p:this.playerlist)
-            sb.append(String.format("%s controls %s of the map.\n", p.getName(), p.getDomination()));
+            sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
         if(verbos)
@@ -361,16 +396,44 @@ public class GameManager extends Observable {
 
     }
 
+
+    /**
+     * Determine the winner
+     * @return player who won the game
+     */
     public IPlayer getWinner()
     {
         IPlayer winner = null;
-        this.domitantionResult(false);
-        if(this.playerlist.get(0).getDomination()>70.0)
+        this.domitantionResult(false,0);
+        if(this.playerlist.get(0).getDomination()>80.0)
 //        if(this.playerlist.get(0).getDomination() > this.playerlist.get(1).getDomination())
             winner = this.playerlist.get(0);
 
         return winner;
 
+    }
+
+    /**
+     * get a random playing strategy
+     * @return strategy to play the game
+     */
+    public IStrategy getRandomStrategy()
+    {
+        if(this.strategyTurn==this.strategies.size()-1)
+            this.strategyTurn = -1;
+        this.strategyTurn++;
+
+        return this.strategies.get(strategyTurn);
+
+    }
+
+    /**
+     * pick a card from the deck of cards
+     * @return card object
+     */
+    public Card pickACard()
+    {
+        return cardDeck.pickCard();
     }
 
 }

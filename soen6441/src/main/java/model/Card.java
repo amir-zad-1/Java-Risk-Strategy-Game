@@ -1,20 +1,21 @@
 package model;
 
 /**
- * represents cards in the game
+ * represents the card entity in the game
  */
-public class Card {
+public class Card{
 
-    private static int MAX_CARDS = 10;
-    private static int MIN_CARDS = 0;
+    private String territoryName;
+    private int armyValue = 0;
 
-    /**
-     * draws a card from a deck of cards
-     * @return card
-     */
-    public Card drawCard(){
-        //todo: not implemented yet
-        return null;
+    public Card(String n, int v)
+    {
+        this.armyValue = v;
+        this.territoryName = n;
     }
+
+    public String getCardTerritoryName() { return this.territoryName; }
+    public int getCardValue() { return this.armyValue; }
+
 
 }
