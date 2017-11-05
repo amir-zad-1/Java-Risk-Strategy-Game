@@ -213,7 +213,18 @@ public class Territory extends Observable implements ITerritory {
 		return res;
 	}
 
-    /**
+	@Override
+	public ActionResponse killArmies(int count) {
+		ActionResponse res = new ActionResponse();
+
+		this.setNumberOfArmies(this.getArmies() - count);
+		res.setOk(true);
+		LoggerController.log(String.format("%s armies get killed in %s", count, this.getName()));
+
+		return res;
+	}
+
+	/**
      * checks if this territory has Adjacency with the given territory
      * @param t second territory to check
      * @return if there is or not

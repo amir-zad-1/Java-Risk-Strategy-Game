@@ -1,5 +1,6 @@
 package model.contract;
 
+import model.AttackPlan;
 import model.GameManager;
 import util.ActionResponse;
 
@@ -34,12 +35,19 @@ public interface IPlayer extends Comparable<IPlayer> {
 
     ActionResponse moveArmies(ITerritory from, ITerritory to, int number);
 
+    AttackPlan getTerritoryToAttack();
+
     void setGameManager(GameManager gm);
     GameManager getGameManager();
 
     void reinforcement();
+    void attack(int attempts);
     void attack();
     void fortification();
 
     int compareTo(IPlayer o);
+
+
+    IStrategy getStrategy();
+    void setStrategy(IStrategy strategy);
 }

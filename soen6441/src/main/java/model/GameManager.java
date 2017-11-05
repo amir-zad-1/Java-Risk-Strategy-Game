@@ -1,10 +1,9 @@
 package model;
 
 
-import model.contract.IContinent;
-import model.contract.IMap;
-import model.contract.IPlayer;
-import model.contract.ITerritory;
+import model.contract.*;
+import model.strategy.Aggressive;
+import model.strategy.Normal;
 import util.Color;
 import util.Helpers;
 import util.LogMessageEnum;
@@ -124,12 +123,19 @@ public class GameManager extends Observable {
             this.setPhase(String.format("   %s Fortification", p.getName()));
             p.fortification();
 
+            IPlayer winner = getWinner();
+            if (winner == null)
+            {
+                LoggerController.log("No winner, so next turn will start.");
+            }
+
             i++;
-            if (i==this.numberOfPlayers)
+            //if (i==this.numberOfPlayers*3 || winner!= null)
+            if (winner!= null)
                 this.isGameOn=false;
         }
 
-        //LoggerController.log(this.domitantionResult(true));
+        LoggerController.log(this.domitantionResult(true));
         //LoggerController.log(this.getWinner().getName());
 
     }
@@ -219,7 +225,8 @@ public class GameManager extends Observable {
 
         Color colorManager = new Color();
         for (int i=1; i<=this.numberOfPlayers; i++) {
-            IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor());
+            IStrategy strategy = new Aggressive();
+            IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
             p.setGameManager(this);
             this.playerlist.add(p);
             LoggerController.log(p.toString() + " was added to the game.");

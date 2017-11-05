@@ -4,15 +4,19 @@ package model;
 import com.sun.javafx.binding.StringFormatter;
 
 import controller.LoggerController;
+import model.contract.IStrategy;
 import model.contract.ITerritory;
 import model.contract.IPlayer;
+import model.strategy.Normal;
 import util.ActionResponse;
 import util.Color;
 import util.Helpers;
 import util.LogMessageEnum;
 import util.expetion.NoSufficientArmiesExption;
+import view.Logger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * This is player class
@@ -30,16 +34,18 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     private ArrayList<ITerritory> territories;
     private GameManager gm;
     private double domination = 0.0;
+    IStrategy strategy;
 
     /**
      * Constructor
      * @param name  player name
      * @param color player color
      */
-    public Player(String name, Color color){
+    public Player(String name, Color color, IStrategy strategy){
         this.name = name;
         this.color = color;
         this.territories = new ArrayList<>();
+        this.strategy = strategy;
     }
 
     /**
@@ -278,6 +284,23 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     }
 
     @Override
+    public AttackPlan getTerritoryToAttack() {
+        AttackPlan result = null;
+        for(ITerritory t:this.getTerritories())
+        {
+            for(ITerritory a: t.getAdjacentTerritoryObjects())
+            {
+                if(a.getOwner() != this)
+                {
+                    result = new AttackPlan(t,a);
+                    return result;
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
     public void setGameManager(GameManager gm) {
         this.gm = gm;
     }
@@ -295,6 +318,7 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     public void reinforcement()
     {
         LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", this.getName()));
+        this.gm.setPhase("REINFORCEMENT PHASE");
 
         //Step 1: Reinforcement
         int newArmies = this.gm.calculateReinforcementArmies(this);
@@ -306,14 +330,129 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     }
 
 
+    public void attack()
+    {
+        this.attack(strategy.getAttackAttempts());
+    }
+
     /**
      * This will handle attack phase but not implemented yet
      */
-    public void attack()
+    public void attack(int attempts)
     {
-        //todo: Implement attach phase.
         LoggerController.log(String.format("============%s ATTACK STARTS===========", this.getName()));
-        LoggerController.log(LogMessageEnum.WARNING, "Jump from attack phase. :)");
+        LoggerController.log(String.format("Strategy is %s", this.strategy.getName()));
+        this.gm.setPhase("ATTACK PHASE");
+
+        for(int a=1; a<= attempts; a++)
+        {
+            LoggerController.log(String.format("Attack %s ", a));
+
+            // Step 1: Design a attack plan
+            AttackPlan ap = this.getTerritoryToAttack();
+
+            ITerritory attackFrom = ap.from;
+            ITerritory attackTo = ap.to;
+
+            // Step 2: Number of armies(Dices) for the battle
+            int diceAttack = Helpers.getRandomInt(3,1);
+
+            //Step 3: Checking sufficient armies to attack
+            if (attackFrom.getArmies() - diceAttack >= 1)
+            {
+                int diceDefend = Helpers.getRandomInt(2,1);
+                //Step 4: Checking sufficient armies to defend
+                if(diceDefend == 2 && attackTo.getArmies() < 2)
+                {
+                    diceDefend = 1;
+                }
+
+                Logger.log(String.format("%s attacks %s from %s with %s armies and %s defends with %s armies", this.getName(), attackTo.getName(),
+                        attackFrom.getName(), diceAttack, attackTo.getName(), diceDefend ));
+
+                //Step 5: Rolling dices
+                ArrayList<Integer> attackDices = new ArrayList<>();
+                ArrayList<Integer> defendDices = new ArrayList<>();
+                Dice dice = new Dice();
+                for(int i=0; i<diceAttack; i++)
+                    attackDices.add(dice.roll());
+                for(int i=0; i<diceDefend; i++)
+                    defendDices.add(dice.roll());
+
+                //Step 6: Sorting die rolls
+                Collections.sort(attackDices);
+                Collections.sort(defendDices);
+
+                LoggerController.log(String.format("%s(Attacker) rolled these dices %s",  attackFrom.getOwner().getName(),attackDices.toString()));
+                LoggerController.log(String.format("%s(Defender) rolled these dices %s",  attackTo.getOwner().getName(),defendDices.toString()));
+
+                //Step 7: calculating number of fights
+                int fights = 0;
+                if(attackDices.size() > defendDices.size())
+                    fights = defendDices.size();
+                else if(attackDices.size() < defendDices.size())
+                    fights = attackDices.size();
+                else
+                    fights = attackDices.size();
+
+                //Step 8: Deciding the battle
+                for(int f=0; f<fights; f++)
+                {
+                    if(attackDices.get(0) > defendDices.get(0))
+                    {
+                        // Attacker wins
+                        LoggerController.log(attackTo.getOwner().getState());
+                        Logger.log(String.format("1 of the armies in %s(Defender) was killed.", attackTo.getName()));
+                        attackTo.killArmies(1);
+                        LoggerController.log(attackTo.getOwner().getState());
+
+                        // checking for occupying the territory
+                        if(attackTo.getArmies()==0)
+                        {
+                            LoggerController.log(String.format("%s occupies %s", attackFrom.getOwner().getName(),
+                                    attackTo.getName()));
+                            LoggerController.log(attackFrom.getOwner().getState());
+                            attackFrom.getOwner().ownTerritory(attackTo);
+                            LoggerController.log(attackFrom.getOwner().getState());
+                        }
+                    }
+                    else
+                    {
+                        // Defender wins
+                        LoggerController.log(attackFrom.getOwner().getState());
+                        Logger.log(String.format("1 of the armies in %s(Attacker) was killed.",attackFrom.getName()));
+                        attackFrom.killArmies(1);
+                        LoggerController.log(attackFrom.getOwner().getState());
+                    }
+
+                    attackDices.remove(0);
+                    defendDices.remove(0);
+                }
+
+                //Step 9: after attack if occupied move remaining attack armies to new territory
+                if(attackTo.getOwner() == attackFrom.getOwner())
+                {
+                    //Step 10: calculating moving armies to new territory
+                    int movingArmies = 1;
+                    attackFrom.removeArmies(movingArmies);
+                    attackTo.placeArmies(movingArmies);
+                    LoggerController.log(String.format("%s places %s armies to occupied territory(%s)",
+                            attackTo.getOwner().getName(), movingArmies, attackTo.getName()));
+                    Logger.log(this.getState());
+                }
+
+            }
+            else
+            {
+                Logger.log(String.format("Attacking %s from %s with %s armies canceled. %s -> %s", attackTo.getName(),
+                        attackFrom.getName(), diceAttack, attackFrom.getArmies() , attackTo.getArmies()));
+            }
+
+
+            LoggerController.log(String.format("Attack %s finished.", a));
+        }
+
+
         LoggerController.log(String.format("============%s ATTACK DONE===========", this.getName()));
     }
 
@@ -325,6 +464,7 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     public void fortification()
     {
         LoggerController.log(String.format("============%s FORTIFICATION STARTS===========", this.getName()));
+        this.gm.setPhase("FORTIFICATION PHASE");
 
         ITerritory from = this.getRandomTerritory();
         ITerritory to;
@@ -346,5 +486,15 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     @Override
     public int compareTo(IPlayer o) {
         return (int)(this.getDomination() - o.getDomination());
+    }
+
+    @Override
+    public IStrategy getStrategy() {
+        return this.strategy;
+    }
+
+    @Override
+    public void setStrategy(IStrategy strategy) {
+        this.strategy = strategy;
     }
 }
