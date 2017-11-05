@@ -21,7 +21,7 @@ import controller.LoggerController;
  * @author Amir
  * @version 0.1.0
  */
-public class GameManager extends Observable {
+public class GameManager extends Model {
 
     private static int MIN_PLAYERS = 2;
     private static int MAX_PLAYERS = 6;
@@ -129,13 +129,13 @@ public class GameManager extends Observable {
             LoggerController.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
 
-            this.setPhase(String.format("   %s Reinforcement", p.getName()));
+            this.sendNotification(NotificationType.PlayerActivity,String.format("%s Reinforcement", p.getName()));
             p.reinforcement();
 
-            this.setPhase(String.format("   %s Attack", p.getName()));
+            this.sendNotification(NotificationType.PlayerActivity,String.format("%s Attack", p.getName()));
             p.attack();
 
-            this.setPhase(String.format("   %s Fortification", p.getName()));
+            this.sendNotification(NotificationType.PlayerActivity, String.format("%s Fortification", p.getName()));
             p.fortification();
 
             IPlayer winner = getWinner();
@@ -145,13 +145,13 @@ public class GameManager extends Observable {
             }
 
             i++;
-            this.setChanged();
-            this.notifyObservers();
             if (winner!= null)
                 this.isGameOn=false;
         }
 
-        LoggerController.log(this.domitantionResult(true, i));
+        String dominationView = this.domitantionResult(true, i);
+        LoggerController.log(dominationView);
+        this.sendNotification(NotificationType.DominationView, dominationView);
         //LoggerController.log(this.getWinner().getName());
 
     }
@@ -365,8 +365,7 @@ public class GameManager extends Observable {
     public String getPhase() { return this.currentPhase; }
     public void setPhase(String value) {
         this.currentPhase = value;
-        this.setChanged();
-        this.notifyObservers();
+        this.sendNotification(NotificationType.PhaseView, value);
     }
 
 
@@ -416,7 +415,9 @@ public class GameManager extends Observable {
         IPlayer winner = null;
         this.domitantionResult(false,0);
         if(this.playerlist.get(0).getDomination()>40.0)
+        {
             winner = this.playerlist.get(0);
+        }
 
         return winner;
 

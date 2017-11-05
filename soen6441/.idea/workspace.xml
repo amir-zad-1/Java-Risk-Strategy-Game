@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="476">
+              <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -41,16 +41,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
               <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest5.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -117,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoggerController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoggerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoggerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            <state relative-caret-position="378">
+              <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -132,16 +122,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
               <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -196,9 +176,9 @@
       <find>occup</find>
       <find>attack</find>
       <find>initG</find>
-      <find>play()</find>
       <find>atta</find>
       <find>8</find>
+      <find>play()</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -245,10 +225,10 @@
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest5.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/NotificationType.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/NotificationType.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Model.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
       </list>
     </option>
   </component>
@@ -529,7 +509,7 @@
       <workItem from="1508449955557" duration="7543000" />
       <workItem from="1509806570853" duration="37840000" />
       <workItem from="1509889835922" duration="15422000" />
-      <workItem from="1509917501531" duration="5001000" />
+      <workItem from="1509917501531" duration="5542000" />
     </task>
     <servers />
   </component>
@@ -566,7 +546,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90315000" />
+    <option name="totallyTimeSpent" value="90856000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -634,13 +614,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/MapEditorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1044">
-          <caret line="84" column="32" lean-forward="false" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -998,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -1048,10 +1013,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/NotificationType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoggerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="378">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="270" column="29" lean-forward="false" selection-start-line="270" selection-start-column="29" selection-end-line="270" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1069,10 +1042,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/LoggerController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/NotificationType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
           <folding />
         </state>
       </provider>
