@@ -130,6 +130,17 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     }
 
     /**
+     * lose the territory
+     * @param territory territory to be removed
+     * @return if the operation was successful
+     */
+    @Override
+    public ActionResponse lostTerritory(ITerritory territory) {
+        this.territories.remove(territory);
+        return new ActionResponse(true, String.format("%s lost %s", this.getName(),territory.getName()) );
+    }
+
+    /**
      *
      * @return list of player territories
      */
@@ -286,15 +297,13 @@ public class Player implements IPlayer, Comparable<IPlayer> {
     @Override
     public AttackPlan getTerritoryToAttack() {
         AttackPlan result = null;
-        for(ITerritory t:this.getTerritories())
+        ITerritory t = this.getRandomTerritory();
+        for(ITerritory a: t.getAdjacentTerritoryObjects())
         {
-            for(ITerritory a: t.getAdjacentTerritoryObjects())
+            if(a.getOwner() != this)
             {
-                if(a.getOwner() != this)
-                {
-                    result = new AttackPlan(t,a);
-                    return result;
-                }
+                result = new AttackPlan(t,a);
+                return result;
             }
         }
         return result;
@@ -350,6 +359,11 @@ public class Player implements IPlayer, Comparable<IPlayer> {
 
             // Step 1: Design a attack plan
             AttackPlan ap = this.getTerritoryToAttack();
+            if (ap == null)
+            {
+                LoggerController.log(LogMessageEnum.WARNING,"No territory found to attack.");
+                break;
+            }
 
             ITerritory attackFrom = ap.from;
             ITerritory attackTo = ap.to;
@@ -412,6 +426,7 @@ public class Player implements IPlayer, Comparable<IPlayer> {
                             LoggerController.log(String.format("%s occupies %s", attackFrom.getOwner().getName(),
                                     attackTo.getName()));
                             LoggerController.log(attackFrom.getOwner().getState());
+                            attackTo.getOwner().lostTerritory(attackTo);
                             attackFrom.getOwner().ownTerritory(attackTo);
                             LoggerController.log(attackFrom.getOwner().getState());
                         }

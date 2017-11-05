@@ -301,6 +301,14 @@ public class GameManager extends Observable {
      */
     public IPlayer nextPlayer()
     {
+        for(IPlayer p: this.playerlist)
+        {
+            if(p.getTerritories().size()==0 && this.getPhase() != "Startup" )
+            {
+                this.playerlist.remove(p);
+            }
+        }
+
         if(this.turn == this.numberOfPlayers-1)
             turn = -1;
         turn++;
@@ -357,7 +365,8 @@ public class GameManager extends Observable {
     {
         IPlayer winner = null;
         this.domitantionResult(false);
-        if(this.playerlist.get(0).getDomination() > this.playerlist.get(1).getDomination())
+        if(this.playerlist.get(0).getDomination()>70.0)
+//        if(this.playerlist.get(0).getDomination() > this.playerlist.get(1).getDomination())
             winner = this.playerlist.get(0);
 
         return winner;

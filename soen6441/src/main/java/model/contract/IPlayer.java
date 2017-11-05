@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public interface IPlayer extends Comparable<IPlayer> {
 
     ActionResponse ownTerritory(ITerritory territory);
+    ActionResponse lostTerritory(ITerritory territory);
     ArrayList<ITerritory> getTerritories();
 
 
