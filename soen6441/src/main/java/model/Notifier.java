@@ -12,8 +12,9 @@ import java.util.Observable;
 public class Notifier extends Observable{
 
 	
-	public void notifyListners(){
-		
+	public void notifyListners(String type,Object object){
+		setChanged();
+		notifyObservers(object);
 	}
 	
 }

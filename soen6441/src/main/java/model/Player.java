@@ -1,8 +1,6 @@
 package model;
 
 
-import com.sun.javafx.binding.StringFormatter;
-
 import controller.LoggerController;
 import model.contract.IStrategy;
 import model.contract.ITerritory;
@@ -24,7 +22,7 @@ import java.util.Collections;
  * @author Amir
  * @version 0.1.0
  */
-public class Player implements IPlayer, Comparable<IPlayer> {
+public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
 
     private String name;
@@ -190,6 +188,7 @@ public class Player implements IPlayer, Comparable<IPlayer> {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
+        sendNotification("Placed Armies", territory);
         LoggerController.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
         LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );

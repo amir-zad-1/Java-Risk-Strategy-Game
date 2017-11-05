@@ -22,7 +22,7 @@ public class WindowManager extends Application {
 	
     static WelcomeView welcomeView  = null;
     static MapEditorView mapEditorView = null;
-    public static PhaseView phaseView = null;
+    public static IView phaseView = null;
     
     
     static RWMapFileController rwMapFileController;
@@ -44,10 +44,10 @@ public class WindowManager extends Application {
         	@Override
             public void handle(ActionEvent event){
         		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
-        		phaseView = new PhaseView();
-                gameController.startGame(numberOfPlayers);
-            	window.setScene(phaseView.getView());
-        	}
+        		window.setScene(phaseView.getView());
+        		gameController.startGame(numberOfPlayers);
+        		
+            }
     	});   
        
 		window.setScene(welcomeView.getView());
@@ -60,13 +60,32 @@ public class WindowManager extends Application {
 	 * @param new_readController
 	 * @param new_writeController
 	 */
-	public static void addRWControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
+	public static void addControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
 			WriteController new_writeController,GameController new_gameController) {		
 		rwMapFileController = new_rwMapFileController;
 		readController = new_readController;
 		writeController = new_writeController;
 		gameController = new_gameController; 
 	}
+
+
+	/**
+	 * Sets required View
+	 * @param view which implements {@link IView}
+	 * @param typeOfView defines type of view to be set
+	 */
+	public static void setView(IView view, String typeOfView) {
+		
+		switch(typeOfView){
+			case "phaseview":
+				phaseView = view;
+				break;
+			default:
+				break;
+		}
+		
+	}
     
+	
        
 }
