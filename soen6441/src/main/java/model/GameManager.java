@@ -207,7 +207,6 @@ public class GameManager extends Model {
 
             p.placeArmy(randomArmy, playerRandomTerritory);
             i += randomArmy;
-
             LoggerController.log(p.getState());
         }
 

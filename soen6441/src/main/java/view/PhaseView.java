@@ -56,6 +56,7 @@ public class PhaseView implements IView,Observer{
 	    for(int i=1;i<=numberOfPlayers;i++){
 	    	VBox vbox= new VBox();
 	    	TextArea tmp = new TextArea();
+	    	tmp.setMinHeight(500);
 	    	vbox.getChildren().add(tmp);
 	    	PlayerStatisticsView pview = new PlayerStatisticsView();
 	    	pview.setActorName("Player "+i);
@@ -88,16 +89,18 @@ public class PhaseView implements IView,Observer{
 	public void update(Observable model, Object object) {
 		
 	   if(object instanceof String){
-		   String type = (String)object;
-		   switch(type.split(":")[0])
-		   {
-		   		case "PhaseChange": 
-		   			phase.setText(type.split(":")[1]);
-		   }
+		   String sentString = (String)object;
+		   String string = sentString.split(":")[0];
+		if ("PhaseChange".equals(string)) {
+			phase.setText(sentString.split(":")[1]);
+		}else if(playersViews.containsKey(string)){
+			playersViews.get(string).appendText("\n"+sentString);			
+		}
 	   }
 		else if(object instanceof Player){
 			Player tmp = (Player) object;
-			playersViews.get(tmp.getName()).setText(tmp.getState());
+			playersViews.get(tmp.getName()).appendText(tmp.getState());
+			
 		}
 	}
 	

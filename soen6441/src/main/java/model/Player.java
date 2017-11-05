@@ -125,6 +125,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         territory.setOwner(this);
         this.placeArmy(1, territory);
         this.territories.add(territory);
+        sendNotification("GameChange", this.getName()+ ": own "+ territory.getName());
         return new ActionResponse(true, String.format("%s owns %s", this.getName(),territory.getName()) );
     }
 
@@ -188,6 +189,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
+        sendNotification("GameChange", this.getName()+ ": placed " + Integer.toString(count)+" armies into " + territory.getName());
         LoggerController.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
         LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );
@@ -201,7 +203,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     @Override
     public String getState()
     {
-        StringBuilder sb = new StringBuilder();
+    	StringBuilder sb = new StringBuilder();
         sb.append("\n====================");
         sb.append("\n");
         sb.append(this.getName());
@@ -334,6 +336,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
         //Step 2: Place armies
         this.gm.placeArmies(this);
+        
         LoggerController.log(String.format("============%s REINFORCEMENT DONE===========", this.getName()));
     }
 
@@ -367,7 +370,8 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
             ITerritory attackFrom = ap.from;
             ITerritory attackTo = ap.to;
-
+            sendNotification("GameChnage", this.getName()+": Attacked from "+attackFrom.getName()+" to "+attackTo.getName());
+            
             // Step 2: Number of armies(Dices) for the battle
             int diceAttack = Helpers.getRandomInt(3,1);
 

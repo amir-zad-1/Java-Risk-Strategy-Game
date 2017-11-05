@@ -31,7 +31,7 @@ public class PlayerStatisticsView {
 		this.playerBox = new VBox();
 		playerBox.setPadding(new Insets(5));
 		this.actorName = new Label();
-		actorName.setFont(new Font("Cambria", 32));
+		actorName.setFont(new Font("Cambria", 18));
 		actorName.setTextFill(Color.web("#0076a3"));
 		actorName.setPadding(new Insets(10));
 		HBox profilepicContainer = new HBox(); 
