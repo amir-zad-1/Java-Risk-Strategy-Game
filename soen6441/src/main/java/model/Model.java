@@ -10,13 +10,11 @@ package model;
  */
 public class Model{
 
-    private static Notifier notifier = null;
+    public static Notifier notifier = null;
     
 
 	public void setNotifier(Notifier new_notifier){
-		if(notifier != null){
 			notifier  = new_notifier;
-		}	
 	}
 	
 	public void sendNotification(String type,Object object){

@@ -8,6 +8,7 @@ import java.util.Observer;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import model.Player;
 import model.Territory;
 
 /**
@@ -16,14 +17,15 @@ import model.Territory;
  */
 public class PhaseView implements IView,Observer{
 
-	Label label = new Label("Player one");
+	Label label;
 	
 	/** 
 	 * @return {@link Scene} which contains UI elements 
 	 */
 	@Override
 	public Scene getView() {		
-        label.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
+		label = new Label("Player one");
+		label.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
 		Scene scene = new Scene(label);
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
@@ -36,7 +38,7 @@ public class PhaseView implements IView,Observer{
 	 */
 	@Override
 	public void update(Observable model, Object object) {
-		label.setText(object.toString());
+		label.setText(((Territory)object).getContinentName());
 	}
 	
 }

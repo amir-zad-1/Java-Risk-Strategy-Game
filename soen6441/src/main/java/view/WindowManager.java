@@ -44,9 +44,9 @@ public class WindowManager extends Application {
         	@Override
             public void handle(ActionEvent event){
         		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
-        		phaseView = new PhaseView();
         		window.setScene(phaseView.getView());
         		gameController.startGame(numberOfPlayers);
+        		
             }
     	});   
        
