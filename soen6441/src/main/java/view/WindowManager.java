@@ -22,7 +22,7 @@ public class WindowManager extends Application {
 	
     static WelcomeView welcomeView  = null;
     static MapEditorView mapEditorView = null;
-    public static IView phaseView = null;
+    public static PhaseView phaseView = null;
     
     
     static RWMapFileController rwMapFileController;
@@ -44,6 +44,7 @@ public class WindowManager extends Application {
         	@Override
             public void handle(ActionEvent event){
         		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
+        		phaseView.setNumberOfPlayers(numberOfPlayers);
         		window.setScene(phaseView.getView());
         		gameController.startGame(numberOfPlayers);
         		
@@ -78,7 +79,7 @@ public class WindowManager extends Application {
 		
 		switch(typeOfView){
 			case "phaseview":
-				phaseView = view;
+				phaseView = (PhaseView)view;
 				break;
 			default:
 				break;

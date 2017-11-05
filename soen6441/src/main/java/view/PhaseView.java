@@ -3,11 +3,14 @@
  */
 package view;
 
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 import model.Player;
 import model.Territory;
 
@@ -17,16 +20,28 @@ import model.Territory;
  */
 public class PhaseView implements IView,Observer{
 
-	Label label;
+	HashMap<String,TextArea> playersViews= new HashMap();
+	int numberOfPlayers;
 	
 	/** 
 	 * @return {@link Scene} which contains UI elements 
 	 */
 	@Override
 	public Scene getView() {		
-		label = new Label("Player one");
-		label.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
-		Scene scene = new Scene(label);
+		HBox hbox = new HBox();
+		hbox.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
+	    for(int i=1;i<numberOfPlayers;i++){
+	    	TextArea tmp = new TextArea();
+	    	tmp.setStyle( 
+					"-fx-border-style: solid inside;" + 
+							"-fx-border-width: 0 1 0 0;" +  
+					"-fx-border-color: black;");
+			tmp.setStyle("-fx-padding:10");
+	    	hbox.getChildren().add(tmp);
+	    	playersViews.put("Player "+i, tmp);
+	    }
+	    
+		Scene scene = new Scene(hbox);
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
 	}
@@ -38,7 +53,16 @@ public class PhaseView implements IView,Observer{
 	 */
 	@Override
 	public void update(Observable model, Object object) {
-		label.setText(((Territory)object).getContinentName());
+		
+	}
+	
+	
+	/**
+	 * Sets number Of players
+	 * @param new_numberofPlayers
+	 */
+	public void setNumberOfPlayers(int new_numberofPlayers){
+		this.numberOfPlayers = new_numberofPlayers;
 	}
 	
 }
