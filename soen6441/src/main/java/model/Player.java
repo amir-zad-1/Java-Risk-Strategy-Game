@@ -188,7 +188,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
-        sendNotification("Placed Armies", territory);
+        sendNotification("Player", this);
         LoggerController.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
         LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );

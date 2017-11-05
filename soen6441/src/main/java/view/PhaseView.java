@@ -30,7 +30,7 @@ public class PhaseView implements IView,Observer{
 	public Scene getView() {		
 		HBox hbox = new HBox();
 		hbox.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
-	    for(int i=1;i<numberOfPlayers;i++){
+	    for(int i=1;i<=numberOfPlayers;i++){
 	    	TextArea tmp = new TextArea();
 	    	tmp.setStyle( 
 					"-fx-border-style: solid inside;" + 
@@ -54,6 +54,14 @@ public class PhaseView implements IView,Observer{
 	@Override
 	public void update(Observable model, Object object) {
 		
+	   if(object == null){
+		   
+	   }
+		else if(object instanceof Player){
+			Player tmp = (Player) object;
+			System.err.println();
+			playersViews.get(tmp.getName()).setText(tmp.getState());
+		}
 	}
 	
 	
