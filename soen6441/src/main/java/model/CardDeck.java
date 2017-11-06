@@ -1,5 +1,6 @@
 package model;
 
+import model.contract.IPlayer;
 import util.Helpers;
 
 import java.util.ArrayList;
@@ -79,6 +80,13 @@ public class CardDeck
     public Card pickCard(){
         int cardIndex = Helpers.getRandomInt(this.cards.size()-1, 0);
         return this.cards.get(cardIndex);
+    }
+
+    public Card grantCard(IPlayer p)
+    {
+        Card result = this.pickCard();
+        p.addCard(result);
+        return result;
     }
 
 }

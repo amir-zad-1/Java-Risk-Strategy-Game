@@ -1,6 +1,7 @@
 package model.contract;
 
 import model.AttackPlan;
+import model.Card;
 import model.GameManager;
 import util.ActionResponse;
 
@@ -53,4 +54,6 @@ public interface IPlayer extends Comparable<IPlayer> {
     void setStrategy(IStrategy strategy);
     void setStatus(boolean status);
     boolean getStatus();
+    void addCard(Card crd);
+    void removeCard(Card crd);
 }

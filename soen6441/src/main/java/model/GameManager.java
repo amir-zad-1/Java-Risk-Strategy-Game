@@ -32,7 +32,7 @@ public class GameManager extends Model {
     private int strategyTurn = -1;
     ArrayList<IStrategy> strategies = new ArrayList<>();
 
-    private CardDeck cardDeck = new CardDeck();
+    public CardDeck cardDeck = new CardDeck();
 
     private boolean isGameOn=false;
 
@@ -353,10 +353,6 @@ public class GameManager extends Model {
                 result = tmp;
         }
 
-//        if(this.turn == this.numberOfPlayers-1)
-//            turn = -1;
-//        turn++;
-//        return this.playerlist.get(turn);
         return result;
 
     }
@@ -424,7 +420,7 @@ public class GameManager extends Model {
     {
         IPlayer winner = null;
         this.domitantionResult(false,0);
-        if(this.playerlist.get(0).getDomination()>40.0)
+        if(this.playerlist.get(0).getDomination()>95.0)
         {
             winner = this.playerlist.get(0);
         }

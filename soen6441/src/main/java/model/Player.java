@@ -66,11 +66,19 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         this.name = newName;
     }
 
+    /**
+     * get how many percent of the world is controlled by the player
+     * @return percentage
+     */
     @Override
     public double getDomination() {
         return this.domination;
     }
 
+    /**
+     * set how many percent of the world is controlled by the player
+     * @param value
+     */
     @Override
     public void setDomination(double value) {
         this.domination = value;
@@ -295,6 +303,10 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         return result;
     }
 
+    /**
+     * find a territory to attack
+     * @return territory to attack from and attack to
+     */
     @Override
     public AttackPlan getTerritoryToAttack() {
         AttackPlan result = null;
@@ -310,11 +322,20 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         return result;
     }
 
+    /**
+     * set the game manager for player
+     * @param gm game manager
+     */
     @Override
     public void setGameManager(GameManager gm) {
         this.gm = gm;
     }
 
+
+    /**
+     * set the game manager for player
+     * @return used game manager
+     */
     @Override
     public GameManager getGameManager() {
         return this.gm;
@@ -340,6 +361,9 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     }
 
 
+    /**
+     * simple attack
+     */
     public void attack()
     {
         this.attack(strategy.getAttackAttempts());
@@ -429,8 +453,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
                             LoggerController.log(attackFrom.getOwner().getState());
                             attackTo.getOwner().lostTerritory(attackTo);
                             attackFrom.getOwner().ownTerritory(attackTo);
-                            Card crd = this.gm.pickACard();
-                            this.cards.add(crd);
+                            Card crd = this.getGameManager().cardDeck.grantCard(this);
                             LoggerController.log(String.format("%s gets one card %s, %s", this.getName(),
                                     crd.getCardTerritoryName(), crd.getCardValue()));
                             LoggerController.log(attackFrom.getOwner().getState());
@@ -503,28 +526,60 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     }
 
 
+    /**
+     * implementation of Compareable
+     * @param o player to compare to
+     * @return if they are equal or not
+     */
     @Override
     public int compareTo(IPlayer o) {
         return (int)(this.getDomination() - o.getDomination());
     }
 
+    /**
+     * What strategy is being used.
+     * @return the strategy
+     */
     @Override
     public IStrategy getStrategy() {
         return this.strategy;
     }
 
+    /**
+     * set the strategy to play with
+     * @param strategy new strategy
+     */
     @Override
     public void setStrategy(IStrategy strategy) {
         this.strategy = strategy;
     }
 
+
+    /**
+     * set the if player is active or not
+     * @param status new status
+     */
     @Override
     public void setStatus(boolean status) {
         this.status = status;
     }
 
+    /**
+     * get the if player is active or not
+     * @return status
+     */
     @Override
     public boolean getStatus() {
         return this.status;
+    }
+
+    @Override
+    public void addCard(Card crd) {
+        this.cards.add(crd);
+    }
+
+    @Override
+    public void removeCard(Card crd) {
+        this.cards.remove(crd);
     }
 }
