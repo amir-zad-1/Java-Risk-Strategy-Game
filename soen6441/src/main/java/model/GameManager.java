@@ -461,8 +461,8 @@ public class GameManager extends Model {
     {
         IPlayer winner = null;
         this.domitantionResult(false,0);
-        if(this.playerlist.get(0).getDomination()>95.0)
-        //if(this.playerlist.get(0).getDomination()>45.0)
+        //if(this.playerlist.get(0).getDomination()>95.0)
+        if(this.playerlist.get(0).getDomination()>45.0)
         {
             winner = this.playerlist.get(0);
         }
