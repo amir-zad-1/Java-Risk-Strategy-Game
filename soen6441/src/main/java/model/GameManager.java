@@ -249,7 +249,6 @@ public class GameManager extends Model {
 
             p.placeArmy(randomArmy, playerRandomTerritory);
             i += randomArmy;
-
             LoggerController.log(p.getState());
         }
 
@@ -394,8 +393,12 @@ public class GameManager extends Model {
                 result = tmp;
         }
 
+        if(!getPhase().equals("Startup"))
+        	sendNotification("GameChange", result.getName()+": Phase started");
+        
+       
+        
         return result;
-
     }
 
     /**
@@ -412,7 +415,6 @@ public class GameManager extends Model {
     public String getPhase() { return this.currentPhase; }
     public void setPhase(String value) {
         this.currentPhase = value;
-        this.sendNotification(NotificationType.PhaseView, value);
     }
 
 
@@ -445,6 +447,8 @@ public class GameManager extends Model {
         		sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
+        sendNotification("DominationView", "DominationView: "+sb.toString());
+        
         if(verbos)
             sb.append("=====================");
 

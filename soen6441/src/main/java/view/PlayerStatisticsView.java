@@ -3,6 +3,9 @@
  */
 package view;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,7 +19,7 @@ import javafx.scene.text.Font;
  * Gives a player statistic view
  * @author SA
  */
-public class PlayerStatisticsView {
+public class PlayerStatisticsView{
 
 	
 	VBox playerBox = null;
@@ -31,20 +34,30 @@ public class PlayerStatisticsView {
 		this.playerBox = new VBox();
 		playerBox.setPadding(new Insets(5));
 		this.actorName = new Label();
-		actorName.setFont(new Font("Cambria", 32));
-		actorName.setTextFill(Color.web("#0076a3"));
-		actorName.setPadding(new Insets(10));
+		setFontColor(actorName, "#0076a3");
 		HBox profilepicContainer = new HBox(); 
 		Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
 		profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
 		this.currentContry = new Label();
 		this.countriesWon = new Label();
+		setFontColor(countriesWon, "#F44336");
 		this.playerBox.getChildren().add(profilepicContainer);
 		this.playerBox.getChildren().add(currentContry);
 		this.playerBox.getChildren().add(countriesWon);
 	}
 	
+	
+	
+	/**
+	 * @param label the label you want to color
+	 * @param color is a type of String example: "red" or "#333"
+	 */
+	public void setFontColor(Label label,String color){
+		label.setFont(new Font("Cambria", 18));
+		label.setTextFill(Color.web(color));
+		label.setPadding(new Insets(10));
+	}
 	
 	/**
 	 * @return the playerBox
@@ -94,5 +107,8 @@ public class PlayerStatisticsView {
 	public void setCountriesWon(Label countriesWon) {
 		this.countriesWon = countriesWon;
 	}
+
+
+	
 	
 }

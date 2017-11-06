@@ -43,8 +43,15 @@ public class StartGame {
 		 Notifier notifier = new Notifier();		 
 		 model.setNotifier(notifier);
 		 
+		 /**
+		  * Creates Domination View and make it Observer and give it to PhaseView 
+		  * which holds the DominationView 
+		 */
+		 DominationView dominationView = new DominationView();
+		 notifier.addObserver(dominationView);
+		 
 		 //Creates phaseView make it Observer
-		 PhaseView phaseView = new PhaseView();
+		 PhaseView phaseView = new PhaseView(dominationView);
 		 notifier.addObserver(phaseView);
 		 
 		 GameController gameController = new GameController();
