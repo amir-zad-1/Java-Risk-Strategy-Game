@@ -77,7 +77,7 @@ public class CardDeck
      * pick a card from a deck of cards
      * @return card
      */
-    public Card pickCard(){
+    private Card pickCard(){
         int cardIndex = Helpers.getRandomInt(this.cards.size()-1, 0);
         return this.cards.get(cardIndex);
     }
@@ -88,5 +88,14 @@ public class CardDeck
         p.addCard(result);
         return result;
     }
+
+    public void returnCard(Card c)
+    {
+        this.cards.add(c);
+    }
+
+
+
+
 
 }

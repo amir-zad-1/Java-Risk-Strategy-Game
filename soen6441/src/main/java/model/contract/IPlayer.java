@@ -54,6 +54,10 @@ public interface IPlayer extends Comparable<IPlayer> {
     void setStrategy(IStrategy strategy);
     void setStatus(boolean status);
     boolean getStatus();
+
     void addCard(Card crd);
-    void removeCard(Card crd);
+    ArrayList<Card> getCardSet();
+    int getTrades();
+    void increaseTrades();
+    int getCardsSize();
 }

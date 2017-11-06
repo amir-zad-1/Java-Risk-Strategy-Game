@@ -35,6 +35,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     private ArrayList<Card> cards = new ArrayList<>();
     IStrategy strategy;
     private boolean status = true;
+    private int trades = 1;
 
     /**
      * Constructor
@@ -580,7 +581,35 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     }
 
     @Override
-    public void removeCard(Card crd) {
-        this.cards.remove(crd);
+    public ArrayList<Card> getCardSet() {
+        ArrayList<Card> result  = null;
+
+        if(this.cards.size()>=3)
+        {
+            result = new ArrayList<>();
+            for(int i=0; i<3; i++)
+                result.add(this.cards.get(i));
+
+            this.cards.removeAll(result);
+        }
+
+        return result;
+    }
+
+    @Override
+    public void increaseTrades()
+    {
+        this.trades++;
+    }
+
+    @Override
+    public int getCardsSize() {
+        return this.cards.size();
+    }
+
+    @Override
+    public int getTrades()
+    {
+        return this.trades;
     }
 }

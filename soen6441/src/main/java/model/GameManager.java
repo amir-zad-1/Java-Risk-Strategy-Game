@@ -185,7 +185,48 @@ public class GameManager extends Model {
         }
 
         //Step 3: card exchanging
-        //todo: which is not implemented.
+        if(p.getCardsSize() > 3)
+        {
+            int exchangeValue = 0;
+            ArrayList<Card> cards = p.getCardSet();
+            for(Card c : cards)
+                cardDeck.returnCard(c);
+            switch (p.getTrades())
+            {
+                case 1:
+                    exchangeValue = 4;
+                    p.increaseTrades();
+                    break;
+                case 2:
+                    exchangeValue = 6;
+                    p.increaseTrades();
+                    break;
+                case 3:
+                    exchangeValue = 8;
+                    p.increaseTrades();
+                    break;
+                case 4:
+                    exchangeValue = 10;
+                    p.increaseTrades();
+                    break;
+                case 5:
+                    exchangeValue = 12;
+                    p.increaseTrades();
+                    break;
+                case 6:
+                    exchangeValue = 15;
+                    p.increaseTrades();
+                    break;
+                default:
+                    exchangeValue = 15 + (p.getTrades() - 6) * 5;
+                    p.increaseTrades();
+                    break;
+            }
+
+            LoggerController.log(String.format("%s received %s armies via card exchange", p.getName(), exchangeValue));
+            result += exchangeValue;
+
+        }
 
         return result;
     }
@@ -420,6 +461,7 @@ public class GameManager extends Model {
         IPlayer winner = null;
         this.domitantionResult(false,0);
         if(this.playerlist.get(0).getDomination()>95.0)
+        //if(this.playerlist.get(0).getDomination()>45.0)
         {
             winner = this.playerlist.get(0);
         }
@@ -442,13 +484,6 @@ public class GameManager extends Model {
 
     }
 
-    /**
-     * pick a card from the deck of cards
-     * @return card object
-     */
-    public Card pickACard()
-    {
-        return cardDeck.pickCard();
-    }
+
 
 }
