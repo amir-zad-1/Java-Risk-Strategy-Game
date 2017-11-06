@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -31,6 +32,9 @@ public class DominationView implements Observer{
 	public Label getView() {
 		dominationLabel = new Label("Domination View");
 		
+        dominationLabel.setAlignment(Pos.CENTER_RIGHT);
+
+		
 		//set text color
 		dominationLabel.setFont(new Font("Cambria", 13));
 		dominationLabel.setTextFill(Color.web("#E91E63"));
@@ -50,7 +54,7 @@ public class DominationView implements Observer{
 		if(object instanceof String){
 			String updatedText = (String)object;
 			if(updatedText.split(":")[0].equals("DominationView")){
-				dominationLabel.setText(updatedText);
+				dominationLabel.setText(updatedText.split(":")[1]);
 			}
 		}
 	}

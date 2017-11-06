@@ -398,6 +398,8 @@ public class GameManager extends Model {
         		sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
+        sendNotification("DominationView", "DominationView: "+sb.toString());
+        
         if(verbos)
             sb.append("=====================");
 

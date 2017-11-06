@@ -15,6 +15,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.Player;
@@ -48,19 +50,16 @@ public class PhaseView implements IView,Observer{
 		phase = new Label();
 		phase.setTextFill(Color.GREEN);
 		phase.setPadding(new Insets(5,5,5,5));
-		HBox hbox = new HBox();
+		
+		BorderPane hbox = new BorderPane();
 		Label label = new Label("Phase:");
 		label.setPadding(new Insets(5,5,5,5));
 		label.setTextFill(Color.RED);
-		hbox.getChildren().add(label);
-		hbox.getChildren().add(phase);
-		hbox.getChildren().add(dominationView.getView());
-		ToolBar header = new ToolBar(hbox);
-		header.setStyle( 
-				"-fx-border-style: solid inside;" + 
-						"-fx-border-width: 0 0 1 0;" +  
-				"-fx-border-color: black;");
-		borderPane.setTop(header);
+		hbox.setPadding(new Insets(10,5,0,0));
+		hbox.setLeft(new HBox(label, phase));
+		hbox.setRight(dominationView.getView());
+		
+		borderPane.setTop(hbox);
 
 		HBox playerHbox = new HBox();
 		hbox.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
