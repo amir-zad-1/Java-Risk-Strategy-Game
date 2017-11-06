@@ -122,10 +122,14 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
      */
     @Override
     public ActionResponse ownTerritory(ITerritory territory) {
-        territory.setOwner(this);
+    	if(territory.getOwner() != null){
+    	sendNotification("GameChange", territory.getOwner().getName()+ ": lost "+ territory.getName()+" because of "+this.getName());
+    	}
+    	territory.setOwner(this);
         this.placeArmy(1, territory);
         this.territories.add(territory);
         sendNotification("GameChange", this.getName()+ ": own "+ territory.getName());
+        
         return new ActionResponse(true, String.format("%s owns %s", this.getName(),territory.getName()) );
     }
 
@@ -136,7 +140,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
      */
     @Override
     public ActionResponse lostTerritory(ITerritory territory) {
-        this.territories.remove(territory);
+    	this.territories.remove(territory);
         return new ActionResponse(true, String.format("%s lost %s", this.getName(),territory.getName()) );
     }
 
@@ -189,7 +193,10 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
         territory.placeArmies(count);
-        sendNotification("GameChange", this.getName()+ ": placed " + Integer.toString(count)+" armies into " + territory.getName());
+        
+        if(!this.gm.getPhase().equals("Startup")){
+        	sendNotification("GameChange", this.getName()+ ": placed " + Integer.toString(count)+" armies into " + territory.getName());
+        }
         LoggerController.log(this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName());
         LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()) );
@@ -370,7 +377,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
             ITerritory attackFrom = ap.from;
             ITerritory attackTo = ap.to;
-            sendNotification("GameChnage", this.getName()+": Attacked from "+attackFrom.getName()+" to "+attackTo.getName());
+            sendNotification("GameChange", this.getName()+": Attacked from "+attackFrom.getName()+" to "+attackTo.getName());
             
             // Step 2: Number of armies(Dices) for the battle
             int diceAttack = Helpers.getRandomInt(3,1);
@@ -420,10 +427,14 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
                     {
                         // Attacker wins
                         LoggerController.log(attackTo.getOwner().getState());
+
+                        sendNotification("GameChange", attackTo.getOwner().getName()+": Killed one Of Armies of "+attackFrom.getOwner().getName()+" in "+attackTo.getName()+" as I won the dice");
+                        
                         Logger.log(String.format("1 of the armies in %s(Defender) was killed.", attackTo.getName()));
                         attackTo.killArmies(1);
                         LoggerController.log(attackTo.getOwner().getState());
-
+                        
+                        
                         // checking for occupying the territory
                         if(attackTo.getArmies()==0)
                         {
@@ -443,6 +454,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
                     {
                         // Defender wins
                         LoggerController.log(attackFrom.getOwner().getState());
+                        sendNotification("GameChange", attackFrom.getOwner().getName()+": Killed one Of Armies of "+attackTo.getOwner().getName()+" in "+attackFrom.getName()+" as I won the dice");
                         Logger.log(String.format("1 of the armies in %s(Attacker) was killed.",attackFrom.getName()));
                         attackFrom.killArmies(1);
                         LoggerController.log(attackFrom.getOwner().getState());
@@ -467,7 +479,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
             }
             else
             {
-                Logger.log(String.format("Attacking %s from %s with %s armies canceled. %s -> %s", attackTo.getName(),
+            	Logger.log(String.format("Attacking %s from %s with %s armies canceled. %s -> %s", attackTo.getName(),
                         attackFrom.getName(), diceAttack, attackFrom.getArmies() , attackTo.getArmies()));
             }
 
@@ -504,6 +516,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
 
         LoggerController.log(String.format("============%s FORTIFICATION DONE===========", this.getName()));
+        sendNotification("GameChange", this.getName()+": Done his fortification");
     }
 
 

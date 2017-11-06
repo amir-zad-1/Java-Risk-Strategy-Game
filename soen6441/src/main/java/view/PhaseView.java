@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
+import bootstrap.DominationView;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -24,10 +25,19 @@ import model.Player;
  */
 public class PhaseView implements IView,Observer{
 
-	HashMap<String,TextArea> playersViews= new HashMap();
-	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap();
+	HashMap<String,TextArea> playersViews= new HashMap<String,TextArea>();
+	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
+	DominationView dominationView = null;
 	Label phase;
 	int numberOfPlayers;
+	
+	
+	/**
+	 * Constructor that initializes the {@link DominationView} 
+	 */
+	public PhaseView(DominationView new_dominationView) {
+		this.dominationView = new_dominationView;
+	}
 	
 	/** 
 	 * @return {@link Scene} which contains UI elements 
@@ -44,6 +54,7 @@ public class PhaseView implements IView,Observer{
 		label.setTextFill(Color.RED);
 		hbox.getChildren().add(label);
 		hbox.getChildren().add(phase);
+		hbox.getChildren().add(dominationView.getView());
 		ToolBar header = new ToolBar(hbox);
 		header.setStyle( 
 				"-fx-border-style: solid inside;" + 
@@ -90,6 +101,7 @@ public class PhaseView implements IView,Observer{
 		
 	   if(object instanceof String){
 		   String sentString = (String)object;
+		   System.err.println("String "+sentString);
 		   String string = sentString.split(":")[0];
 		if ("PhaseChange".equals(string)) {
 			phase.setText(sentString.split(":")[1]);

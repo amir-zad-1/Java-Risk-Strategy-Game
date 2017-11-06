@@ -341,10 +341,13 @@ public class GameManager extends Model {
         }
 
 
-
         if(this.turn == this.numberOfPlayers-1)
             turn = -1;
         turn++;
+        
+        if(!getPhase().equals("Startup"))
+        	sendNotification("GameChange", this.playerlist.get(turn).getName()+": Phase started");
+        
         return this.playerlist.get(turn);
 
     }
@@ -363,7 +366,6 @@ public class GameManager extends Model {
     public String getPhase() { return this.currentPhase; }
     public void setPhase(String value) {
         this.currentPhase = value;
-        this.sendNotification(NotificationType.PhaseView, value);
     }
 
 
