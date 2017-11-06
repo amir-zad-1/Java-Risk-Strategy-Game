@@ -83,8 +83,10 @@ public class GameManager extends Model {
     {
         this.setPhase("Startup");
         this.initGame();
+        sendNotification("GamePlay", playerlist);
         this.isGameOn = true;
         this.setPhase("GamePlay");
+        sendNotification("PhaseChange", "PhaseChange:Game Play");
         this.play();
     }
 
@@ -128,14 +130,11 @@ public class GameManager extends Model {
         {
             LoggerController.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
-
-            this.sendNotification(NotificationType.PlayerActivity,String.format("%s Reinforcement", p.getName()));
+            
             p.reinforcement();
-
-            this.sendNotification(NotificationType.PlayerActivity,String.format("%s Attack", p.getName()));
+            
             p.attack();
 
-            this.sendNotification(NotificationType.PlayerActivity, String.format("%s Fortification", p.getName()));
             p.fortification();
 
             IPlayer winner = getWinner();
@@ -400,8 +399,8 @@ public class GameManager extends Model {
         Collections.reverse(this.playerlist);
 
         if(verbos) {
-        for(IPlayer p:this.playerlist)
-            sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
+        	for(IPlayer p:this.playerlist)
+        		sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
         if(verbos)
