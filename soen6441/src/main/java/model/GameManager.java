@@ -223,7 +223,8 @@ public class GameManager extends Model {
                     break;
             }
 
-            LoggerController.log(String.format("%s received %s armies via card exchange", p.getName(), exchangeValue));
+            LoggerController.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
+                    exchangeValue, p.getTrades()));
             result += exchangeValue;
 
         }
