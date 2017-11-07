@@ -100,7 +100,6 @@ public class PhaseView implements IView,Observer{
 		
 	   if(object instanceof String){
 		   String sentString = (String)object;
-		   System.err.println("String "+sentString);
 		   String string = sentString.split(":")[0];
 		if ("PhaseChange".equals(string)) {
 			phase.setText(sentString.split(":")[1]);
