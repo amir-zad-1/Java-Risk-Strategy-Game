@@ -532,7 +532,7 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
         ITerritory from = this.getRandomTerritory();
         ITerritory to;
 
-        ArrayList<ITerritory> neighbours = from.getAdjacentTerritoryObjects();
+        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
         if(neighbours.size()>0)
             to = neighbours.get(0);
         else

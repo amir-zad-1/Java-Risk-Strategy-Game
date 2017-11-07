@@ -253,7 +253,6 @@ public class Territory extends Model implements ITerritory {
 				result.add(t);
 		}
 
-
 		return result;
 	}
 
