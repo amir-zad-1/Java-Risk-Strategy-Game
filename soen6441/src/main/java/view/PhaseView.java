@@ -98,8 +98,11 @@ public class PhaseView implements IView,Observer{
            	if(type.equals("PhaseChange")){
            		Player tmp = (Player) object;
     			playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
-           	}else if(type.split(":")[0].equals("GameChange")){
+           	}else if(type.split(":")[0].equals("GameChange") || type.split(":")[0].equals("PhaseChange")){
            		phase.setText(type.split(":")[1]);
+           	}else if(model instanceof Player){
+           		Player tmp = (Player) model;
+           		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
            	}
 
 	}

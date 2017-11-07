@@ -8,6 +8,7 @@ import java.util.Observer;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -25,7 +26,7 @@ public class PlayerStatisticsView{
 	VBox playerBox = null;
 	Label actorName = null;
 	Label currentContry = null;
-	Label countriesWon = null;
+	TextArea countriesWon = null;
 	
 	/**
 	 * 
@@ -40,8 +41,8 @@ public class PlayerStatisticsView{
 		profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
 		this.currentContry = new Label();
-		this.countriesWon = new Label();
-		setFontColor(countriesWon, "#F44336");
+		this.countriesWon = new TextArea();
+		//setFontColor(countriesWon, "#F44336");
 		this.playerBox.getChildren().add(profilepicContainer);
 		this.playerBox.getChildren().add(currentContry);
 		this.playerBox.getChildren().add(countriesWon);
@@ -98,14 +99,14 @@ public class PlayerStatisticsView{
 	/**
 	 * @return the countriesWon
 	 */
-	public Label getCountriesWon() {
+	public TextArea getCountriesWon() {
 		return countriesWon;
 	}
 	/**
 	 * @param countriesWon the countriesWon to set
 	 */
 	public void setCountriesWon(String countriesWon) {
-		this.countriesWon.setText(countriesWon);
+		this.countriesWon.appendText(countriesWon);
 	}
 
 
