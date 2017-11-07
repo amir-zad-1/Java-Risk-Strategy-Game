@@ -12,13 +12,12 @@ import java.util.Set;
 
 import controller.LoggerController;
 
-public class Territory extends Model implements ITerritory {
+public class Territory  implements ITerritory {
     private String continentName;
 	private String territoryName;
 	private String coordinates;
     private ArrayList<String> adjacentTerritories = new ArrayList<String>();    
     private int numberOfArmies;
-    private Notifier notifier;
     private String currentPlayer;
 	
     public Territory(String n_continentName, String n_territoryName,String n_coordinates, ArrayList<String> n_adjacentTerritories) {

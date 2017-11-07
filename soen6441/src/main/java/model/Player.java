@@ -15,6 +15,7 @@ import view.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
 
 /**
  * This is player class
@@ -22,7 +23,7 @@ import java.util.Collections;
  * @author Amir
  * @version 0.1.0
  */
-public class Player extends Model implements IPlayer, Comparable<IPlayer> {
+public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
 
 
     private String name;
@@ -50,6 +51,14 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     }
 
     /**
+	 * @param string
+	 */
+	public Player(String playerName) {
+		this.name = playerName;
+		this.territories = new ArrayList<>();
+	}
+
+	/**
      *
      * @return player name
      */
@@ -66,6 +75,8 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
     public void setName(String newName){
         this.name = newName;
     }
+    
+   
 
     /**
      * get how many percent of the world is controlled by the player
@@ -548,6 +559,26 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
 
     /**
+	 * @param string
+	 * @param string2
+	 */
+	private void sendNotification(String type, Object object) {
+		
+			notifyListners(type,object);
+		
+		
+	}
+
+	/**
+	 * @param type
+	 * @param string
+	 */
+	private void notifyListners(String type, Object object) {		
+		setChanged();
+		notifyObservers(object);	
+	}
+
+	/**
      * implementation of Compareable
      * @param o player to compare to
      * @return if they are equal or not

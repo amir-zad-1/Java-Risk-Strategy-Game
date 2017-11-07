@@ -11,6 +11,14 @@ import util.expetion.InvalidNumOfPlayersException;
  */
 public class GameController {	
 
+	GameManager gameManager = null;
+	
+	/**
+	 * 
+	 */
+	public GameController(GameManager new_gameManager) {
+		gameManager = new_gameManager;
+	}
 	
 	/**
 	 * Initializes the Game Manager with number of players
@@ -18,15 +26,16 @@ public class GameController {
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
 	public void startGame(int numberOfPlayers) {
-		 try
-         {
-             new GameManager(numberOfPlayers).start();
-         }
-         catch (InvalidNumOfPlayersException e)
-         {
-            e.printStackTrace();
-         }
 		
-	}
+			try {
+				gameManager.startGame(numberOfPlayers);
+				//new GameManager(numberOfPlayers).start();
+			} catch (InvalidNumOfPlayersException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	
+	}
+
+
 }
