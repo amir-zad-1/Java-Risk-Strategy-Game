@@ -110,12 +110,13 @@ public class GameManager extends Observable {
      */
     public void start() throws InvalidNumOfPlayersException
     {
-        this.setPhase("Startup");
+    	sendNotification("GameChange: StartUp");
+    	this.setPhase("Startup");
         this.initGame();
         
         this.isGameOn = true;
         this.setPhase("GamePlay");
-        //sendNotification("PhaseChange", "PhaseChange:Game Play");
+        sendNotification("GameChange: Game Play");
         this.play();
     }
 
@@ -323,16 +324,14 @@ public class GameManager extends Observable {
 
         if (this.numberOfPlayers > MAX_PLAYERS || this.numberOfPlayers < MIN_PLAYERS)
             throw new InvalidNumOfPlayersException();
-        System.out.println("size "+this.playerlist.size());
+  
 
         Color colorManager = new Color();
         for (int i=0; i<this.playerlist.size(); i++) {
-            IStrategy strategy = getRandomStrategy();
-            
+            IStrategy strategy = getRandomStrategy(); 
             playerlist.get(i).setStrategy(strategy);
             playerlist.get(i).setColor( colorManager.getRandomColor());
             playerlist.get(i).setGameManager(this);
-            //this.playerlist.add(p);
             LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
         }
         colorManager = null;
@@ -428,7 +427,7 @@ public class GameManager extends Observable {
         }
 
         if(!getPhase().equals("Startup"))
-        	sendNotification("GameChange", result.getName()+": Phase started");
+        	sendNotification("GameChange: "+result.getName()+" Turn started");
         
        
         
@@ -483,7 +482,7 @@ public class GameManager extends Observable {
         		sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
-        sendNotification("DominationView", "DominationView: "+sb.toString());
+        sendNotification("DominationView: "+sb.toString());
         
         if(verbos)
             sb.append("=====================");
@@ -543,28 +542,10 @@ public class GameManager extends Observable {
 		 * @param string
 		 * @param string2
 		 */
-		private void sendNotification(String type, Object object) {
-			if(type.equals("GamePlay")){
-				ArrayList<IPlayer> players = (ArrayList)object;			
-				notifyListners(type,"PhaseChange:Set Up");			
-				for(IPlayer player: players){
-			           notifyListners(type,player);
-				}
-			}else if(type.equals("PhaseChange")){
-				notifyListners(type,object);
-			}		
-			else{
-				notifyListners(type,object);
-			}
-			
+		private void sendNotification(String type) {
+			setChanged();
+			notifyObservers(type);				
 		}
 
-		/**
-		 * @param type
-		 * @param string
-		 */
-		private void notifyListners(String type, Object object) {		
-			setChanged();
-			notifyObservers(object);	
-		}
+	
 }

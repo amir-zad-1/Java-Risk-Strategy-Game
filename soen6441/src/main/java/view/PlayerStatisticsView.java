@@ -104,8 +104,8 @@ public class PlayerStatisticsView{
 	/**
 	 * @param countriesWon the countriesWon to set
 	 */
-	public void setCountriesWon(Label countriesWon) {
-		this.countriesWon = countriesWon;
+	public void setCountriesWon(String countriesWon) {
+		this.countriesWon.setText(countriesWon);
 	}
 
 
