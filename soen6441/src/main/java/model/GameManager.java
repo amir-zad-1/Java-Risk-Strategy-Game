@@ -144,7 +144,7 @@ public class GameManager extends Model {
             }
 
             i++;
-            if (winner!= null)
+            if (winner!= null ) //|| i == 3)
                 this.isGameOn=false;
         }
 
@@ -469,7 +469,7 @@ public class GameManager extends Model {
         this.domitantionResult(false,0);
 
         for(IPlayer p : this.playerlist)
-            //if(p.getDomination()>90.0)
+            //if(p.getDomination()>85.0)
             if(p.getDomination()>45.0)
             {
                 winner = p;
