@@ -10,7 +10,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.Territory;
 
  
 /**
@@ -37,7 +36,8 @@ public class WindowManager extends Application {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     @Override
-    public void start(final Stage window) {    
+    public void start(final Stage window) {
+    	
     	window.setTitle("Game");
     	
     	mapEditorView = new MapEditorView(readController,writeController);

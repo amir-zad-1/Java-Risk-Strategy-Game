@@ -20,7 +20,7 @@ import view.WindowManager;
  * This class starts the game
  * And gives connection between View, Controller and Model Objects.
  */
-public class StartGame {
+public class StartGameDriver {
 
 	/** 
 	 * <li>Step 0: Initialize the controllers</li>
@@ -61,7 +61,7 @@ public class StartGame {
 		 WindowManager.addCallBack(new CallBack(){
 			    public void called(int numberOfPlayers){
 			    	System.out.println(numberOfPlayers);
-			    	for(int i=0;i<numberOfPlayers;i++){
+			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
 			    		p.addObserver(dominationView);
 			    		p.addObserver(phaseView);
@@ -70,6 +70,11 @@ public class StartGame {
 			    	
 			    }
 		 });
+		 
+		 
+		 gameManager.addObserver(dominationView);
+		 gameManager.addObserver(phaseView);
+		 
 		 javafx.application.Application.launch(WindowManager.class);
 	}
 
