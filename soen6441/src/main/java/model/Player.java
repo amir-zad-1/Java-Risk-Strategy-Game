@@ -403,7 +403,9 @@ public class Player extends Model implements IPlayer, Comparable<IPlayer> {
 
             ITerritory attackFrom = ap.from;
             ITerritory attackTo = ap.to;
-            sendNotification("GameChange", this.getName()+": Attacked from "+attackFrom.getName()+" to "+attackTo.getName());
+            
+            //Notify the attack to View 
+            sendNotification("GameChange", this.getName()+": Attacked from "+attackFrom.getName()+" to "+attackTo.getName()+"("+attackTo.getOwner().getName()+")");
             
             // Step 2: Number of armies(Dices) for the battle
             int diceAttack = Helpers.getRandomInt(3,1);
