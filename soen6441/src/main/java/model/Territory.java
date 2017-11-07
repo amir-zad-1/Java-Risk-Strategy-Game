@@ -242,5 +242,18 @@ public class Territory extends Model implements ITerritory {
 		}
 		return adjacentTerritoriesObjects;		
 	}
-   
+
+	@Override
+	public ArrayList<ITerritory> getAdjacentNeighbours() {
+		ArrayList<ITerritory> result = new ArrayList<>();
+
+		for(ITerritory t: this.getAdjacentTerritoryObjects())
+		{
+			if (t.getOwner() == this.getOwner())
+				result.add(t);
+		}
+
+		return result;
+	}
+
 }

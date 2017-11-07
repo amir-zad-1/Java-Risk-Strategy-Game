@@ -16,5 +16,6 @@ public interface ITerritory {
     ActionResponse killArmies(int count);
     boolean hasAdjacencyWith(ITerritory t);
     ArrayList<ITerritory> getAdjacentTerritoryObjects();
+    ArrayList<ITerritory> getAdjacentNeighbours();
 
 }
