@@ -26,21 +26,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="474" column="26" lean-forward="false" selection-start-line="474" selection-start-column="26" selection-end-line="474" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="12">
               <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Color.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/scene/paint/Color.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1386">
-              <caret line="106" column="19" lean-forward="false" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -116,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Territory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Territory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Territory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="255" column="0" lean-forward="false" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
+            <state relative-caret-position="429">
+              <caret line="252" column="30" lean-forward="false" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
               <folding>
                 <element signature="e#3879#3880#0" expanded="true" />
                 <element signature="e#3921#3922#0" expanded="true" />
@@ -154,12 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Atta</find>
-      <find>initG</find>
-      <find>atta</find>
-      <find>8</find>
-      <find>play()</find>
-      <find>nextPla</find>
       <find>40</find>
       <find>sendNotification</find>
       <find>occu</find>
@@ -183,7 +179,13 @@
       <find>occ</find>
       <find>card</find>
       <find>exc</find>
+      <find>playi</find>
+      <find>TURN</find>
       <find>forti</find>
+      <find>addpla</find>
+      <find>domina</find>
+      <find>turn</find>
+      <find>4</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -232,10 +234,10 @@
         <option value="$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/CardDeck.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/PhaseView.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/ITerritory.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Territory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
       </list>
     </option>
   </component>
@@ -341,7 +343,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="SearchEverywhereHistoryKey" value="territ&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/Territory.java&#10;Log&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/controller/LoggerController.java&#10;atta&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/AttackPlan.java&#10;carDe&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/CardDeck.java&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/Player.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;IPL&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;norm&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Normal.java&#10;agg&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Map.java&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;terri&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Territory.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
+    <property name="SearchEverywhereHistoryKey" value="gameman&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;territ&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/Territory.java&#10;Log&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/controller/LoggerController.java&#10;atta&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/AttackPlan.java&#10;carDe&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/CardDeck.java&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/Player.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;IPL&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;norm&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Normal.java&#10;agg&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Map.java&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;terri&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/Territory.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -533,7 +535,7 @@
       <workItem from="1510060644765" duration="542000" />
       <workItem from="1510066144295" duration="361000" />
       <workItem from="1510080200400" duration="968000" />
-      <workItem from="1510085398061" duration="2825000" />
+      <workItem from="1510085398061" duration="5829000" />
     </task>
     <servers />
   </component>
@@ -570,7 +572,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112821000" />
+    <option name="totallyTimeSpent" value="115825000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -593,7 +595,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.487055" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.85275084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.85275084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -604,7 +606,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4579288" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4563107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -623,7 +625,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="45" />
+      <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -917,18 +919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="85" column="17" lean-forward="false" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11492#11493#0" expanded="true" />
-            <element signature="e#11533#11534#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/PhaseView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -1024,11 +1014,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Territory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="255" column="0" lean-forward="false" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
+        <state relative-caret-position="429">
+          <caret line="252" column="30" lean-forward="false" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
           <folding>
             <element signature="e#3879#3880#0" expanded="true" />
             <element signature="e#3921#3922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="474" column="26" lean-forward="false" selection-start-line="474" selection-start-column="26" selection-end-line="474" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

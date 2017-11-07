@@ -433,17 +433,19 @@ public class GameManager extends Model {
         for(IPlayer p:this.playerlist)
             total_territories+=p.getTerritories().size();
 
+        ArrayList<IPlayer> tmp = new ArrayList<>();
         for(IPlayer p:this.playerlist)
         {
             double control_percent = Math.round(((double) p.getTerritories().size() / (double) total_territories) * 100) ;
             p.setDomination(control_percent);
+            tmp.add(p);
         }
 
-        Collections.sort(this.playerlist);
-        Collections.reverse(this.playerlist);
+        Collections.sort(tmp);
+        Collections.reverse(tmp);
 
         if(verbos) {
-        	for(IPlayer p:this.playerlist)
+        	for(IPlayer p:tmp)
         		sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
@@ -465,11 +467,13 @@ public class GameManager extends Model {
     {
         IPlayer winner = null;
         this.domitantionResult(false,0);
-        //if(this.playerlist.get(0).getDomination()>95.0)
-        if(this.playerlist.get(0).getDomination()>45.0)
-        {
-            winner = this.playerlist.get(0);
-        }
+
+        for(IPlayer p : this.playerlist)
+            //if(this.playerlist.get(0).getDomination()>95.0)
+            if(p.getDomination()>45.0)
+            {
+                winner = p;
+            }
 
         return winner;
 
