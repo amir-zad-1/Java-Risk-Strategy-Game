@@ -10,7 +10,7 @@ import java.util.Observable;
 /**
  * Continent class
  */
-public class Continent extends Model implements IContinent {
+public class Continent  implements IContinent {
 
     private String name;
     private ArrayList<ITerritory> territories;

@@ -8,8 +8,9 @@ import controller.WriteController;
 
 import model.DataReader;
 import model.DataWriter;
-import model.Model;
-import model.Notifier;
+import model.GameManager;
+
+import model.Player;
 import view.DominationView;
 import view.PhaseView;
 import view.WindowManager;
@@ -38,25 +39,37 @@ public class StartGame {
 		 //Creates controller, which is responsible to redirect Write operations
 		 WriteController writeController = new WriteController(new DataWriter());
 		 
-		 //Create Notifier: A model class which sends updates to Views
-		 Model model = new Model();
-		 Notifier notifier = new Notifier();		 
-		 model.setNotifier(notifier);
+		 
+		 //Creates Game Manager and sends it to GameController
+		 GameManager gameManager = new GameManager();
+		 GameController gameController = new GameController(gameManager);
+		 
+	 
 		 
 		 //Creates Domination View and make it Observer
 		 DominationView dominationView = new DominationView();
-		 notifier.addObserver(dominationView);
+		 
 		 
 		 //Creates phaseView make it Observer
 		 PhaseView phaseView = new PhaseView(dominationView);
-		 notifier.addObserver(phaseView);
 		 
-		 GameController gameController = new GameController();
+		 
 		 
 		 //Sends all controllers to view manager, such that views can contact
 		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController);
 		 WindowManager.setView(phaseView,"phaseview");
-		 
+		 WindowManager.addCallBack(new CallBack(){
+			    public void called(int numberOfPlayers){
+			    	System.out.println(numberOfPlayers);
+			    	for(int i=0;i<numberOfPlayers;i++){
+			    		Player p = new Player("Player " + Integer.toString(i));
+			    		p.addObserver(dominationView);
+			    		p.addObserver(phaseView);
+			    		gameManager.addPlayer(p);
+			    	}
+			    	
+			    }
+		 });
 		 javafx.application.Application.launch(WindowManager.class);
 	}
 

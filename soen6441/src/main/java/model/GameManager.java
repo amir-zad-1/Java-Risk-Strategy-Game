@@ -21,7 +21,7 @@ import controller.LoggerController;
  * @author Amir
  * @version 0.1.0
  */
-public class GameManager extends Model {
+public class GameManager extends Observable {
 
     private static int MIN_PLAYERS = 2;
     private static int MAX_PLAYERS = 6;
@@ -42,6 +42,26 @@ public class GameManager extends Model {
 
 
     /**
+     * It sets the map and players field then
+     * calls initGame that to add Players then
+     * allocate default armies to each player then
+     * allocate countries randomly to players
+     * finally game is started
+     * @param players number of players
+     * @throws InvalidNumOfPlayersException be careful
+     */
+    public void startGame(int players) throws InvalidNumOfPlayersException {
+
+        this.numberOfPlayers = players;
+        this.map = new Map();
+        strategies.add(new Normal());
+        strategies.add(new Defensive());
+        strategies.add(new Aggressive());
+        start();
+    }
+
+    
+    /**
      * Class constructor.
      * It sets the map and players field then
      * calls initGame that to add Players then
@@ -60,6 +80,7 @@ public class GameManager extends Model {
         strategies.add(new Aggressive());
     }
 
+    
 
     /**
      * constructor
@@ -76,6 +97,14 @@ public class GameManager extends Model {
     }
 
     /**
+	 * Empty Constructor to intialize the Game
+	 */
+	public GameManager() {
+		
+	}
+
+
+	/**
      * Start the game
      * @throws InvalidNumOfPlayersException be careful
      */
@@ -83,10 +112,10 @@ public class GameManager extends Model {
     {
         this.setPhase("Startup");
         this.initGame();
-        sendNotification("GamePlay", playerlist);
+        
         this.isGameOn = true;
         this.setPhase("GamePlay");
-        sendNotification("PhaseChange", "PhaseChange:Game Play");
+        //sendNotification("PhaseChange", "PhaseChange:Game Play");
         this.play();
     }
 
@@ -102,7 +131,7 @@ public class GameManager extends Model {
     {
         //Step 1: Add players and give each them armies according to the rules
         LoggerController.log("====1. Adding Players====");
-        addPlayers();
+        initPlayers();
 
         //Step 2: Allocate initial armies according to the rules
         LoggerController.log("====2. Allocating Initial Armies====");
@@ -150,7 +179,7 @@ public class GameManager extends Model {
 
         String dominationView = this.domitantionResult(true, i);
         LoggerController.log(dominationView);
-        this.sendNotification(NotificationType.DominationView, dominationView);
+ 
         //LoggerController.log(this.getWinner().getName());
 
     }
@@ -290,21 +319,26 @@ public class GameManager extends Model {
      * it uses the number which is given while creating game instance.
      * @throws InvalidNumOfPlayersException be careful
      */
-    public void addPlayers() throws InvalidNumOfPlayersException {
+    public void initPlayers() throws InvalidNumOfPlayersException {
 
         if (this.numberOfPlayers > MAX_PLAYERS || this.numberOfPlayers < MIN_PLAYERS)
             throw new InvalidNumOfPlayersException();
-
+        System.out.println("size "+this.playerlist.size());
 
         Color colorManager = new Color();
-        for (int i=1; i<=this.numberOfPlayers; i++) {
+        for (int i=0; i<this.playerlist.size(); i++) {
             IStrategy strategy = getRandomStrategy();
-            IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
-            p.setGameManager(this);
-            this.playerlist.add(p);
-            LoggerController.log(p.toString() + " was added to the game.");
+            
+            playerlist.get(i).setStrategy(strategy);
+            playerlist.get(i).setColor( colorManager.getRandomColor());
+            playerlist.get(i).setGameManager(this);
+            //this.playerlist.add(p);
+            LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
         }
         colorManager = null;
+    	
+    	
+    	
     }
 
     /**
@@ -468,6 +502,7 @@ public class GameManager extends Model {
         IPlayer winner = null;
         this.domitantionResult(false,0);
 
+
         for(IPlayer p : this.playerlist)
             //if(p.getDomination()>90.0)
             if(p.getDomination()>45.0)
@@ -475,6 +510,7 @@ public class GameManager extends Model {
                 winner = p;
             }
 
+       
         return winner;
 
     }
@@ -494,5 +530,41 @@ public class GameManager extends Model {
     }
 
 
+	/**
+	 * @param p
+	 */
+	public void addPlayer(IPlayer p) {
+		this.playerlist.add(p);
+		
+	}
 
+
+	 /**
+		 * @param string
+		 * @param string2
+		 */
+		private void sendNotification(String type, Object object) {
+			if(type.equals("GamePlay")){
+				ArrayList<IPlayer> players = (ArrayList)object;			
+				notifyListners(type,"PhaseChange:Set Up");			
+				for(IPlayer player: players){
+			           notifyListners(type,player);
+				}
+			}else if(type.equals("PhaseChange")){
+				notifyListners(type,object);
+			}		
+			else{
+				notifyListners(type,object);
+			}
+			
+		}
+
+		/**
+		 * @param type
+		 * @param string
+		 */
+		private void notifyListners(String type, Object object) {		
+			setChanged();
+			notifyObservers(object);	
+		}
 }
