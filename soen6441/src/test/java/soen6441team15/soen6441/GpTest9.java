@@ -10,7 +10,7 @@ import util.expetion.InvalidNumOfPlayersException;
 
 
 /**
- * testing card exchange logic
+ * testing card exchange logic with different trades
  */
 public class GpTest9 {
 
@@ -30,6 +30,10 @@ public class GpTest9 {
 
     }
 
+    /**
+     * 1st trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test2() throws InvalidNumOfPlayersException {
         IMap m = new Map();
@@ -48,6 +52,10 @@ public class GpTest9 {
         Assert.assertEquals(4, exchangeValue);
     }
 
+    /**
+     * 2nd trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test3() throws InvalidNumOfPlayersException {
         IMap m = new Map();
@@ -74,6 +82,10 @@ public class GpTest9 {
 
     }
 
+    /**
+     * 3rd trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test4() throws InvalidNumOfPlayersException {
         IMap m = new Map();
@@ -107,6 +119,10 @@ public class GpTest9 {
 
     }
 
+    /**
+     * 4th trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test5() throws InvalidNumOfPlayersException {
         IMap m = new Map();
@@ -144,6 +160,10 @@ public class GpTest9 {
 
     }
 
+    /**
+     * 5th trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test6() throws InvalidNumOfPlayersException {
         IMap m = new Map();
@@ -187,6 +207,10 @@ public class GpTest9 {
 
     }
 
+    /**
+     * 6th trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test7() throws InvalidNumOfPlayersException {
         IMap m = new Map();
@@ -236,6 +260,10 @@ public class GpTest9 {
 
     }
 
+    /**
+     * 7th trade
+     * @throws InvalidNumOfPlayersException
+     */
     @Test()
     public void test8() throws InvalidNumOfPlayersException {
         IMap m = new Map();
