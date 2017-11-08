@@ -7,8 +7,6 @@ import util.LogMessageEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observable;
-import java.util.Set;
 
 import controller.LoggerController;
 
@@ -242,6 +240,9 @@ public class Territory  implements ITerritory {
 		return adjacentTerritoriesObjects;		
 	}
 
+	/**
+	 * @return {@link ArrayList} of adjacent {@link Territory}'s a player has won
+	 */
 	@Override
 	public ArrayList<ITerritory> getAdjacentNeighbours() {
 		ArrayList<ITerritory> result = new ArrayList<>();

@@ -10,7 +10,6 @@ import util.expetion.InvalidNumOfPlayersException;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Observable;
 
 import controller.LoggerController;
@@ -23,9 +22,17 @@ import controller.LoggerController;
  */
 public class GameManager extends Observable {
 
-    private static int MIN_PLAYERS = 2;
+    
+	/**
+	 * {@link #playerlist} points to the current turn of the player
+	 */
+	int playerCursor = 0;
+	
+    IPlayer temporarayPlyaerholder;
+    
+	private static int MIN_PLAYERS = 2;
     private static int MAX_PLAYERS = 6;
-
+    
     private int numberOfPlayers = 0;
     private int turn = -1;
 
@@ -83,9 +90,9 @@ public class GameManager extends Observable {
     
 
     /**
-     * constructor
-     * @param m selected map
-     * @param players number of players
+     * Constructor to inilitlize the game
+     * @param m is selected map
+     * @param players number of players that user choose
      */
     public GameManager(IMap m,int players) {
 
@@ -97,7 +104,7 @@ public class GameManager extends Observable {
     }
 
     /**
-	 * Empty Constructor to intialize the Game
+	 * Empty Constructor to initialize the GameManager in Driver class
 	 */
 	public GameManager() {
 		
@@ -116,12 +123,8 @@ public class GameManager extends Observable {
         sendStartupEnd();
         this.isGameOn = true;
         this.setPhase("GamePlay");
-        sendNotification("GameChange: StartUp face finished \n Game Play is about to start");
-
-        //this.play();
+        sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
         this.resetTurn();
-
-
     }
 
 
@@ -141,13 +144,12 @@ public class GameManager extends Observable {
     }
 
     /**
-	 * 
+	 * Notifies all the player object observers that startUp phase is completed
 	 */
 	private void sendStartupEnd() {
 		for(IPlayer p : playerlist){
 			p.sendNotify(p.getState());
-		}
-		
+		}		
 	}
 
 
@@ -179,35 +181,42 @@ public class GameManager extends Observable {
 
     }
 
-    int i = 0;
-    IPlayer p;
+    
+    /**
+     * This method moves the player to the next phase whenever it get called
+     * If a player finished his turn 3 phases then selects next player 
+     */
     public void takeNextTurn() {
-    	if(i ==0){
-    		p = nextPlayer();
-    	}else if(i == 1){
-    		p.reinforcement();
-    	}else if(i == 2){
-    		 p.attack();
-    	}else if(i == 3){
-    		p.fortification();
+    	if(playerCursor ==0){
+    		temporarayPlyaerholder = nextPlayer();
+    	}else if(playerCursor == 1){
+    		temporarayPlyaerholder.reinforcement();
+    	}else if(playerCursor == 2){
+    		 temporarayPlyaerholder.attack();
+    	}else if(playerCursor == 3){
+    		temporarayPlyaerholder.fortification();
     	}
     	
-    	i++; 
-    	if(i == 4){
-    		i = 0;
+    	playerCursor++; 
+    	if(playerCursor == 4){
+    		playerCursor = 0;
     	}
-    	this.domitantionRes();
+    	this.domitantionResult();
 	}
     
     
-    public void domitantionRes(){
-    	String s = "";
+    /**
+     * This method calculates the domination of each player and 
+     * sends it to the Observers
+     */
+    public void domitantionResult(){
+    	String tmp = "";
     	 for(IPlayer p:this.playerlist)
          {
              double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfArmiee) * 100) ;
-              s += "\n"+ p.getName()+"="+control_percent;
+              tmp += "\n"+ p.getName()+"="+control_percent;
          }
-    	 sendNotification("DominationView: "+s);
+    	 sendNotification("DominationView: "+tmp);
     }
     
     
@@ -244,8 +253,6 @@ public class GameManager extends Observable {
         String dominationView = this.domitantionResult(true, i);
         LoggerController.log(dominationView);
  
-        //LoggerController.log(this.getWinner().getName());
-
     }
 
 
@@ -274,53 +281,12 @@ public class GameManager extends Observable {
             }
 
             if (isKing)
-                result = c.getContinentValue();
+                result += c.getContinentValue();
         }
 
         //Step 3: card exchanging
-        if(p.getCardsSize() > 3)
-        {
-            int exchangeValue = 0;
-            ArrayList<Card> cards = p.getCardSet();
-            for(Card c : cards)
-                cardDeck.returnCard(c);
-            switch (p.getTrades())
-            {
-                case 1:
-                    exchangeValue = 4;
-                    p.increaseTrades();
-                    break;
-                case 2:
-                    exchangeValue = 6;
-                    p.increaseTrades();
-                    break;
-                case 3:
-                    exchangeValue = 8;
-                    p.increaseTrades();
-                    break;
-                case 4:
-                    exchangeValue = 10;
-                    p.increaseTrades();
-                    break;
-                case 5:
-                    exchangeValue = 12;
-                    p.increaseTrades();
-                    break;
-                case 6:
-                    exchangeValue = 15;
-                    p.increaseTrades();
-                    break;
-                default:
-                    exchangeValue = 15 + (p.getTrades() - 6) * 5;
-                    p.increaseTrades();
-                    break;
-            }
-
-            LoggerController.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
-                    exchangeValue, p.getTrades()));
-            result += exchangeValue;
-
-        }
+        result += exchangeCard(p);
+       
 
         return result;
     }
@@ -513,6 +479,54 @@ public class GameManager extends Observable {
         this.currentPhase = value;
     }
 
+    
+    public int exchangeCard(IPlayer p)
+    {
+        int exchangeValue = 0;
+
+        if(p.getCardsSize() > 3)
+        {
+            ArrayList<Card> cards = p.getCardSet();
+            for(Card c : cards)
+                cardDeck.returnCard(c);
+            switch (p.getTrades())
+            {
+                case 1:
+                    exchangeValue = 4;
+                    p.increaseTrades();
+                    break;
+                case 2:
+                    exchangeValue = 6;
+                    p.increaseTrades();
+                    break;
+                case 3:
+                    exchangeValue = 8;
+                    p.increaseTrades();
+                    break;
+                case 4:
+                    exchangeValue = 10;
+                    p.increaseTrades();
+                    break;
+                case 5:
+                    exchangeValue = 12;
+                    p.increaseTrades();
+                    break;
+                case 6:
+                    exchangeValue = 15;
+                    p.increaseTrades();
+                    break;
+                default:
+                    exchangeValue = 15 + (p.getTrades() - 6) * 5;
+                    p.increaseTrades();
+                    break;
+            }
+
+            LoggerController.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
+                    exchangeValue, p.getTrades()));
+        }
+        return exchangeValue;
+    }
+
 
     /**
      * Generate domination view string
@@ -591,22 +605,45 @@ public class GameManager extends Observable {
 
 
 	/**
-	 * @param p
+	 * Adds a player to the game
+	 * @param newPlayer is a {@link Player}
 	 */
-	public void addPlayer(IPlayer p) {
-		this.playerlist.add(p);
+	public void addPlayer(IPlayer newPlayer) {
+		this.playerlist.add(newPlayer);
 		
 	}
 
 
 	 /**
-		 * @param string
-		 * @param string2
-		 */
-		private void sendNotification(String type) {
-			setChanged();
-			notifyObservers(type);				
-		}
+     * return list of continents controlled by the player
+     * @param p player
+     * @return list of continents
+     */
+    public ArrayList<IContinent> ContinentControlledBy(IPlayer p)
+    {
+        ArrayList<IContinent> result = new ArrayList<>();
+        boolean isKing = true;
+        for(IContinent c: this.map.getContinents() )
+        {
+            for(ITerritory t : c.getTerritories())
+            {
+                if (t.getOwner() != p)
+                    isKing = false;
+            }
+            if (isKing)
+                result.add(c);
+        }
+        return result;
+}
+	
+	/**
+	 * This method notifies all Observer about the update
+	 * @param type is the type of notification
+	 */
+	private void sendNotification(String type) {
+		setChanged();
+		notifyObservers(type);				
+	}
 
 
 	

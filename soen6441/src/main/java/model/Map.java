@@ -3,7 +3,6 @@ package model;
 import model.contract.IContinent;
 import model.contract.IMap;
 
-
 import java.util.ArrayList;
 
 /**
@@ -16,7 +15,7 @@ public class Map implements IMap {
     private ArrayList<IContinent> continents = new ArrayList<>();
 
     /**
-     * Constructor
+     * Constructor that loads data for game play
      */
     public Map()
     {
@@ -25,8 +24,8 @@ public class Map implements IMap {
 
 
     /**
-     *
-     * @return strategies of continents in the map
+     * This methods returns all contiennts
+     * @return {@link ArrayList} of continents in the map
      */
     @Override
     public ArrayList<IContinent> getContinents() {
@@ -34,6 +33,9 @@ public class Map implements IMap {
     }
 
 
+    /**
+     * This method converts {@link MapDataBase#continents} into {@link #continents}
+     */
     private void loadData(){
     	this.continents = new ArrayList<>();
     	for(String continent: MapDataBase.continents.keySet()){

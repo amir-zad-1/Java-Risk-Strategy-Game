@@ -4,17 +4,26 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author SA
- *
+ * This class holds the all data related to the Map
+ * Whenever a .map file is read it is stored in this class memebers
  */
 public final class MapDataBase {
+	
+	/**
+	 * {@link #continents} contains all contents 
+	 * <tt>The fist key is Continent name</tt>
+	 * <tt>The second key is Country name</tt>
+	 */
 	public static HashMap<String, HashMap<String,Territory>> continents = new HashMap<String, HashMap<String,Territory>>();
+	
+	/**
+	 * {@link #continentValues} contains the values associated to contiennts
+	 */
 	public static HashMap<String, Integer> continentValues = new HashMap<String, Integer>();		
 
 
@@ -45,6 +54,9 @@ public final class MapDataBase {
 
 	
 	
+	/**
+	 * @return false is there is any dis-connectivity between to territories or continents 
+	 */
 	public static boolean isAnyDiconnectivity(){		
 		HashSet<String> allAdjacencies = new HashSet<>();
 		HashMap<String,String> waitingForConnection = new HashMap<>();
@@ -65,8 +77,7 @@ public final class MapDataBase {
 			
 				for(String s: tmp){
 					if(waitingForConnection.containsKey(s)){
-						String c = waitingForConnection.get(s);
-						
+						String c = waitingForConnection.get(s);						
 						if(MapDataBase.continents.get(c).get(s).getAdjacentTerritories().size() == 1){			
 								 if(MapDataBase.continents.get(c).get(territory).getAdjacentTerritories().size() == 1 ){
 									 if(!MapDataBase.continents.get(c).get(s).getAdjacentTerritories().get(0).equals(territory)){
@@ -74,8 +85,7 @@ public final class MapDataBase {
 									 }
 								 }else{
 									 waitingForConnection.remove(s);	
-								 }
-							
+								 }							
 						}else{
 							waitingForConnection.remove(s);	
 						}
@@ -87,7 +97,6 @@ public final class MapDataBase {
 			}
 			
 		}
-	
 		
 		if(waitingForConnection.size() != 0)
 			return false;

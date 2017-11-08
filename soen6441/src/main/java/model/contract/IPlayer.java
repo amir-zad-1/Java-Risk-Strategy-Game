@@ -8,6 +8,10 @@ import util.Color;
 
 import java.util.ArrayList;
 
+/**
+ * Enforces every Player object to has below functionality
+ * @author SA
+ */
 public interface IPlayer extends Comparable<IPlayer> {
 
     ActionResponse ownTerritory(ITerritory territory);

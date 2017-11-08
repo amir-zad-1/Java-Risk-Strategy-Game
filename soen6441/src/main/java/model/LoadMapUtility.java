@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * @author SA
- *
+ * This class priveds helper classes to convert .map file into {@link HashMap}
+ * @author mdazhar
  */
 public final class LoadMapUtility {
 
 	
 	/**
+	 * This method converts a continent declaration text line into a continent
 	 * @param line, is a text line from .map file
 	 * @return false if unable to split by '='
 	 */
@@ -28,12 +29,16 @@ public final class LoadMapUtility {
 	
 	
 	/**
-	 * Adds territory value to {@link MapDataBase}
-	 * @param line
+	 * Adds territory details to {@link MapDataBase}
+	 * @param line is the text line that describes about a territory
 	 * @return false if a territory belongs to an unknown continent
 	 */
-	public static boolean addTerritory(String line){			
+	public static boolean addTerritory(String line){		
+		
+		//As .map file has territory details comma separated 
 		String[] tmpArray = line.split(",");		
+		
+		//If country belongs to unknown continent return false
 		if(!MapDataBase.continentValues.containsKey(tmpArray[3].toLowerCase())){
 			return false;
 		}

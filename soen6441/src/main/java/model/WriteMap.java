@@ -15,9 +15,13 @@ import java.util.HashMap;
  */
 public class WriteMap {
 
+	/**
+	 * {@link #outputPath} is the file location where the .map has to be saved
+	 */
 	File outputPath;
 	
 	/**
+	 * Constructor that initializes the {@link #outputPath}
 	 * @param file takes file path of destination
 	 */
 	public WriteMap(File file){
@@ -26,6 +30,7 @@ public class WriteMap {
 	
 	
 	/**
+	 *  This method converts {@link MapDataBase#continents} to .map file
 	 *  write a new map at #outputPath from MapDataBase
 	 */
 	public void write(){		

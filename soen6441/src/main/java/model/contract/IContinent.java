@@ -2,6 +2,10 @@ package model.contract;
 
 import java.util.ArrayList;
 
+/**
+ * Enforces all the Continents should has below functionality
+ * @author SA
+ */
 public interface IContinent {
 
     ArrayList<ITerritory> getTerritories();

@@ -44,7 +44,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     private int trades = 1;
 
     /**
-     * Constructor
+     * Constructor that initlizes the player details
      * @param name  player name
      * @param color player color
      */
@@ -56,7 +56,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     }
 
     /**
-	 * @param string
+     * Constructor that initializes the player object with only his name
+	 * @param playerName is the name of the player
 	 */
 	public Player(String playerName) {
 		this.name = playerName;
@@ -64,8 +65,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
 	}
 
 	/**
-     *
-     * @return player name
+     * @return the player name
      */
     @Override
     public String getName(){
@@ -73,7 +73,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     }
 
     /**
-     *
+     *This method is used to set the player name 
      * @param newName new name for the  player
      */
     @Override
@@ -131,7 +131,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
 
     /**
      *
-     * @param color new color
+     * @param color is the new color for the player
      */
     public void setColor(Color color){ this.color = color; }
 
@@ -142,7 +142,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     public Color getColor() { return this.color; }
 
     /**
-     *Called a player owns a territory
+     * Called a player owns a territory
      * @param territory territory to be owned
      * @return if the operation was successful or not
      */
@@ -223,8 +223,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
 
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
-        territory.placeArmies(count);
-        
+        territory.placeArmies(count); 
         
         
         this.statusMessage = this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName();
@@ -293,7 +292,6 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     }
 
     /**
-     *
      * @return randomly selected territory
      */
     @Override
@@ -656,11 +654,17 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         return this.status;
     }
 
+    /**
+     * @param newCard is the card that this player got
+     */
     @Override
-    public void addCard(Card crd) {
-        this.cards.add(crd);
+    public void addCard(Card newCard) {
+        this.cards.add(newCard);
     }
 
+    /**
+     * Returns {@link ArrayList} of cards owned by this player
+     */
     @Override
     public ArrayList<Card> getCardSet() {
         ArrayList<Card> result  = null;
@@ -677,35 +681,47 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         return result;
     }
 
+   
+    /**
+     * return the number of cards this player has
+     */
+    @Override
+    public int getCardsSize() {
+        return this.cards.size();
+    }
+
+    
+    /**
+     * Notify the observers with this player status message
+     */
+    public void sendNotify(){
+    		setChanged();
+    		notifyObservers(this.statusMessage); 	
+    }
+    
+    
+    /**
+     * Notify the observers with passed message
+     * @param message is the message to be sent with notify
+     */
+    public void sendNotify(String message){    	
+    		setChanged();
+    		notifyObservers(message);
+  
+    }
+
+    
+    @Override
+    public int getTrades()
+    {
+        return this.trades;
+    }
+
+    
     @Override
     public void increaseTrades()
     {
         this.trades++;
     }
 
-    @Override
-    public int getCardsSize() {
-        return this.cards.size();
-    }
-
-    @Override
-    public int getTrades()
-    {
-        return this.trades;
-    }
-    
-    public void sendNotify(){
-    	
-    		setChanged();
-    		notifyObservers(this.statusMessage);
-    	
-    }
-    
-    
-    public void sendNotify(String message){
-    	
-    		setChanged();
-    		notifyObservers(message);
-  
-    }
 }

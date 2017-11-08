@@ -3,16 +3,28 @@ package model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * This class loads a .map file into a memory({@link HashMap}) representation  
+ * @author mdazhar
+ */
 public class LoadMap {
     
+	/**
+	 * {@link #mapFileLocation} is the file path for .map file
+	 */
 	private File mapFileLocation = null;
-    private Scanner txtScanner = null;
+    
+	/**
+	 * {@link #txtScanner} to parse the .map fiel line by line
+	 */
+	private Scanner txtScanner = null;
     
     
 	/**
-	 * Constructor takes map file pointer
+	 * Constructor takes location of .map file
 	 * @param file instance of {@link File} 
 	 */
 	public LoadMap(File file){
@@ -21,9 +33,9 @@ public class LoadMap {
 		
 	
 	/**
-	 * @param data is a line of text from .map file 
+	 * @param data is a single line of text from .map file 
 	 * @param context tells whether the line is saying about a continent value or territory.
-	 * @return
+	 * @return false if reading line is invalid
 	 */
 	private boolean loadMapToModel(String data,String context){
 		boolean isValidMap = true;
@@ -44,9 +56,9 @@ public class LoadMap {
 	}
 	
 	/**
-	 * @return false is map is not valid
-	 * Note: beforeContext tells whether a reading line belongs to continent values 
-	 * or territories declarations. 
+	 * @return false if map is not valid
+	 * <p> Note: beforeContext tells whether a reading line belongs to continent values 
+	 * or territories declarations.</p> 
 	 */
 	public boolean load(){
 		try {
