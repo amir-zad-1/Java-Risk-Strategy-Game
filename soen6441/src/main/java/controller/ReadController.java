@@ -70,7 +70,7 @@ public class ReadController{
 	}
 
 	/**
-	 * @return the set of continent names 
+	 * @return the set of continent names in the map 
 	 */
 	public Set<String> getAllContinentNames(){
 		return dataReader.getContinents();

@@ -8,12 +8,24 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * Continent class
+ * Continent class that holds all territories
+ * 
  */
-public class Continent extends Model implements IContinent {
+public class Continent  implements IContinent {
 
+    /**
+     * {@link #name} is the Continent name
+     */
     private String name;
+    
+    /**
+     * {@link #territories} are the list of territories in a Continent
+     */
     private ArrayList<ITerritory> territories;
+    
+    /**
+     * {@link #value} is the value of the continent
+     */
     private int value = 0;
 
     /**
@@ -55,6 +67,11 @@ public class Continent extends Model implements IContinent {
         this.value = value;
     }
 
+    
+    /**
+     * @param p is the player who want to check check if he owns entire continent
+     * @return true if a players owns entire continent
+     */
     @Override
     public boolean controlByPlayer(IPlayer p) {
         boolean result = true;
@@ -69,20 +86,33 @@ public class Continent extends Model implements IContinent {
         return result;
     }
 
+    
+    /**
+     * @return {@link ArrayList} of {@link Territory} belongs to this continent
+     */
     @Override
     public ArrayList<ITerritory> getTerritories() {
          return this.territories;
     }
 
+    /**
+     * This method adds a territory to this continent object
+     * @param territory is the territory want to add into the continent object
+     */
     @Override
-    public void addTerritory(ITerritory t) {
-        this.territories.add(t);
+    public void addTerritory(ITerritory territory) {
+        this.territories.add(territory);
     }
 
+    
+    /**
+     * This method is to remove a territory from a continent
+     * @param territory is the territory want to be removed from continent object
+     */
     @Override
-    public void removeTerritory(ITerritory t)
+    public void removeTerritory(ITerritory territory)
     {
-        int index = this.territories.indexOf(t);
+        int index = this.territories.indexOf(territory);
         this.territories.remove(index);
     }
 }

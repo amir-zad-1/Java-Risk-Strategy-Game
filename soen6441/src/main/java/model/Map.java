@@ -2,9 +2,7 @@ package model;
 
 import model.contract.IContinent;
 import model.contract.IMap;
-import model.contract.ITerritory;
-import util.ActionResponse;
-import view.WindowManager;
+
 
 import java.util.ArrayList;
 
@@ -13,7 +11,8 @@ import java.util.ArrayList;
  */
 public class Map implements IMap {
 
-
+	static int totalnumberOfArmiee = 0;
+	
     private ArrayList<IContinent> continents = new ArrayList<>();
 
     /**
@@ -41,6 +40,7 @@ public class Map implements IMap {
     		IContinent c = new Continent(continent);
     		for(Territory territory: MapDataBase.continents.get(continent).values()){
     			c.addTerritory(territory);
+    			totalnumberOfArmiee++;
     		}
     		this.continents.add(c);	
     	}

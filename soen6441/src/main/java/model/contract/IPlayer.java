@@ -4,6 +4,7 @@ import model.AttackPlan;
 import model.Card;
 import model.GameManager;
 import util.ActionResponse;
+import util.Color;
 
 import java.util.ArrayList;
 
@@ -60,4 +61,8 @@ public interface IPlayer extends Comparable<IPlayer> {
     int getTrades();
     void increaseTrades();
     int getCardsSize();
+	
+    void setColor(Color randomColor);
+
+	void sendNotify(String status);
 }

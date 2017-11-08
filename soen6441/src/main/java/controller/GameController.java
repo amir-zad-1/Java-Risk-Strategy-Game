@@ -11,6 +11,18 @@ import util.expetion.InvalidNumOfPlayersException;
  */
 public class GameController {	
 
+	/**
+	 * GameManger takes care about phases of game 
+	 */
+	GameManager gameManager = null;
+	
+	/**
+	 * Constructor that initializes the GameManager
+	 * @param new_gameManager is the reference of GameManager created in Driver class 
+	 */
+	public GameController(GameManager new_gameManager) {
+		gameManager = new_gameManager;
+	}
 	
 	/**
 	 * Initializes the Game Manager with number of players
@@ -18,15 +30,23 @@ public class GameController {
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
 	public void startGame(int numberOfPlayers) {
-		 try
-         {
-             new GameManager(numberOfPlayers).start();
-         }
-         catch (InvalidNumOfPlayersException e)
-         {
-            e.printStackTrace();
-         }
 		
-	}
+			try {
+				gameManager.startGame(numberOfPlayers);
+			} catch (InvalidNumOfPlayersException e) {
+				e.printStackTrace();
+			}
 	
+	}
+
+
+	/**
+	 * This method tells the GameManager to start the next round
+	 */
+	public void askNextTurn() {		
+		gameManager.takeNextTurn();
+	}
+
+
+
 }

@@ -1,5 +1,6 @@
 package view;
 
+import bootstrap.CallBack;
 import controller.GameController;
 import controller.RWMapFileController;
 import controller.ReadController;
@@ -9,8 +10,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.Model;
-import model.Territory;
 
  
 /**
@@ -28,7 +27,8 @@ public class WindowManager extends Application {
     static RWMapFileController rwMapFileController;
 	static ReadController readController;
 	static GameController gameController;
-	static WriteController writeController;   
+	static WriteController writeController;
+	static CallBack callback;
     
     /**
      * Starts the main UI window
@@ -36,7 +36,8 @@ public class WindowManager extends Application {
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     @Override
-    public void start(final Stage window) {    
+    public void start(final Stage window) {
+    	
     	window.setTitle("Game");
     	
     	mapEditorView = new MapEditorView(readController,writeController);
@@ -45,8 +46,10 @@ public class WindowManager extends Application {
         	@Override
             public void handle(ActionEvent event){
         		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
+        		System.out.println(numberOfPlayers);
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		window.setScene(phaseView.getView());
+        		callback.called(numberOfPlayers);
         		gameController.startGame(numberOfPlayers);
         		
             }
@@ -86,6 +89,14 @@ public class WindowManager extends Application {
 				break;
 		}
 		
+	}
+
+
+	/**
+	 * @param callBack
+	 */
+	public static void addCallBack(CallBack new_callBack) {		
+		callback = new_callBack;
 	}
     
 	

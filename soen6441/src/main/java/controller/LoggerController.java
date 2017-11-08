@@ -11,6 +11,7 @@ public class LoggerController {
 
 
 	/**
+	 * This method logs the message with a tag
 	 * @param tag log message type
 	 * @param message message content
 	 */
@@ -19,6 +20,7 @@ public class LoggerController {
 	}
 
 	/**
+	 * This method logs the message with empty tag
 	 * place a new log with INFO tag
 	 * @param message message content
 	 */

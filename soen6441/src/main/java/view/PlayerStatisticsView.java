@@ -3,11 +3,10 @@
  */
 package view;
 
-import java.util.Observable;
-import java.util.Observer;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -24,8 +23,10 @@ public class PlayerStatisticsView{
 	
 	VBox playerBox = null;
 	Label actorName = null;
-	Label currentContry = null;
+
+	TextArea status = null;
 	Label countriesWon = null;
+
 	
 	/**
 	 * 
@@ -36,14 +37,16 @@ public class PlayerStatisticsView{
 		this.actorName = new Label();
 		setFontColor(actorName, "#0076a3");
 		HBox profilepicContainer = new HBox(); 
-		Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
-		profilepicContainer.getChildren().add(new ImageView(profileImage));
+		//Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
+		//profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
-		this.currentContry = new Label();
+
+		this.status = new TextArea();
 		this.countriesWon = new Label();
 		setFontColor(countriesWon, "#F44336");
+
 		this.playerBox.getChildren().add(profilepicContainer);
-		this.playerBox.getChildren().add(currentContry);
+		this.playerBox.getChildren().add(status);
 		this.playerBox.getChildren().add(countriesWon);
 	}
 	
@@ -54,7 +57,7 @@ public class PlayerStatisticsView{
 	 * @param color is a type of String example: "red" or "#333"
 	 */
 	public void setFontColor(Label label,String color){
-		label.setFont(new Font("Cambria", 18));
+		label.setFont(new Font("Cambria", 14));
 		label.setTextFill(Color.web(color));
 		label.setPadding(new Insets(10));
 	}
@@ -86,26 +89,30 @@ public class PlayerStatisticsView{
 	/**
 	 * @return the currentContry
 	 */
-	public Label getCurrentContry() {
-		return currentContry;
+	public TextArea getCurrentContry() {
+		return status;
 	}
 	/**
 	 * @param currentContry the currentContry to set
 	 */
-	public void setCurrentContry(Label currentContry) {
-		this.currentContry = currentContry;
+	public void setCurrentStatus(String status) {
+		this.status.setText(this.status.getText()+" \n "+status);
 	}
-	/**
-	 * @return the countriesWon
-	 */
-	public Label getCountriesWon() {
-		return countriesWon;
-	}
+	
 	/**
 	 * @param countriesWon the countriesWon to set
 	 */
-	public void setCountriesWon(Label countriesWon) {
-		this.countriesWon = countriesWon;
+	public void setCountriesWon(String countriesWon) {
+		this.countriesWon.setText(countriesWon);
+	}
+
+
+
+	/**
+	 * 
+	 */
+	public void clearStatus() {
+		this.status.setText("");	
 	}
 
 

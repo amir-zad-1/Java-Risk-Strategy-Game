@@ -6,15 +6,18 @@ import util.Helpers;
 import java.util.ArrayList;
 
 /**
- * represents deck of cards in the game
+ * Represents deck of cards in the game
  */
 public class CardDeck
 {
 
+    /**
+     * Stores 42 cards as per game rules
+     */
     private ArrayList<Card> cards;
 
     /**
-     * this is the constructor
+     * this is the constructor thats inilitlizes the card deck
      */
     public CardDeck()
     {

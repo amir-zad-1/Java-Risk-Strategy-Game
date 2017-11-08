@@ -9,6 +9,10 @@ import model.contract.ITerritory;
  */
 public class AttackPlan {
 
+    /**
+     * {@link #from} is the attacker and 
+     * {@link #to} is the defender
+     */
     ITerritory from, to;
 
 

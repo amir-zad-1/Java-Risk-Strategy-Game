@@ -54,8 +54,8 @@ public class WriteController{
 		//As adjacent countries are given as comma separated convert them to ArrayList
 		editedadjacentCountries = editedadjacentCountries.replace("[", "").replace("]", "");
 		
-		ArrayList<String> new_adjacentContries = null;
-		
+		//Split them by comma and store it in an ArrayList
+		ArrayList<String> new_adjacentContries = null;		
 		if(editedadjacentCountries.length() > 2){
 			new_adjacentContries = new ArrayList<>(Arrays.asList(editedadjacentCountries.split(",")));
 		}else{

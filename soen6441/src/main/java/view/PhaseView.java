@@ -7,16 +7,15 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
-
+import controller.GameController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.Player;
@@ -27,18 +26,21 @@ import model.Player;
  */
 public class PhaseView implements IView,Observer{
 
-	HashMap<String,TextArea> playersViews= new HashMap<String,TextArea>();
+
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
 	DominationView dominationView = null;
-	Label phase;
+	GameController gameController = null;
+	Label phase; String previousPlayer = "";
+	Button nextTurn= null;
 	int numberOfPlayers;
 	
 	
 	/**
 	 * Constructor that initializes the {@link DominationView} 
 	 */
-	public PhaseView(DominationView new_dominationView) {
+	public PhaseView(DominationView new_dominationView,GameController new_gameController) {
 		this.dominationView = new_dominationView;
+		this.gameController = new_gameController;
 	}
 	
 	/** 
@@ -51,41 +53,60 @@ public class PhaseView implements IView,Observer{
 		phase.setTextFill(Color.GREEN);
 		phase.setPadding(new Insets(5,5,5,5));
 		
-		BorderPane hbox = new BorderPane();
+		BorderPane header = new BorderPane();
 		Label label = new Label("Phase:");
 		label.setPadding(new Insets(5,5,5,5));
 		label.setTextFill(Color.RED);
-		hbox.setPadding(new Insets(10,5,0,0));
-		hbox.setLeft(new HBox(label, phase));
-		hbox.setRight(dominationView.getView());
+		header.setPadding(new Insets(10,5,0,0));
+		HBox phaseStatusHolder = new HBox(label, phase);
+		phaseStatusHolder.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
+	            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
+	            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
 		
-		borderPane.setTop(hbox);
-
+		header.setLeft(phaseStatusHolder);
+	    
+		header.setRight(dominationView.getView());
+		
+		nextTurn = new Button("Next turn");
+		BorderPane footer = new BorderPane();
+		footer.setPadding(new Insets(5));
+		footer.setRight(nextTurn);
+		borderPane.setBottom(footer);
+		borderPane.setTop(header);
+		
+		nextTurn.setOnAction(new EventHandler<ActionEvent>() {            
+        	@Override
+            public void handle(ActionEvent event){
+        		playersStatistics.get("Player 1").clearStatus();
+        		playersStatistics.get("Player 2").clearStatus();
+        		playersStatistics.get("Player 3").clearStatus();
+        		gameController.askNextTurn();	
+            }
+    	});   
+		
 		HBox playerHbox = new HBox();
-		hbox.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
-	    for(int i=1;i<=numberOfPlayers;i++){
+		
+		
+		for(int i=1;i<=numberOfPlayers;i++){
 	    	VBox vbox= new VBox();
-	    	TextArea tmp = new TextArea();
-	    	tmp.setMinHeight(500);
-	    	vbox.getChildren().add(tmp);
 	    	PlayerStatisticsView pview = new PlayerStatisticsView();
 	    	pview.setActorName("Player "+i);
 	    	vbox.setStyle( 
 					"-fx-border-style: solid inside;" + 
 							"-fx-border-width: 0 1 0 0;" +  
 					"-fx-border-color: black;");
-			tmp.setStyle("-fx-padding:10");
-	    	
+			
 			vbox.getChildren().add(pview.getPlayerBox());
 			
 			
 			playerHbox.getChildren().add(vbox);
 	    
 	    	playersStatistics.put("Player "+i, pview);
-	    	playersViews.put("Player "+i, tmp);
 	    }
 	    borderPane.setCenter(playerHbox);
-		Scene scene = new Scene(borderPane);
+	    borderPane.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
+	    
+	    Scene scene = new Scene(borderPane);
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
 	}
@@ -97,21 +118,23 @@ public class PhaseView implements IView,Observer{
 	 */
 	@Override
 	public void update(Observable model, Object object) {
-		
-	   if(object instanceof String){
-		   String sentString = (String)object;
-		   String string = sentString.split(":")[0];
-		if ("PhaseChange".equals(string)) {
-			phase.setText(sentString.split(":")[1]);
-		}else if(playersViews.containsKey(string)){
-			playersViews.get(string).appendText("\n"+sentString);			
-		}
-	   }
-		else if(object instanceof Player){
-			Player tmp = (Player) object;
-			playersViews.get(tmp.getName()).appendText(tmp.getState());
-			
-		}
+		   
+           if(model instanceof Player){
+           		Player tmp = (Player) model;
+           		previousPlayer = tmp.getName();
+           		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
+           		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
+           	}else{
+           		String s = (String)object;
+           		if(s.split(":").length > 0){
+           			if(!s.split(":")[0].equals("DominationView")){
+           				phase.setText(s);
+           			}
+           		}else{
+           			phase.setText(s);
+           		}
+           	}
+
 	}
 	
 	

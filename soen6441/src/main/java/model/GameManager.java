@@ -21,7 +21,7 @@ import controller.LoggerController;
  * @author Amir
  * @version 0.1.0
  */
-public class GameManager extends Model {
+public class GameManager extends Observable {
 
     private static int MIN_PLAYERS = 2;
     private static int MAX_PLAYERS = 6;
@@ -42,6 +42,26 @@ public class GameManager extends Model {
 
 
     /**
+     * It sets the map and players field then
+     * calls initGame that to add Players then
+     * allocate default armies to each player then
+     * allocate countries randomly to players
+     * finally game is started
+     * @param players number of players
+     * @throws InvalidNumOfPlayersException be careful
+     */
+    public void startGame(int players) throws InvalidNumOfPlayersException {
+
+        this.numberOfPlayers = players;
+        this.map = new Map();
+        strategies.add(new Normal());
+        strategies.add(new Defensive());
+        strategies.add(new Aggressive());
+        start();
+    }
+
+    
+    /**
      * Class constructor.
      * It sets the map and players field then
      * calls initGame that to add Players then
@@ -60,6 +80,7 @@ public class GameManager extends Model {
         strategies.add(new Aggressive());
     }
 
+    
 
     /**
      * constructor
@@ -76,18 +97,31 @@ public class GameManager extends Model {
     }
 
     /**
+	 * Empty Constructor to intialize the Game
+	 */
+	public GameManager() {
+		
+	}
+
+
+	/**
      * Start the game
      * @throws InvalidNumOfPlayersException be careful
      */
     public void start() throws InvalidNumOfPlayersException
     {
-        this.setPhase("Startup");
+    	sendNotification("GameChange: StartUp");
+    	this.setPhase("Startup");
         this.initGame();
-        sendNotification("GamePlay", playerlist);
+        sendStartupEnd();
         this.isGameOn = true;
         this.setPhase("GamePlay");
-        sendNotification("PhaseChange", "PhaseChange:Game Play");
-        this.play();
+        sendNotification("GameChange: StartUp face finished \n Game Play is about to start");
+
+        //this.play();
+        this.resetTurn();
+
+
     }
 
 
@@ -107,6 +141,17 @@ public class GameManager extends Model {
     }
 
     /**
+	 * 
+	 */
+	private void sendStartupEnd() {
+		for(IPlayer p : playerlist){
+			p.sendNotify(p.getState());
+		}
+		
+	}
+
+
+	/**
      * Initialize the game steps
      * Step 1: Add players and give each them armies according to the rules
      * Step 2: Randomly allocate the countries in the map
@@ -118,7 +163,7 @@ public class GameManager extends Model {
     {
         //Step 1: Add players and give each them armies according to the rules
         LoggerController.log("====1. Adding Players====");
-        addPlayers();
+        initPlayers();
 
         //Step 2: Allocate initial armies according to the rules
         LoggerController.log("====2. Allocating Initial Armies====");
@@ -134,6 +179,38 @@ public class GameManager extends Model {
 
     }
 
+    int i = 0;
+    IPlayer p;
+    public void takeNextTurn() {
+    	if(i ==0){
+    		p = nextPlayer();
+    	}else if(i == 1){
+    		p.reinforcement();
+    	}else if(i == 2){
+    		 p.attack();
+    	}else if(i == 3){
+    		p.fortification();
+    	}
+    	
+    	i++; 
+    	if(i == 4){
+    		i = 0;
+    	}
+    	this.domitantionRes();
+	}
+    
+    
+    public void domitantionRes(){
+    	String s = "";
+    	 for(IPlayer p:this.playerlist)
+         {
+             double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfArmiee) * 100) ;
+              s += "\n"+ p.getName()+"="+control_percent;
+         }
+    	 sendNotification("DominationView: "+s);
+    }
+    
+    
     /**
      * this is the method that handles the game play
      */
@@ -166,32 +243,9 @@ public class GameManager extends Model {
 
         String dominationView = this.domitantionResult(true, i);
         LoggerController.log(dominationView);
-        this.sendNotification(NotificationType.DominationView, dominationView);
+ 
         //LoggerController.log(this.getWinner().getName());
 
-    }
-
-
-    /**
-     * return list of continents controlled by the player
-     * @param p player
-     * @return list of continents
-     */
-    public ArrayList<IContinent> ContinentControlledBy(IPlayer p)
-    {
-        ArrayList<IContinent> result = new ArrayList<>();
-        boolean isKing = true;
-        for(IContinent c: this.map.getContinents() )
-        {
-            for(ITerritory t : c.getTerritories())
-            {
-                if (t.getOwner() != p)
-                    isKing = false;
-            }
-            if (isKing)
-                result.add(c);
-        }
-        return result;
     }
 
 
@@ -220,22 +274,13 @@ public class GameManager extends Model {
             }
 
             if (isKing)
-                result += c.getContinentValue();
+                result = c.getContinentValue();
         }
 
         //Step 3: card exchanging
-        result += exchangeCard(p);
-
-        return result;
-    }
-
-
-    public int exchangeCard(IPlayer p)
-    {
-        int exchangeValue = 0;
-
         if(p.getCardsSize() > 3)
         {
+            int exchangeValue = 0;
             ArrayList<Card> cards = p.getCardSet();
             for(Card c : cards)
                 cardDeck.returnCard(c);
@@ -273,8 +318,11 @@ public class GameManager extends Model {
 
             LoggerController.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
                     exchangeValue, p.getTrades()));
+            result += exchangeValue;
+
         }
-        return exchangeValue;
+
+        return result;
     }
 
 
@@ -335,21 +383,24 @@ public class GameManager extends Model {
      * it uses the number which is given while creating game instance.
      * @throws InvalidNumOfPlayersException be careful
      */
-    public void addPlayers() throws InvalidNumOfPlayersException {
+    public void initPlayers() throws InvalidNumOfPlayersException {
 
         if (this.numberOfPlayers > MAX_PLAYERS || this.numberOfPlayers < MIN_PLAYERS)
             throw new InvalidNumOfPlayersException();
-
+  
 
         Color colorManager = new Color();
-        for (int i=1; i<=this.numberOfPlayers; i++) {
-            IStrategy strategy = getRandomStrategy();
-            IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
-            p.setGameManager(this);
-            this.playerlist.add(p);
-            LoggerController.log(p.toString() + " was added to the game.");
+        for (int i=0; i<this.playerlist.size(); i++) {
+            IStrategy strategy = getRandomStrategy(); 
+            playerlist.get(i).setStrategy(strategy);
+            playerlist.get(i).setColor( colorManager.getRandomColor());
+            playerlist.get(i).setGameManager(this);
+            LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
         }
         colorManager = null;
+    	
+    	
+    	
     }
 
     /**
@@ -439,7 +490,7 @@ public class GameManager extends Model {
         }
 
         if(!getPhase().equals("Startup"))
-        	sendNotification("GameChange", result.getName()+": Phase started");
+        	sendNotification("GameChange: "+result.getName()+" Turn started");
         
        
         
@@ -494,7 +545,7 @@ public class GameManager extends Model {
         		sb.append(String.format("%s(%s) controls %s of the map.\n", p.getName(), p.getStrategy().getName(), p.getDomination()));
         }
 
-        sendNotification("DominationView", "DominationView: "+sb.toString());
+        sendNotification("DominationView: "+sb.toString());
         
         if(verbos)
             sb.append("=====================");
@@ -538,21 +589,25 @@ public class GameManager extends Model {
 
     }
 
-    public static void main(String[] args) throws InvalidNumOfPlayersException {
-        IMap m = new Map();
-        m.clearData();
-        m.fakeData();
 
-        GameManager gm = new GameManager(m, 3);
-        gm.start(false);
+	/**
+	 * @param p
+	 */
+	public void addPlayer(IPlayer p) {
+		this.playerlist.add(p);
+		
+	}
 
-        IPlayer p = gm.nextPlayer();
-        gm.cardDeck.grantCard(p);
-        gm.cardDeck.grantCard(p);
-        gm.cardDeck.grantCard(p);
-        gm.cardDeck.grantCard(p);
-        int exchangeValue = gm.exchangeCard(p);
 
-    }
+	 /**
+		 * @param string
+		 * @param string2
+		 */
+		private void sendNotification(String type) {
+			setChanged();
+			notifyObservers(type);				
+		}
 
+
+	
 }
