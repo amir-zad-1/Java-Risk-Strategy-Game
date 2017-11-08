@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
                       GpTest7.class,
                       GpTest8.class,
                       GpTest9.class,
+                      MapIOTest.class,
+                      MapValidation.class
                     })
 
 
