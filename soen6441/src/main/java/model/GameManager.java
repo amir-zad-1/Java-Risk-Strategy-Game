@@ -173,6 +173,29 @@ public class GameManager extends Model {
 
 
     /**
+     * return list of continents controlled by the player
+     * @param p player
+     * @return list of continents
+     */
+    public ArrayList<IContinent> ContinentControlledBy(IPlayer p)
+    {
+        ArrayList<IContinent> result = new ArrayList<>();
+        boolean isKing = true;
+        for(IContinent c: this.map.getContinents() )
+        {
+            for(ITerritory t : c.getTerritories())
+            {
+                if (t.getOwner() != p)
+                    isKing = false;
+            }
+            if (isKing)
+                result.add(c);
+        }
+        return result;
+    }
+
+
+    /**
      * calculates reinforcement armies for each player
      * @param p player
      * @return number or armies the player should get
@@ -197,13 +220,22 @@ public class GameManager extends Model {
             }
 
             if (isKing)
-                result = c.getContinentValue();
+                result += c.getContinentValue();
         }
 
         //Step 3: card exchanging
+        result += exchangeCard(p);
+
+        return result;
+    }
+
+
+    public int exchangeCard(IPlayer p)
+    {
+        int exchangeValue = 0;
+
         if(p.getCardsSize() > 3)
         {
-            int exchangeValue = 0;
             ArrayList<Card> cards = p.getCardSet();
             for(Card c : cards)
                 cardDeck.returnCard(c);
@@ -241,11 +273,8 @@ public class GameManager extends Model {
 
             LoggerController.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
                     exchangeValue, p.getTrades()));
-            result += exchangeValue;
-
         }
-
-        return result;
+        return exchangeValue;
     }
 
 
@@ -513,8 +542,17 @@ public class GameManager extends Model {
         IMap m = new Map();
         m.clearData();
         m.fakeData();
+
         GameManager gm = new GameManager(m, 3);
         gm.start(false);
+        IPlayer p = gm.nextPlayer();
+
+        for(IContinent c : m.getContinents())
+            for(ITerritory t: c.getTerritories())
+                p.ownTerritory(t);
+
+        ArrayList<IContinent> cList = gm.ContinentControlledBy(p);
+
     }
 
 }
