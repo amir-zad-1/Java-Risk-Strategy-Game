@@ -25,8 +25,10 @@ public class PlayerStatisticsView{
 	
 	VBox playerBox = null;
 	Label actorName = null;
+
 	Label status = null;
 	Label countriesWon = null;
+
 	
 	/**
 	 * 
@@ -40,9 +42,11 @@ public class PlayerStatisticsView{
 		Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
 		profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
+
 		this.status = new Label();
 		this.countriesWon = new Label();
 		setFontColor(countriesWon, "#F44336");
+
 		this.playerBox.getChildren().add(profilepicContainer);
 		this.playerBox.getChildren().add(status);
 		this.playerBox.getChildren().add(countriesWon);
@@ -96,12 +100,7 @@ public class PlayerStatisticsView{
 	public void setCurrentStatus(String status) {
 		this.status.setText(this.status.getText()+" \n "+status);
 	}
-	/**
-	 * @return the countriesWon
-	 */
-	public Label getCountriesWon() {
-		return countriesWon;
-	}
+	
 	/**
 	 * @param countriesWon the countriesWon to set
 	 */
@@ -115,7 +114,7 @@ public class PlayerStatisticsView{
 	 * 
 	 */
 	public void clearStatus() {
-		this.status.setText("");		
+		this.status.setText("");	
 	}
 
 

@@ -150,7 +150,9 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     	territory.setOwner(this);
         this.placeArmy(1, territory);
         this.territories.add(territory);
+
         sendNotification(this.getName()+ " own "+ territory.getName());
+
         
         return new ActionResponse(true, String.format("%s owns %s", this.getName(),territory.getName()) );
     }

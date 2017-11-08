@@ -37,12 +37,14 @@ public class GameController {
 	
 	}
 
+
 	/**
 	 * 
 	 */
 	public void askNextTurn() {		
 		gameManager.takeNextTurn();
 	}
+
 
 
 }

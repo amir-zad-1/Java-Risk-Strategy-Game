@@ -41,6 +41,14 @@ public class DominationView implements Observer{
 		dominationLabel.setStyle("-fx-padding:10");
 		
 		
+		//set border
+		dominationLabel.setStyle( 
+				"-fx-border-style: solid inside;" + 
+						"-fx-border-width: 1;" +  
+				"-fx-border-color: black;");
+		dominationLabel.setStyle("-fx-padding:10");
+		
+		
 		return dominationLabel;
 	}
 
@@ -55,8 +63,6 @@ public class DominationView implements Observer{
 		
 		if(object instanceof String){			
 			String updatedText = (String)object;
-			//checks if update belongs to this view
-			
 			if(updatedText.split(":")[0].equals("DominationView")){
 				System.out.println("DOM:" +updatedText);
 				dominationLabel.setText(updatedText.split(":")[1]);

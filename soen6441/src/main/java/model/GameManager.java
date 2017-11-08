@@ -117,8 +117,11 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: Game Play");
+
         //this.play();
         this.resetTurn();
+
+
     }
 
     /**
@@ -534,15 +537,13 @@ public class GameManager extends Observable {
         IPlayer winner = null;
         this.domitantionResult(false,0);
 
-
         for(IPlayer p : this.playerlist)
-            //if(p.getDomination()>90.0)
+            //if(p.getDomination()>85.0)
             if(p.getDomination()>45.0)
             {
                 winner = p;
             }
 
-       
         return winner;
 
     }
@@ -580,9 +581,6 @@ public class GameManager extends Observable {
 			notifyObservers(type);				
 		}
 
-
-	
-	
 
 	
 }

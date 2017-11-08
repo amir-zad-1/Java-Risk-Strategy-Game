@@ -26,7 +26,7 @@ import model.Player;
  */
 public class PhaseView implements IView,Observer{
 
-	
+
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
 	DominationView dominationView = null;
 	GameController gameController = null;
@@ -114,6 +114,7 @@ public class PhaseView implements IView,Observer{
            	String type = (String)object;    
            	if(type.equals("PhaseChange")){
            		Player tmp = (Player) object;
+
            		previousPlayer = tmp.getName();
     			playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
     			
@@ -123,7 +124,6 @@ public class PhaseView implements IView,Observer{
            		Player tmp = (Player) model;
            		previousPlayer = tmp.getName();
            		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
-           		
            		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
            	}
 
