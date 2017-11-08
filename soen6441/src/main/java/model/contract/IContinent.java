@@ -2,6 +2,9 @@ package model.contract;
 
 import java.util.ArrayList;
 
+/**
+ * Business functions for Continent
+ */
 public interface IContinent {
 
     ArrayList<ITerritory> getTerritories();

@@ -7,6 +7,10 @@ import util.ActionResponse;
 
 import java.util.ArrayList;
 
+
+/**
+ * Business functions for Player
+ */
 public interface IPlayer extends Comparable<IPlayer> {
 
     ActionResponse ownTerritory(ITerritory territory);
