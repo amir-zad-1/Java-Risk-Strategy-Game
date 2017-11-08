@@ -7,9 +7,12 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
-
+import controller.GameController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -23,18 +26,21 @@ import model.Player;
  */
 public class PhaseView implements IView,Observer{
 
-	//HashMap<String,TextArea> playersViews= new HashMap<String,TextArea>();
+	
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
 	DominationView dominationView = null;
-	Label phase;
+	GameController gameController = null;
+	Label phase; String previousPlayer = "";
+	Button nextTurn= null;
 	int numberOfPlayers;
 	
 	
 	/**
 	 * Constructor that initializes the {@link DominationView} 
 	 */
-	public PhaseView(DominationView new_dominationView) {
+	public PhaseView(DominationView new_dominationView,GameController new_gameController) {
 		this.dominationView = new_dominationView;
+		this.gameController = new_gameController;
 	}
 	
 	/** 
@@ -55,8 +61,19 @@ public class PhaseView implements IView,Observer{
 		hbox.setLeft(new HBox(label, phase));
 		hbox.setRight(dominationView.getView());
 		
+		nextTurn = new Button("Next turn");
+		
+		hbox.setCenter(nextTurn);
 		borderPane.setTop(hbox);
-
+		
+		nextTurn.setOnAction(new EventHandler<ActionEvent>() {            
+        	@Override
+            public void handle(ActionEvent event){
+        		playersStatistics.get(previousPlayer).clearStatus();
+        		gameController.askNextTurn();	
+            }
+    	});   
+		
 		HBox playerHbox = new HBox();
 		hbox.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
 	    for(int i=1;i<=numberOfPlayers;i++){
@@ -97,11 +114,16 @@ public class PhaseView implements IView,Observer{
            	String type = (String)object;    
            	if(type.equals("PhaseChange")){
            		Player tmp = (Player) object;
+           		previousPlayer = tmp.getName();
     			playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
+    			
            	}else if(type.split(":")[0].equals("GameChange") || type.split(":")[0].equals("PhaseChange")){
            		phase.setText(type.split(":")[1]);
            	}else if(model instanceof Player){
            		Player tmp = (Player) model;
+           		previousPlayer = tmp.getName();
+           		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
+           		
            		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
            	}
 

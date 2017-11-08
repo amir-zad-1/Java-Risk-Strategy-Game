@@ -51,7 +51,7 @@ public class StartGameDriver {
 		 
 		 
 		 //Creates phaseView make it Observer
-		 PhaseView phaseView = new PhaseView(dominationView);
+		 PhaseView phaseView = new PhaseView(dominationView,gameController);
 		 
 		 
 		 

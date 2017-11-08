@@ -117,7 +117,8 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: Game Play");
-        this.play();
+        //this.play();
+        this.resetTurn();
     }
 
     /**
@@ -148,6 +149,38 @@ public class GameManager extends Observable {
 
     }
 
+    int i = 0;
+    IPlayer p;
+    public void takeNextTurn() {
+    	if(i ==0){
+    		p = nextPlayer();
+    	}else if(i == 1){
+    		p.reinforcement();
+    	}else if(i == 2){
+    		 p.attack();
+    	}else if(i == 3){
+    		p.fortification();
+    	}
+    	
+    	i++; 
+    	if(i == 4){
+    		i = 0;
+    	}
+    	this.domitantionRes();
+	}
+    
+    
+    public void domitantionRes(){
+    	String s = "";
+    	 for(IPlayer p:this.playerlist)
+         {
+             double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfArmiee) * 100) ;
+              s += "\n"+ p.getName()+"="+control_percent;
+         }
+    	 sendNotification("DominationView: "+s);
+    }
+    
+    
     /**
      * this is the method that handles the game play
      */
@@ -546,6 +579,10 @@ public class GameManager extends Observable {
 			setChanged();
 			notifyObservers(type);				
 		}
+
+
+	
+	
 
 	
 }

@@ -25,8 +25,8 @@ public class PlayerStatisticsView{
 	
 	VBox playerBox = null;
 	Label actorName = null;
-	Label currentContry = null;
-	TextArea countriesWon = null;
+	Label status = null;
+	Label countriesWon = null;
 	
 	/**
 	 * 
@@ -40,11 +40,11 @@ public class PlayerStatisticsView{
 		Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
 		profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
-		this.currentContry = new Label();
-		this.countriesWon = new TextArea();
-		//setFontColor(countriesWon, "#F44336");
+		this.status = new Label();
+		this.countriesWon = new Label();
+		setFontColor(countriesWon, "#F44336");
 		this.playerBox.getChildren().add(profilepicContainer);
-		this.playerBox.getChildren().add(currentContry);
+		this.playerBox.getChildren().add(status);
 		this.playerBox.getChildren().add(countriesWon);
 	}
 	
@@ -88,25 +88,34 @@ public class PlayerStatisticsView{
 	 * @return the currentContry
 	 */
 	public Label getCurrentContry() {
-		return currentContry;
+		return status;
 	}
 	/**
 	 * @param currentContry the currentContry to set
 	 */
-	public void setCurrentContry(Label currentContry) {
-		this.currentContry = currentContry;
+	public void setCurrentStatus(String status) {
+		this.status.setText(this.status.getText()+" \n "+status);
 	}
 	/**
 	 * @return the countriesWon
 	 */
-	public TextArea getCountriesWon() {
+	public Label getCountriesWon() {
 		return countriesWon;
 	}
 	/**
 	 * @param countriesWon the countriesWon to set
 	 */
 	public void setCountriesWon(String countriesWon) {
-		this.countriesWon.appendText(countriesWon);
+		this.countriesWon.setText(countriesWon);
+	}
+
+
+
+	/**
+	 * 
+	 */
+	public void clearStatus() {
+		this.status.setText("");		
 	}
 
 

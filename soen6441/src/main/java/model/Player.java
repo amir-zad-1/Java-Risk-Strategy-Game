@@ -143,13 +143,14 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
      */
     @Override
     public ActionResponse ownTerritory(ITerritory territory) {
+    	
     	if(territory.getOwner() != null){
     	 sendNotification(territory.getOwner().getName()+ ": lost "+ territory.getName()+" because of "+this.getName());
     	}
     	territory.setOwner(this);
         this.placeArmy(1, territory);
         this.territories.add(territory);
-        sendNotification(this.getName()+ ": own "+ territory.getName());
+        sendNotification(this.getName()+ " own "+ territory.getName());
         
         return new ActionResponse(true, String.format("%s owns %s", this.getName(),territory.getName()) );
     }
