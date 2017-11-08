@@ -142,7 +142,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     public Color getColor() { return this.color; }
 
     /**
-     *
+     *Called a player owns a territory
      * @param territory territory to be owned
      * @return if the operation was successful or not
      */
