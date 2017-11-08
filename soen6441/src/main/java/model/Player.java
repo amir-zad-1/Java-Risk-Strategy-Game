@@ -231,16 +231,10 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         sendNotify();
         LoggerController.log(this.statusMessage);
         
-        this.statusMessage = this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
-                ", Used armies = " + Integer.toString(this.getUsedArmies());
-        //sendNotify();
+        LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
+                ", Used armies = " + Integer.toString(this.getUsedArmies()));
         
-        LoggerController.log(this.statusMessage );
-        
-        this.statusMessage = String.format("%d armies placed in %s", count, territory.getName());
-        sendNotify();
-        
-        return new ActionResponse(true, this.statusMessage);
+        return new ActionResponse(true, String.format("%d armies placed in %s", count, territory.getName()));
     }
 
     /**

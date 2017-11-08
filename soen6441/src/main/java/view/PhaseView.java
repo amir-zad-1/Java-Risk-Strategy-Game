@@ -53,18 +53,26 @@ public class PhaseView implements IView,Observer{
 		phase.setTextFill(Color.GREEN);
 		phase.setPadding(new Insets(5,5,5,5));
 		
-		BorderPane hbox = new BorderPane();
+		BorderPane header = new BorderPane();
 		Label label = new Label("Phase:");
 		label.setPadding(new Insets(5,5,5,5));
 		label.setTextFill(Color.RED);
-		hbox.setPadding(new Insets(10,5,0,0));
-		hbox.setLeft(new HBox(label, phase));
-		hbox.setRight(dominationView.getView());
+		header.setPadding(new Insets(10,5,0,0));
+		HBox phaseStatusHolder = new HBox(label, phase);
+		phaseStatusHolder.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
+	            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
+	            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
+		
+		header.setLeft(phaseStatusHolder);
+	    
+		header.setRight(dominationView.getView());
 		
 		nextTurn = new Button("Next turn");
-		
-		borderPane.setBottom(nextTurn);
-		borderPane.setTop(hbox);
+		BorderPane footer = new BorderPane();
+		footer.setPadding(new Insets(5));
+		footer.setRight(nextTurn);
+		borderPane.setBottom(footer);
+		borderPane.setTop(header);
 		
 		nextTurn.setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
@@ -77,30 +85,28 @@ public class PhaseView implements IView,Observer{
     	});   
 		
 		HBox playerHbox = new HBox();
-		hbox.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
-	    for(int i=1;i<=numberOfPlayers;i++){
+		
+		
+		for(int i=1;i<=numberOfPlayers;i++){
 	    	VBox vbox= new VBox();
-	    	//TextArea tmp = new TextArea();
-	    	//tmp.setMinHeight(500);
-	    	//vbox.getChildren().add(tmp);
 	    	PlayerStatisticsView pview = new PlayerStatisticsView();
 	    	pview.setActorName("Player "+i);
 	    	vbox.setStyle( 
 					"-fx-border-style: solid inside;" + 
 							"-fx-border-width: 0 1 0 0;" +  
 					"-fx-border-color: black;");
-			//tmp.setStyle("-fx-padding:10");
-	    	
+			
 			vbox.getChildren().add(pview.getPlayerBox());
 			
 			
 			playerHbox.getChildren().add(vbox);
 	    
 	    	playersStatistics.put("Player "+i, pview);
-	    	//playersViews.put("Player "+i, tmp);
 	    }
 	    borderPane.setCenter(playerHbox);
-		Scene scene = new Scene(borderPane);
+	    borderPane.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
+	    
+	    Scene scene = new Scene(borderPane);
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
 	}

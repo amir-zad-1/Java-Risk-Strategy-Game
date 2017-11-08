@@ -3,8 +3,6 @@
  */
 package view;
 
-import java.util.Observable;
-import java.util.Observer;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -39,8 +37,8 @@ public class PlayerStatisticsView{
 		this.actorName = new Label();
 		setFontColor(actorName, "#0076a3");
 		HBox profilepicContainer = new HBox(); 
-		Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
-		profilepicContainer.getChildren().add(new ImageView(profileImage));
+		//Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
+		//profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
 
 		this.status = new TextArea();
@@ -59,7 +57,7 @@ public class PlayerStatisticsView{
 	 * @param color is a type of String example: "red" or "#333"
 	 */
 	public void setFontColor(Label label,String color){
-		label.setFont(new Font("Cambria", 18));
+		label.setFont(new Font("Cambria", 14));
 		label.setTextFill(Color.web(color));
 		label.setPadding(new Insets(10));
 	}
