@@ -69,16 +69,28 @@ public class Continent extends Model implements IContinent {
         return result;
     }
 
+    /**
+     * all territories in the continent
+     * @return
+     */
     @Override
     public ArrayList<ITerritory> getTerritories() {
          return this.territories;
     }
 
+    /**
+     * add territory to contitnet
+     * @param t territory to add
+     */
     @Override
     public void addTerritory(ITerritory t) {
         this.territories.add(t);
     }
 
+    /**
+     * remove territory from continent
+     * @param t territory to remove
+     */
     @Override
     public void removeTerritory(ITerritory t)
     {

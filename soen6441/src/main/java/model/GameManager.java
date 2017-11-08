@@ -230,6 +230,11 @@ public class GameManager extends Model {
     }
 
 
+    /**
+     * card exchange logic
+     * @param p player
+     * @return number of armies player gets in exchange
+     */
     public int exchangeCard(IPlayer p)
     {
         int exchangeValue = 0;
@@ -535,23 +540,6 @@ public class GameManager extends Model {
         this.strategyTurn++;
 
         return this.strategies.get(strategyTurn);
-
-    }
-
-    public static void main(String[] args) throws InvalidNumOfPlayersException {
-        IMap m = new Map();
-        m.clearData();
-        m.fakeData();
-
-        GameManager gm = new GameManager(m, 3);
-        gm.start(false);
-
-        IPlayer p = gm.nextPlayer();
-        gm.cardDeck.grantCard(p);
-        gm.cardDeck.grantCard(p);
-        gm.cardDeck.grantCard(p);
-        gm.cardDeck.grantCard(p);
-        int exchangeValue = gm.exchangeCard(p);
 
     }
 

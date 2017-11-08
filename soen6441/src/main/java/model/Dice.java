@@ -7,6 +7,9 @@ import static util.Helpers.getRandomInt;
  */
 public class Dice {
 
+    /**
+     * constructor
+     */
     public Dice() {
 
     }
