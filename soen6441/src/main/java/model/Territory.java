@@ -18,6 +18,13 @@ public class Territory  implements ITerritory {
     private int numberOfArmies;
     private String currentPlayer;
 	
+    /**
+     * Initializes the Territory Object with below parameters
+     * @param n_continentName is the continent name
+     * @param n_territoryName is the territory name
+     * @param n_coordinates is the coordinates
+     * @param n_adjacentTerritories are the adjacent territories
+     */
     public Territory(String n_continentName, String n_territoryName,String n_coordinates, ArrayList<String> n_adjacentTerritories) {
     	this.continentName = n_continentName;
 		this.territoryName = n_territoryName;
@@ -200,6 +207,10 @@ public class Territory  implements ITerritory {
 		return res;
 	}
 
+	/** 
+	 * Call this method to kill the armies in this territory
+	 * @param count is number of armies to be killed
+	 */
 	@Override
 	public ActionResponse killArmies(int count) {
 		ActionResponse res = new ActionResponse();

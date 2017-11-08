@@ -5,16 +5,36 @@ package model;
  */
 public class Card{
 
-    private String territoryName;
+    /**
+     * {@link #cardName} is the name of the card
+     */
+    private String cardName;
+    
+    /**
+     * {@link #armyValue} is the number of armies we can get for this card
+     */
     private int armyValue = 0;
 
-    public Card(String n, int v)
+
+    /**
+     * Constructor to initializes the Card
+     * @param new_cardName tells the name of the card
+     * @param new_armyValue tells the {@link #armyValue} we want to set
+     */
+    public Card(String new_cardName, int new_armyValue)
     {
-        this.armyValue = v;
-        this.territoryName = n;
+        this.armyValue = new_armyValue;
+        this.cardName = new_cardName;
     }
 
-    public String getCardTerritoryName() { return this.territoryName; }
+    /**
+     * @return the {@link #cardName}
+     */
+    public String getCardTerritoryName() { return this.cardName; }
+    
+    /**
+     * @return the {@link #armyValue}
+     */
     public int getCardValue() { return this.armyValue; }
 
 
