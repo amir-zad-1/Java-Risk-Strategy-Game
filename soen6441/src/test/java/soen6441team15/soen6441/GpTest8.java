@@ -24,7 +24,7 @@ public class GpTest8 {
         m.fakeData();
 
         GameManager gm = new GameManager(m, 3);
-        gm.initGame();
+        gm.start(false);
 
         IPlayer p = gm.nextPlayer();
         ITerritory from = p.getRandomTerritory();

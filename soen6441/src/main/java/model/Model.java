@@ -31,7 +31,8 @@ public class Model{
 			notifier.notifyListners(type,object);
 		}		
 		else{
-			notifier.notifyListners(type,object);
+			if(notifier != null)
+				notifier.notifyListners(type,object);
 		}
 
 	}

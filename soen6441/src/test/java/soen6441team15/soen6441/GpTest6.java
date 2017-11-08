@@ -21,7 +21,7 @@ public class GpTest6 {
         m.fakeData();
 
         GameManager gm = new GameManager(m, 3);
-        gm.initGame();
+        gm.start(false);
 
         IPlayer p = gm.nextPlayer();
         Assert.assertEquals(3, gm.calculateReinforcementArmies(p));

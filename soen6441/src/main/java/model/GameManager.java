@@ -90,6 +90,22 @@ public class GameManager extends Model {
         this.play();
     }
 
+
+    /**
+     * to start the game
+     * @param play should they start the game
+     * @throws InvalidNumOfPlayersException
+     */
+    public void start(boolean play) throws InvalidNumOfPlayersException
+    {
+        this.setPhase("Startup");
+        this.initGame();
+        this.isGameOn = true;
+        this.setPhase("GamePlay");
+        if (play)
+            this.play();
+    }
+
     /**
      * Initialize the game steps
      * Step 1: Add players and give each them armies according to the rules
@@ -493,6 +509,12 @@ public class GameManager extends Model {
 
     }
 
-
+    public static void main(String[] args) throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+    }
 
 }
