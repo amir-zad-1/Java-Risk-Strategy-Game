@@ -63,13 +63,15 @@ public class PhaseView implements IView,Observer{
 		
 		nextTurn = new Button("Next turn");
 		
-		hbox.setCenter(nextTurn);
+		borderPane.setBottom(nextTurn);
 		borderPane.setTop(hbox);
 		
 		nextTurn.setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
-        		playersStatistics.get(previousPlayer).clearStatus();
+        		playersStatistics.get("Player 1").clearStatus();
+        		playersStatistics.get("Player 2").clearStatus();
+        		playersStatistics.get("Player 3").clearStatus();
         		gameController.askNextTurn();	
             }
     	});   
@@ -110,21 +112,21 @@ public class PhaseView implements IView,Observer{
 	 */
 	@Override
 	public void update(Observable model, Object object) {
-		
-           	String type = (String)object;    
-           	if(type.equals("PhaseChange")){
-           		Player tmp = (Player) object;
-
-           		previousPlayer = tmp.getName();
-    			playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
-    			
-           	}else if(type.split(":")[0].equals("GameChange") || type.split(":")[0].equals("PhaseChange")){
-           		phase.setText(type.split(":")[1]);
-           	}else if(model instanceof Player){
+		   
+           if(model instanceof Player){
            		Player tmp = (Player) model;
            		previousPlayer = tmp.getName();
            		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
            		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
+           	}else{
+           		String s = (String)object;
+           		if(s.split(":").length > 0){
+           			if(!s.split(":")[0].equals("DominationView")){
+           				phase.setText(s);
+           			}
+           		}else{
+           			phase.setText(s);
+           		}
            	}
 
 	}

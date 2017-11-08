@@ -64,7 +64,6 @@ public class DominationView implements Observer{
 		if(object instanceof String){			
 			String updatedText = (String)object;
 			if(updatedText.split(":")[0].equals("DominationView")){
-				System.out.println("DOM:" +updatedText);
 				dominationLabel.setText(updatedText.split(":")[1]);
 			}
 		}

@@ -63,4 +63,6 @@ public interface IPlayer extends Comparable<IPlayer> {
     int getCardsSize();
 	
     void setColor(Color randomColor);
+
+	void sendNotify(String status);
 }

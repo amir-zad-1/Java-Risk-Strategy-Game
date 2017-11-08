@@ -113,7 +113,7 @@ public class GameManager extends Observable {
     	sendNotification("GameChange: StartUp");
     	this.setPhase("Startup");
         this.initGame();
-        
+        sendStartupEnd();
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: Game Play");
@@ -125,6 +125,17 @@ public class GameManager extends Observable {
     }
 
     /**
+	 * 
+	 */
+	private void sendStartupEnd() {
+		for(IPlayer p : playerlist){
+			p.sendNotify(p.getState());
+		}
+		
+	}
+
+
+	/**
      * Initialize the game steps
      * Step 1: Add players and give each them armies according to the rules
      * Step 2: Randomly allocate the countries in the map

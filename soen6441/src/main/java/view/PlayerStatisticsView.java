@@ -26,7 +26,7 @@ public class PlayerStatisticsView{
 	VBox playerBox = null;
 	Label actorName = null;
 
-	Label status = null;
+	TextArea status = null;
 	Label countriesWon = null;
 
 	
@@ -43,7 +43,7 @@ public class PlayerStatisticsView{
 		profilepicContainer.getChildren().add(new ImageView(profileImage));
 		profilepicContainer.getChildren().add(actorName);
 
-		this.status = new Label();
+		this.status = new TextArea();
 		this.countriesWon = new Label();
 		setFontColor(countriesWon, "#F44336");
 
@@ -91,7 +91,7 @@ public class PlayerStatisticsView{
 	/**
 	 * @return the currentContry
 	 */
-	public Label getCurrentContry() {
+	public TextArea getCurrentContry() {
 		return status;
 	}
 	/**
