@@ -30,20 +30,265 @@ public class GpTest9 {
 
     }
 
-//    @Test()
-//    public void test2() throws InvalidNumOfPlayersException {
-//        IMap m = new Map();
-//        m.clearData();
-//        m.fakeData();
-//
-//        GameManager gm = new GameManager(m, 3);
-//        gm.start(false);
-//
-//        IPlayer p = gm.nextPlayer();
-//        int exchangeValue = gm.exchangeCard(p);
-//        Assert.assertEquals(0, exchangeValue);
-//
-//
-//    }
+    @Test()
+    public void test2() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(4, exchangeValue);
+    }
+
+    @Test()
+    public void test3() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(6, exchangeValue);
+
+
+    }
+
+    @Test()
+    public void test4() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(8, exchangeValue);
+
+
+    }
+
+    @Test()
+    public void test5() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(10, exchangeValue);
+
+    }
+
+    @Test()
+    public void test6() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(12, exchangeValue);
+
+    }
+
+    @Test()
+    public void test7() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(15, exchangeValue);
+
+    }
+
+    @Test()
+    public void test8() throws InvalidNumOfPlayersException {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3);
+        gm.start(false);
+
+        IPlayer p = gm.nextPlayer();
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        exchangeValue = gm.exchangeCard(p);
+        Assert.assertEquals(20, exchangeValue);
+
+    }
 
 }

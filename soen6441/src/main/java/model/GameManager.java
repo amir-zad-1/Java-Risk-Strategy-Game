@@ -545,13 +545,13 @@ public class GameManager extends Model {
 
         GameManager gm = new GameManager(m, 3);
         gm.start(false);
+
         IPlayer p = gm.nextPlayer();
-
-        for(IContinent c : m.getContinents())
-            for(ITerritory t: c.getTerritories())
-                p.ownTerritory(t);
-
-        ArrayList<IContinent> cList = gm.ContinentControlledBy(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        gm.cardDeck.grantCard(p);
+        int exchangeValue = gm.exchangeCard(p);
 
     }
 
