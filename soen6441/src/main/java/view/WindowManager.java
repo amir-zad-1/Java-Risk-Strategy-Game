@@ -61,9 +61,11 @@ public class WindowManager extends Application {
 
 
 	/**
-	 * @param new_rwMapFileController
-	 * @param new_readController
-	 * @param new_writeController
+	 * This method is used to initialize all the controllers
+	 * @param new_rwMapFileController  is the .map IO controller 
+	 * @param new_readController is map reader controller
+	 * @param new_writeController is the map write controller
+	 * @param new_gameController controlls the game start
 	 */
 	public static void addControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
 			WriteController new_writeController,GameController new_gameController) {		
@@ -93,7 +95,7 @@ public class WindowManager extends Application {
 
 
 	/**
-	 * @param callBack
+	 * @param new_callBack to initialize the callback functionality
 	 */
 	public static void addCallBack(CallBack new_callBack) {		
 		callback = new_callBack;

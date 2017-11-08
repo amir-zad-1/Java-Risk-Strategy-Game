@@ -76,7 +76,7 @@ public class GameManager extends Observable {
      * allocate countries randomly to players
      * finally game is started
      * @param players number of players
-     * @throws InvalidNumOfPlayersException be careful
+     * @exception InvalidNumOfPlayersException be careful
      */
     public GameManager(int players) {
 
@@ -131,7 +131,7 @@ public class GameManager extends Observable {
     /**
      * to start the game
      * @param play should they start the game
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException is not provided as per game rules
      */
     public void start(boolean play) throws InvalidNumOfPlayersException
     {
@@ -190,6 +190,7 @@ public class GameManager extends Observable {
     	if(playerCursor ==0){
     		temporarayPlyaerholder = nextPlayer();
     	}else if(playerCursor == 1){
+    		sendNotification("CardExchView:start");
     		temporarayPlyaerholder.reinforcement();
     	}else if(playerCursor == 2){
     		 temporarayPlyaerholder.attack();
@@ -532,6 +533,7 @@ public class GameManager extends Observable {
      * Generate domination view string
      * @param verbos to generate texts or just calculate winner
      * @return domination view
+     * @return trn tells the turn number of the play
      */
     public String domitantionResult(boolean verbos, int trn)
     {

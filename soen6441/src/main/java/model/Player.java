@@ -47,6 +47,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
      * Constructor that initlizes the player details
      * @param name  player name
      * @param color player color
+     * @param strategy is the strategy the player choose
      */
     public Player(String name, Color color, IStrategy strategy){
         this.name = name;
@@ -94,7 +95,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
 
     /**
      * set how many percent of the world is controlled by the player
-     * @param value
+     * @param value the percentage of map occupied by the player
      */
     @Override
     public void setDomination(double value) {

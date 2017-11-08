@@ -142,7 +142,7 @@ public class WelcomeView implements IView{
 	 /**
 	 * Loads new Scene(UI Container) into the window
 	 * @param scene will be showed in window
-	 * @see java.fx.Scene 
+	 * @see java.fx.Scene is has UI elements to load into  Window
 	 */
 	public  void loadAnotherView(Scene scene){
 	    	window.setScene(scene);	

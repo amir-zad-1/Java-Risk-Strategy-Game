@@ -37,6 +37,8 @@ public class PhaseView implements IView,Observer{
 	
 	/**
 	 * Constructor that initializes the {@link DominationView} 
+	 * @param new_dominationView as the Domination view is subset of Phase View
+	 * @param new_gameController we need the game controller to ask for next turm
 	 */
 	public PhaseView(DominationView new_dominationView,GameController new_gameController) {
 		this.dominationView = new_dominationView;
@@ -140,7 +142,7 @@ public class PhaseView implements IView,Observer{
 	
 	/**
 	 * Sets number Of players
-	 * @param new_numberofPlayers
+	 * @param new_numberofPlayers number of players going to play
 	 */
 	public void setNumberOfPlayers(int new_numberofPlayers){
 		this.numberOfPlayers = new_numberofPlayers;

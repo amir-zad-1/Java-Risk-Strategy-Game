@@ -93,7 +93,7 @@ public class PlayerStatisticsView{
 		return status;
 	}
 	/**
-	 * @param currentContry the currentContry to set
+	 * @param status the status of present player
 	 */
 	public void setCurrentStatus(String status) {
 		this.status.setText(this.status.getText()+" \n "+status);

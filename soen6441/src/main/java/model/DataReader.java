@@ -39,7 +39,7 @@ public class DataReader {
 
 		/**
 		 * This method checks whether a continent is in exist in the map or not
-		 * @param continentName
+		 * @param continentName is the name of the continent
 		 * @return true if a continent exists
 		 */
 		public boolean hasContinent(String continentName){

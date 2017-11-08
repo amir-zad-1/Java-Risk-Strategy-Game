@@ -22,7 +22,7 @@ public class DominationView implements Observer{
 	Label dominationLabel = null;
 	
 	/** 
-	 * return a {@link Scene} object which contains UI elements
+	 * @return a {@link Scene} object which contains UI elements
 	 */
 	public Label getView() {
 		

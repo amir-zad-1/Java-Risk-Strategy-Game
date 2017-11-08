@@ -24,10 +24,12 @@ import view.WindowManager;
 public class StartGameDriver {
 
 	/** 
+	 * <ul>
 	 * <li>Step 0: Initialize the controllers</li>
 	 * <li>Step 1: Create the Views</li>
 	 * <li>Step 2: Inject controllers into Views through {@link WindowManager} </li>
 	 * <li>Add Observers to players whenever users gives number of players input</li>
+	 * </ul>
 	 * @param args from CMD
 	 */
 	public static void main(String[] args) {
