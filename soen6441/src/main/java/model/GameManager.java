@@ -190,7 +190,7 @@ public class GameManager extends Observable {
     	if(playerCursor ==0){
     		temporarayPlyaerholder = nextPlayer();
     	}else if(playerCursor == 1){
-    		sendNotification("CardExchView:start");
+    		temporarayPlyaerholder.sendNotify("CardView: Start showing");
     		temporarayPlyaerholder.reinforcement();
     	}else if(playerCursor == 2){
     		 temporarayPlyaerholder.attack();

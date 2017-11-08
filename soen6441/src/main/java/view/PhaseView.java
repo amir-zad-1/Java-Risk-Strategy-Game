@@ -18,6 +18,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import model.Player;
 
 /**
@@ -29,20 +33,28 @@ public class PhaseView implements IView,Observer{
 
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
 	DominationView dominationView = null;
+	CardView cardView = null;
 	GameController gameController = null;
 	Label phase; String previousPlayer = "";
 	Button nextTurn= null;
 	int numberOfPlayers;
 	
+	Stage windowStage = null; 	
+
+	Stage dialog = null;
+	
 	
 	/**
 	 * Constructor that initializes the {@link DominationView} 
 	 * @param new_dominationView as the Domination view is subset of Phase View
-	 * @param new_gameController we need the game controller to ask for next turm
+	 * @param new_gameController we need the game controller to ask for next turn
 	 */
-	public PhaseView(DominationView new_dominationView,GameController new_gameController) {
+	public PhaseView(DominationView new_dominationView,GameController new_gameController,CardView new_cardView) {
 		this.dominationView = new_dominationView;
 		this.gameController = new_gameController;
+		this.cardView = new_cardView;
+		
+		
 	}
 	
 	/** 
@@ -54,7 +66,7 @@ public class PhaseView implements IView,Observer{
 		phase = new Label();
 		phase.setTextFill(Color.GREEN);
 		phase.setPadding(new Insets(5,5,5,5));
-		
+	
 		BorderPane header = new BorderPane();
 		Label label = new Label("Phase:");
 		label.setPadding(new Insets(5,5,5,5));
@@ -68,7 +80,11 @@ public class PhaseView implements IView,Observer{
 		header.setLeft(phaseStatusHolder);
 	    
 		header.setRight(dominationView.getView());
-		
+		 dialog = new Stage();
+         dialog.initModality(Modality.APPLICATION_MODAL);
+         dialog.initOwner(windowStage);         
+         Scene dialogScene = new Scene(cardView.getCardholder(), 300, 200);
+         dialog.setScene(dialogScene);
 		nextTurn = new Button("Next turn");
 		BorderPane footer = new BorderPane();
 		footer.setPadding(new Insets(5));
@@ -126,10 +142,21 @@ public class PhaseView implements IView,Observer{
            		previousPlayer = tmp.getName();
            		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
            		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
+           		
+           		    String s = (String)object;
+           		
+           		
+           		    if(s.split(":")[0].equals("CardView")){
+           		    
+                     dialog.show();
+           			}
+
            	}else{
            		String s = (String)object;
            		if(s.split(":").length > 0){
-           			if(!s.split(":")[0].equals("DominationView")){
+           		    if(s.split(":")[0].equals("CardView")){
+
+           			} else if(!s.split(":")[0].equals("DominationView")){
            				phase.setText(s);
            			}
            		}else{
@@ -148,4 +175,13 @@ public class PhaseView implements IView,Observer{
 		this.numberOfPlayers = new_numberofPlayers;
 	}
 	
+	
+	public Stage getWindowStage() {
+		return windowStage;
+	}
+
+	public void setWindowStage(Stage windowStage) {
+		this.windowStage = windowStage;
+	}
+
 }

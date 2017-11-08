@@ -30,7 +30,7 @@ public class Card{
     /**
      * @return the {@link #cardName}
      */
-    public String getCardTerritoryName() { return this.cardName; }
+    public String getCardName() { return this.cardName; }
     
     /**
      * @return the {@link #armyValue}

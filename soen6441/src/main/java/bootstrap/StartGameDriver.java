@@ -11,6 +11,7 @@ import model.DataWriter;
 import model.GameManager;
 
 import model.Player;
+import view.CardView;
 import view.DominationView;
 import view.PhaseView;
 import view.WindowManager;
@@ -55,8 +56,8 @@ public class StartGameDriver {
 		 
 		 
 		 //Creates phaseView make it Observer
-
-		 PhaseView phaseView = new PhaseView(dominationView,gameController);
+		 CardView  cardView= new CardView();
+		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView);
 
 		 
 		 
@@ -72,6 +73,7 @@ public class StartGameDriver {
 			    		Player p = new Player("Player " + Integer.toString(i));
 			    		p.addObserver(dominationView);
 			    		p.addObserver(phaseView);
+			    
 			    		gameManager.addPlayer(p);
 			    	}
 			    	
@@ -81,7 +83,7 @@ public class StartGameDriver {
 		 
 		 gameManager.addObserver(dominationView);
 		 gameManager.addObserver(phaseView);
-		 
+		 gameManager.addObserver(cardView);
 		 javafx.application.Application.launch(WindowManager.class);
 	}
 

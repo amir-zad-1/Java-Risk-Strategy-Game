@@ -515,10 +515,10 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
                             attackFrom.getOwner().ownTerritory(attackTo);
                             Card crd = this.getGameManager().cardDeck.grantCard(this);
                             this.statusMessage = String.format("%s gets one card %s, %s", this.getName(),
-                                    crd.getCardTerritoryName(), crd.getCardValue());
+                                    crd.getCardName(), crd.getCardValue());
                         	sendNotify();
                             LoggerController.log(String.format("%s gets one card %s, %s", this.getName(),
-                                    crd.getCardTerritoryName(), crd.getCardValue()));
+                                    crd.getCardName(), crd.getCardValue()));
                             LoggerController.log(attackFrom.getOwner().getState());
                         }
                     }
@@ -711,6 +711,9 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
   
     }
 
+    
+   
+    
     
     @Override
     public int getTrades()

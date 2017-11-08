@@ -45,9 +45,9 @@ public class WindowManager extends Application {
 		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
-        		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
-        		System.out.println(numberOfPlayers);
+        		int numberOfPlayers = mapEditorView.getNumberOfPlayers();       
         		phaseView.setNumberOfPlayers(numberOfPlayers);
+        		phaseView.setWindowStage(window);
         		window.setScene(phaseView.getView());
         		callback.called(numberOfPlayers);
         		gameController.startGame(numberOfPlayers);
