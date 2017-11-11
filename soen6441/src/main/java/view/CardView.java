@@ -29,7 +29,7 @@ public class CardView implements Observer{
 	 * Constructor to initialize the cardView
 	 */
 	public CardView() {
-		cardholder = new HBox();
+
 	}
 	
 	/**
@@ -75,6 +75,16 @@ public class CardView implements Observer{
 		return cardholder;
 	}
 
+	
+   public void inti(){
+		cardholder = new HBox();
+		Label card1 = new Label();
+		  card1.setStyle("-fx-padding: 5;" + "-fx-border-style: solid inside;"
+		            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
+		            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
+		  card1.setText("No Cards for the player");
+		  cardholder.getChildren().add(card1);
+   }
 	
 	
 }

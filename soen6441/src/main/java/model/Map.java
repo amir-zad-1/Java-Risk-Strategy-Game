@@ -10,12 +10,13 @@ import java.util.ArrayList;
  */
 public class Map implements IMap {
 
-	static int totalnumberOfArmiee = 0;
-	
+
     private ArrayList<IContinent> continents = new ArrayList<>();
 
+    public static int totalnumberOfTerritories = 0;
+    
     /**
-     * Constructor that loads data for game play
+     * Constructor
      */
     public Map()
     {
@@ -24,8 +25,8 @@ public class Map implements IMap {
 
 
     /**
-     * This methods returns all contiennts
-     * @return {@link ArrayList} of continents in the map
+     *
+     * @return strategies of continents in the map
      */
     @Override
     public ArrayList<IContinent> getContinents() {
@@ -33,16 +34,14 @@ public class Map implements IMap {
     }
 
 
-    /**
-     * This method converts {@link MapDataBase#continents} into {@link #continents}
-     */
     private void loadData(){
     	this.continents = new ArrayList<>();
+    	totalnumberOfTerritories = 0;
     	for(String continent: MapDataBase.continents.keySet()){
     		IContinent c = new Continent(continent);
     		for(Territory territory: MapDataBase.continents.get(continent).values()){
     			c.addTerritory(territory);
-    			totalnumberOfArmiee++;
+    			totalnumberOfTerritories++;
     		}
     		this.continents.add(c);	
     	}

@@ -61,7 +61,8 @@ public class PhaseView implements IView,Observer{
 	 * @return {@link Scene} which contains UI elements 
 	 */
 	@Override
-	public Scene getView() {		
+	public Scene getView() {
+		cardView.inti();
 		BorderPane borderPane = new BorderPane();
 		phase = new Label();
 		phase.setTextFill(Color.GREEN);
@@ -142,13 +143,10 @@ public class PhaseView implements IView,Observer{
            		previousPlayer = tmp.getName();
            		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
            		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
-           		
            		    String s = (String)object;
-           		
-           		
            		    if(s.split(":")[0].equals("CardView")){
-           		    
-                     dialog.show();
+           		       
+                       dialog.show();
            			}
 
            	}else{

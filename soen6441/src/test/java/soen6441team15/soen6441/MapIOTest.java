@@ -44,7 +44,7 @@ public class MapIOTest {
 	{
 		 //Load map file
 		 RWMapFileController rw = new RWMapFileController();
-	     rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Earth Alternate\\Earth Alternate.map"));
+	     rw.loadMap(new File("C:\\Users\\SA\\Downloads\\Earth Alternate.map"));
 	     
 	     //DataReader only do read operation on map 
 	     DataReader dataReader = new DataReader();
@@ -57,15 +57,6 @@ public class MapIOTest {
 	
 	
 	
-	/**
-	 * Check whether map loaded correctly into memory
-	 * and do a read operation
-	 */
-	@Test
-	public void readerTest(){
-	     assertFalse(readController.getContinentValue("north america") == 5);
-	     assertTrue(readController.dataReader.hasContinent("north america"));
-	}
 	
 	
 	/**
@@ -105,7 +96,7 @@ public class MapIOTest {
 	@Test
 	@Ignore
 	public void test() {
-		LoadMap loadMap = new LoadMap(new File("E:\\Compressed\\_61_ CASTLE MOONBAT\\_61_ CASTLE MOONBAT.map"));
+		LoadMap loadMap = new LoadMap(new File("C:\\Users\\SA\\Downloads\\Earth Alternate.map"));
         loadMap.load();
 		HashMap<String, Territory> terrotories= MapDataBase.continents.get("Tower Left Top");
 		for(Territory t: terrotories.values()){

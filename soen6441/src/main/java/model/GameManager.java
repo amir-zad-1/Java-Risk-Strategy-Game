@@ -214,8 +214,8 @@ public class GameManager extends Observable {
     	String tmp = "";
     	 for(IPlayer p:this.playerlist)
          {
-             double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfArmiee) * 100) ;
-              tmp += "\n"+ p.getName()+"="+control_percent;
+             double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfTerritories) * 100);
+             tmp += "\n"+ p.getName()+"="+control_percent;
          }
     	 sendNotification("DominationView: "+tmp);
     }
@@ -357,13 +357,23 @@ public class GameManager extends Observable {
   
 
         Color colorManager = new Color();
-        for (int i=0; i<this.playerlist.size(); i++) {
-            IStrategy strategy = getRandomStrategy(); 
-            playerlist.get(i).setStrategy(strategy);
-            playerlist.get(i).setColor( colorManager.getRandomColor());
-            playerlist.get(i).setGameManager(this);
-            LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
-        }
+        if(this.playerlist.size() == 0){
+        	for (int i=1; i<=this.numberOfPlayers; i++) {
+                IStrategy strategy = getRandomStrategy();
+                IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
+                p.setGameManager(this);
+                this.playerlist.add(p);
+                LoggerController.log(p.toString() + " was added to the game.");
+        	}	
+        }else{
+        	for (int i=0; i<this.playerlist.size(); i++) {
+        		IStrategy strategy = getRandomStrategy(); 
+        		playerlist.get(i).setStrategy(strategy);
+        		playerlist.get(i).setColor( colorManager.getRandomColor());
+        		playerlist.get(i).setGameManager(this);
+        		LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
+        	}
+        }	
         colorManager = null;
     	
     	

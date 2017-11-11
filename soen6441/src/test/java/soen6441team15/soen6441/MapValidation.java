@@ -34,8 +34,7 @@ public class MapValidation {
 	{
 		 //Load map file
 		 rw = new RWMapFileController();
-	     rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Earth Alternate\\Earth Alternate.map"));
-	  
+		 rw.loadMap(new File("C:\\Users\\SA\\Downloads\\Earth Alternate.map"));	  
 	}
 
 	
@@ -72,7 +71,7 @@ public class MapValidation {
 	 */
 	@Test
 	public void checkIfValidMap(){		 
-		boolean isValid = rw.loadMap(new File("C:\\Users\\m_guntur\\Downloads\\Earth Alternate\\Earth Alternate.map"));
+		boolean isValid = rw.loadMap(new File("C:\\Users\\SA\\Downloads\\Earth Alternate.map"));
 		assertTrue(isValid);
 	}
 	
