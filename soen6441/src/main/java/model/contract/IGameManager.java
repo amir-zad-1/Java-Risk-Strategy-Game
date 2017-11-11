@@ -4,6 +4,9 @@ import model.Player;
 
 import java.util.ArrayList;
 
+/**
+ * Business functions for GameManager
+ */
 public interface IGameManager {
 
     void allocateTerritories(ArrayList<Player> players);

@@ -5,7 +5,6 @@ import model.contract.IPlayer;
 import model.contract.ITerritory;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 /**
  * Continent class that holds all territories
@@ -50,7 +49,7 @@ public class Continent  implements IContinent {
     public String getName() {return this.name;}
 
     /**
-     * reutnns value of the continent
+     * returns value of the continent
      * @return value of the continent
      */
     @Override
@@ -86,6 +85,7 @@ public class Continent  implements IContinent {
         return result;
     }
 
+
     
     /**
      * @return {@link ArrayList} of {@link Territory} belongs to this continent
@@ -103,7 +103,6 @@ public class Continent  implements IContinent {
     public void addTerritory(ITerritory territory) {
         this.territories.add(territory);
     }
-
     
     /**
      * This method is to remove a territory from a continent

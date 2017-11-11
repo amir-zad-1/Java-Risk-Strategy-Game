@@ -85,6 +85,11 @@ public class CardDeck
         return this.cards.get(cardIndex);
     }
 
+    /**
+     * grants a card to a plyer
+     * @param p receiver
+     * @return given card
+     */
     public Card grantCard(IPlayer p)
     {
         Card result = this.pickCard();
@@ -92,6 +97,10 @@ public class CardDeck
         return result;
     }
 
+    /**
+     * return card into the deck
+     * @param c card to be returned
+     */
     public void returnCard(Card c)
     {
         this.cards.add(c);

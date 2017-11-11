@@ -293,6 +293,10 @@ public class GameManager extends Observable {
     }
 
 
+
+
+
+
     /**
      * this method helps players to move armies from a territory to another
      * @param p player
@@ -616,6 +620,7 @@ public class GameManager extends Observable {
     }
 
 
+
 	/**
 	 * Adds a player to the game
 	 * @param newPlayer is a {@link Player}
@@ -658,5 +663,4 @@ public class GameManager extends Observable {
 	}
 
 
-	
 }
