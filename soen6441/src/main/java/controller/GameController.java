@@ -32,7 +32,7 @@ public class GameController {
 	public void startGame(int numberOfPlayers) {
 		
 			try {
-				gameManager.startGame(numberOfPlayers);
+				gameManager.start();
 			} catch (InvalidNumOfPlayersException e) {
 				e.printStackTrace();
 			}
