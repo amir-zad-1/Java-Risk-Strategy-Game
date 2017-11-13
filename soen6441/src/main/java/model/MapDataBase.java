@@ -65,6 +65,7 @@ public final class MapDataBase {
 		for(String continent : continents.keySet()){
 			Set<String> countries = continents.get(continent).keySet();
 			for(String territory: countries){
+				System.out.println(territory+" "+continent );
 				ArrayList<String> tmp = new ArrayList<>();
 				tmp.clear();
 				tmp.addAll(continents.get(continent).get(territory).getAdjacentTerritories());
@@ -73,6 +74,14 @@ public final class MapDataBase {
 					waitingForConnection.put(territory,continent);
 				}else{
 					waitingForConnection.remove(territory);
+				}
+				
+				for(String s: tmp){
+					
+					if(waitingForConnection.containsKey(s)){
+						waitingForConnection.remove(s);
+					}
+					
 				}
 				allAdjacencies.addAll(tmp); 
 				System.out.println(allAdjacencies);
