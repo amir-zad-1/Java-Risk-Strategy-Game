@@ -58,10 +58,34 @@ public final class MapDataBase {
 	 * @return false is there is any dis-connectivity between to territories or continents 
 	 */
 	public static boolean isAnyDiconnectivity(){		
-      
+        
+		HashSet<String> allAdjacencies = new HashSet<>();
+		HashMap<String,String> waitingForConnection = new HashMap<>();
+
+		for(String continent : continents.keySet()){
+			Set<String> countries = continents.get(continent).keySet();
+			for(String territory: countries){
+				ArrayList<String> tmp = new ArrayList<>();
+				tmp.clear();
+				tmp.addAll(continents.get(continent).get(territory).getAdjacentTerritories());
+				
+				if(!allAdjacencies.contains(territory)){
+					waitingForConnection.put(territory,continent);
+				}else{
+					waitingForConnection.remove(territory);
+				}
+				allAdjacencies.addAll(tmp); 
+				System.out.println(allAdjacencies);
+			    System.out.println(waitingForConnection);
+			}
+			
+		}	
 		
-		return true;
+		if(waitingForConnection.size()  == 0){
+			return true;
+		}
 		
+		return false;		
 	}
 
 	/**
