@@ -40,8 +40,13 @@ public final class MapDataBase {
 			     for(String s : territory.getAdjacentTerritories()){
 			    	 boolean foundTerritory = false;
 			    	 for(String continent: continentNames){
-			    	    if(MapDataBase.continents.get(continent).containsKey(s))
+			    	    
+			    		 if(MapDataBase.continents.get(continent).containsKey(s)){
+			    	    	if(!MapDataBase.continents.get(continent).get(s).getAdjacentTerritories().contains(territory.getName())){
+			    	    		return false;
+			    	    	}
 			    	    	foundTerritory = true;
+			    	    }
 			    	 }
 			    	 if(!foundTerritory) return false;
 			     }			    	 
@@ -77,9 +82,17 @@ public final class MapDataBase {
 				}
 				
 				for(String s: tmp){
-					
 					if(waitingForConnection.containsKey(s)){
-						waitingForConnection.remove(s);
+						String continentTmp = waitingForConnection.get(s);
+						if(continents.get(continentTmp).get(s).getAdjacentTerritories().size() == 1){
+							if(!continents.get(continentTmp).get(s).getAdjacentTerritories().get(0).equals(territory)){
+								waitingForConnection.remove(s);	
+							}else{
+
+							}
+						}else{
+							waitingForConnection.remove(s);	
+						}
 					}
 					
 				}
@@ -89,6 +102,10 @@ public final class MapDataBase {
 			}
 			
 		}	
+		
+		if(waitingForConnection.size()  == 1 && allAdjacencies.size() == 2){
+			return true;
+		}
 		
 		if(waitingForConnection.size()  == 0){
 			return true;
