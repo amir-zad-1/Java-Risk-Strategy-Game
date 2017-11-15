@@ -44,6 +44,10 @@ public final class LoadMapUtility {
 		}
 		ArrayList<String> adjacentTerritories = new ArrayList<String>();
 		for(int i=4;i<tmpArray.length;i++){
+			//if a country declared itself as its adjacency
+			if(tmpArray[0].equalsIgnoreCase(tmpArray[i])){
+				return false;
+			}
 			adjacentTerritories.add(tmpArray[i].toLowerCase().trim());
 		}
 		
