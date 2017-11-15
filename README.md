@@ -18,3 +18,31 @@
 * Method and variables should follow lowerCamelCase.
 * Constants should be uppercase, words separated by `_`.
 * Interfaces start with letter I. 
+* booleans always should start with is or has.
+
+## Below is the invalid map as example of disconnected maps
+
+```
+[Continents]
+America=5
+South=6
+
+[Territories]
+a,x,y,America,b
+b,x,y,South,a,c
+c,x,y,South,b,d
+d,x,y,America,c
+```
+ But below one is valid
+ 
+ ```
+[Continents]
+America=5
+South=6
+
+[Territories]
+a,x,y,America,b,d
+b,x,y,South,a,c
+c,x,y,South,b,d
+d,x,y,America,c,a
+```
