@@ -76,3 +76,18 @@ c,x,y,South,b,d
 d,x,y,America,e,c
 e,x,y,America,d
 ```
+below is the exAMPLE OF DISCONNECTED TERRITORIES
+
+```
+[Continents]
+America=5
+South=6
+
+[Territories]
+a,x,y,South,b
+b,x,y,South,a,c
+c,x,y,South,b
+
+d,x,y,South,e
+e,x,y,South,d
+```
