@@ -56,6 +56,7 @@ public final class LoadMapUtility {
 						tmpArray[1]+","+tmpArray[2],
 						adjacentTerritories)
 				);
+		
 		return true;
 	}	
 }

@@ -32,26 +32,36 @@ public final class MapDataBase {
 	 */
 	public static boolean isValidAdjacency(){
 		Set<String> continentNames = MapDataBase.continents.keySet();
+		boolean isnotConnetWithSameContinent = true;
+		
 		for(HashMap<String,Territory> territories : MapDataBase.continents.values()){
 			for(Territory territory:territories.values()){
+				isnotConnetWithSameContinent = true;
 				if(territory.getAdjacentTerritories().size() == 0){
 					return false;
 				}
 			     for(String s : territory.getAdjacentTerritories()){
 			    	 boolean foundTerritory = false;
 			    	 for(String continent: continentNames){
-			    	    
-			    		 if(MapDataBase.continents.get(continent).containsKey(s)){
+			    	     if(MapDataBase.continents.get(continent).containsKey(s)){
 			    	    	if(!MapDataBase.continents.get(continent).get(s).getAdjacentTerritories().contains(territory.getName())){
 			    	    		return false;
+			    	    	}
+			    	    	if(continent.equals(territory.getContinentName())){
+			    	    		isnotConnetWithSameContinent = false;
 			    	    	}
 			    	    	foundTerritory = true;
 			    	    }
 			    	 }
 			    	 if(!foundTerritory) return false;
 			     }			    	 
+			     
+			     if(isnotConnetWithSameContinent  && continents.get(territory.getContinentName()).size() > 1){
+			    	 return false; 
+			     }
 			}
 			
+	    	 
 		}
 		
 		return true;
@@ -66,7 +76,6 @@ public final class MapDataBase {
         
 		HashSet<String> allAdjacencies = new HashSet<>();
 		HashMap<String,String> waitingForConnection = new HashMap<>();
-
 		for(String continent : continents.keySet()){
 			Set<String> countries = continents.get(continent).keySet();
 			for(String territory: countries){
@@ -80,20 +89,24 @@ public final class MapDataBase {
 				}else{
 					waitingForConnection.remove(territory);
 				}
-				
 				for(String s: tmp){
 					if(waitingForConnection.containsKey(s)){
 						String continentTmp = waitingForConnection.get(s);
 						if(continents.get(continentTmp).get(s).getAdjacentTerritories().size() == 1){
 							if(!continents.get(continentTmp).get(s).getAdjacentTerritories().get(0).equals(territory)){
 								waitingForConnection.remove(s);	
-							}else{
+							}
+							else if(tmp.size()>1){
+								waitingForConnection.remove(s);
+							}
+							else{
 
 							}
 						}else{
 							waitingForConnection.remove(s);	
 						}
 					}
+					
 					
 				}
 				allAdjacencies.addAll(tmp); 
