@@ -46,3 +46,33 @@ b,x,y,South,a,c
 c,x,y,South,b,d
 d,x,y,America,c,a
 ```
+below is also an example of disconnected map -may be disconnected continent 
+
+```
+[Continents]
+America=5
+South=6
+
+[Territories]
+a,x,y,South,b
+b,x,y,South,a,c
+c,x,y,South,b
+
+d,x,y,America,e
+e,x,y,America,d
+```
+
+but below is valid one
+```
+[Continents]
+America=5
+South=6
+
+[Territories]
+a,x,y,South,b
+b,x,y,South,a,c
+c,x,y,South,b,d
+
+d,x,y,America,e,c
+e,x,y,America,d
+```
