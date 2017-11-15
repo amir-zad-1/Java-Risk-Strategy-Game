@@ -76,7 +76,7 @@ c,x,y,South,b,d
 d,x,y,America,e,c
 e,x,y,America,d
 ```
-below is the exAMPLE OF DISCONNECTED TERRITORIES
+below is the example of disconnected territories map which wont be accept by the game
 
 ```
 [Continents]
@@ -89,5 +89,21 @@ b,x,y,South,a,c
 c,x,y,South,b
 
 d,x,y,South,e
+e,x,y,South,d
+```
+
+but below is the valid one
+
+```
+[Continents]
+America=5
+South=6
+
+[Territories]
+a,x,y,South,b,d
+b,x,y,South,a,c
+c,x,y,South,b
+
+d,x,y,South,e,a
 e,x,y,South,d
 ```
