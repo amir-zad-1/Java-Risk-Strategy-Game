@@ -44,9 +44,7 @@ public final class MapDataBase {
 			    	 boolean foundTerritory = false;
 			    	 for(String continent: continentNames){
 			    	     if(MapDataBase.continents.get(continent).containsKey(s)){
-			    	    	if(!MapDataBase.continents.get(continent).get(s).getAdjacentTerritories().contains(territory.getName())){
-			    	    		return false;
-			    	    	}
+			    	    	
 			    	    	if(continent.equals(territory.getContinentName())){
 			    	    		isnotConnetWithSameContinent = false;
 			    	    	}
