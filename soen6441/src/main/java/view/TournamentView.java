@@ -57,7 +57,6 @@ public class TournamentView implements IView{
 	
 	/** 
 	 * @return Scene that has all UI elements
-	 * @see view.IView#getView()
 	 */
 	@Override
 	public Scene getView(boolean isResume) {

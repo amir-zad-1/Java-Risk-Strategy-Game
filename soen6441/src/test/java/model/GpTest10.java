@@ -17,7 +17,7 @@ public class GpTest10 {
 
     /**
      * There should be no territory to attack
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException is not as per game rules
      */
     @Test()
     public void test1() throws InvalidNumOfPlayersException
@@ -37,7 +37,7 @@ public class GpTest10 {
 
     /**
      * checks if attack from territory is owned by the attacker
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException is number of players not as per game rules
      */
     @Test()
     public void test2() throws InvalidNumOfPlayersException
@@ -60,7 +60,7 @@ public class GpTest10 {
 
     /**
      * checks if attack to territory is owned by the defender
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test3() throws InvalidNumOfPlayersException
@@ -82,7 +82,7 @@ public class GpTest10 {
 
     /**
      * checks if attacker and defender are not the same
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException is number of player not as per game rules
      */
     @Test()
     public void test4() throws InvalidNumOfPlayersException

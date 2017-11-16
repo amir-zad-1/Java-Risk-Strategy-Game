@@ -49,6 +49,7 @@ public class WelcomeView implements IView{
 	
 	/**
 	 * Constructor which injects Controllers and View
+	 * @param new_gameController is the controller to play game
 	 * @param new_window is the main window on the UI check {@link javafx.stage.Stage}}
 	 * @param new_maprwController is the map file read and write controller, check {@link RWMapFileController} 
 	 * @param new_mapEditorView is the map editor view, welcome view is responsible to start Map Editor View
@@ -183,7 +184,7 @@ public class WelcomeView implements IView{
 	 /**
 	 * Loads new Scene(UI Container) into the window
 	 * @param scene will be showed in window
-	 * @see java.fx.Scene is has UI elements to load into  Window
+	 * @see Scene is has UI elements to load into  Window
 	 */
 	public  void loadAnotherView(Scene scene){
 	    	window.setScene(scene);	

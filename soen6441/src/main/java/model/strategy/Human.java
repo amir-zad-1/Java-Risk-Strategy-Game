@@ -228,7 +228,7 @@ public class Human extends Observable implements IStrategy,Serializable {
     /**
      * number of fortification armies
      * @param player to chose number of armies he want to fortify
-     * @param from origin of fortification
+     * @param fromTerritory is territory from which u want to do fortification
      * @return number of armies he choose
      */
     @Override

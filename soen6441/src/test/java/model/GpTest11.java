@@ -69,6 +69,7 @@ public class GpTest11 {
 
     /**
      * test fortification territory from
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void Test5() throws InvalidNumOfPlayersException
@@ -90,6 +91,7 @@ public class GpTest11 {
 
     /**
      * test fortification territory to
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void Test6() throws InvalidNumOfPlayersException
@@ -157,6 +159,7 @@ public class GpTest11 {
 
     /**
      * test fortification territory from aggressive
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void Test11() throws InvalidNumOfPlayersException
@@ -178,6 +181,7 @@ public class GpTest11 {
 
     /**
      * test fortification territory to
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void Test12() throws InvalidNumOfPlayersException
@@ -200,6 +204,7 @@ public class GpTest11 {
 
     /**
      * this will test attack numbers by benevolent strategy
+     * 
      */
     @Test
     public void Test13()

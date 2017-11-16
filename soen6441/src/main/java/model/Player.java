@@ -697,6 +697,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
     
     /**
      * Returns {@link ArrayList} of cards owned by this player
+     * @return {@link #cards} got for the player
      */
     public ArrayList<Card> getCards() {
     	return this.cards;

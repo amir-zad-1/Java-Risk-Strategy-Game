@@ -51,7 +51,7 @@ public class Log extends Observable{
     
     
     /**
-     * @return {@link #loggerController}
+     * @return {@link #logger}
      */
     public static Log getLogger() {
 		return logger;
@@ -59,7 +59,7 @@ public class Log extends Observable{
 
     
 	/**
-	 * @param loggerController to initialize the {@value #loggerController}
+	 * @param loggerController to initialize the {@link #logger}
 	 */
 	public static void setLogger(Log loggerController) {
 		Log.logger = loggerController;

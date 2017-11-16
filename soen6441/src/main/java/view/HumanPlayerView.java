@@ -46,8 +46,7 @@ public class HumanPlayerView implements Observer{
 	}
 	
 	/**
-	 * @return {@link Scene} object that holds all UI elements related to the HumanPlayerView
-	 * @see view.IView#getView()
+	 * @return {@link HBox} object that holds all UI elements related to the HumanPlayerView
 	 */
 	public HBox getView() {
 		

@@ -59,7 +59,7 @@ public class ReadController{
 
 	/**
 	 * Returns the continent value associated with passed continent name
-	 * @param continent should be the Continent Name
+	 * @param continentName should be the Continent Name
 	 * @return the continent value if continent exist else 0
 	 */
 	public int getContinentValue(String continentName) {
