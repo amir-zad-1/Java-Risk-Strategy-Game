@@ -22,7 +22,7 @@ public final class MapDataBase {
 	public static HashMap<String, HashMap<String,Territory>> continents = new HashMap<String, HashMap<String,Territory>>();
 	
 	/**
-	 * {@link #continentValues} contains the values associated to contiennts
+	 * {@link #continentValues} contains the values associated to continents
 	 */
 	public static HashMap<String, Integer> continentValues = new HashMap<String, Integer>();		
 
@@ -45,17 +45,21 @@ public final class MapDataBase {
 			    	 for(String continent: continentNames){
 			    	     if(MapDataBase.continents.get(continent).containsKey(s)){
 			    	    	
-			    	    	if(continent.equals(territory.getContinentName())){
+			    	    	if(continent.equals(territory.getContinentName()) ){
+			    	    	    System.out.println(anyOneSaidIhave(continent,s));
 			    	    		isnotConnetWithSameContinent = false;
 			    	    	}
+			    	    	
 			    	    	foundTerritory = true;
 			    	    }
 			    	 }
 			    	 if(!foundTerritory) return false;
 			     }			    	 
-			     
+			  
 			     if(isnotConnetWithSameContinent  && continents.get(territory.getContinentName()).size() > 1){
-			    	 return false; 
+			    	   if(!anyOneSaidIhave(territory.getContinentName(),territory.getName())){
+			    	     return false;
+			    	   }
 			     }
 			}
 			
@@ -67,6 +71,32 @@ public final class MapDataBase {
 
 	
 	
+	/**
+	 * @param continent
+	 * @param territory
+	 * @return true if anyone in same continent tells passed territory is adjacent
+	 */
+	private static boolean anyOneSaidIhave(String continent, String territory) {
+		
+		
+		HashMap<String,Territory> territories  =  MapDataBase.continents.get(continent);
+		
+		for(String territoryName : territories.keySet()){
+			if(!territoryName.equals(territory)){
+				for(String adjacent : territories.get(territoryName).getAdjacentTerritories()){
+					System.out.println(adjacent+" "+territoryName);
+					if(adjacent.equals(territory)){
+						return true;
+					}
+				}
+		   }
+		}
+		
+		return false;
+	}
+
+
+
 	/**
 	 * @return false is there is any dis-connectivity between to territories or continents 
 	 */
