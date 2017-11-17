@@ -4,6 +4,7 @@ package view;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import common.NotNull;
 import controller.ReadController;
 import controller.WriteController;
 
@@ -18,6 +19,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -28,6 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * @author Team15
@@ -62,7 +65,7 @@ public class MapEditorView implements IView{
 	 * Flags to check if a continent or country is deleted
 	 */
 	boolean isDeletedContinent= false,isDeletedContry=false;
-
+	ArrayList<ComboBox<String>> playerList = new ArrayList<>();
 	TextInputDialog dialog = new TextInputDialog();
 	private Button startGameButton = new Button();
 	private Button closeButton = new Button();
@@ -84,18 +87,29 @@ public class MapEditorView implements IView{
 	 * @return {@link Scene} instance
 	 * @see view.IView#getView()
 	 */
+	@NotNull
 	public Scene getView(){
 		
 		//We use ObservableList in order to attach listeners to choice box
 		ObservableList<String> continents = FXCollections.observableArrayList();		 
 		ObservableList<String> contries = FXCollections.observableArrayList();
-
 		continents.addAll(readController.getAllContinentNames());
+		//ObservableList for selecting player stratagies
+		ObservableList<String> options = 
+			    FXCollections.observableArrayList(
+			        "Option 1",
+			        "Option 2",
+			        "Option 3"
+			    );
 		
+		//Entire screen uses grid layout
 		GridPane gridPane = new GridPane();
 		gridPane.setHgap(10);
 		gridPane.setVgap(10);
 
+		//holds all players input section
+		VBox playerStratagiesContiner = new VBox();
+		
 		ChoiceBox<String> continentChoiceBox = new ChoiceBox<String>();
 		ChoiceBox<String> countriesChoiceBox = new ChoiceBox<String>();
 		
@@ -103,8 +117,10 @@ public class MapEditorView implements IView{
 		Button addCountry = new Button("Add Country");	     
 		Button deleteContent = new Button("Delete Continent");	     
 		Button deleteCountry = new Button("Delete Country");
+		Button addMorePlayers = new Button("Add Players");
 		Button saveChanges = new Button("Save Changes");
 
+		
 		TextField editadjacentContries = new TextField ();
 		editadjacentContries.setPrefWidth(800);
 		editadjacentContries.setPromptText("Adjacent Countries");
@@ -147,6 +163,14 @@ public class MapEditorView implements IView{
 		});
 
 
+		addMorePlayers.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				ComboBox<String> comboBox = new ComboBox<String>(options);
+				playerList.add(comboBox);
+				playerStratagiesContiner.getChildren().add(comboBox);
+			}
+		});	
 
 		saveChanges.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -223,10 +247,17 @@ public class MapEditorView implements IView{
 		gridPane.add(addCountry, 1,2);
 		gridPane.add(deleteContent, 2,2);
 		gridPane.add(deleteCountry, 3,2);
+		
 		//Adding to row 4 to UI grid
 		gridPane.add(new Label("Number of Players"), 1, 3);
 		gridPane.add(numberOfPlayerInput, 2,3);
+		gridPane.add(addMorePlayers, 3, 3);
+		
+		//Adding 5th row to take Player strategies input
+		gridPane.add(playerStratagiesContiner, 1, 4, 1, 4);
 
+		
+		
 		ToolBar header = new ToolBar(closeButton);
 		header.setStyle( 
 				"-fx-border-style: solid inside;" + 
