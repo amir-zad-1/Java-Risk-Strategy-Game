@@ -57,11 +57,6 @@ public class MapEditorView implements IView{
 	private WriteController writeController = null;
 	
 	/**
-	 * TextField to take number of players input
-	 */
-	private TextField numberOfPlayerInput = new TextField();
-	
-	/**
 	 * Flags to check if a continent or country is deleted
 	 */
 	boolean isDeletedContinent= false,isDeletedContry=false;
@@ -97,9 +92,11 @@ public class MapEditorView implements IView{
 		//ObservableList for selecting player stratagies
 		ObservableList<String> options = 
 			    FXCollections.observableArrayList(
-			        "Option 1",
-			        "Option 2",
-			        "Option 3"
+			        "Human",
+			        "Aggressive",
+			        "Benevolent",
+			        "Random",
+			        "Cheater"
 			    );
 		
 		//Entire screen uses grid layout
@@ -126,8 +123,6 @@ public class MapEditorView implements IView{
 		editadjacentContries.setPromptText("Adjacent Countries");
 		TextField editContinentValue = new TextField ();
 		editContinentValue.setPromptText("Continent Value");
-		numberOfPlayerInput = new TextField ();
-		numberOfPlayerInput.setPromptText("Number Of Players");
 
 		addContent.setOnAction(new EventHandler<ActionEvent>() {			
 			@Override
@@ -249,9 +244,9 @@ public class MapEditorView implements IView{
 		gridPane.add(deleteCountry, 3,2);
 		
 		//Adding to row 4 to UI grid
-		gridPane.add(new Label("Number of Players"), 1, 3);
-		gridPane.add(numberOfPlayerInput, 2,3);
-		gridPane.add(addMorePlayers, 3, 3);
+		//gridPane.add(new Label("Number of Players"), 1, 3);
+		//gridPane.add(numberOfPlayerInput, 2,3);
+		gridPane.add(addMorePlayers, 2, 3);
 		
 		//Adding 5th row to take Player strategies input
 		gridPane.add(playerStratagiesContiner, 1, 4, 1, 4);
@@ -309,9 +304,20 @@ public class MapEditorView implements IView{
 	 * @return the numberOfPlayers given by user
 	 */
 	public int getNumberOfPlayers() {
-		return Integer.parseInt(numberOfPlayerInput.getText());
+		return playerList.size();
 	}
 
+	/**
+	 * @return the players strategies given by user
+	 */
+	
+	public String getPlayersStrategies() {
+		String tmp = "";
+		for(ComboBox selectBox : playerList){
+			tmp += ","+((String) selectBox.getValue()).toLowerCase().charAt(0);
+		}
+		return tmp;
+	}
 
 	/**
 	 * @param question displays the question

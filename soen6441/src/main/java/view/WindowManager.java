@@ -45,12 +45,14 @@ public class WindowManager extends Application {
 		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
-        		int numberOfPlayers = mapEditorView.getNumberOfPlayers();       
+        		//Added +1 as players index start from one not zero 
+        		int numberOfPlayers = mapEditorView.getNumberOfPlayers() + 1;
+        		String strategies = mapEditorView.getPlayersStrategies();
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		phaseView.setWindowStage(window);
         		window.setScene(phaseView.getView());
         		callback.called(numberOfPlayers);
-        		gameController.startGame(numberOfPlayers);
+        		gameController.startGame(numberOfPlayers,strategies);
         		
             }
     	});   

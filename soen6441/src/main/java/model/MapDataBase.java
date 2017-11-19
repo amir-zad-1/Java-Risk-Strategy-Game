@@ -132,7 +132,6 @@ public final class MapDataBase {
 						}
 					}
 					
-					
 				}
 				allAdjacencies.addAll(tmp); 
 		
