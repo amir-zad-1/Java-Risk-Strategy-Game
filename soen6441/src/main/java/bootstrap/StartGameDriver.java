@@ -57,9 +57,7 @@ public class StartGameDriver {
 		 
 		 //Creates phaseView make it Observer
 		 CardView  cardView= new CardView();
-		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView);
-
-		 
+		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView);		 
 		 
 		 
 		 //Sends all controllers to view manager, such that views can contact
@@ -72,11 +70,9 @@ public class StartGameDriver {
 			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
 			    		p.addObserver(dominationView);
-			    		p.addObserver(phaseView);
-			    
+			    		p.addObserver(phaseView);			    
 			    		gameManager.addPlayer(p);
-			    	}
-			    	
+			    	}			    	
 			    }
 		 });
 		 

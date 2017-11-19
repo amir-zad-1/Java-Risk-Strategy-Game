@@ -163,7 +163,15 @@ public class MapEditorView implements IView{
 			public void handle(ActionEvent event) {
 				ComboBox<String> comboBox = new ComboBox<String>(options);
 				playerList.add(comboBox);
-				playerStratagiesContiner.getChildren().add(comboBox);
+				HBox newView = new HBox();
+				Label strategyLabel =  new Label("Select Player "+(playerList.size())+" Strategy");
+				strategyLabel.setPadding(new Insets(0,5,0,0));
+				newView.getChildren().add(strategyLabel);
+				newView.getChildren().add(comboBox);
+				playerStratagiesContiner.getChildren().add(newView);
+				//Set gap between children
+				VBox.setMargin(newView, new Insets(8));
+
 			}
 		});	
 
@@ -243,9 +251,7 @@ public class MapEditorView implements IView{
 		gridPane.add(deleteContent, 2,2);
 		gridPane.add(deleteCountry, 3,2);
 		
-		//Adding to row 4 to UI grid
-		//gridPane.add(new Label("Number of Players"), 1, 3);
-		//gridPane.add(numberOfPlayerInput, 2,3);
+		addMorePlayers.setMinWidth(200);
 		gridPane.add(addMorePlayers, 2, 3);
 		
 		//Adding 5th row to take Player strategies input
