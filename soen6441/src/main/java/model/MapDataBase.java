@@ -46,8 +46,7 @@ public final class MapDataBase {
 			    	     if(MapDataBase.continents.get(continent).containsKey(s)){
 			    	    	
 			    	    	if(continent.equals(territory.getContinentName()) ){
-			    	    	    System.out.println(anyOneSaidIhave(continent,s));
-			    	    		isnotConnetWithSameContinent = false;
+			    	    	    isnotConnetWithSameContinent = false;
 			    	    	}
 			    	    	
 			    	    	foundTerritory = true;
@@ -84,7 +83,6 @@ public final class MapDataBase {
 		for(String territoryName : territories.keySet()){
 			if(!territoryName.equals(territory)){
 				for(String adjacent : territories.get(territoryName).getAdjacentTerritories()){
-					System.out.println(adjacent+" "+territoryName);
 					if(adjacent.equals(territory)){
 						return true;
 					}
@@ -107,7 +105,6 @@ public final class MapDataBase {
 		for(String continent : continents.keySet()){
 			Set<String> countries = continents.get(continent).keySet();
 			for(String territory: countries){
-				System.out.println(territory+" "+continent );
 				ArrayList<String> tmp = new ArrayList<>();
 				tmp.clear();
 				tmp.addAll(continents.get(continent).get(territory).getAdjacentTerritories());
@@ -138,8 +135,7 @@ public final class MapDataBase {
 					
 				}
 				allAdjacencies.addAll(tmp); 
-				System.out.println(allAdjacencies);
-			    System.out.println(waitingForConnection);
+		
 			}
 			
 		}	
