@@ -13,6 +13,12 @@ import java.util.Scanner;
  */
 public class Human implements IStrategy {
 
+	
+    /**
+     * {@link Scanner} to read data from command prompt
+     */
+    Scanner scanner = new Scanner(System.in);
+	
     /**
      * how many attacks
      * @return number of attacks
@@ -20,8 +26,7 @@ public class Human implements IStrategy {
     @Override
     public int getAttackAttempts() {
         System.out.print("How many times do you want to attack?");
-        Scanner sc = new Scanner(System.in);
-        int times = sc.nextInt();
+        int times = scanner.nextInt();
         return times;
     }
 
@@ -45,8 +50,7 @@ public class Human implements IStrategy {
         System.out.print("Tip: your weakest territory is : ");
         System.out.println(p.getWeakestTerritory().getName());
         System.out.print("Which territory do you want to reinforce?");
-        Scanner sc = new Scanner(System.in);
-        String territoryName = sc.nextLine();
+        String territoryName = scanner.nextLine();
         return p.getTerritoryByName(territoryName);
     }
 
@@ -59,8 +63,7 @@ public class Human implements IStrategy {
     public int getReinforcementArmies(IPlayer p) {
 
         System.out.print("How many armies do you want to put into?");
-        Scanner sc = new Scanner(System.in);
-        int reinforcementArmies = sc.nextInt();
+        int reinforcementArmies = scanner.nextInt();
         return reinforcementArmies;
     }
 
@@ -78,8 +81,7 @@ public class Human implements IStrategy {
         ITerritory str = p.getStrongestTerritory();
         System.out.println(str.getName() + "(" + str.getArmies()  +")");
         System.out.print("\nWhich territory do you want to attack from?");
-        Scanner sc = new Scanner(System.in);
-        String territoryName = sc.nextLine();
+        String territoryName = scanner.nextLine();
         ITerritory from = p.getTerritoryByName(territoryName);
 
         ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
@@ -103,8 +105,7 @@ public class Human implements IStrategy {
                 System.out.println(String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(), t.getOwner().getName()));
 
             System.out.print("Which territory do you want to attack to?");
-            sc = new Scanner(System.in);
-            territoryName = sc.nextLine();
+            territoryName = scanner.nextLine();
             to = p.getGameManager().getTerritory(territoryName);
 
             result = new AttackPlan(from, to);
@@ -113,8 +114,7 @@ public class Human implements IStrategy {
         {
             System.out.println(String.format("There is no neighbour for %s. Attack is canceled.", from.getName()));
             System.out.println("To continue press enter.");
-            sc = new Scanner(System.in);
-            String tmp = sc.nextLine();
+            String tmp = scanner.nextLine();
             result = null;
         }
 
@@ -131,8 +131,7 @@ public class Human implements IStrategy {
     public int diceToAttack(IPlayer p) {
 
         System.out.print("How many dice do you want to use for the attack?");
-        Scanner sc = new Scanner(System.in);
-        int dice = sc.nextInt();
+        int dice = scanner.nextInt();
         return dice;
     }
 
@@ -145,8 +144,7 @@ public class Human implements IStrategy {
     public int diceToDefend(IPlayer p) {
 
         System.out.print("How many dice do you want to use to defend?");
-        Scanner sc = new Scanner(System.in);
-        int dice = sc.nextInt();
+        int dice = scanner.nextInt();
         return dice;
     }
 
@@ -159,8 +157,7 @@ public class Human implements IStrategy {
     public int getMovingArmiesToNewTerritory(IPlayer p) {
 
         System.out.print("How many armies do you want to move to the new territory?");
-        Scanner sc = new Scanner(System.in);
-        int armies = sc.nextInt();
+        int armies = scanner.nextInt();
         return armies;
     }
 
