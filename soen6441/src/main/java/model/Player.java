@@ -5,12 +5,10 @@ import controller.LoggerController;
 import model.contract.IStrategy;
 import model.contract.ITerritory;
 import model.contract.IPlayer;
-import model.strategy.Normal;
 import util.ActionResponse;
 import util.Color;
 import util.Helpers;
 import util.LogMessageEnum;
-import util.expetion.NoSufficientArmiesExption;
 import view.Logger;
 
 import java.util.ArrayList;
@@ -422,8 +420,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         {
             LoggerController.log(String.format("Attack %s ", a));
 
-            // Step 1: Design a attack plan
-            AttackPlan ap = this.getTerritoryToAttack();
+            // Step 1: Design an attack plan
+            AttackPlan ap = this.strategy.getAttackPlan(this);
             if (ap == null)
             {
             	this.statusMessage = "No territory found to attack.";
@@ -439,12 +437,12 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
             sendNotification("GameChange: Attacked from "+attackFrom.getName()+" to "+attackTo.getName()+"("+attackTo.getOwner().getName()+")");
             
             // Step 2: Number of armies(Dices) for the battle
-            int diceAttack = Helpers.getRandomInt(3,1);
+             int diceAttack = attackFrom.getOwner().getStrategy().diceToAttack(attackFrom.getOwner());
 
             //Step 3: Checking sufficient armies to attack
             if (attackFrom.getArmies() - diceAttack >= 1)
             {
-                int diceDefend = Helpers.getRandomInt(2,1);
+                int diceDefend = attackTo.getOwner().getStrategy().diceToDefend(attackTo.getOwner());
                 //Step 4: Checking sufficient armies to defend
                 if(diceDefend == 2 && attackTo.getArmies() < 2)
                 {
@@ -541,7 +539,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
                 if(attackTo.getOwner() == attackFrom.getOwner())
                 {
                     //Step 10: calculating moving armies to new territory
-                    int movingArmies = 1;
+                    int movingArmies = attackFrom.getOwner().getStrategy().getMovingArmiesToNewTerritory(this);
                     attackFrom.removeArmies(movingArmies);
                     attackTo.placeArmies(movingArmies);
                     this.statusMessage = String.format("%s places %s armies to occupied territory(%s)",
@@ -555,7 +553,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
             }
             else
             {
-            	this.statusMessage = String.format("Attacking %s from %s with %s armies canceled. %s -> %s", attackTo.getName(),
+            	//Attack canceled
+                this.statusMessage = String.format("Attacking %s from %s with %s armies canceled. %s -> %s", attackTo.getName(),
                         attackFrom.getName(), diceAttack, attackFrom.getArmies() , attackTo.getArmies());
                 sendNotify();
             	Logger.log(String.format("Attacking %s from %s with %s armies canceled. %s -> %s", attackTo.getName(),
@@ -582,14 +581,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         this.gm.setPhase("FORTIFICATION PHASE");
         sendNotification("PhaseChange:"+this.getName()+" Fortification");
         
-        ITerritory from = this.getRandomTerritory();
-        ITerritory to;
-
-        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
-        if(neighbours.size()>0)
-            to = neighbours.get(0);
-        else
-            to = this.getRandomTerritory();
+        ITerritory from = this.strategy.getFortificationFromTerritory(this);
+        ITerritory to = this.strategy.getFortificationToTerritory(this);
 
         int number = Helpers.getRandomInt(from.getArmies(),1);
         this.moveArmies(from, to, number);

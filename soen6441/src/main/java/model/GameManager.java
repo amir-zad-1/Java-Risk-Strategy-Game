@@ -2,9 +2,7 @@ package model;
 
 
 import model.contract.*;
-import model.strategy.Aggressive;
-import model.strategy.Defensive;
-import model.strategy.Normal;
+import model.strategy.Random;
 import util.Color;
 import util.expetion.InvalidNumOfPlayersException;
 
@@ -37,7 +35,6 @@ public class GameManager extends Observable {
     private int turn = -1;
 
     private int strategyTurn = -1;
-    ArrayList<IStrategy> strategies = new ArrayList<>();
 
     public CardDeck cardDeck = new CardDeck();
 
@@ -61,9 +58,6 @@ public class GameManager extends Observable {
 
         this.numberOfPlayers = players;
         this.map = new Map();
-        strategies.add(new Normal());
-        strategies.add(new Defensive());
-        strategies.add(new Aggressive());
         start();
     }
 
@@ -82,9 +76,6 @@ public class GameManager extends Observable {
 
         this.numberOfPlayers = players;
         this.map = new Map();
-        strategies.add(new Normal());
-        strategies.add(new Defensive());
-        strategies.add(new Aggressive());
     }
 
     
@@ -98,9 +89,6 @@ public class GameManager extends Observable {
 
         this.numberOfPlayers = players;
         this.map = m;
-        strategies.add(new Normal());
-        strategies.add(new Defensive());
-        strategies.add(new Aggressive());
     }
 
     /**
@@ -308,8 +296,8 @@ public class GameManager extends Observable {
         while(i<armiesToPlace )
         {
             LoggerController.log(p.getState());
-            ITerritory playerRandomTerritory = p.getRandomTerritory();
-            int randomArmy = util.Helpers.getRandomInt(p.getUnusedArmies(),1);
+            ITerritory playerRandomTerritory = p.getStrategy().getInforcementTerritory(p);
+            int randomArmy = p.getStrategy().getReinforcementArmies(p);
 
             p.placeArmy(randomArmy, playerRandomTerritory);
             i += randomArmy;
@@ -611,12 +599,7 @@ public class GameManager extends Observable {
      */
     public IStrategy getRandomStrategy()
     {
-        if(this.strategyTurn==this.strategies.size()-1)
-            this.strategyTurn = -1;
-        this.strategyTurn++;
-
-        return this.strategies.get(strategyTurn);
-
+        return new Random();
     }
 
 
@@ -661,6 +644,5 @@ public class GameManager extends Observable {
 		setChanged();
 		notifyObservers(type);				
 	}
-
 
 }
