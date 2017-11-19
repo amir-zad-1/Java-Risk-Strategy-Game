@@ -11,12 +11,12 @@ public interface IStrategy {
     ITerritory getInforcementTerritory(IPlayer p);
     int getReinforcementArmies(IPlayer p);
 
-    ITerritory getFortificationFromTerritory(IPlayer p);
-    ITerritory getFortificationToTerritory(IPlayer p);
-
     AttackPlan getAttackPlan(IPlayer p);
     int diceToAttack(IPlayer p);
     int diceToDefend(IPlayer p);
     int getMovingArmiesToNewTerritory(IPlayer p);
+
+    ITerritory getFortificationFromTerritory(IPlayer p);
+    ITerritory getFortificationToTerritory(IPlayer p);
 
 }

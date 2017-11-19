@@ -2,7 +2,7 @@ package model;
 
 
 import model.contract.*;
-import model.strategy.Random;
+import model.strategy.*;
 import util.Color;
 import util.expetion.InvalidNumOfPlayersException;
 
@@ -35,6 +35,8 @@ public class GameManager extends Observable {
     private int turn = -1;
 
     private int strategyTurn = -1;
+    private String strategyString = "";
+    ArrayList<IStrategy> strategies = new ArrayList<>();
 
     public CardDeck cardDeck = new CardDeck();
 
@@ -72,10 +74,12 @@ public class GameManager extends Observable {
      * @param players number of players
      * @exception InvalidNumOfPlayersException be careful
      */
-    public GameManager(int players) {
+    public GameManager(int players, String strategies) {
 
         this.numberOfPlayers = players;
         this.map = new Map();
+        this.strategyString  = strategies;
+        this.setStrategies();
     }
 
     
@@ -85,10 +89,12 @@ public class GameManager extends Observable {
      * @param m is selected map
      * @param players number of players that user choose
      */
-    public GameManager(IMap m,int players) {
+    public GameManager(IMap m,int players, String strategies) {
 
         this.numberOfPlayers = players;
         this.map = m;
+        this.strategyString = strategies;
+        this.setStrategies();
     }
 
     /**
@@ -98,6 +104,35 @@ public class GameManager extends Observable {
 		
 	}
 
+    /**
+     * set startegies according to strategies string
+     * sample for 3 players with Human, Random and Aggressive strategies is h,r,a
+     */
+	public void setStrategies()
+    {
+        String[] stra = this.strategyString.split(",");
+        for(String s:stra)
+        {
+            switch (s)
+            {
+                case "h":
+                    this.strategies.add(new Human());
+                    break;
+                case "a":
+                    this.strategies.add(new Aggressive());
+                    break;
+                case "b":
+                    this.strategies.add(new Benevolent());
+                    break;
+                case "r":
+                    this.strategies.add(new Random());
+                    break;
+                case "c":
+                    this.strategies.add(new Cheater());
+                    break;
+            }
+        }
+    }
 
 	/**
      * Start the game
@@ -279,9 +314,6 @@ public class GameManager extends Observable {
 
         return result;
     }
-
-
-
 
 
 
@@ -599,7 +631,12 @@ public class GameManager extends Observable {
      */
     public IStrategy getRandomStrategy()
     {
-        return new Random();
+        if(this.strategyTurn==this.strategies.size()-1)
+            this.strategyTurn = -1;
+        this.strategyTurn++;
+
+        return this.strategies.get(strategyTurn);
+
     }
 
 

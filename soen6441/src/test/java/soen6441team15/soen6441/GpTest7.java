@@ -26,7 +26,7 @@ public class GpTest7 {
         m.clearData();
         m.fakeData();
 
-        GameManager gm = new GameManager(m, 3);
+        GameManager gm = new GameManager(m, 3, "r,r,r");
         gm.start(false);
         ArrayList<IContinent> cList = gm.ContinentControlledBy(gm.nextPlayer());
         Assert.assertEquals(0, cList.size());
@@ -40,7 +40,7 @@ public class GpTest7 {
         m.clearData();
         m.fakeData();
 
-        GameManager gm = new GameManager(m, 3);
+        GameManager gm = new GameManager(m, 3,"r,r,r");
         gm.start(false);
         IPlayer p = gm.nextPlayer();
 
