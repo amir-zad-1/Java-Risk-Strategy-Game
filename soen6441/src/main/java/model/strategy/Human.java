@@ -8,8 +8,15 @@ import model.contract.ITerritory;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Human Strategy
+ */
 public class Human implements IStrategy {
 
+    /**
+     * how many attacks
+     * @return number of attacks
+     */
     @Override
     public int getAttackAttempts() {
         System.out.print("How many times do you want to attack?");
@@ -18,11 +25,20 @@ public class Human implements IStrategy {
         return times;
     }
 
+    /**
+     * name of the startegy
+     * @return name
+     */
     @Override
     public String getName() {
         return "Human";
     }
 
+    /**
+     * where to reinforce
+     * @param p player
+     * @return territory
+     */
     @Override
     public ITerritory getInforcementTerritory(IPlayer p) {
 
@@ -34,6 +50,11 @@ public class Human implements IStrategy {
         return p.getTerritoryByName(territoryName);
     }
 
+    /**
+     * set number of reinforcement armies
+     * @param p player
+     * @return number of reinforcement
+     */
     @Override
     public int getReinforcementArmies(IPlayer p) {
 
@@ -43,6 +64,11 @@ public class Human implements IStrategy {
         return reinforcementArmies;
     }
 
+    /**
+     * Generates an attack plan for a player
+     * @param p player
+     * @return attack plan
+     */
     @Override
     public AttackPlan getAttackPlan(IPlayer p)
     {
@@ -96,6 +122,11 @@ public class Human implements IStrategy {
 
     }
 
+    /**
+     * role dice for attacking
+     * @param p player
+     * @return int dice
+     */
     @Override
     public int diceToAttack(IPlayer p) {
 
@@ -105,6 +136,11 @@ public class Human implements IStrategy {
         return dice;
     }
 
+    /**
+     * role dice to defend
+     * @param p player
+     * @return dice
+     */
     @Override
     public int diceToDefend(IPlayer p) {
 
@@ -114,6 +150,11 @@ public class Human implements IStrategy {
         return dice;
     }
 
+    /**
+     * how many armies should move to new territory
+     * @param p player
+     * @return number of armies
+     */
     @Override
     public int getMovingArmiesToNewTerritory(IPlayer p) {
 
@@ -123,6 +164,11 @@ public class Human implements IStrategy {
         return armies;
     }
 
+    /**
+     * where to fortify
+     * @param p player
+     * @return territory
+     */
     @Override
     public ITerritory getFortificationFromTerritory(IPlayer p) {
 
@@ -140,9 +186,20 @@ public class Human implements IStrategy {
         return p.getTerritoryByName(territoryName);
     }
 
+    /**
+     * where to move fortification armies to
+     * @param p player
+     * @param from origin of fortification
+     * @return destination of fortification
+     */
     @Override
     public ITerritory getFortificationToTerritory(IPlayer p, ITerritory from) {
-        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
+        ArrayList<ITerritory> neighbours = new ArrayList<>();
+        ArrayList<ITerritory> temp = from.getAdjacentNeighbours();
+        for(ITerritory t : temp)
+            if(t.getOwner() == p )
+                neighbours.add(t);
+
         ITerritory to;
 
         if(neighbours.size()>0)
@@ -168,6 +225,12 @@ public class Human implements IStrategy {
         return to;
     }
 
+    /**
+     * number of fortification armes
+     * @param p player
+     * @param from origin of fortification
+     * @return number of armies
+     */
     @Override
     public int getFortificationArmies(IPlayer p, ITerritory from) {
         System.out.print("How many armies do you want to fortify?");

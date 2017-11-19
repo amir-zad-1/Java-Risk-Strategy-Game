@@ -530,11 +530,21 @@ public class GameManager extends Observable {
      * @return phase name
      */
     public String getPhase() { return this.currentPhase; }
+
+    /**
+     * sets the phase
+     * @param value phase value
+     */
     public void setPhase(String value) {
         this.currentPhase = value;
     }
 
-    
+
+    /**
+     * card exchange logic
+     * @param p player
+     * @return number of armies to get
+     */
     public int exchangeCard(IPlayer p)
     {
         int exchangeValue = 0;
@@ -636,7 +646,7 @@ public class GameManager extends Observable {
 
         for(IPlayer p : this.playerlist)
             //if(p.getDomination()>85.0)
-            if(p.getDomination()>45.0)
+            if(p.getDomination()>90.0)
             {
                 winner = p;
             }
@@ -703,34 +713,33 @@ public class GameManager extends Observable {
 	}
 
 
+    /**
+     * start of game manager
+     * @param args parameters
+     */
 	public static void main(String[] args)
     {
         IMap m = new Map();
         m.clearData();
         m.fakeData();
 
-        IMap m2 = new Map();
-        m2.clearData();
-        m2.fakeData();
-
         ArrayList<Map> maps = new ArrayList<>();
         maps.add((Map) m);
-        maps.add((Map) m2);
 
 
-//        GameManager gm = new GameManager(m, 3,"r,r,r", 5);
-//        try
-//        {
-//            gm.start(false);
-//            gm.play(true);
-//        }
-//        catch (Exception e)
-//        {
-//
-//        }
+        GameManager gm = new GameManager(m, 3,"r,r,r", 5);
+        try
+        {
+            gm.start(false);
+            gm.play(true);
+        }
+        catch (Exception e)
+        {
 
-        Tournament t = new Tournament();
-        t.start(maps, 3, "r,r,r", 3,5);
+        }
+
+        //Tournament t = new Tournament();
+        //t.start(maps, 3, "c,r,r", 3,70);
     }
 
     /**
