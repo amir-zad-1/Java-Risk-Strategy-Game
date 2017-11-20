@@ -18,7 +18,7 @@ public class GpTest5 {
         IMap m = new Map();
         m.clearData();
         m.fakeData();
-        GameManager gm = new GameManager(m, 3,"r,r,r");
+        GameManager gm = new GameManager(m, 3,"r,r,r", 500);
         gm.start(false);
         Assert.assertEquals(0, gm.nextPlayer().getUnusedArmies());
     }

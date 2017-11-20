@@ -12,6 +12,7 @@ public class Map implements IMap {
 
 
     private ArrayList<IContinent> continents = new ArrayList<>();
+    private String name = "Untitled";
 
     public static int totalnumberOfTerritories = 0;
     
@@ -81,5 +82,15 @@ public class Map implements IMap {
         c3.addTerritory(new Territory("Canada", c3.getName()));
         c3.addTerritory(new Territory("Argentina", c3.getName()));
 
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 }

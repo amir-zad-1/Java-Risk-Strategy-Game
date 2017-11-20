@@ -34,12 +34,15 @@ public class GameManager extends Observable {
     
     private int numberOfPlayers = 0;
     private int turn = -1;
+    private String name = "Game";
+    private String playersText = "";
 
     private int strategyTurn = -1;
     private String strategyString = "";
     ArrayList<IStrategy> strategies = new ArrayList<>();
 
     public CardDeck cardDeck = new CardDeck();
+    public int turns = 500;
 
     private boolean isGameOn=false;
 
@@ -75,12 +78,13 @@ public class GameManager extends Observable {
      * @param players number of players
      * @exception InvalidNumOfPlayersException be careful
      */
-    public GameManager(int players, String strategies) {
+    public GameManager(int players, String strategies, int totalTurns) {
 
         this.numberOfPlayers = players;
         this.map = new Map();
         this.strategyString  = strategies;
         this.setStrategies();
+        this.turns = totalTurns;
     }
 
     
@@ -90,12 +94,13 @@ public class GameManager extends Observable {
      * @param m is selected map
      * @param players number of players that user choose
      */
-    public GameManager(IMap m,int players, String strategies) {
+    public GameManager(IMap m,int players, String strategies, int totalTurns) {
 
         this.numberOfPlayers = players;
         this.map = m;
         this.strategyString = strategies;
         this.setStrategies();
+        this.turns = totalTurns;
     }
 
     /**
@@ -164,7 +169,7 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         if (play)
-            this.play();
+            this.play(true);
     }
 
     /**
@@ -248,14 +253,17 @@ public class GameManager extends Observable {
     /**
      * this is the method that handles the game play
      */
-    public void play()
+    public GameResult play(boolean verbos)
     {
+        IPlayer winner = null;
         this.resetTurn();
         int i = 1;
-        LoggerController.log("====5. PLAYING====");
+        if(verbos)
+            LoggerController.log("====5. PLAYING====");
         while(this.isGameOn)
         {
-            LoggerController.log(String.format("====Turn %s====", i));
+            if(verbos)
+                LoggerController.log(String.format("====Turn %s====", i));
             IPlayer p = nextPlayer();
             
             p.reinforcement();
@@ -264,19 +272,25 @@ public class GameManager extends Observable {
 
             p.fortification();
 
-            IPlayer winner = getWinner();
+            winner = getWinner();
             if (winner == null)
             {
                 LoggerController.log("No winner, so next turn will start.");
             }
 
             i++;
-            if (winner!= null ) //|| i == 3)
+            if (winner!= null || i == turns)
                 this.isGameOn=false;
         }
 
-        String dominationView = this.domitantionResult(true, i);
-        LoggerController.log(dominationView);
+        if (verbos){
+            String dominationView = this.domitantionResult(true, i);
+            LoggerController.log(dominationView);
+        }
+        String winnerName = "Draw";
+        if (winner != null)
+            winnerName = winner.getStrategy().getName();
+        return new GameResult(map.getName(), winnerName);
  
     }
 
@@ -386,6 +400,7 @@ public class GameManager extends Observable {
         	for (int i=1; i<=this.numberOfPlayers; i++) {
                 IStrategy strategy = getRandomStrategy();
                 IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
+                this.playersText += p.getStrategy().getName() +", ";
                 p.setGameManager(this);
                 this.playerlist.add(p);
                 LoggerController.log(p.toString() + " was added to the game.");
@@ -395,6 +410,7 @@ public class GameManager extends Observable {
         		IStrategy strategy = getRandomStrategy(); 
         		playerlist.get(i).setStrategy(strategy);
         		playerlist.get(i).setColor( colorManager.getRandomColor());
+                this.playersText += playerlist.get(i).getStrategy().getName() +", ";
         		playerlist.get(i).setGameManager(this);
         		LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
         	}
@@ -690,18 +706,31 @@ public class GameManager extends Observable {
         m.clearData();
         m.fakeData();
 
-        GameManager gm = new GameManager(m, 3,"r,h,r");
-        try
-        {
-            gm.start(false);
-            gm.play();
-        }
-        catch (Exception e)
-        {
+        ArrayList<Map> maps = new ArrayList<>();
+        maps.add((Map) m);
+        maps.add((Map) m);
 
-        }
+
+//        GameManager gm = new GameManager(m, 3,"r,r,r", 5);
+//        try
+//        {
+//            gm.start(false);
+//            gm.play(true);
+//        }
+//        catch (Exception e)
+//        {
+//
+//        }
+
+        Tournament t = new Tournament();
+        t.start(maps, 3, "r,r,r", 4,5);
     }
 
+    /**
+     * find a territory by its name
+     * @param name name
+     * @return the territory
+     */
     public ITerritory getTerritory(String name)
     {
         ITerritory res = null;
@@ -718,5 +747,24 @@ public class GameManager extends Observable {
         }
         return res;
     }
+
+    /**
+     * set game name
+     * @param name name
+     */
+    public void setName(String name) { this.name = name; }
+
+    /**
+     * return name of the game
+     * @return name
+     */
+    public String getName() { return this.name; }
+
+    /**
+     * returns players
+     * @return player strategies
+     */
+    public String getPlayersText() { return this.playersText; }
+
 
 }

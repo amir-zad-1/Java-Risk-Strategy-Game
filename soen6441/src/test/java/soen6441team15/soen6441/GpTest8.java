@@ -23,7 +23,7 @@ public class GpTest8 {
         m.clearData();
         m.fakeData();
 
-        GameManager gm = new GameManager(m, 3,"r,r,r");
+        GameManager gm = new GameManager(m, 3,"r,r,r", 500);
         gm.start(false);
 
         IPlayer p = gm.nextPlayer();

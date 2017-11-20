@@ -12,5 +12,7 @@ public interface IMap {
     ArrayList<IContinent> getContinents();
     void clearData();
     void fakeData();
+    void setName(String name);
+    String getName();
 
 }
