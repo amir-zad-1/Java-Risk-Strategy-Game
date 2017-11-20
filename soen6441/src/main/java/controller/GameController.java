@@ -29,10 +29,10 @@ public class GameController {
 	 * @param numberOfPlayers tells numbers of players going to play the game
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
-	public void startGame(int numberOfPlayers) {
+	public void startGame(int numberOfPlayers,String strategies) {
 		
 			try {
-				gameManager.start();
+				gameManager.startGame(numberOfPlayers,strategies);
 			} catch (InvalidNumOfPlayersException e) {
 				e.printStackTrace();
 			}

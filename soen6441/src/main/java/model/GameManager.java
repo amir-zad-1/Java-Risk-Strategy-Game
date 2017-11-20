@@ -60,9 +60,11 @@ public class GameManager extends Observable {
      * @param players number of players
      * @throws InvalidNumOfPlayersException be careful
      */
-    public void startGame(int players) throws InvalidNumOfPlayersException {
+    public void startGame(int players, String strategies) throws InvalidNumOfPlayersException {
 
         this.numberOfPlayers = players;
+        this.strategyString  = strategies;
+        this.setStrategies();
         this.map = new Map();
         start();
     }
@@ -90,7 +92,7 @@ public class GameManager extends Observable {
     
 
     /**
-     * Constructor to inilitlize the game
+     * Constructor to initialize the game
      * @param m is selected map
      * @param players number of players that user choose
      */
@@ -153,7 +155,8 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
-        this.resetTurn();
+        //this.resetTurn();
+        this.play();
     }
 
 
