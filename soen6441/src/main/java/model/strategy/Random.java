@@ -6,6 +6,8 @@ import model.contract.IStrategy;
 import model.contract.ITerritory;
 import util.Helpers;
 
+import java.util.ArrayList;
+
 public class Random implements IStrategy {
 
     @Override
@@ -34,16 +36,21 @@ public class Random implements IStrategy {
     }
 
     @Override
-    public ITerritory getFortificationToTerritory(IPlayer p) {
+    public ITerritory getFortificationToTerritory(IPlayer p, ITerritory from) {
         ITerritory to;
 
-//        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
-//        if(neighbours.size()>0)
-//            to = neighbours.get(0);
-//        else
-//            to = this.getRandomTerritory();
+        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
+        if(neighbours.size()>0)
+            to = neighbours.get(0);
+        else
             to = p.getRandomTerritory();
-            return to;
+
+        return to;
+    }
+
+    @Override
+    public int getFortificationArmies(IPlayer p, ITerritory from) {
+        return Helpers.getRandomInt(from.getArmies(),1);
     }
 
     @Override

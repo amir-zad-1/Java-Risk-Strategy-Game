@@ -9,6 +9,7 @@ import util.expetion.InvalidNumOfPlayersException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
+import java.util.Scanner;
 
 import controller.LoggerController;
 
@@ -681,5 +682,24 @@ public class GameManager extends Observable {
 		setChanged();
 		notifyObservers(type);				
 	}
+
+
+	public static void main(String[] args)
+    {
+        IMap m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3,"r,h,r");
+        try
+        {
+            gm.start(false);
+            gm.play();
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
 
 }

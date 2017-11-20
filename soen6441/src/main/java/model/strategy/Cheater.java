@@ -52,7 +52,12 @@ public class Cheater implements IStrategy {
     }
 
     @Override
-    public ITerritory getFortificationToTerritory(IPlayer p) {
+    public ITerritory getFortificationToTerritory(IPlayer p, ITerritory from) {
         return null;
+    }
+
+    @Override
+    public int getFortificationArmies(IPlayer p, ITerritory from) {
+        return 0;
     }
 }

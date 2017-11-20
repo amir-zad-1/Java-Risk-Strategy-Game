@@ -582,9 +582,10 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         sendNotification("PhaseChange:"+this.getName()+" Fortification");
         
         ITerritory from = this.strategy.getFortificationFromTerritory(this);
-        ITerritory to = this.strategy.getFortificationToTerritory(this);
+        int number = this.strategy.getFortificationArmies(this, from);
+        ITerritory to = this.strategy.getFortificationToTerritory(this, from);
 
-        int number = Helpers.getRandomInt(from.getArmies(),1);
+
         this.moveArmies(from, to, number);
 
 

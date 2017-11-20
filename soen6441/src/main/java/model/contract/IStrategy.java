@@ -17,6 +17,7 @@ public interface IStrategy {
     int getMovingArmiesToNewTerritory(IPlayer p);
 
     ITerritory getFortificationFromTerritory(IPlayer p);
-    ITerritory getFortificationToTerritory(IPlayer p);
+    ITerritory getFortificationToTerritory(IPlayer p, ITerritory from);
+    int getFortificationArmies(IPlayer p, ITerritory from);
 
 }
