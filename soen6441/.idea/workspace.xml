@@ -71,8 +71,8 @@
       <file leaf-file-name="Random.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Random.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="68" column="5" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="68" selection-end-column="5" />
+            <state relative-caret-position="278">
+              <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -94,8 +94,8 @@
       <file leaf-file-name="Aggressive.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -207,7 +207,6 @@
         <option value="$PROJECT_DIR$/src/main/java/model/contract/IContinent.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/IGameManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Normal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/strategy/Random.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/IStrategy.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/ITerritory.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Territory.java" />
@@ -233,6 +232,7 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Human.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/strategy/Random.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
       </list>
     </option>
@@ -539,7 +539,7 @@
       <workItem from="1511114922524" duration="22356000" />
       <workItem from="1511150044036" duration="1471000" />
       <workItem from="1511152213646" duration="404000" />
-      <workItem from="1511187563178" duration="8826000" />
+      <workItem from="1511187563178" duration="9778000" />
     </task>
     <servers />
   </component>
@@ -576,7 +576,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167877000" />
+    <option name="totallyTimeSpent" value="168829000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1007,14 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Random.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="68" column="5" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="68" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1026,10 +1018,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="324">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
           <folding />
         </state>
       </provider>

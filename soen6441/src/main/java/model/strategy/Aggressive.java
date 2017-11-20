@@ -4,6 +4,7 @@ import model.AttackPlan;
 import model.contract.IPlayer;
 import model.contract.IStrategy;
 import model.contract.ITerritory;
+import util.Helpers;
 
 public class Aggressive implements IStrategy {
     @Override
@@ -33,31 +34,31 @@ public class Aggressive implements IStrategy {
 
     @Override
     public int diceToAttack(IPlayer p) {
-        return 0;
+        return Helpers.getRandomInt(3,1);
     }
 
     @Override
     public int diceToDefend(IPlayer p) {
-        return 0;
+        return Helpers.getRandomInt(2,1);
     }
 
     @Override
     public int getMovingArmiesToNewTerritory(IPlayer p) {
-        return 0;
+        return p.getWeakestTerritory().getArmies()-1;
     }
 
     @Override
     public ITerritory getFortificationFromTerritory(IPlayer p) {
-        return null;
+        return p.getWeakestTerritory();
     }
 
     @Override
     public ITerritory getFortificationToTerritory(IPlayer p, ITerritory from) {
-        return null;
+        return p.getStrongestTerritory();
     }
 
     @Override
     public int getFortificationArmies(IPlayer p, ITerritory from) {
-        return 0;
+        return Helpers.getRandomInt(from.getArmies(),1);
     }
 }
