@@ -530,11 +530,21 @@ public class GameManager extends Observable {
      * @return phase name
      */
     public String getPhase() { return this.currentPhase; }
+
+    /**
+     * sets the phase
+     * @param value phase value
+     */
     public void setPhase(String value) {
         this.currentPhase = value;
     }
 
-    
+
+    /**
+     * card exchange logic
+     * @param p player
+     * @return number of armies to get
+     */
     public int exchangeCard(IPlayer p)
     {
         int exchangeValue = 0;
@@ -703,6 +713,10 @@ public class GameManager extends Observable {
 	}
 
 
+    /**
+     * start of game manager
+     * @param args parameters
+     */
 	public static void main(String[] args)
     {
         IMap m = new Map();

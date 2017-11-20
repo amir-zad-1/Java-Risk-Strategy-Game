@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 import controller.LoggerController;
 
+/**
+ * territory class
+ */
 public class Territory  implements ITerritory {
     private String continentName;
 	private String territoryName;
@@ -167,11 +170,19 @@ public class Territory  implements ITerritory {
         return this.territoryName;
     }
 
-	@Override
+	/**
+	 * gets continets objec
+	 * @return continent
+	 */
+    @Override
 	public IContinent getContinent() {
 		return this.continent;
 	}
 
+	/**
+	 * set continent
+	 * @param c continent value
+	 */
 	@Override
 	public void setContinent(IContinent c) {
 		this.continent = c;

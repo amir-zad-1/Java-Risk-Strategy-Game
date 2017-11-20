@@ -35,6 +35,9 @@ public class Map implements IMap {
     }
 
 
+    /**
+     * loads data
+     */
     private void loadData(){
     	this.continents = new ArrayList<>();
     	totalnumberOfTerritories = 0;
@@ -84,11 +87,19 @@ public class Map implements IMap {
 
     }
 
+    /**
+     * sets name
+     * @param name name value
+     */
     @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * get name
+     * @return name value
+     */
     @Override
     public String getName() {
         return this.name;

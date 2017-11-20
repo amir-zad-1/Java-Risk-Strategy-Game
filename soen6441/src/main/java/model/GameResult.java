@@ -36,6 +36,10 @@ public class GameResult {
      */
     public String getGame() { return this.game; }
 
+    /**
+     * set game name
+     * @param game game name
+     */
     public void setGame(String game) { this.game = game; }
 
 }
