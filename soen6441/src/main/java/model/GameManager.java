@@ -636,7 +636,7 @@ public class GameManager extends Observable {
 
         for(IPlayer p : this.playerlist)
             //if(p.getDomination()>85.0)
-            if(p.getDomination()>45.0)
+            if(p.getDomination()>90.0)
             {
                 winner = p;
             }

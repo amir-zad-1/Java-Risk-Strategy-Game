@@ -142,7 +142,12 @@ public class Human implements IStrategy {
 
     @Override
     public ITerritory getFortificationToTerritory(IPlayer p, ITerritory from) {
-        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
+        ArrayList<ITerritory> neighbours = new ArrayList<>();
+        ArrayList<ITerritory> temp = from.getAdjacentNeighbours();
+        for(ITerritory t : temp)
+            if(t.getOwner() == p )
+                neighbours.add(t);
+
         ITerritory to;
 
         if(neighbours.size()>0)
