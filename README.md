@@ -1,5 +1,11 @@
 # 6441-project
 
+Tasks to be done
+
+- [x] Add startegaies inout handler at UI side
+- [x] Implement stratagies hanfling at model side
+- [ ] Implement Tournments
+
 ##SOEN 6441 Project conding standards
 
 * `tmp` is name given to the local variables which are used for temporary purposes 6
