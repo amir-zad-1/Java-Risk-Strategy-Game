@@ -26,18 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Tournament.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Tournament.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="116" column="51" lean-forward="false" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -90,15 +78,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Benevolent.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Benevolent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#1218#1219#0" expanded="true" />
                 <element signature="e#1264#1265#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Aggressive.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -230,12 +228,12 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Tournament.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/PlayerStatisticsView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Cheater.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Human.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
       </list>
     </option>
   </component>
@@ -260,7 +258,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="27" />
-    <option name="width" value="1366" />
+    <option name="width" value="683" />
     <option name="height" value="741" />
   </component>
   <component name="ProjectView">
@@ -541,7 +539,7 @@
       <workItem from="1511114922524" duration="22356000" />
       <workItem from="1511150044036" duration="1471000" />
       <workItem from="1511152213646" duration="404000" />
-      <workItem from="1511187563178" duration="8104000" />
+      <workItem from="1511187563178" duration="8826000" />
     </task>
     <servers />
   </component>
@@ -578,7 +576,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167155000" />
+    <option name="totallyTimeSpent" value="167877000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -985,14 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1027,12 +1017,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#1218#1219#0" expanded="true" />
             <element signature="e#1264#1265#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

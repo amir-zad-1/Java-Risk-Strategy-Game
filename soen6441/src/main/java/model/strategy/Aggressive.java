@@ -8,7 +8,7 @@ import model.contract.ITerritory;
 public class Aggressive implements IStrategy {
     @Override
     public int getAttackAttempts() {
-        return 0;
+        return 5;
     }
 
     @Override
@@ -18,12 +18,12 @@ public class Aggressive implements IStrategy {
 
     @Override
     public ITerritory getInforcementTerritory(IPlayer p) {
-        return null;
+        return p.getStrongestTerritory();
     }
 
     @Override
     public int getReinforcementArmies(IPlayer p) {
-        return 0;
+        return p.getUnusedArmies();
     }
 
     @Override
