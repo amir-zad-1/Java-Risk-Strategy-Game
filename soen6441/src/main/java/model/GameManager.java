@@ -156,7 +156,7 @@ public class GameManager extends Observable {
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
         //this.resetTurn();
-        this.play();
+        this.play(true);
     }
 
 
