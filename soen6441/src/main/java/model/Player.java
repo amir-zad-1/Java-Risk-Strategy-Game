@@ -7,7 +7,6 @@ import model.contract.ITerritory;
 import model.contract.IPlayer;
 import util.ActionResponse;
 import util.Color;
-import util.Helpers;
 import util.LogMessageEnum;
 import view.Logger;
 
@@ -42,7 +41,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     private int trades = 1;
 
     /**
-     * Constructor that initlizes the player details
+     * Constructor that initializes the player details
      * @param name  player name
      * @param color player color
      * @param strategy is the strategy the player choose

@@ -113,7 +113,7 @@ public class GameManager extends Observable {
 	}
 
     /**
-     * set startegies according to strategies string
+     * set strategies according to strategies string
      * sample for 3 players with Human, Random and Aggressive strategies is h,r,a
      */
 	public void setStrategies()
@@ -155,8 +155,8 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
-        //this.resetTurn();
-        this.play(true);
+        this.resetTurn();
+        //this.play(true);
     }
 
 
