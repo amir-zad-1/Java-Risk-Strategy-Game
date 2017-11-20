@@ -13,7 +13,7 @@ public class Aggressive implements IStrategy {
 
     @Override
     public String getName() {
-        return null;
+        return "Aggressive";
     }
 
     @Override

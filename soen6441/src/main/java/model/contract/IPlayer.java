@@ -69,4 +69,7 @@ public interface IPlayer extends Comparable<IPlayer> {
     void setColor(Color randomColor);
 
 	void sendNotify(String status);
+
+	ITerritory getWeakestTerritory();
+	ITerritory getStrongestTerritory();
 }

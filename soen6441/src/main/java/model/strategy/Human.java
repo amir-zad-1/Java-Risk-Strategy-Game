@@ -26,6 +26,8 @@ public class Human implements IStrategy {
     @Override
     public ITerritory getInforcementTerritory(IPlayer p) {
 
+        System.out.print("Tip: your weakest territory is : ");
+        System.out.println(p.getWeakestTerritory().getName());
         System.out.print("Which territory do you want to reinforce?");
         Scanner sc = new Scanner(System.in);
         String territoryName = sc.nextLine();
@@ -46,6 +48,9 @@ public class Human implements IStrategy {
     {
         AttackPlan result = null;
         System.out.print(p.getState());
+        System.out.print("\nTip: your strongest territory is : ");
+        ITerritory str = p.getStrongestTerritory();
+        System.out.println(str.getName() + "(" + str.getArmies()  +")");
         System.out.print("\nWhich territory do you want to attack from?");
         Scanner sc = new Scanner(System.in);
         String territoryName = sc.nextLine();
@@ -122,6 +127,13 @@ public class Human implements IStrategy {
     public ITerritory getFortificationFromTerritory(IPlayer p) {
 
         System.out.print(p.getState());
+        System.out.print("\nTip: your strongest territory is : ");
+        ITerritory str = p.getStrongestTerritory();
+        ITerritory wea = p.getWeakestTerritory();
+        System.out.println(str.getName() + "(" + str.getArmies()  +")");
+        System.out.print("Tip: your weakest territory is : ");
+        System.out.println(wea.getName() + "(" + wea.getArmies()  +")");
+
         System.out.print("\nWhich territory do you want to move armies from?");
         Scanner sc = new Scanner(System.in);
         String territoryName = sc.nextLine();

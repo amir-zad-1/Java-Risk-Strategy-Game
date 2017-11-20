@@ -705,21 +705,63 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
   
     }
 
-    
-   
-    
-    
+    /**
+     * finds the weakest territory
+     * @return territory
+     */
+    @Override
+    public ITerritory getWeakestTerritory() {
+        ITerritory result = null;
+
+        result = this.territories.get(0);
+        for(ITerritory t: this.territories)
+        {
+            if(t.getArmies() < result.getArmies())
+                result = t;
+        }
+
+        return result;
+    }
+
+    /**
+     * returns the strongest territory
+     * @return territory
+     */
+    @Override
+    public ITerritory getStrongestTerritory() {
+        ITerritory result = null;
+
+        result = this.territories.get(0);
+        for(ITerritory t: this.territories)
+        {
+            if(t.getArmies() > result.getArmies())
+                result = t;
+        }
+
+        return result;
+    }
+
+
+    /**
+     * return how many trades the players has done so far
+     * @return number of trades
+     */
     @Override
     public int getTrades()
     {
         return this.trades;
     }
 
-    
+
+    /**
+     * reduces the number of trades for card exchange
+     */
     @Override
     public void increaseTrades()
     {
         this.trades++;
     }
+
+
 
 }

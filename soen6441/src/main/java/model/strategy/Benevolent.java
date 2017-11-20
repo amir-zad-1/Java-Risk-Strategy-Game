@@ -13,7 +13,7 @@ public class Benevolent implements IStrategy {
 
     @Override
     public String getName() {
-        return null;
+        return "Benevolent";
     }
 
     @Override
