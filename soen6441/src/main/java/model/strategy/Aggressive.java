@@ -29,7 +29,27 @@ public class Aggressive implements IStrategy {
 
     @Override
     public AttackPlan getAttackPlan(IPlayer p) {
-        return null;
+
+        AttackPlan plan = null;
+        ITerritory from = p.getStrongestTerritory();
+
+        try
+        {
+            ITerritory to = from.getAdjacentTerritoryObjects().get(0);
+            for(ITerritory t : from.getAdjacentTerritoryObjects())
+            {
+                if (t.getArmies() < to.getArmies())
+                    to = t;
+            }
+
+            plan = new AttackPlan(from, to);
+        }
+        catch (Exception e)
+        {
+            plan = null;
+        }
+
+        return plan;
     }
 
     @Override
