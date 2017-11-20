@@ -42,8 +42,53 @@ public class Human implements IStrategy {
     }
 
     @Override
-    public AttackPlan getAttackPlan(IPlayer p) {
-        return null;
+    public AttackPlan getAttackPlan(IPlayer p)
+    {
+        AttackPlan result = null;
+        System.out.print(p.getState());
+        System.out.print("\nWhich territory do you want to attack from?");
+        Scanner sc = new Scanner(System.in);
+        String territoryName = sc.nextLine();
+        ITerritory from = p.getTerritoryByName(territoryName);
+
+        ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
+        ITerritory to;
+
+        if(neighbours.size()>0)
+        {
+
+            //list neighbours to attack
+            ArrayList<ITerritory> attackList = new ArrayList<>();
+            for(ITerritory a: from.getAdjacentTerritoryObjects())
+            {
+                if(a.getOwner() != this)
+                {
+                    attackList.add(a);
+                }
+            }
+
+            System.out.println(String.format("From %s, you can attack to these:", from.getName()));
+            for(ITerritory t:attackList)
+                System.out.println(String.format("*) %s (current armies: %s)", t.getName(), t.getArmies()));
+
+            System.out.print("Which territory do you want to attack to?");
+            sc = new Scanner(System.in);
+            territoryName = sc.nextLine();
+            to = p.getGameManager().getTerritory(territoryName);
+
+            result = new AttackPlan(from, to);
+        }
+        else
+        {
+            System.out.println(String.format("There is no neighbour for %s. Attack is canceled.", from.getName()));
+            System.out.println("To continue press enter.");
+            sc = new Scanner(System.in);
+            String tmp = sc.nextLine();
+            result = null;
+        }
+
+        return result;
+
     }
 
     @Override

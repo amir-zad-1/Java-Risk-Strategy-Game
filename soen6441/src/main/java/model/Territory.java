@@ -1,5 +1,6 @@
 package model;
 
+import model.contract.IContinent;
 import model.contract.IPlayer;
 import model.contract.ITerritory;
 import util.ActionResponse;
@@ -17,6 +18,7 @@ public class Territory  implements ITerritory {
     private ArrayList<String> adjacentTerritories = new ArrayList<String>();    
     private int numberOfArmies;
     private String currentPlayer;
+    private IContinent continent;
 	
     /**
      * Initializes the Territory Object with below parameters
@@ -30,6 +32,7 @@ public class Territory  implements ITerritory {
 		this.territoryName = n_territoryName;
 		this.coordinates = n_coordinates;
 		this.adjacentTerritories = n_adjacentTerritories;
+
 	}
 
 	/**
@@ -164,7 +167,18 @@ public class Territory  implements ITerritory {
         return this.territoryName;
     }
 
-    /**
+	@Override
+	public IContinent getContinent() {
+		return this.continent;
+	}
+
+	@Override
+	public void setContinent(IContinent c) {
+		this.continent = c;
+	}
+
+
+	/**
      * @return number of armies in the territory
      */
     @Override

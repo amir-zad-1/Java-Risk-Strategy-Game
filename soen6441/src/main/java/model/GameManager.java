@@ -702,4 +702,21 @@ public class GameManager extends Observable {
         }
     }
 
+    public ITerritory getTerritory(String name)
+    {
+        ITerritory res = null;
+        for (IContinent c : map.getContinents())
+        {
+            for(ITerritory t : c.getTerritories())
+            {
+                if(t.getName().equals(name))
+                {
+                    res = t;
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+
 }

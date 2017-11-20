@@ -13,6 +13,8 @@ public interface ITerritory {
     void setOwner(IPlayer player);
     IPlayer getOwner();
     String getName();
+    IContinent getContinent();
+    void setContinent(IContinent c);
 
     int getArmies();
     void placeArmies(int count);
