@@ -709,28 +709,23 @@ public class GameManager extends Observable {
         m.clearData();
         m.fakeData();
 
-        IMap m2 = new Map();
-        m2.clearData();
-        m2.fakeData();
-
         ArrayList<Map> maps = new ArrayList<>();
         maps.add((Map) m);
-        maps.add((Map) m2);
 
 
-//        GameManager gm = new GameManager(m, 3,"r,r,r", 5);
-//        try
-//        {
-//            gm.start(false);
-//            gm.play(true);
-//        }
-//        catch (Exception e)
-//        {
-//
-//        }
+        GameManager gm = new GameManager(m, 3,"r,r,r", 5);
+        try
+        {
+            gm.start(false);
+            gm.play(true);
+        }
+        catch (Exception e)
+        {
 
-        Tournament t = new Tournament();
-        t.start(maps, 3, "r,r,r", 3,5);
+        }
+
+        //Tournament t = new Tournament();
+        //t.start(maps, 3, "c,r,r", 3,70);
     }
 
     /**
