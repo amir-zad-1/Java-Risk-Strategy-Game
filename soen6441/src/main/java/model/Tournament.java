@@ -30,6 +30,7 @@ public class Tournament implements ITournament {
     public void start(ArrayList<Map> maps, int p, String playerStrategies, int g, int d) {
 
         this.maps = maps;
+        setMapsName();
 
         ArrayList<GameResult> results = new ArrayList<>();
         String playerText = "";
@@ -107,5 +108,14 @@ public class Tournament implements ITournament {
         at.addRule();
         sb.append(at.render());
         return sb.toString();
+    }
+
+    private void setMapsName()
+    {
+        for(int i=0; i<this.maps.size(); i++)
+        {
+            this.maps.get(i).setName("Map " + (i+1));
+        }
+
     }
 }

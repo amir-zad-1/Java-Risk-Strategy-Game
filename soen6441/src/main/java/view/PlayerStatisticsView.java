@@ -18,7 +18,8 @@ import javafx.scene.text.Font;
  * Gives a player statistic view
  * @author SA
  */
-public class PlayerStatisticsView{
+public class
+PlayerStatisticsView{
 
 	
 	VBox playerBox = null;

@@ -61,7 +61,7 @@ public class Human implements IStrategy {
             ArrayList<ITerritory> attackList = new ArrayList<>();
             for(ITerritory a: from.getAdjacentTerritoryObjects())
             {
-                if(a.getOwner() != this)
+                if(a.getOwner() != from.getOwner())
                 {
                     attackList.add(a);
                 }
@@ -69,7 +69,7 @@ public class Human implements IStrategy {
 
             System.out.println(String.format("From %s, you can attack to these:", from.getName()));
             for(ITerritory t:attackList)
-                System.out.println(String.format("*) %s (current armies: %s)", t.getName(), t.getArmies()));
+                System.out.println(String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(), t.getOwner().getName()));
 
             System.out.print("Which territory do you want to attack to?");
             sc = new Scanner(System.in);
@@ -137,7 +137,7 @@ public class Human implements IStrategy {
         {
             System.out.println(String.format("From %s, you can move to these:", from.getName()));
             for(ITerritory t:neighbours)
-                System.out.println(String.format("*) %s (current armies: %s)", t.getName(), t.getArmies()));
+                System.out.println(String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(),t.getOwner().getName()));
 
             System.out.print("Which territory do you want to move to?");
             Scanner sc = new Scanner(System.in);

@@ -12,7 +12,7 @@ public class Map implements IMap {
 
 
     private ArrayList<IContinent> continents = new ArrayList<>();
-    private String name = "Untitled";
+    private String name = "Map ";
 
     public static int totalnumberOfTerritories = 0;
     

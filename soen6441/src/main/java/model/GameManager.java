@@ -709,9 +709,13 @@ public class GameManager extends Observable {
         m.clearData();
         m.fakeData();
 
+        IMap m2 = new Map();
+        m2.clearData();
+        m2.fakeData();
+
         ArrayList<Map> maps = new ArrayList<>();
         maps.add((Map) m);
-        maps.add((Map) m);
+        maps.add((Map) m2);
 
 
 //        GameManager gm = new GameManager(m, 3,"r,r,r", 5);
@@ -726,7 +730,7 @@ public class GameManager extends Observable {
 //        }
 
         Tournament t = new Tournament();
-        t.start(maps, 3, "r,r,r", 4,5);
+        t.start(maps, 3, "r,r,r", 3,5);
     }
 
     /**
