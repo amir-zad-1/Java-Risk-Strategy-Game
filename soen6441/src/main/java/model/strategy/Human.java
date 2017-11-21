@@ -1,6 +1,7 @@
 package model.strategy;
 
 import model.AttackPlan;
+import model.Player;
 import model.contract.IPlayer;
 import model.contract.IStrategy;
 import model.contract.ITerritory;
@@ -15,11 +16,6 @@ import java.util.Scanner;
 public class Human extends Observable implements IStrategy {
 
 	public static String sharedTmp = null;
-
-    /**
-     * {@link Scanner} to read data from command prompt
-     */
-    Scanner scanner = new Scanner(System.in);
 	
     /**
      * how many attacks
@@ -27,8 +23,8 @@ public class Human extends Observable implements IStrategy {
      */
     @Override
     public int getAttackAttempts() {
-        System.out.print("How many times do you want to attack?");
-        int times = scanner.nextInt();
+        sendNotification("How many times do you want to attack?");
+        int times = Integer.parseInt(sharedTmp);
         return times;
     }
 
@@ -65,27 +61,28 @@ public class Human extends Observable implements IStrategy {
     @Override
     public int getReinforcementArmies(IPlayer p) {
 
-        System.out.print("How many armies do you want to put into?");
-        int reinforcementArmies = scanner.nextInt();
+        sendNotification("How many armies do you want to put into?");
+        int reinforcementArmies = Integer.parseInt(sharedTmp);
         return reinforcementArmies;
     }
 
     /**
      * Generates an attack plan for a player
-     * @param p player
-     * @return attack plan
+     * @param player is the player want to attack
+     * @return attack plan of type {@link AttackPlan}
      */
     @Override
-    public AttackPlan getAttackPlan(IPlayer p)
+    public AttackPlan getAttackPlan(IPlayer player)
     {
         AttackPlan result = null;
-        System.out.print(p.getState());
-        System.out.print("\nTip: your strongest territory is : ");
-        ITerritory str = p.getStrongestTerritory();
-        System.out.println(str.getName() + "(" + str.getArmies()  +")");
-        System.out.print("\nWhich territory do you want to attack from?");
-        String territoryName = scanner.nextLine();
-        ITerritory from = p.getTerritoryByName(territoryName);
+        ITerritory strongetTerritory = player.getStrongestTerritory();
+        
+        sendNotification("Tip: your strongest territory is :"+strongetTerritory.getName() + "(" + strongetTerritory.getArmies()  +") \n "+player.getState()
+        		+"\n Which territory do you want to attack from?");
+        
+        String territoryName = sharedTmp;
+        
+        ITerritory from = player.getTerritoryByName(territoryName);
 
         ArrayList<ITerritory> neighbours = from.getAdjacentNeighbours();
         ITerritory to;
@@ -103,21 +100,20 @@ public class Human extends Observable implements IStrategy {
                 }
             }
 
-            System.out.println(String.format("From %s, you can attack to these:", from.getName()));
+            sharedTmp = String.format("From %s, you can attack to these:", from.getName());
+            
             for(ITerritory t:attackList)
-                System.out.println(String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(), t.getOwner().getName()));
+                sharedTmp += String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(), t.getOwner().getName());
 
-            System.out.print("Which territory do you want to attack to?");
-            territoryName = scanner.nextLine();
-            to = p.getGameManager().getTerritory(territoryName);
-
+            sharedTmp += "Which territory do you want to attack to?";
+            sendNotification(sharedTmp);
+            territoryName = sharedTmp;
+            to = player.getGameManager().getTerritory(territoryName);
             result = new AttackPlan(from, to);
         }
         else
         {
-            System.out.println(String.format("There is no neighbour for %s. Attack is canceled.", from.getName()));
-            System.out.println("To continue press enter.");
-            String tmp = scanner.nextLine();
+            sendNotification(String.format("There is no neighbour for %s. Attack is canceled.\n To continue press enter.", from.getName()));
             result = null;
         }
 
@@ -127,114 +123,109 @@ public class Human extends Observable implements IStrategy {
 
     /**
      * role dice for attacking
-     * @param p player
+     * @param player who want to rool dice to attack
      * @return int dice
      */
     @Override
-    public int diceToAttack(IPlayer p) {
-
-        System.out.print("How many dice do you want to use for the attack?");
-        int dice = scanner.nextInt();
+    public int diceToAttack(IPlayer player) {
+        sendNotification("How many dice do you want to use for the attack?");
+        int dice = Integer.parseInt(sharedTmp);
         return dice;
     }
 
     /**
      * role dice to defend
-     * @param p player
-     * @return dice
+     * @param player, type of {@link Player} who want to defend  
+     * @return the number of dice he want to roll 
      */
     @Override
-    public int diceToDefend(IPlayer p) {
-
-        System.out.print("How many dice do you want to use to defend?");
-        int dice = scanner.nextInt();
+    public int diceToDefend(IPlayer player) {
+        sendNotification("How many dice do you want to use to defend?");
+        int dice = Integer.parseInt(sharedTmp);
         return dice;
     }
 
     /**
      * how many armies should move to new territory
-     * @param p player
-     * @return number of armies
+     * @param player who is going to do fortification
+     * @return number of armies 
      */
     @Override
-    public int getMovingArmiesToNewTerritory(IPlayer p) {
-
-        System.out.print("How many armies do you want to move to the new territory?");
-        int armies = scanner.nextInt();
+    public int getMovingArmiesToNewTerritory(IPlayer player) {
+        sendNotification("How many armies do you want to move to the new territory?");
+        int armies = Integer.parseInt(sharedTmp);
         return armies;
     }
 
     /**
-     * where to fortify
-     * @param p player
-     * @return territory
+     * This method asks for fortification 
+     * @param player who want to do fortification
+     * @return territory he choose to do fortification 
      */
     @Override
-    public ITerritory getFortificationFromTerritory(IPlayer p) {
+    public ITerritory getFortificationFromTerritory(IPlayer player) {
 
-        System.out.print(p.getState());
-        System.out.print("\nTip: your strongest territory is : ");
-        ITerritory str = p.getStrongestTerritory();
-        ITerritory wea = p.getWeakestTerritory();
-        System.out.println(str.getName() + "(" + str.getArmies()  +")");
-        System.out.print("Tip: your weakest territory is : ");
-        System.out.println(wea.getName() + "(" + wea.getArmies()  +")");
-
-        System.out.print("\nWhich territory do you want to move armies from?");
-        Scanner sc = new Scanner(System.in);
-        String territoryName = sc.nextLine();
-        return p.getTerritoryByName(territoryName);
+        ITerritory strongTerritory = player.getStrongestTerritory();
+        ITerritory weakTerritory = player.getWeakestTerritory();
+        sharedTmp = player.getState();
+        sharedTmp += "\n Tip: your strongest territory is : ";
+        sharedTmp += (strongTerritory.getName() + "(" + strongTerritory.getArmies()  +")");
+        sharedTmp += ("Tip: your weakest territory is : ");
+        sharedTmp += (weakTerritory.getName() + "(" + weakTerritory.getArmies()  +")");
+        sharedTmp += ("\nWhich territory do you want to move armies from?");
+        sendNotification(sharedTmp);
+        String territoryName = sharedTmp;
+        return player.getTerritoryByName(territoryName);
     }
 
     /**
      * where to move fortification armies to
-     * @param p player
-     * @param from origin of fortification
+     * @param player is the player who want to fortify armies
+     * @param fromTerritory origin territory of fortification
      * @return destination of fortification
      */
     @Override
-    public ITerritory getFortificationToTerritory(IPlayer p, ITerritory from) {
+    public ITerritory getFortificationToTerritory(IPlayer player, ITerritory fromTerritory) {
         ArrayList<ITerritory> neighbours = new ArrayList<>();
-        ArrayList<ITerritory> temp = from.getAdjacentNeighbours();
+        ArrayList<ITerritory> temp = fromTerritory.getAdjacentNeighbours();
         for(ITerritory t : temp)
-            if(t.getOwner() == p )
+            if(t.getOwner() == player)
                 neighbours.add(t);
 
-        ITerritory to;
+        ITerritory toTerritory;
 
         if(neighbours.size()>0)
         {
-            System.out.println(String.format("From %s, you can move to these:", from.getName()));
+            sharedTmp = (String.format("From %s, you can move to these:", fromTerritory.getName()));
             for(ITerritory t:neighbours)
-                System.out.println(String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(),t.getOwner().getName()));
+                sharedTmp += (String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(),t.getOwner().getName()));
 
-            System.out.print("Which territory do you want to move to?");
-            Scanner sc = new Scanner(System.in);
-            String territoryName = sc.nextLine();
-            to = p.getTerritoryByName(territoryName);
+            sharedTmp += ("Which territory do you want to move to?");
+            sendNotification(sharedTmp);
+            String territoryName = sharedTmp;
+            toTerritory = player.getTerritoryByName(territoryName);
         }
         else
         {
-            System.out.println(String.format("There is no neighbour for %s. Fortification is canceled.", from.getName()));
-            System.out.println("To continue press enter.");
-            Scanner sc = new Scanner(System.in);
-            String tmp = sc.nextLine();
-            to = p.getRandomTerritory();
+            sharedTmp = (String.format("There is no neighbour for %s. Fortification is canceled.", fromTerritory.getName()));
+            sharedTmp += "To continue press enter.";
+            sendNotification(sharedTmp);
+            toTerritory = player.getRandomTerritory();
         }
 
-        return to;
+        return toTerritory;
     }
 
     /**
      * number of fortification armies
-     * @param p player
+     * @param player to chose number of armies he want to fortify
      * @param from origin of fortification
-     * @return number of armies
+     * @return number of armies he choose
      */
     @Override
-    public int getFortificationArmies(IPlayer p, ITerritory from) {
-        System.out.print("How many armies do you want to fortify?");
-        int armies = scanner.nextInt();
+    public int getFortificationArmies(IPlayer player, ITerritory fromTerritory) {
+        sendNotification("How many armies do you want to fortify?");
+        int armies = Integer.parseInt(sharedTmp);
         return armies;
     }
     
