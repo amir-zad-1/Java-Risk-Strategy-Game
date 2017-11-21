@@ -8,9 +8,9 @@ import model.contract.ITerritory;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Scanner;
 
 /**
+ * This class deals with all Human strategies interactions fron user
  * Human Strategy
  */
 public class Human extends Observable implements IStrategy {
@@ -18,7 +18,7 @@ public class Human extends Observable implements IStrategy {
 	public static String sharedTmp = null;
 	
     /**
-     * how many attacks
+     * This method asks how many attacks the player want to do
      * @return number of attacks
      */
     @Override
@@ -103,9 +103,9 @@ public class Human extends Observable implements IStrategy {
             sharedTmp = String.format("From %s, you can attack to these:", from.getName());
             
             for(ITerritory t:attackList)
-                sharedTmp += String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(), t.getOwner().getName());
+                sharedTmp += String.format("\n *) %s (current armies: %s)(%s)", t.getName(), t.getArmies(), t.getOwner().getName());
 
-            sharedTmp += "Which territory do you want to attack to?";
+            sharedTmp += "\n Which territory do you want to attack to?";
             sendNotification(sharedTmp);
             territoryName = sharedTmp;
             to = player.getGameManager().getTerritory(territoryName);
@@ -198,9 +198,9 @@ public class Human extends Observable implements IStrategy {
         {
             sharedTmp = (String.format("From %s, you can move to these:", fromTerritory.getName()));
             for(ITerritory t:neighbours)
-                sharedTmp += (String.format("*) %s (current armies: %s)(%s)", t.getName(), t.getArmies(),t.getOwner().getName()));
+                sharedTmp += (String.format("\n *) %s (current armies: %s)(%s)", t.getName(), t.getArmies(),t.getOwner().getName()));
 
-            sharedTmp += ("Which territory do you want to move to?");
+            sharedTmp += ("\n Which territory do you want to move to?");
             sendNotification(sharedTmp);
             String territoryName = sharedTmp;
             toTerritory = player.getTerritoryByName(territoryName);

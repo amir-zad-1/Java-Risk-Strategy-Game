@@ -347,9 +347,7 @@ public class GameManager extends Observable {
         {
             LoggerController.log(p.getState());
             ITerritory playerRandomTerritory = p.getStrategy().getInforcementTerritory(p);
-            System.out.println("Confirmation: "+playerRandomTerritory.getName());
             int randomArmy = p.getStrategy().getReinforcementArmies(p);
-
             p.placeArmy(randomArmy, playerRandomTerritory);
             i += randomArmy;
             LoggerController.log(p.getState());

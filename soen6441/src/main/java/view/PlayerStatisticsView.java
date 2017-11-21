@@ -38,11 +38,11 @@ PlayerStatisticsView{
 		this.actorName = new Label();
 		setFontColor(actorName, "#0076a3");
 		HBox profilepicContainer = new HBox(); 
-		//Image profileImage = new Image(getClass().getResourceAsStream("/user.png"));
-		//profilepicContainer.getChildren().add(new ImageView(profileImage));
+		
 		profilepicContainer.getChildren().add(actorName);
 
 		this.status = new TextArea();
+		this.status.setMinHeight(140);
 		this.countriesWon = new Label();
 		setFontColor(countriesWon, "#F44336");
 

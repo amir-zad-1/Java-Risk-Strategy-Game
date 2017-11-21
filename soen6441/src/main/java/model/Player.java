@@ -385,11 +385,10 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
     {
         LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", this.getName()));
         this.gm.setPhase("REINFORCEMENT PHASE");
-        sendNotification("PhaseChange:"+this.getName()+" Reinforcement");
         //Step 1: Reinforcement
         int newArmies = this.gm.calculateReinforcementArmies(this);
+        sendNotification("PhaseChange:"+this.getName()+" Reinforcement, got "+newArmies+" armies");
         this.setUnusedArmies(newArmies);
-
         //Step 2: Place armies
         this.gm.placeArmies(this);
         

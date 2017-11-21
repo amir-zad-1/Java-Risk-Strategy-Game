@@ -12,14 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 
 /**
+ * This class is a Observer for HumanPlayer updates
+ * Whenever Human player turn comes the update method will be called
  * @author SA
- *
  */
 public class HumanPlayerView implements Observer{
 
@@ -29,8 +29,17 @@ public class HumanPlayerView implements Observer{
 	 */
 	TextInputDialog dialog = null;
 	
+	/**
+	 * {@link GameController} is a controller to make state change through 
+	 * controller in MVC architecture
+	 */
 	GameController gameController = null;
 	
+	/**
+	 * Constructor to initialize the  {@link #gameController}
+	 * @param new_gameController is the {@link GameController} is a controller to make state change through 
+	 * controller in MVC architecture
+	 */
 	public HumanPlayerView(GameController new_gameController){
 		gameController = new_gameController;
 	}
@@ -71,7 +80,6 @@ public class HumanPlayerView implements Observer{
 	public void update(Observable o, Object arg) {
 	
 		String question = (String) arg;
-		System.out.println("Ft "+question);
 		dialog.setHeaderText(question);
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
