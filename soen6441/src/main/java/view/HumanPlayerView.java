@@ -35,6 +35,12 @@ public class HumanPlayerView implements Observer{
 	 */
 	GameController gameController = null;
 	
+	
+	/**
+	 * {@link Button} to take Game save sate input from user
+	 */
+	Button saveStateOfGame = null;
+	
 	/**
 	 * Constructor to initialize the  {@link #gameController}
 	 * @param new_gameController is the {@link GameController} is a controller to make state change through 
@@ -50,22 +56,17 @@ public class HumanPlayerView implements Observer{
 	 */
 	public HBox getView() {
 		
+		//Horizontal box to hold UI elements 
 		HBox container  = new HBox();
 		
 		dialog = new TextInputDialog();
-				
-		//text filed to take input from user
-		TextField playerInput = new TextField();
-		container.getChildren().add(playerInput);
+		saveStateOfGame = new Button("Save game");
+		container.getChildren().add(saveStateOfGame);
 		
-		//button to contact  saying user has given the input
-		Button userAction = new Button("Submit");
-		container.getChildren().add(userAction);
-		
-		userAction.setOnAction(new EventHandler<ActionEvent>() {
+		saveStateOfGame.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				gameController.submitAnswer(playerInput.getText());
+				gameController.saveGame();
 			}
 		});	
 		
@@ -74,14 +75,16 @@ public class HumanPlayerView implements Observer{
 
 	/** 
 	 * Whenever the Human strategy needs the input it pushes the question to the User View
-	 * 
+	 * {@link TextInputDialog} is used to ask the user input
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
 	
 		String question = (String) arg;
 		dialog.setHeaderText(question);
+		dialog.getEditor().clear();
 		Optional<String> result = dialog.showAndWait();
+		//pass the input given by the user to model through controller
 		if (result.isPresent()){
 			gameController.submitAnswer(result.get());
 		}

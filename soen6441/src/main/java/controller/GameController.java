@@ -51,12 +51,15 @@ public class GameController {
 	/**
 	 * @param text the input given by the HumanPlayer
 	 */
-	public void submitAnswer(String text) {
-		
-		Human.sharedTmp = text;
-		
+	public void submitAnswer(String text) {		
+		gameManager.setAnswerForHuman(text);		
 	}
 
-
+	/**
+	 * This method redirects save game request to model
+	 */
+	public void saveGame() {
+		
+	}
 
 }

@@ -6,6 +6,7 @@ import model.strategy.*;
 import util.Color;
 import util.expetion.InvalidNumOfPlayersException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -15,13 +16,20 @@ import controller.LoggerController;
 
 
 /**
- * This is the main game manager that controls the game
+ * This is the main game manager that controls the whole game
  * @author Amir
  * @version 0.1.0
  */
-public class GameManager extends Observable {
+public class GameManager extends Observable implements Serializable{
 
     
+	/**
+	 * {@link #serialVersionUID} used during deserialization to verify that the sender and receiver 
+	 * of a serialized object have loaded classes for that object that are compatible with respect to 
+	 * serialization. If the receiver has loaded a class for the object that has a different {@link #serialVersionUID}
+	 */
+	private static final long serialVersionUID = -6921437067469919760L;
+
 	/**
 	 * {@link #playerlist} points to the current turn of the player
 	 */
@@ -788,6 +796,14 @@ public class GameManager extends Observable {
 	 */
 	public void addStrategies(IStrategy strategy) {		
 		this.strategies.add(strategy);
+	}
+
+
+	/**
+	 * sets answer given by user for Human player strategy
+	 */
+	public void setAnswerForHuman(String answerByHuman) {
+		Human.sharedTmp = answerByHuman;		
 	}
 
 
