@@ -41,7 +41,7 @@ public class WindowManager extends Application {
     	window.setTitle("Game");
     	
     	mapEditorView = new MapEditorView(readController,writeController);
-		welcomeView = new WelcomeView(window, rwMapFileController, mapEditorView); 
+		welcomeView = new WelcomeView(gameController,window, rwMapFileController, mapEditorView); 
 		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
@@ -56,6 +56,16 @@ public class WindowManager extends Application {
             }
     	});   
        
+		welcomeView.getResumeButton().setOnAction(new EventHandler<ActionEvent>() {            
+        	@Override
+            public void handle(ActionEvent event){
+        		gameController.resumeGame();
+        		phaseView.setNumberOfPlayers(2);
+        		phaseView.setWindowStage(window);
+        		window.setScene(phaseView.getView());
+        		
+        	}
+		 });	
 		window.setScene(welcomeView.getView());
         window.show();
     }

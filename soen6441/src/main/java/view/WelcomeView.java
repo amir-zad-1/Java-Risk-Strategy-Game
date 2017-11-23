@@ -4,7 +4,10 @@
 package view;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
+import controller.GameController;
 import controller.RWMapFileController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,8 +30,12 @@ import javafx.stage.Stage;
 
 public class WelcomeView implements IView{
 
-	RWMapFileController maprwController;
+	GameController gameController = null;
+	RWMapFileController maprwController = null;
 	static Scene welcomeScreen = null;
+	Button stratSavedGame = null;
+	
+
 	final FileChooser fileChooser = new FileChooser();
 	static MapEditorView mapEditorView = null;
 	Stage window = null;
@@ -39,8 +46,9 @@ public class WelcomeView implements IView{
 	 * @param new_maprwController is the map file read and write controller, check {@link RWMapFileController} 
 	 * @param new_mapEditorView is the map editor view, welcome view is responsible to start Map Editor View
 	*/
-	public WelcomeView(Stage new_window,RWMapFileController new_maprwController, MapEditorView new_mapEditorView) {
+	public WelcomeView(GameController new_gameController,Stage new_window,RWMapFileController new_maprwController, MapEditorView new_mapEditorView) {
 		window  = new_window;
+		gameController = new_gameController;
 		maprwController = new_maprwController; 
 		mapEditorView = new_mapEditorView;
 	}
@@ -65,7 +73,7 @@ public class WelcomeView implements IView{
 	        gobackButton.setText("Prevoius View");
 	        gobackButton.setVisible(false);
 	        
-	        Button stratSavedGame = new Button();
+	        stratSavedGame = new Button();
 	        stratSavedGame.setMinWidth(200);
 	        stratSavedGame.setText("Strat Saved Game");
 	        
@@ -122,7 +130,7 @@ public class WelcomeView implements IView{
 	        stratSavedGame.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
-                    
+	            	gameController.resumeGame();
 	            }
 	        });
 	        
@@ -158,4 +166,11 @@ public class WelcomeView implements IView{
 	    	window.setScene(scene);	
 	  } 
 	
+	/**
+	 * @return the gobackButton
+	 */
+	public Button getResumeButton() {
+		return stratSavedGame;
+	}
+
 }

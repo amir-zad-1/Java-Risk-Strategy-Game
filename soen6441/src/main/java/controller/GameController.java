@@ -1,7 +1,10 @@
 
 package controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import model.GameManager;
 import model.SaveProcess;
@@ -71,6 +74,29 @@ public class GameController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * 
+	 */
+	public void resumeGame() {
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream("tempdata.tiger");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+	        gameManager = (GameManager) ois.readObject();
+	        ois.close();		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 	}
 
 }
