@@ -2,9 +2,13 @@
 
 Tasks to be done
 
-- [x] Add startegaies inout handler at UI side
-- [x] Implement stratagies hanfling at model side
-- [ ] Implement Tournments
+- [x] Add startegaies input handler at UI side
+- [x] Implement stratagies handling at model side
+- [x] Implement Tournments at model side
+- [ ] Implement Tournaments UI input 
+- [ ] Resolve problem in Cards UI dialog
+- [ ] UI for human interface - Should follow MVC architecture
+- [x] Strategies logic for aggressive, benevolent, random, cheater.
 
 ##SOEN 6441 Project conding standards
 
