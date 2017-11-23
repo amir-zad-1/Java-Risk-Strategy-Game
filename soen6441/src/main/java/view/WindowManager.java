@@ -50,7 +50,7 @@ public class WindowManager extends Application {
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		phaseView.setWindowStage(window);
         		window.setScene(phaseView.getView());
-        		callback.called(numberOfPlayers);
+        		callback.called(numberOfPlayers,strategies);
         		gameController.startGame(numberOfPlayers,strategies);
         		
             }

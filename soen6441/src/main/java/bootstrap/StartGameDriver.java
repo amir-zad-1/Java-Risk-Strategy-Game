@@ -1,6 +1,8 @@
 
 package bootstrap;
 
+import org.antlr.v4.parse.GrammarTreeVisitor.tokenSpec_return;
+
 import controller.GameController;
 import controller.RWMapFileController;
 import controller.ReadController;
@@ -11,8 +13,14 @@ import model.DataWriter;
 import model.GameManager;
 
 import model.Player;
+import model.strategy.Aggressive;
+import model.strategy.Benevolent;
+import model.strategy.Cheater;
+import model.strategy.Human;
+import model.strategy.Random;
 import view.CardView;
 import view.DominationView;
+import view.HumanPlayerView;
 import view.PhaseView;
 import view.WindowManager;
 
@@ -24,6 +32,20 @@ import view.WindowManager;
  */
 public class StartGameDriver {
 
+	
+	/**
+	 * {@link #gameManager} to attach it GameController
+	 */
+	static GameManager gameManager;
+	
+	/**
+	 * tells whether a human is playing or not
+	 */
+	static boolean isHumanPlaying = false;
+	
+	
+	static HumanPlayerView humanPlayerView = null;
+	
 	/** 
 	 * <ul>
 	 * <li>Step 0: Initialize the controllers</li>
@@ -46,7 +68,7 @@ public class StartGameDriver {
 		 
 		 
 		 //Creates Game Manager and sends it to GameController
-		 GameManager gameManager = new GameManager();
+		 gameManager = new GameManager();
 		 GameController gameController = new GameController(gameManager);
 		 
 	 
@@ -66,9 +88,10 @@ public class StartGameDriver {
 		 
 		 //Create Players objects and add observers only when users gives number of player inputs
 		 WindowManager.addCallBack(new CallBack(){
-			    public void called(int numberOfPlayers){
+			    public void called(int numberOfPlayers, String strategies){
 			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
+			    		setStrategies(strategies);
 			    		p.addObserver(dominationView);
 			    		p.addObserver(phaseView);			    
 			    		gameManager.addPlayer(p);
@@ -77,10 +100,47 @@ public class StartGameDriver {
 		 });
 		 
 		 
+		 if(isHumanPlaying){
+			 
+		 }
+		 
 		 gameManager.addObserver(dominationView);
 		 gameManager.addObserver(phaseView);
 		 gameManager.addObserver(cardView);
 		 javafx.application.Application.launch(WindowManager.class);
 	}
+	
+	
+	
+	 /**
+     * set strategies according to strategies string
+     * sample for 3 players with Human, Random and Aggressive strategies is h,r,a
+     */
+	public static void setStrategies(String strategyString)
+    {
+        String[] stra = strategyString.split(",");
+        for(String s:stra)
+        {
+            switch (s)
+            {
+                case "h":
+                	isHumanPlaying = true;
+                	gameManager.addStrategies(new Human());
+                    break;
+                case "a":
+                	gameManager.addStrategies(new Aggressive());
+                    break;
+                case "b":
+                	gameManager.addStrategies(new Benevolent());
+                    break;
+                case "r":
+                	gameManager.addStrategies(new Random());
+                    break;
+                case "c":
+                	gameManager.addStrategies(new Cheater());
+                    break;
+            }
+        }
+    }
 
 }

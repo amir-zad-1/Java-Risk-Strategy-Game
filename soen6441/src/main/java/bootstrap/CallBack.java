@@ -18,9 +18,21 @@ package bootstrap;
  * @author m_guntur
  */
 public class CallBack {
+	
 	/**
 	 * @param value is the integers want to pass to caller
 	 */
+	@Deprecated
 	public void called(int value){ 	
     }
+
+	/**
+	 * This callback passes two arguments to callback listener as stated bellow
+	 * @param numberOfPlayers tells number of player going to play the game 
+	 * @param strategies tells strategies they are going to follow
+	 */
+	public void called(int numberOfPlayers, String strategies) {
+		
+		
+	}
 }

@@ -89,7 +89,7 @@ public class MapEditorView implements IView{
 		ObservableList<String> continents = FXCollections.observableArrayList();		 
 		ObservableList<String> contries = FXCollections.observableArrayList();
 		continents.addAll(readController.getAllContinentNames());
-		//ObservableList for selecting player stratagies
+		//ObservableList for selecting player strategies
 		ObservableList<String> options = 
 			    FXCollections.observableArrayList(
 			        "Human",
@@ -319,8 +319,8 @@ public class MapEditorView implements IView{
 	
 	public String getPlayersStrategies() {
 		String tmp = "";
-		for(ComboBox selectBox : playerList){
-			tmp += ","+((String) selectBox.getValue()).toLowerCase().charAt(0);
+		for(ComboBox<String> selectBox : playerList){
+			tmp += ","+(selectBox.getValue()).toLowerCase().charAt(0);
 		}
 		return tmp;
 	}

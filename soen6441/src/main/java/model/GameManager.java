@@ -155,8 +155,8 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
-        this.resetTurn();
-        //this.play(true);
+        //this.resetTurn();
+        this.play(true);
     }
 
 
@@ -410,8 +410,8 @@ public class GameManager extends Observable {
         	}	
         }else{
         	for (int i=0; i<this.playerlist.size(); i++) {
-        		IStrategy strategy = getRandomStrategy(); 
-        		playerlist.get(i).setStrategy(strategy);
+        		//IStrategy strategy = getRandomStrategy(); 
+        		//playerlist.get(i).setStrategy(strategy);
         		playerlist.get(i).setColor( colorManager.getRandomColor());
                 this.playersText += playerlist.get(i).getStrategy().getName() +", ";
         		playerlist.get(i).setGameManager(this);
@@ -781,6 +781,15 @@ public class GameManager extends Observable {
      * @return player strategies
      */
     public String getPlayersText() { return this.playersText; }
+
+
+	/**
+	 * Adds strategy to the strategies of the players
+	 * @param strategy the strategy the player choose
+	 */
+	public void addStrategies(IStrategy strategy) {		
+		this.strategies.add(strategy);
+	}
 
 
 }
