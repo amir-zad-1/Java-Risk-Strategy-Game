@@ -38,7 +38,7 @@ public class Tournament implements ITournament {
         {
             for (int i=0; i<g; i++)
             {
-                GameManager gm = new GameManager((IMap)m, p, playerStrategies, d);
+                GameManager gm = new GameManager(m, p, playerStrategies, d);
                 String gameName = String.format("Game %s", i+1);
                 gm.setName(gameName);
                 try

@@ -22,7 +22,7 @@ public class GpTest7 {
     @Test()
     public void test1() throws InvalidNumOfPlayersException
     {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -36,7 +36,7 @@ public class GpTest7 {
     @Test()
     public void test2() throws InvalidNumOfPlayersException
     {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 

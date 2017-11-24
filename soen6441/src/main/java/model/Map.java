@@ -21,7 +21,7 @@ public class Map implements IMap,Serializable {
     private ArrayList<IContinent> continents = new ArrayList<>();
     private String name = "Map ";
 
-    public static int totalnumberOfTerritories = 0;
+    private int totalnumberOfTerritories = 0;
     
     /**
      * Constructor
@@ -47,12 +47,12 @@ public class Map implements IMap,Serializable {
      */
     private void loadData(){
     	this.continents = new ArrayList<>();
-    	totalnumberOfTerritories = 0;
+    	setTotalnumberOfTerritories(0);
     	for(String continent: MapDataBase.continents.keySet()){
     		IContinent c = new Continent(continent);
     		for(Territory territory: MapDataBase.continents.get(continent).values()){
     			c.addTerritory(territory);
-    			totalnumberOfTerritories++;
+    			this.setTotalnumberOfTerritories(this.getTotalnumberOfTerritories() + 1);
     		}
     		this.continents.add(c);	
     	}
@@ -111,4 +111,20 @@ public class Map implements IMap,Serializable {
     public String getName() {
         return this.name;
     }
+
+
+	/**
+	 * @return the totalnumberOfTerritories
+	 */
+	public int getTotalnumberOfTerritories() {
+		return totalnumberOfTerritories;
+	}
+
+
+	/**
+	 * @param totalnumberOfTerritories the totalnumberOfTerritories to set
+	 */
+	public void setTotalnumberOfTerritories(int totalnumberOfTerritories) {
+		this.totalnumberOfTerritories = totalnumberOfTerritories;
+	}
 }

@@ -16,7 +16,7 @@ public class GpTest9 {
 
     @Test()
     public void test1() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -36,7 +36,7 @@ public class GpTest9 {
      */
     @Test()
     public void test2() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -58,7 +58,7 @@ public class GpTest9 {
      */
     @Test()
     public void test3() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -88,7 +88,7 @@ public class GpTest9 {
      */
     @Test()
     public void test4() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -125,7 +125,7 @@ public class GpTest9 {
      */
     @Test()
     public void test5() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -166,7 +166,7 @@ public class GpTest9 {
      */
     @Test()
     public void test6() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -213,7 +213,7 @@ public class GpTest9 {
      */
     @Test()
     public void test7() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
@@ -266,7 +266,7 @@ public class GpTest9 {
      */
     @Test()
     public void test8() throws InvalidNumOfPlayersException {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 

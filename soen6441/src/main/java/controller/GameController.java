@@ -62,7 +62,6 @@ public class GameController {
 	 * This method tells the GameManager to start the next round
 	 */
 	public void askNextTurn() {
-		System.out.println("IN C "+gameManager.getPlayers().size());
 		gameManager.takeNextTurn();
 	}
 

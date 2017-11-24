@@ -164,15 +164,20 @@ public class StartGameDriver {
                 	Human humanStratergy = new Human();
                 	humanStratergy.addObserver(humanPlayerView);
                 	gameManager.addStrategies(humanStratergy);
+                	break;
                 case "a":
                 	IStrategy agressive = new Aggressive();
                 	gameManager.addStrategies(agressive);
+                	break;
                 case "b":
                 	gameManager.addStrategies(new Benevolent());
+                	break;
                 case "r":
                 	gameManager.addStrategies(new Random());
+                	break;
                 case "c":
                 	gameManager.addStrategies(new Cheater());
+                	break;
             }
         }
 

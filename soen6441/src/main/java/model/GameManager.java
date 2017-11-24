@@ -54,7 +54,7 @@ public class GameManager extends Observable implements Serializable{
 
     private boolean isGameOn=false;
 
-    private IMap map;
+    private Map map;
     private ArrayList<Player> playerlist = new ArrayList<>();
     private String currentPhase = "";
 
@@ -71,7 +71,7 @@ public class GameManager extends Observable implements Serializable{
     public void startGame(int players, String strategies) throws InvalidNumOfPlayersException {
 
         this.numberOfPlayers = players;
-        this.strategyString = strategies;
+        //this.strategyString = strategies;
         //this.setStrategies();
         this.map = new Map();
         start();
@@ -104,7 +104,7 @@ public class GameManager extends Observable implements Serializable{
      * @param m is selected map
      * @param players number of players that user choose
      */
-    public GameManager(IMap m,int players, String strategies, int totalTurns) {
+    public GameManager(Map m,int players, String strategies, int totalTurns) {
 
         this.numberOfPlayers = players;
         this.map = m;
@@ -163,6 +163,7 @@ public class GameManager extends Observable implements Serializable{
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
+        System.out.println("Number of strategies: "+strategies.size());
         this.resetTurn();
         //this.play(true);
     }
@@ -254,8 +255,7 @@ public class GameManager extends Observable implements Serializable{
     	String tmp = "";
     	 for(IPlayer p:this.playerlist)
          {
-    		 System.out.println(p.getTerritories().size()+" ,"+Map.totalnumberOfTerritories);
-             double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfTerritories) * 100);
+    		 double control_percent = Math.round(((double) p.getTerritories().size() / map.getTotalnumberOfTerritories()) * 100);
              tmp += "\n"+ p.getName()+"="+control_percent;
          }
     	 sendNotification("DominationView: "+tmp);
@@ -409,7 +409,7 @@ public class GameManager extends Observable implements Serializable{
         Color colorManager = new Color();
         if(this.playerlist.size() == 0){
         	for (int i=1; i<=this.numberOfPlayers; i++) {
-                IStrategy strategy = getRandomStrategy();
+                IStrategy strategy = strategies.get(i-1);
                 Player p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
                 this.playersText += p.getStrategy().getName() +", ";
                 p.setGameManager(this);
@@ -418,7 +418,7 @@ public class GameManager extends Observable implements Serializable{
         	}	
         }else{
         	for (int i=0; i<this.playerlist.size(); i++) {
-        		IStrategy strategy = getRandomStrategy(); 
+        		IStrategy strategy = strategies.get(i); 
         		playerlist.get(i).setStrategy(strategy);
         		playerlist.get(i).setColor( colorManager.getRandomColor());
                 this.playersText += playerlist.get(i).getStrategy().getName() +", ";
@@ -727,7 +727,7 @@ public class GameManager extends Observable implements Serializable{
      */
 	public static void main(String[] args)
     {
-        IMap m = new Map();
+        Map m = new Map();
         m.clearData();
         m.fakeData();
 
