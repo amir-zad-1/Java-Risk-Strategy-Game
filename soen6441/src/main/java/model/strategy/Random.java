@@ -14,7 +14,13 @@ import java.util.ArrayList;
  */
 public class Random implements IStrategy,Serializable {
 
-    /**
+	/**
+	 * Deserialization uses this number to ensure that a loaded class corresponds 
+	 * exactly to a serialized object while saving rhe game state 
+	 */
+	private static final long serialVersionUID = 8419616957685060753L;
+
+	/**
      * how many attacks
      * @return number of attacks
      */

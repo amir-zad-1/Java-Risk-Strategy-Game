@@ -8,14 +8,20 @@ import util.Helpers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 /**
  * cheater strategy
  */
 public class Cheater implements IStrategy,Serializable{
-    /**
+    
+	/**
+	 * Deserialization uses this number to ensure that a loaded class corresponds 
+	 * exactly to a serialized object while saving rhe game state 
+	 */
+	private static final long serialVersionUID = 8524490775170198242L;
+
+	/**
      * how many attacks
      * @return number of attacks
      */

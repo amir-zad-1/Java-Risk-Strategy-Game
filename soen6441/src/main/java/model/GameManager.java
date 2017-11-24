@@ -47,7 +47,7 @@ public class GameManager extends Observable implements Serializable{
 
     private int strategyTurn = -1;
     private String strategyString = "";
-    ArrayList<IStrategy> strategies = new ArrayList<>();
+    private ArrayList<IStrategy> strategies = new ArrayList<>();
 
     public CardDeck cardDeck = new CardDeck();
     public int turns = 500;
@@ -55,7 +55,7 @@ public class GameManager extends Observable implements Serializable{
     private boolean isGameOn=false;
 
     private IMap map;
-    private ArrayList<IPlayer> playerlist = new ArrayList<>();
+    private ArrayList<Player> playerlist = new ArrayList<>();
     private String currentPhase = "";
 
 
@@ -71,8 +71,8 @@ public class GameManager extends Observable implements Serializable{
     public void startGame(int players, String strategies) throws InvalidNumOfPlayersException {
 
         this.numberOfPlayers = players;
-        this.strategyString  = strategies;
-        this.setStrategies();
+        this.strategyString = strategies;
+        //this.setStrategies();
         this.map = new Map();
         start();
     }
@@ -92,7 +92,7 @@ public class GameManager extends Observable implements Serializable{
 
         this.numberOfPlayers = players;
         this.map = new Map();
-        this.strategyString  = strategies;
+        this.strategyString = strategies;
         this.setStrategies();
         this.turns = totalTurns;
     }
@@ -409,7 +409,7 @@ public class GameManager extends Observable implements Serializable{
         if(this.playerlist.size() == 0){
         	for (int i=1; i<=this.numberOfPlayers; i++) {
                 IStrategy strategy = getRandomStrategy();
-                IPlayer p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
+                Player p = new Player("Player " + Integer.toString(i), colorManager.getRandomColor(), strategy);
                 this.playersText += p.getStrategy().getName() +", ";
                 p.setGameManager(this);
                 this.playerlist.add(p);
@@ -417,8 +417,8 @@ public class GameManager extends Observable implements Serializable{
         	}	
         }else{
         	for (int i=0; i<this.playerlist.size(); i++) {
-        		//IStrategy strategy = getRandomStrategy(); 
-        		//playerlist.get(i).setStrategy(strategy);
+        		IStrategy strategy = getRandomStrategy(); 
+        		playerlist.get(i).setStrategy(strategy);
         		playerlist.get(i).setColor( colorManager.getRandomColor());
                 this.playersText += playerlist.get(i).getStrategy().getName() +", ";
         		playerlist.get(i).setGameManager(this);
@@ -668,11 +668,11 @@ public class GameManager extends Observable implements Serializable{
      */
     public IStrategy getRandomStrategy()
     {
-        if(this.strategyTurn==this.strategies.size()-1)
+        if(this.strategyTurn==this.getStrategies().size()-1)
             this.strategyTurn = -1;
         this.strategyTurn++;
 
-        return this.strategies.get(strategyTurn);
+        return this.getStrategies().get(strategyTurn);
 
     }
 
@@ -682,7 +682,7 @@ public class GameManager extends Observable implements Serializable{
 	 * Adds a player to the game
 	 * @param newPlayer is a {@link Player}
 	 */
-	public void addPlayer(IPlayer newPlayer) {
+	public void addPlayer(Player newPlayer) {
 		this.playerlist.add(newPlayer);
 		
 	}
@@ -795,7 +795,7 @@ public class GameManager extends Observable implements Serializable{
 	 * @param strategy the strategy the player choose
 	 */
 	public void addStrategies(IStrategy strategy) {		
-		this.strategies.add(strategy);
+		this.getStrategies().add(strategy);
 	}
 
 
@@ -805,6 +805,24 @@ public class GameManager extends Observable implements Serializable{
 	public void setAnswerForHuman(String answerByHuman) {
 		Human.sharedTmp = answerByHuman;		
 	}
+
+
+	/**
+	 * @return all {@link Player} objects
+	 */
+	public ArrayList<Player> getPlayers() {
+		return playerlist;
+	}
+
+
+	/**
+	 * @return the strategies
+	 */
+	public ArrayList<IStrategy> getStrategies() {
+		return strategies;
+	}
+
+	
 
 
 }

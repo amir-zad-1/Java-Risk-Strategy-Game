@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import model.GameManager;
 
  
 /**
@@ -28,7 +29,7 @@ public class WindowManager extends Application {
 	static ReadController readController;
 	static GameController gameController;
 	static WriteController writeController;
-	static CallBack callback;
+	static CallBack[] callback = new CallBack[3];
     
     /**
      * Starts the main UI window
@@ -50,24 +51,27 @@ public class WindowManager extends Application {
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		phaseView.setWindowStage(window);
         		window.setScene(phaseView.getView());
-        		callback.called(numberOfPlayers,strategies);
+        		callback[0].called(numberOfPlayers,strategies);
         		gameController.startGame(numberOfPlayers,strategies);
         		
             }
     	});   
        
+			
+		window.setScene(welcomeView.getView());
+        
 		welcomeView.getResumeButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
-            public void handle(ActionEvent event){
-        		gameController.resumeGame();
+            public void handle(ActionEvent event){        		
+        		GameManager gm = gameController.resumeGame();
+        		callback[2].called(gm);
+        		callback[1].called(0,"");
         		phaseView.setNumberOfPlayers(2);
         		phaseView.setWindowStage(window);
-        		window.setScene(phaseView.getView());
-        		
+        		window.setScene(phaseView.getView());        		
         	}
-		 });	
-		window.setScene(welcomeView.getView());
-        window.show();
+		 });
+		window.show();
     }
 
 
@@ -108,8 +112,9 @@ public class WindowManager extends Application {
 	/**
 	 * @param new_callBack to initialize the callback functionality
 	 */
-	public static void addCallBack(CallBack new_callBack) {		
-		callback = new_callBack;
+	static int i =0;
+	public static void addCallBack(CallBack new_callBack) {
+		callback[i++] = new_callBack;
 	}
     
 	

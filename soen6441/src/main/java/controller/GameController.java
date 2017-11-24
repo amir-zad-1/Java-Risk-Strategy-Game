@@ -28,6 +28,9 @@ public class GameController {
 	 */
 	SaveProcess saveProcess = null;
 	
+	
+	boolean isResumedGame = false;
+	
 	/**
 	 * Constructor that initializes the GameManager
 	 * @param new_gameManager is the reference of GameManager created in Driver class 
@@ -43,7 +46,8 @@ public class GameController {
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
 	public void startGame(int numberOfPlayers,String strategies) {		
-			try {
+			isResumedGame = false;
+		    try {
 				gameManager.startGame(numberOfPlayers,strategies);
 			} catch (InvalidNumOfPlayersException e) {
 				e.printStackTrace();
@@ -54,7 +58,8 @@ public class GameController {
 	/**
 	 * This method tells the GameManager to start the next round
 	 */
-	public void askNextTurn() {		
+	public void askNextTurn() {
+		System.out.println("IN C "+gameManager.getPlayers().size());
 		gameManager.takeNextTurn();
 	}
 
@@ -79,13 +84,15 @@ public class GameController {
 	/**
 	 * 
 	 */
-	public void resumeGame() {
+	public GameManager resumeGame() {
 		FileInputStream fis;
 		try {
 			fis = new FileInputStream("tempdata.tiger");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-	        gameManager = (GameManager) ois.readObject();
-	        ois.close();		
+	        GameManager gm = (GameManager) ois.readObject();
+	        isResumedGame = true;
+	        ois.close();
+	        return gm;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,7 +103,15 @@ public class GameController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+		
+       return null; 
+	}
+
+	/**
+	 * @param gameManager the gameManager to set
+	 */
+	public void setGameManager(GameManager gameManager) {
+		this.gameManager = gameManager;
 	}
 
 }

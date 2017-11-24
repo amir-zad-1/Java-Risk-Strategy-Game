@@ -12,7 +12,14 @@ import util.Helpers;
  * Benevolent strategy
  */
 public class Benevolent implements IStrategy,Serializable {
-    /**
+    
+	/**
+	 * Deserialization uses this number to ensure that a loaded class corresponds 
+	 * exactly to a serialized object while saving rhe game state 
+	 */
+	private static final long serialVersionUID = -4744936499083518966L;
+
+	/**
      * how many attacks
      * @return number of attacks
      */

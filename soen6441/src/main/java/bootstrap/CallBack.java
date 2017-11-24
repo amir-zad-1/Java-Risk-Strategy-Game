@@ -35,4 +35,9 @@ public class CallBack {
 		
 		
 	}
+	
+	public <T> void called(T object){
+		
+	}
+	
 }

@@ -1,7 +1,8 @@
 
 package bootstrap;
 
-import org.antlr.v4.parse.GrammarTreeVisitor.tokenSpec_return;
+
+import java.util.ArrayList;
 
 import controller.GameController;
 import controller.RWMapFileController;
@@ -14,6 +15,7 @@ import model.GameManager;
 
 import model.Player;
 import model.SaveProcess;
+import model.contract.IPlayer;
 import model.contract.IStrategy;
 import model.strategy.Aggressive;
 import model.strategy.Benevolent;
@@ -95,9 +97,13 @@ public class StartGameDriver {
 		 //Create Players objects and add observers only when users gives number of player inputs
 		 WindowManager.addCallBack(new CallBack(){
 			    public void called(int numberOfPlayers, String strategies){
+			    	gameManager.addObserver(dominationView);
+					gameManager.addObserver(phaseView);
+					gameManager.addObserver(cardView);
+					System.out.println(strategies);
+					setStrategies(strategies);
 			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
-			    		p.setStrategy(setStrategies(strategies));
 			    		p.addObserver(dominationView);
 			    		p.addObserver(phaseView);			    
 			    		gameManager.addPlayer(p);
@@ -105,11 +111,38 @@ public class StartGameDriver {
 			    }
 		 });
 		 
-		 
+		 WindowManager.addCallBack(new CallBack(){
+			    public void called(int numberOfPlayers, String strategies){
+			    	System.out.println(gameManager.getPlayers().size());
+			    	ArrayList<Player> playerList = gameManager.getPlayers();			    	
+			        for(Player p : playerList){
+			        	System.out.println(p.getName());
+			        	p.addObserver(dominationView);
+			    		p.addObserver(phaseView);	
+			        }
+			        gameManager.addObserver(dominationView);
+					gameManager.addObserver(phaseView);
+					gameManager.addObserver(cardView);
+					ArrayList<IStrategy> playerStrategies = gameManager.getStrategies();
+					for(int i = 0;i<playerStrategies.size();i++){
+						System.out.println(playerStrategies.get(i).getName());
+						if(playerStrategies.get(i).getName().equals("Human")){
+							Human h = (Human)playerStrategies.get(i);
+							h.addObserver(humanPlayerView);
+							playerStrategies.set(i, h);
+						}
+					}
+			    }
+		 });
 		
-		 gameManager.addObserver(dominationView);
-		 gameManager.addObserver(phaseView);
-		 gameManager.addObserver(cardView);
+		 
+		 WindowManager.addCallBack(new CallBack(){
+			    public <T> void called(T object){
+			    	gameManager = (GameManager) object;
+			    	gameController.setGameManager(gameManager);
+			    }
+		 });	    
+		 
 		 javafx.application.Application.launch(WindowManager.class);
 	}
 	
@@ -119,11 +152,13 @@ public class StartGameDriver {
      * set strategies according to strategies string
      * sample for 3 players with Human, Random and Aggressive strategies is h,r,a
      */
-	public static IStrategy setStrategies(String strategyString)
+	public static void setStrategies(String strategyString)
     {
         String[] stra = strategyString.split(",");
+        
         for(String s:stra)
         {
+        	System.out.println(s);
             switch (s)
             {
                 case "h":
@@ -131,26 +166,21 @@ public class StartGameDriver {
                 	Human humanStratergy = new Human();
                 	humanStratergy.addObserver(humanPlayerView);
                 	gameManager.addStrategies(humanStratergy);
-                	return humanStratergy;
                 case "a":
                 	IStrategy agressive = new Aggressive();
                 	gameManager.addStrategies(agressive);
-                	return agressive;
                 case "b":
                 	IStrategy benevolent = new Benevolent();
                 	gameManager.addStrategies(new Benevolent());
-                	return benevolent;
                 case "r":
                 	IStrategy random = new Random();
                 	gameManager.addStrategies(new Random());
-                    return random;
                 case "c":
                 	IStrategy cheater = new Cheater();
                 	gameManager.addStrategies(new Cheater());
-                    return cheater;
             }
         }
-        return null;
+
     }
 
 }
