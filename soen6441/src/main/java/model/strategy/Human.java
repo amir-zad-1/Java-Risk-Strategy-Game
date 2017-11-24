@@ -14,8 +14,8 @@ import java.util.Scanner;
  */
 public class Human extends Observable implements IStrategy {
 
-	public static Object waiter = new Object();
-	
+	public static String sharedTmp = null;
+
     /**
      * {@link Scanner} to read data from command prompt
      */
@@ -27,10 +27,6 @@ public class Human extends Observable implements IStrategy {
      */
     @Override
     public int getAttackAttempts() {
-        System.out.print("How many times do you want to attack?");
-        setChanged();
-        notifyObservers("How many times do you want to attack?"); 	
-        waitForUserInput();
         System.out.print("How many times do you want to attack?");
         int times = scanner.nextInt();
         return times;
@@ -53,10 +49,11 @@ public class Human extends Observable implements IStrategy {
     @Override
     public ITerritory getInforcementTerritory(IPlayer p) {
 
-        System.out.print("Tip: your weakest territory is : ");
-        System.out.println(p.getWeakestTerritory().getName());
-        System.out.print("Which territory do you want to reinforce?");
-        String territoryName = scanner.nextLine();
+      
+    	sendNotification("Tip: your weakest territory is : "+p.getWeakestTerritory().getName()+" \n"+
+    			"Which territory do you want to reinforce?");
+        
+        String territoryName = sharedTmp;
         return p.getTerritoryByName(territoryName);
     }
 
@@ -229,7 +226,7 @@ public class Human extends Observable implements IStrategy {
     }
 
     /**
-     * number of fortification armes
+     * number of fortification armies
      * @param p player
      * @param from origin of fortification
      * @return number of armies
@@ -237,18 +234,19 @@ public class Human extends Observable implements IStrategy {
     @Override
     public int getFortificationArmies(IPlayer p, ITerritory from) {
         System.out.print("How many armies do you want to fortify?");
-        Scanner sc = new Scanner(System.in);
-        int armies = sc.nextInt();
+        int armies = scanner.nextInt();
         return armies;
     }
     
     
-    private void waitForUserInput(){
-    	try {
- 			waiter.wait();
- 		} catch (InterruptedException e) {
- 			e.printStackTrace();
- 		}
-    }
+
+	/**
+	 * @param message is the message to be notified to Observers
+	 */
+	public void sendNotification(String message) {
+		setChanged();
+		notifyObservers(message);
+	}
+
     
 }

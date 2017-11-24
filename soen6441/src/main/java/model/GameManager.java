@@ -155,8 +155,8 @@ public class GameManager extends Observable {
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
-        //this.resetTurn();
-        this.play(true);
+        this.resetTurn();
+        //this.play(true);
     }
 
 
@@ -347,6 +347,7 @@ public class GameManager extends Observable {
         {
             LoggerController.log(p.getState());
             ITerritory playerRandomTerritory = p.getStrategy().getInforcementTerritory(p);
+            System.out.println("Confirmation: "+playerRandomTerritory.getName());
             int randomArmy = p.getStrategy().getReinforcementArmies(p);
 
             p.placeArmy(randomArmy, playerRandomTerritory);

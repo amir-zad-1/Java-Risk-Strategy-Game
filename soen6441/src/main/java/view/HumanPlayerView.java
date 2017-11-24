@@ -5,6 +5,7 @@ package view;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Optional;
 
 import controller.GameController;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 
 /**
@@ -25,7 +27,7 @@ public class HumanPlayerView implements Observer{
 	/**
 	 * label to ask question to Human Player
 	 */
-	Label questionLabel;
+	TextInputDialog dialog = null;
 	
 	GameController gameController = null;
 	
@@ -41,9 +43,7 @@ public class HumanPlayerView implements Observer{
 		
 		HBox container  = new HBox();
 		
-		//initialize the questionLabel with text
-		questionLabel  = new Label("Question for Human Player");
-		container.getChildren().add(questionLabel);
+		dialog = new TextInputDialog();
 				
 		//text filed to take input from user
 		TextField playerInput = new TextField();
@@ -69,9 +69,14 @@ public class HumanPlayerView implements Observer{
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		
+	
 		String question = (String) arg;
-		questionLabel.setText(question);
+		System.out.println("Ft "+question);
+		dialog.setHeaderText(question);
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			gameController.submitAnswer(result.get());
+		}
 		
 	}
 

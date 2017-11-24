@@ -53,7 +53,7 @@ public class GameController {
 	 */
 	public void submitAnswer(String text) {
 		
-		Human.waiter.notify();
+		Human.sharedTmp = text;
 		
 	}
 

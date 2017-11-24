@@ -40,7 +40,7 @@ public class CardView implements Observer{
 	@Override
 	public void update(Observable observable, Object arg) {
 		 
-		  if(observable instanceof Player){
+		 if(observable instanceof Player){
 			  String[] params = arg.toString().split(":");
 			  if(params[0].equals("CardView")){
 				  System.out.println("ewsfewgf");

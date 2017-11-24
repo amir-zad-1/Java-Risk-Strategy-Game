@@ -103,11 +103,7 @@ public class StartGameDriver {
 		 });
 		 
 		 
-		 if(isHumanPlaying){
-			
 		
-		 }
-		 
 		 gameManager.addObserver(dominationView);
 		 gameManager.addObserver(phaseView);
 		 gameManager.addObserver(cardView);
