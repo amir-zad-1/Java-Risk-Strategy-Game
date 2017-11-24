@@ -2,6 +2,7 @@
 package controller;
 
 import model.GameManager;
+import model.strategy.Human;
 import util.expetion.InvalidNumOfPlayersException;
 
 /**
@@ -52,7 +53,7 @@ public class GameController {
 	 */
 	public void submitAnswer(String text) {
 		
-		
+		Human.waiter.notify();
 		
 	}
 

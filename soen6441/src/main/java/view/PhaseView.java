@@ -33,6 +33,7 @@ public class PhaseView implements IView,Observer{
 
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
 	DominationView dominationView = null;
+	HumanPlayerView humanPlayerView = null;
 	CardView cardView = null;
 	GameController gameController = null;
 	Label phase; String previousPlayer = "";
@@ -49,12 +50,11 @@ public class PhaseView implements IView,Observer{
 	 * @param new_dominationView as the Domination view is subset of Phase View
 	 * @param new_gameController we need the game controller to ask for next turn
 	 */
-	public PhaseView(DominationView new_dominationView,GameController new_gameController,CardView new_cardView) {
+	public PhaseView(DominationView new_dominationView,GameController new_gameController,CardView new_cardView,HumanPlayerView new_humanPlayerView) {
 		this.dominationView = new_dominationView;
 		this.gameController = new_gameController;
 		this.cardView = new_cardView;
-		
-		
+		this.humanPlayerView = new_humanPlayerView;		
 	}
 	
 	/** 
@@ -89,6 +89,7 @@ public class PhaseView implements IView,Observer{
 		nextTurn = new Button("Next turn");
 		BorderPane footer = new BorderPane();
 		footer.setPadding(new Insets(5));
+		footer.setCenter(humanPlayerView.getView());
 		footer.setRight(nextTurn);
 		borderPane.setBottom(footer);
 		borderPane.setTop(header);

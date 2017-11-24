@@ -402,14 +402,9 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
      */
     public void attack()
     {
-    	sendNotification("PhaseChange:"+this.getName()+" Attack");
-    	
-    	//If Human player ask for the Player decision else attack as per strategy
-    	if(this.strategy.getName().equals("Human")){
-    	   strategy.getAttackAttempts();
-    	}else{
-    	   this.attack(strategy.getAttackAttempts());    	   	
-    	}
+    	sendNotification("PhaseChange:"+this.getName()+" Attack");    	
+    	// attack as per strategy
+    	this.attack(strategy.getAttackAttempts());    	
     }
 
     /**

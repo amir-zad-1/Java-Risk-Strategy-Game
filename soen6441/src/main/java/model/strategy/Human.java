@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class Human extends Observable implements IStrategy {
 
+	public static Object waiter = new Object();
 	
     /**
      * {@link Scanner} to read data from command prompt
@@ -27,7 +28,10 @@ public class Human extends Observable implements IStrategy {
     @Override
     public int getAttackAttempts() {
         System.out.print("How many times do you want to attack?");
-        
+        setChanged();
+        notifyObservers("How many times do you want to attack?"); 	
+        waitForUserInput();
+        System.out.print("How many times do you want to attack?");
         int times = scanner.nextInt();
         return times;
     }
@@ -92,7 +96,7 @@ public class Human extends Observable implements IStrategy {
         if(neighbours.size()>0)
         {
 
-            //list neighbours to attack
+            //list neighbors to attack
             ArrayList<ITerritory> attackList = new ArrayList<>();
             for(ITerritory a: from.getAdjacentTerritoryObjects())
             {
@@ -237,4 +241,14 @@ public class Human extends Observable implements IStrategy {
         int armies = sc.nextInt();
         return armies;
     }
+    
+    
+    private void waitForUserInput(){
+    	try {
+ 			waiter.wait();
+ 		} catch (InterruptedException e) {
+ 			e.printStackTrace();
+ 		}
+    }
+    
 }

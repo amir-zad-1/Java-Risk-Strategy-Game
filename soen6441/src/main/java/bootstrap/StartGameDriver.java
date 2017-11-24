@@ -13,6 +13,7 @@ import model.DataWriter;
 import model.GameManager;
 
 import model.Player;
+import model.contract.IStrategy;
 import model.strategy.Aggressive;
 import model.strategy.Benevolent;
 import model.strategy.Cheater;
@@ -77,11 +78,11 @@ public class StartGameDriver {
 		 DominationView dominationView = new DominationView();
 		 
 		 //Instantiate the human player view
-		 humanPlayerView = new HumanPlayerView();
+		 humanPlayerView = new HumanPlayerView(gameController);
 		 
 		 //Creates phaseView make it Observer
 		 CardView  cardView= new CardView();
-		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView);		 
+		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView,humanPlayerView);		 
 		 
 		 
 		 //Sends all controllers to view manager, such that views can contact
@@ -93,7 +94,7 @@ public class StartGameDriver {
 			    public void called(int numberOfPlayers, String strategies){
 			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
-			    		setStrategies(strategies);
+			    		p.setStrategy(setStrategies(strategies));
 			    		p.addObserver(dominationView);
 			    		p.addObserver(phaseView);			    
 			    		gameManager.addPlayer(p);
@@ -119,7 +120,7 @@ public class StartGameDriver {
      * set strategies according to strategies string
      * sample for 3 players with Human, Random and Aggressive strategies is h,r,a
      */
-	public static void setStrategies(String strategyString)
+	public static IStrategy setStrategies(String strategyString)
     {
         String[] stra = strategyString.split(",");
         for(String s:stra)
@@ -131,21 +132,26 @@ public class StartGameDriver {
                 	Human humanStratergy = new Human();
                 	humanStratergy.addObserver(humanPlayerView);
                 	gameManager.addStrategies(humanStratergy);
-                    break;
+                	return humanStratergy;
                 case "a":
-                	gameManager.addStrategies(new Aggressive());
-                    break;
+                	IStrategy agressive = new Aggressive();
+                	gameManager.addStrategies(agressive);
+                	return agressive;
                 case "b":
+                	IStrategy benevolent = new Benevolent();
                 	gameManager.addStrategies(new Benevolent());
-                    break;
+                	return benevolent;
                 case "r":
+                	IStrategy random = new Random();
                 	gameManager.addStrategies(new Random());
-                    break;
+                    return random;
                 case "c":
+                	IStrategy cheater = new Cheater();
                 	gameManager.addStrategies(new Cheater());
-                    break;
+                    return cheater;
             }
         }
+        return null;
     }
 
 }
