@@ -6,12 +6,13 @@ import model.contract.IStrategy;
 import model.contract.ITerritory;
 
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Scanner;
 
 /**
  * Human Strategy
  */
-public class Human implements IStrategy {
+public class Human extends Observable implements IStrategy {
 
 	
     /**
@@ -26,12 +27,13 @@ public class Human implements IStrategy {
     @Override
     public int getAttackAttempts() {
         System.out.print("How many times do you want to attack?");
+        
         int times = scanner.nextInt();
         return times;
     }
 
     /**
-     * name of the startegy
+     * name of the strategy
      * @return name
      */
     @Override

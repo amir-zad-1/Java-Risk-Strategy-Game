@@ -76,6 +76,8 @@ public class StartGameDriver {
 		 //Creates Domination View and make it Observer
 		 DominationView dominationView = new DominationView();
 		 
+		 //Instantiate the human player view
+		 humanPlayerView = new HumanPlayerView();
 		 
 		 //Creates phaseView make it Observer
 		 CardView  cardView= new CardView();
@@ -101,7 +103,8 @@ public class StartGameDriver {
 		 
 		 
 		 if(isHumanPlaying){
-			 
+			
+		
 		 }
 		 
 		 gameManager.addObserver(dominationView);
@@ -125,7 +128,9 @@ public class StartGameDriver {
             {
                 case "h":
                 	isHumanPlaying = true;
-                	gameManager.addStrategies(new Human());
+                	Human humanStratergy = new Human();
+                	humanStratergy.addObserver(humanPlayerView);
+                	gameManager.addStrategies(humanStratergy);
                     break;
                 case "a":
                 	gameManager.addStrategies(new Aggressive());

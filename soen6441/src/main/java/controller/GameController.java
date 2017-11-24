@@ -47,6 +47,15 @@ public class GameController {
 		gameManager.takeNextTurn();
 	}
 
+	/**
+	 * @param text the input given by the HumanPlayer
+	 */
+	public void submitAnswer(String text) {
+		
+		
+		
+	}
+
 
 
 }
