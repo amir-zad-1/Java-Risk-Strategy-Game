@@ -105,7 +105,6 @@ public class StartGameDriver {
 			    	gameManager.addObserver(dominationView);
 					gameManager.addObserver(phaseView);
 					gameManager.addObserver(cardView);
-					System.out.println(strategies);
 					setStrategies(strategies);
 			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
@@ -128,7 +127,6 @@ public class StartGameDriver {
 					gameManager.addObserver(cardView);
 					ArrayList<IStrategy> playerStrategies = gameManager.getStrategies();
 					for(int i = 0;i<playerStrategies.size();i++){
-						System.out.println(playerStrategies.get(i).getName());
 						if(playerStrategies.get(i).getName().equals("Human")){
 							Human h = (Human)playerStrategies.get(i);
 							h.addObserver(humanPlayerView);
@@ -161,8 +159,7 @@ public class StartGameDriver {
         
         for(String s:stra)
         {
-        	System.out.println(s);
-            switch (s)
+        	switch (s)
             {
                 case "h":
                 	isHumanPlaying = true;

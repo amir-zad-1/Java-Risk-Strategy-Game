@@ -163,7 +163,6 @@ public class GameManager extends Observable implements Serializable{
         this.isGameOn = true;
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
-        System.out.println("Number of strategies: "+strategies.size());
         this.resetTurn();
         //this.play(true);
     }
