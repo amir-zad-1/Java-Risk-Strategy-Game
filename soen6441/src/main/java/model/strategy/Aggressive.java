@@ -148,6 +148,7 @@ public class Aggressive implements IStrategy,Serializable {
      */
     @Override
     public int getFortificationArmies(IPlayer p, ITerritory from) {
+    	System.out.println("Agressive "+from.getArmies()+" "+1);
         return Helpers.getRandomInt(from.getArmies(),1);
     }
 }

@@ -5,9 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.HashMap;
 
 import model.GameManager;
+import model.MapDataBase;
 import model.SaveProcess;
+import model.Territory;
 import model.strategy.Human;
 import util.expetion.InvalidNumOfPlayersException;
 
@@ -90,6 +93,12 @@ public class GameController {
 			fis = new FileInputStream("tempdata.tiger");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 	        GameManager gm = (GameManager) ois.readObject();
+	        fis = new FileInputStream("tempdata1.tiger");
+			ois = new ObjectInputStream(fis);
+	        MapDataBase.continents = (HashMap<String, HashMap<String, Territory>>)ois.readObject();
+	        fis = new FileInputStream("tempdata2.tiger");
+			ois = new ObjectInputStream(fis);
+	        MapDataBase.continentValues = (HashMap<String, Integer>)ois.readObject();
 	        isResumedGame = true;
 	        ois.close();
 	        return gm;

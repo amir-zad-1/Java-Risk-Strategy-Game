@@ -26,7 +26,13 @@ public class SaveProcess {
 		 FileOutputStream fos = new FileOutputStream("tempdata.tiger");
          ObjectOutputStream oos = new ObjectOutputStream(fos);
          oos.writeObject(gameManager);
-         oos.close();
+         FileOutputStream fos1 = new FileOutputStream("tempdata1.tiger");
+         ObjectOutputStream oos1 = new ObjectOutputStream(fos1);
+         oos1.writeObject(MapDataBase.continents);
+         FileOutputStream fos2 = new FileOutputStream("tempdata2.tiger");
+         ObjectOutputStream oos2 = new ObjectOutputStream(fos2);
+         oos2.writeObject(MapDataBase.continentValues);
+         oos2.close();
 	}
 	
 }

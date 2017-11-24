@@ -113,10 +113,8 @@ public class StartGameDriver {
 		 
 		 WindowManager.addCallBack(new CallBack(){
 			    public void called(int numberOfPlayers, String strategies){
-			    	System.out.println(gameManager.getPlayers().size());
 			    	ArrayList<Player> playerList = gameManager.getPlayers();			    	
 			        for(Player p : playerList){
-			        	System.out.println(p.getName());
 			        	p.addObserver(dominationView);
 			    		p.addObserver(phaseView);	
 			        }
@@ -170,13 +168,10 @@ public class StartGameDriver {
                 	IStrategy agressive = new Aggressive();
                 	gameManager.addStrategies(agressive);
                 case "b":
-                	IStrategy benevolent = new Benevolent();
                 	gameManager.addStrategies(new Benevolent());
                 case "r":
-                	IStrategy random = new Random();
                 	gameManager.addStrategies(new Random());
                 case "c":
-                	IStrategy cheater = new Cheater();
                 	gameManager.addStrategies(new Cheater());
             }
         }

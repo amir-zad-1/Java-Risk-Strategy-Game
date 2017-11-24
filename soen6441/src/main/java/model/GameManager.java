@@ -254,6 +254,7 @@ public class GameManager extends Observable implements Serializable{
     	String tmp = "";
     	 for(IPlayer p:this.playerlist)
          {
+    		 System.out.println(p.getTerritories().size()+" ,"+Map.totalnumberOfTerritories);
              double control_percent = Math.round(((double) p.getTerritories().size() / Map.totalnumberOfTerritories) * 100);
              tmp += "\n"+ p.getName()+"="+control_percent;
          }
