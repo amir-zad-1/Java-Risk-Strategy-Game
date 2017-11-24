@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import controller.GameController;
 import controller.RWMapFileController;
 import controller.ReadController;
+import controller.TournamentController;
 import controller.WriteController;
 
 import model.DataReader;
@@ -15,6 +16,7 @@ import model.GameManager;
 
 import model.Player;
 import model.SaveProcess;
+import model.TournamentManager;
 import model.contract.IPlayer;
 import model.contract.IStrategy;
 import model.strategy.Aggressive;
@@ -70,6 +72,9 @@ public class StartGameDriver {
 		 //Creates controller, which is responsible to redirect Write operations
 		 WriteController writeController = new WriteController(new DataWriter());
 		 
+		
+		 TournamentManager tournamentManager = new TournamentManager();
+		 TournamentController tournamentController = new TournamentController(tournamentManager);
 		 
 		 //Creates Game Manager and sends it to GameController
 		 gameManager = new GameManager();
