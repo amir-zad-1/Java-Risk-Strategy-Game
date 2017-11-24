@@ -428,8 +428,6 @@ public class GameManager extends Observable implements Serializable{
         }	
         colorManager = null;
     	
-    	
-    	
     }
 
     /**

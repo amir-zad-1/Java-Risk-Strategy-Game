@@ -1,8 +1,6 @@
 package model;
 
 import de.vandermeer.asciitable.AsciiTable;
-import model.contract.IMap;
-import model.contract.IPlayer;
 import model.contract.ITournament;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ public class Tournament implements ITournament {
      * it starts the tournament
      * @param maps maps to play on
      * @param p number of players
-     * @param playerStrategies player strategirs e.g. 3 players "r,h,a"
+     * @param playerStrategies player strategics e.g. 3 players "r,h,a"
      * @param g number of games
      * @param d number of dice for each game
      */

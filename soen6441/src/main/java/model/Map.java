@@ -52,7 +52,7 @@ public class Map implements IMap,Serializable {
     		IContinent c = new Continent(continent);
     		for(Territory territory: MapDataBase.continents.get(continent).values()){
     			c.addTerritory(territory);
-    			this.setTotalnumberOfTerritories(this.getTotalnumberOfTerritories() + 1);
+    			this.totalnumberOfTerritories++;
     		}
     		this.continents.add(c);	
     	}
