@@ -1,7 +1,10 @@
 
 package controller;
 
+import java.io.IOException;
+
 import model.GameManager;
+import model.SaveProcess;
 import model.strategy.Human;
 import util.expetion.InvalidNumOfPlayersException;
 
@@ -18,10 +21,16 @@ public class GameController {
 	GameManager gameManager = null;
 	
 	/**
+	 * {@link #saveProcess} to save the state of game
+	 */
+	SaveProcess saveProcess = null;
+	
+	/**
 	 * Constructor that initializes the GameManager
 	 * @param new_gameManager is the reference of GameManager created in Driver class 
 	 */
-	public GameController(GameManager new_gameManager) {
+	public GameController(GameManager new_gameManager,SaveProcess new_savePreocess){
+		saveProcess = new_savePreocess;
 		gameManager = new_gameManager;
 	}
 	
@@ -30,14 +39,12 @@ public class GameController {
 	 * @param numberOfPlayers tells numbers of players going to play the game
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
-	public void startGame(int numberOfPlayers,String strategies) {
-		
+	public void startGame(int numberOfPlayers,String strategies) {		
 			try {
 				gameManager.startGame(numberOfPlayers,strategies);
 			} catch (InvalidNumOfPlayersException e) {
 				e.printStackTrace();
-			}
-	
+			}	
 	}
 
 
@@ -59,7 +66,11 @@ public class GameController {
 	 * This method redirects save game request to model
 	 */
 	public void saveGame() {
-		
+		try {
+			saveProcess.saveState(gameManager);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -13,6 +13,7 @@ import model.DataWriter;
 import model.GameManager;
 
 import model.Player;
+import model.SaveProcess;
 import model.contract.IStrategy;
 import model.strategy.Aggressive;
 import model.strategy.Benevolent;
@@ -70,7 +71,8 @@ public class StartGameDriver {
 		 
 		 //Creates Game Manager and sends it to GameController
 		 gameManager = new GameManager();
-		 GameController gameController = new GameController(gameManager);
+		 SaveProcess saveProcess = new SaveProcess();
+		 GameController gameController = new GameController(gameManager,saveProcess);
 		 
 	 
 		 
