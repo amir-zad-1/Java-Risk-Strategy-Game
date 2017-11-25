@@ -1,5 +1,7 @@
 package model.strategy;
 
+import java.io.Serializable;
+
 import model.AttackPlan;
 import model.contract.IPlayer;
 import model.contract.IStrategy;
@@ -9,7 +11,7 @@ import util.Helpers;
 /**
  * Aggressive Strategy
  */
-public class Aggressive implements IStrategy {
+public class Aggressive implements IStrategy,Serializable {
     /**
      * how many attacks
      * @return number of attacks

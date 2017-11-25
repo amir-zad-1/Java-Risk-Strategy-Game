@@ -6,6 +6,7 @@ import model.contract.ITerritory;
 import util.ActionResponse;
 import util.LogMessageEnum;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,8 +15,16 @@ import controller.LoggerController;
 /**
  * territory class
  */
-public class Territory  implements ITerritory {
-    private String continentName;
+public class Territory  implements ITerritory,Serializable {
+	
+	/**
+	 * {@link #serialVersionUID} used during deserialization to verify that the sender and receiver 
+	 * of a serialized object have loaded classes for that object that are compatible with respect to 
+	 * serialization. If the receiver has loaded a class for the object that has a different {@link #serialVersionUID}
+	 */
+	private static final long serialVersionUID = -8134828229182086176L;
+	
+	private String continentName;
 	private String territoryName;
 	private String coordinates;
     private ArrayList<String> adjacentTerritories = new ArrayList<String>();    

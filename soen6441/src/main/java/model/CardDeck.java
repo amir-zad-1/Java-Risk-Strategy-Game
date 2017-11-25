@@ -3,12 +3,13 @@ package model;
 import model.contract.IPlayer;
 import util.Helpers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Represents deck of cards in the game
  */
-public class CardDeck
+public class CardDeck implements Serializable
 {
 
     /**

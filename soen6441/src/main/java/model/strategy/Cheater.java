@@ -6,6 +6,7 @@ import model.contract.IStrategy;
 import model.contract.ITerritory;
 import util.Helpers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -13,7 +14,7 @@ import java.util.Iterator;
 /**
  * cheater strategy
  */
-public class Cheater implements IStrategy {
+public class Cheater implements IStrategy,Serializable{
     /**
      * how many attacks
      * @return number of attacks

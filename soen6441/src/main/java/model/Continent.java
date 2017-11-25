@@ -4,15 +4,23 @@ import model.contract.IContinent;
 import model.contract.IPlayer;
 import model.contract.ITerritory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Continent class that holds all territories
  * 
  */
-public class Continent  implements IContinent {
+public class Continent  implements IContinent,Serializable {
 
-    /**
+	/**
+	 * {@link #serialVersionUID} used during deserialization to verify that the sender and receiver 
+	 * of a serialized object have loaded classes for that object that are compatible with respect to 
+	 * serialization. If the receiver has loaded a class for the object that has a different {@link #serialVersionUID}
+	 */
+	private static final long serialVersionUID = 4893561606187077709L;
+
+	/**
      * {@link #name} is the Continent name
      */
     private String name;

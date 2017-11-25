@@ -6,12 +6,13 @@ import model.contract.IStrategy;
 import model.contract.ITerritory;
 import util.Helpers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Random Strategy
  */
-public class Random implements IStrategy {
+public class Random implements IStrategy,Serializable {
 
     /**
      * how many attacks

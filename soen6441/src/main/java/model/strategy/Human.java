@@ -6,6 +6,7 @@ import model.contract.IPlayer;
 import model.contract.IStrategy;
 import model.contract.ITerritory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -13,7 +14,7 @@ import java.util.Observable;
  * This class deals with all Human strategies interactions fron user
  * Human Strategy
  */
-public class Human extends Observable implements IStrategy {
+public class Human extends Observable implements IStrategy,Serializable {
 
 	public static String sharedTmp = null;
 	

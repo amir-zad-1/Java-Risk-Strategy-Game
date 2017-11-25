@@ -1,11 +1,20 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * represents the card entity in the game
  */
-public class Card{
+public class Card implements Serializable{
 
-    /**
+	/**
+	 * {@link #serialVersionUID} used during deserialization to verify that the sender and receiver 
+	 * of a serialized object have loaded classes for that object that are compatible with respect to 
+	 * serialization. If the receiver has loaded a class for the object that has a different {@link #serialVersionUID}
+	 */
+	private static final long serialVersionUID = 1012842278301009514L;
+
+	/**
      * {@link #cardName} is the name of the card
      */
     private String cardName;

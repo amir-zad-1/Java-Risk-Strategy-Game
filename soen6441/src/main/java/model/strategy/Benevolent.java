@@ -1,5 +1,7 @@
 package model.strategy;
 
+import java.io.Serializable;
+
 import model.AttackPlan;
 import model.contract.IPlayer;
 import model.contract.IStrategy;
@@ -9,7 +11,7 @@ import util.Helpers;
 /**
  * Benevolent strategy
  */
-public class Benevolent implements IStrategy {
+public class Benevolent implements IStrategy,Serializable {
     /**
      * how many attacks
      * @return number of attacks

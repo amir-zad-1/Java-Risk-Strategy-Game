@@ -10,6 +10,7 @@ import util.Color;
 import util.LogMessageEnum;
 import view.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
@@ -20,8 +21,15 @@ import java.util.Observable;
  * @author Amir
  * @version 0.1.0
  */
-public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
+public class Player extends Observable implements IPlayer, Comparable<IPlayer>, Serializable {
 
+	/**
+	 * {@link #serialVersionUID} used during deserialization to verify that the sender and receiver 
+	 * of a serialized object have loaded classes for that object that are compatible with respect to 
+	 * serialization. If the receiver has loaded a class for the object that has a different {@link #serialVersionUID}
+	 */
+	private static final long serialVersionUID = 1012842278301009514L;
+	
 
     private String name;
     private Color color;
@@ -255,9 +263,9 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer> {
         sb.append("\n");
         sb.append("   Unused: ");
         sb.append(this.getUnusedArmies());
-        sb.append("\n--------------------");
+        sb.append("\n-------------------- ");
         sb.append("\n");
-        sb.append("Territories: ");
+        sb.append("Territories: (:");
         sb.append("\n");
         for(ITerritory t: this.territories)
         {

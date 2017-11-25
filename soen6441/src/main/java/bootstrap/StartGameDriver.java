@@ -71,6 +71,7 @@ public class StartGameDriver {
 		 
 		 //Creates Game Manager and sends it to GameController
 		 gameManager = new GameManager();
+		 //To save the state of the game
 		 SaveProcess saveProcess = new SaveProcess();
 		 GameController gameController = new GameController(gameManager,saveProcess);
 		 

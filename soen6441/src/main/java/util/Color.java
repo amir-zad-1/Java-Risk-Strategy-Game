@@ -1,13 +1,16 @@
 package util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /** Color Manager class provides some method
  * for using colors.
  */
-public class Color {
+public class Color implements Serializable {
 
-    private String code;
+    
+	private static final long serialVersionUID = -1296864052319635206L;
+	private String code;
     private String name;
 
     private static ArrayList<Color> colors = new ArrayList<Color>();

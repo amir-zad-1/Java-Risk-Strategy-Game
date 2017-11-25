@@ -141,7 +141,7 @@ public class PhaseView implements IView,Observer{
            		Player tmp = (Player) model;
            		previousPlayer = tmp.getName();
            		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
-           		playersStatistics.get(tmp.getName()).setCountriesWon(tmp.getState());
+           		playersStatistics.get(tmp.getName()).setCountriesWon(trim(tmp.getState()));
            		    String s = (String)object;
            		    if(s.split(":")[0].equals("CardView")){
            		       
@@ -156,7 +156,7 @@ public class PhaseView implements IView,Observer{
            			} else if(!s.split(":")[0].equals("DominationView")){
            				phase.setText(s);
            			}
-           		}else{
+           		} else {
            			phase.setText(s);
            		}
            	}
@@ -164,6 +164,14 @@ public class PhaseView implements IView,Observer{
 	}
 	
 	
+	/**
+	 * @param string is the string we want to trim
+	 * @return the trimmed string by delimiter (: 
+	 */
+	private String trim(String string){
+		return string.substring(string.indexOf("(:")+3);
+	}
+
 	/**
 	 * Sets number Of players
 	 * @param new_numberofPlayers number of players going to play

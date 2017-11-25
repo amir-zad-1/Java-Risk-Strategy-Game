@@ -63,8 +63,11 @@ public class WelcomeView implements IView{
 	        Button gobackButton = new Button();
 	        gobackButton.setMinWidth(200);
 	        gobackButton.setText("Prevoius View");
-	        
 	        gobackButton.setVisible(false);
+	        
+	        Button stratSavedGame = new Button();
+	        stratSavedGame.setMinWidth(200);
+	        stratSavedGame.setText("Strat Saved Game");
 	        
 	        Alert alert = new Alert(AlertType.ERROR);
 	        alert.setHeaderText("Map file is not valid");
@@ -116,6 +119,12 @@ public class WelcomeView implements IView{
 	            }
 	        });
 	        
+	        stratSavedGame.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event){
+                    
+	            }
+	        });
 	        
 	        gobackButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
@@ -129,8 +138,9 @@ public class WelcomeView implements IView{
 	        GridPane gridPane = new GridPane();
 	        gridPane.add(chooseMapButton,0,0);
 	        gridPane.add(saveMapButton,0,1);
-	        gridPane.add(createMapButton,0,2);
-	        gridPane.add(gobackButton,0,3);
+	        gridPane.add(stratSavedGame,0,2);
+	        gridPane.add(createMapButton,0,3);
+	        gridPane.add(gobackButton,0,4);
 	        gridPane.setAlignment(Pos.CENTER);
 	        gridPane.setHgap(10);
 	        gridPane.setVgap(10);

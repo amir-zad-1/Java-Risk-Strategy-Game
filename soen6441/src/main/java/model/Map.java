@@ -3,14 +3,21 @@ package model;
 import model.contract.IContinent;
 import model.contract.IMap;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * represents Map in the game
  */
-public class Map implements IMap {
+public class Map implements IMap,Serializable {
 
-
+	/**
+	 * {@link #serialVersionUID} used during deserialization to verify that the sender and receiver 
+	 * of a serialized object have loaded classes for that object that are compatible with respect to 
+	 * serialization. If the receiver has loaded a class for the object that has a different {@link #serialVersionUID}
+	 */
+	private static final long serialVersionUID = 5631589509991237355L;
+	
     private ArrayList<IContinent> continents = new ArrayList<>();
     private String name = "Map ";
 
