@@ -96,7 +96,7 @@ public class StartGameDriver {
 		 
 		 
 		 //Sends all controllers to view manager, such that views can contact
-		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController);
+		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController,tournamentController);
 		 WindowManager.setView(phaseView,"phaseview");
 		 
 		 //Create Players objects and add observers only when users gives number of player inputs

@@ -18,6 +18,9 @@ public class TournamentController {
 		tournamentManager = new_tournamentManager;
 	}
 	
+	public void start(int numberOfPlayers, String playerStrategies){
+		tournamentManager.start(numberOfPlayers, playerStrategies);
+	}
 	
 	public void addAMap(){
 		tournamentManager.createMap();

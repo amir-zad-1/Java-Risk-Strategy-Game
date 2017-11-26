@@ -33,7 +33,7 @@ public class WelcomeView implements IView{
 	GameController gameController = null;
 	RWMapFileController maprwController = null;
 	static Scene welcomeScreen = null;
-	Button stratSavedGame = null;
+	Button stratSavedGame = null, tournamentButton = null;
 	
 
 	final FileChooser fileChooser = new FileChooser();
@@ -72,14 +72,20 @@ public class WelcomeView implements IView{
 	        gobackButton.setMinWidth(200);
 	        gobackButton.setText("Prevoius View");
 	        gobackButton.setVisible(false);
-	        
 	        stratSavedGame = new Button();
 	        stratSavedGame.setMinWidth(200);
-	        stratSavedGame.setText("Strat Saved Game");
+	        stratSavedGame.setText("Start Saved Game");
+	        
+	        tournamentButton = new Button();
+	        tournamentButton.setMinWidth(200);
+	        tournamentButton.setText("Start Tournament");
 	        
 	        Alert alert = new Alert(AlertType.ERROR);
 	        alert.setHeaderText("Map file is not valid");
 
+	        
+	        
+	        
 	        chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
@@ -171,6 +177,14 @@ public class WelcomeView implements IView{
 	 */
 	public Button getResumeButton() {
 		return stratSavedGame;
+	}
+
+
+	/**
+	 * @return the tournamentButton
+	 */
+	public Button getTournamentButton() {
+		return tournamentButton;
 	}
 
 }
