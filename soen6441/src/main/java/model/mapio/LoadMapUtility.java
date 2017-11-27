@@ -1,8 +1,11 @@
 
-package model;
+package model.mapio;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import model.MapDataBase;
+import model.Territory;
 
 /**
  * This class priveds helper classes to convert .map file into {@link HashMap}

@@ -1,10 +1,13 @@
-package model;
+package model.mapio;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import model.MapDataBase;
+import model.MapValidity;
 
 /**
  * This class loads a .map file into a memory({@link HashMap}) representation  
@@ -86,7 +89,7 @@ public class LoadMap {
 			}
 		}
 		
-		return MapDataBase.isValidAdjacency() && MapDataBase.isAnyDiconnectivity();
+		return MapValidity.isValidAdjacency() && MapValidity.isAnyDiconnectivity();
 	}
 	
 }

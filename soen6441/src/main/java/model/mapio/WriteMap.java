@@ -1,13 +1,16 @@
 /**
  * 
  */
-package model;
+package model.mapio;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+
+import model.MapDataBase;
+import model.Territory;
 
 /**
  * Write a new map to specified #outputPath

@@ -2,9 +2,10 @@ package controller;
 
 import java.io.File;
 
-import model.LoadMap;
 import model.MapDataBase;
-import model.WriteMap;
+import model.MapValidity;
+import model.mapio.LoadMap;
+import model.mapio.WriteMap;
 
 /**
  * @author SA
@@ -55,7 +56,7 @@ public class RWMapFileController{
 	 * @return true if map satisfies above case
 	 */
 	public boolean validateMap() {
-		return MapDataBase.isValidAdjacency();		
+		return MapValidity.isValidAdjacency();		
 	}
 
 

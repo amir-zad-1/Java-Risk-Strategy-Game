@@ -164,7 +164,7 @@ public class GameManager extends Observable implements Serializable{
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
         this.resetTurn();
-        //this.play(true);
+ 
     }
 
 
@@ -251,10 +251,16 @@ public class GameManager extends Observable implements Serializable{
      * sends it to the Observers
      */
     public void domitantionResult(){
-    	String tmp = "";
+    	 String tmp = "";
+    	 int totalNoOfTerritories = 0;
     	 for(IPlayer p:this.playerlist)
          {
-    		 double control_percent = Math.round(((double) p.getTerritories().size() / map.getTotalnumberOfTerritories()) * 100);
+    		 totalNoOfTerritories += p.getTerritories().size();
+         }
+    	 
+    	 for(IPlayer p:this.playerlist)
+         {
+    		 double control_percent = Math.round(((double) p.getTerritories().size() / totalNoOfTerritories) * 100);
              tmp += "\n"+ p.getName()+"="+control_percent;
          }
     	 sendNotification("DominationView: "+tmp);
