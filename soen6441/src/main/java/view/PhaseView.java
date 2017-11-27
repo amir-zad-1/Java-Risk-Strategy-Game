@@ -39,7 +39,7 @@ public class PhaseView implements IView,Observer{
 	HumanPlayerView humanPlayerView = null;
 	CardView cardView = null;
 	GameController gameController = null;
-	Label phase; String previousPlayer = "";
+	Label phaseStatus; String previousPlayer = "";
 	Button nextTurn= null;
 	int numberOfPlayers;
 	
@@ -66,16 +66,13 @@ public class PhaseView implements IView,Observer{
 	public Scene getView(boolean isResume) {
 		cardView.inti();
 		BorderPane borderPane = new BorderPane();
-		phase = new Label();
-		phase.setTextFill(Color.GREEN);
-		phase.setPadding(new Insets(5,5,5,5));
+		phaseStatus = new Label();
+		phaseStatus.setTextFill(Color.GREEN);
+		phaseStatus.setPadding(new Insets(5,5,5,5));
 	
 		BorderPane header = new BorderPane();
-		Label phaseStatus = new Label("Phase:");
-		phaseStatus.setPadding(new Insets(5,5,5,5));
-		phaseStatus.setTextFill(Color.RED);
 		header.setPadding(new Insets(10,5,0,0));
-		HBox phaseStatusHolder = new HBox(phaseStatus, phase);
+		HBox phaseStatusHolder = new HBox( phaseStatus );
 		phaseStatusHolder.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
 	            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
 	            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
@@ -108,6 +105,7 @@ public class PhaseView implements IView,Observer{
 			}
 		});
 		
+		footer.setLeft(saveStateOfGame);
 		footer.setCenter(humanPlayerView.getView());
 		footer.setRight(nextTurn);
 		borderPane.setBottom(footer);
@@ -150,7 +148,7 @@ public class PhaseView implements IView,Observer{
 	    	phaseStatus.setText(newUIState.get("PHASE_STATE"));
 	    	dominationView.dominationLabel.setText(newUIState.get("DOMIVATION_STATE"));
 	    	for(int i=1;i<=numberOfPlayers;i++){
-	    		playersStatistics.get(i-1).getContriesWonLabel().setText(
+	    		playersStatistics.get("Player "+i).getContriesWonLabel().setText(
 	    				newUIState.get("Player "+i) );
 	    	}
 	    	
@@ -183,10 +181,10 @@ public class PhaseView implements IView,Observer{
            		    if(s.split(":")[0].equals("CardView")){
 
            			} else if(!s.split(":")[0].equals("DominationView")){
-           				phase.setText(s);
+           				phaseStatus.setText(s);
            			}
            		} else {
-           			phase.setText(s);
+           			phaseStatus.setText(s);
            		}
            	}
 
