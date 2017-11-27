@@ -49,14 +49,25 @@ public class TournamentView implements IView{
 	 * @see view.IView#getView()
 	 */
 	@Override
-	public Scene getView() {
+	public Scene getView(boolean isResume) {
 		// TODO Auto-generated method stub
 		ArrayList<ComboBox<String>> playerList = new ArrayList<>();
-		VBox vboxPlayerContainer = new VBox();
+		
 		VBox vboxMapContainer = new VBox();
 		Button addMapButton = new Button("Add Map");
+		vboxMapContainer.setPadding(new Insets(8));
+		vboxMapContainer.getChildren().add(addMapButton);
+		
+		VBox vboxPlayerContainer = new VBox();
 		Button addPlayerButton = new Button("Add Player");
+		vboxPlayerContainer.setPadding(new Insets(8));
+		vboxPlayerContainer.getChildren().add(addPlayerButton);
+		
+		VBox vboxStartContainer = new VBox();
 		Button startTournamentButton = new Button("Start");
+		vboxStartContainer.setPadding(new Insets(8));
+		vboxStartContainer.getChildren().add(startTournamentButton);
+		
 		Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("Map file is not valid");
 
@@ -119,10 +130,11 @@ public class TournamentView implements IView{
 			}
 		});
 		
-		VBox wholeContainer = new VBox();
+		HBox wholeContainer = new HBox();
+		wholeContainer.setPadding(new Insets(8));
 		wholeContainer.getChildren().add(vboxMapContainer);
 		wholeContainer.getChildren().add(vboxPlayerContainer);
-		wholeContainer.getChildren().add(startTournamentButton);
+		wholeContainer.getChildren().add(vboxStartContainer);
 		tournamentScreen = new Scene(wholeContainer, 500, 550);
 	    return tournamentScreen;
 	}

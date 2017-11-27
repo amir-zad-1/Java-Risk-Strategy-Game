@@ -56,7 +56,8 @@ public final class MapDataBase {
 			     }			    	 
 			  
 			     if(isnotConnetWithSameContinent  && continents.get(territory.getContinentName()).size() > 1){
-			    	   if(!anyOneSaidIhave(territory.getContinentName(),territory.getName())){
+			    	   System.out.println(territory.getName());
+			    	  if(!anyOneSaidIhave(territory.getContinentName(),territory.getName())){
 			    	     return false;
 			    	   }
 			     }

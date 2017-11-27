@@ -1,7 +1,7 @@
 /**
  * 
  */
-package soen6441team15.soen6441;
+package mapio;
 
 
 import static org.junit.Assert.*;

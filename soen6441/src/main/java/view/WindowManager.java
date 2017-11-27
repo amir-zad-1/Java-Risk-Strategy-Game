@@ -54,7 +54,7 @@ public class WindowManager extends Application {
         		String strategies = mapEditorView.getPlayersStrategies();
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		phaseView.setWindowStage(window);
-        		window.setScene(phaseView.getView());
+        		window.setScene(phaseView.getView(false));
         		callback[0].called(numberOfPlayers,strategies);
         		gameController.startGame(numberOfPlayers,strategies);
         		
@@ -62,7 +62,7 @@ public class WindowManager extends Application {
     	});   
        
 			
-		window.setScene(welcomeView.getView());
+		window.setScene(welcomeView.getView(false));
         
 		welcomeView.getResumeButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
@@ -72,7 +72,7 @@ public class WindowManager extends Application {
         		callback[1].called(0,"");
         		phaseView.setNumberOfPlayers(2);
         		phaseView.setWindowStage(window);
-        		window.setScene(phaseView.getView());        		
+        		window.setScene(phaseView.getView(true));        		
         	}
 		 });
 		
@@ -81,7 +81,7 @@ public class WindowManager extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 			   TournamentView tournamentView = new TournamentView(window, rwMapFileController, tournamentController);	
-			   window.setScene(tournamentView.getView());		        
+			   window.setScene(tournamentView.getView(false));		        
 			}
 			
 		});

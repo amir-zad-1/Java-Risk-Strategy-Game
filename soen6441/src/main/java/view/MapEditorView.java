@@ -83,7 +83,7 @@ public class MapEditorView implements IView{
 	 * @see view.IView#getView()
 	 */
 	@NotNull
-	public Scene getView(){
+	public Scene getView(boolean isResume){
 		
 		//We use ObservableList in order to attach listeners to choice box
 		ObservableList<String> continents = FXCollections.observableArrayList();		 

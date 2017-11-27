@@ -87,12 +87,22 @@ PlayerStatisticsView{
 	public void setActorName(String actorName) {
 		this.actorName.setText(actorName);
 	}
+	
 	/**
-	 * @return the currentContry
+	 * @return the {@link #status} on current player
 	 */
-	public TextArea getCurrentContry() {
+	public TextArea getCurrentStatus() {
 		return status;
 	}
+	
+	
+	/**
+	 * @return {@link String} the text on {@link #countriesWon} of current player
+	 */
+	public String getContriesWon() {
+		return this.countriesWon.getText();
+	}
+	
 	/**
 	 * @param status the status of present player
 	 */
@@ -114,6 +124,16 @@ PlayerStatisticsView{
 	 */
 	public void clearStatus() {
 		this.status.setText("");	
+	}
+
+
+
+	/**
+	 * @return {@link #countriesWon} Label which contains details of 
+	 * countries own by player
+	 */
+	public Label getContriesWonLabel() {
+		return this.countriesWon;		
 	}
 
 

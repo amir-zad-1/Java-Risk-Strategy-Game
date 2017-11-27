@@ -29,6 +29,11 @@ import model.Player;
 public class PhaseView implements IView,Observer{
 
 
+	/**
+	 * {@link Button} to take Game save sate input from user
+	 */
+	Button saveStateOfGame = null;
+	
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
 	DominationView dominationView = null;
 	HumanPlayerView humanPlayerView = null;
@@ -58,8 +63,7 @@ public class PhaseView implements IView,Observer{
 	/** 
 	 * @return {@link Scene} which contains UI elements 
 	 */
-	@Override
-	public Scene getView() {
+	public Scene getView(boolean isResume) {
 		cardView.inti();
 		BorderPane borderPane = new BorderPane();
 		phase = new Label();
@@ -67,11 +71,11 @@ public class PhaseView implements IView,Observer{
 		phase.setPadding(new Insets(5,5,5,5));
 	
 		BorderPane header = new BorderPane();
-		Label label = new Label("Phase:");
-		label.setPadding(new Insets(5,5,5,5));
-		label.setTextFill(Color.RED);
+		Label phaseStatus = new Label("Phase:");
+		phaseStatus.setPadding(new Insets(5,5,5,5));
+		phaseStatus.setTextFill(Color.RED);
 		header.setPadding(new Insets(10,5,0,0));
-		HBox phaseStatusHolder = new HBox(label, phase);
+		HBox phaseStatusHolder = new HBox(phaseStatus, phase);
 		phaseStatusHolder.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
 	            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
 	            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
@@ -79,14 +83,31 @@ public class PhaseView implements IView,Observer{
 		header.setLeft(phaseStatusHolder);
 	    
 		header.setRight(dominationView.getView());
-		 dialog = new Stage();
-         dialog.initModality(Modality.APPLICATION_MODAL);
-         dialog.initOwner(windowStage);         
-         Scene dialogScene = new Scene(cardView.getCardholder(), 300, 200);
-         dialog.setScene(dialogScene);
+		dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(windowStage);         
+        Scene dialogScene = new Scene(cardView.getCardholder(), 300, 200);
+        dialog.setScene(dialogScene);
 		nextTurn = new Button("Next turn");
 		BorderPane footer = new BorderPane();
 		footer.setPadding(new Insets(5));
+		
+		
+		saveStateOfGame = new Button("Save game");
+		saveStateOfGame.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				HashMap<String,String> uiState = new HashMap<>();
+				uiState.put("PHASE_STATE", phaseStatus.getText());
+				uiState.put("DOMIVATION_STATE", dominationView.getText());
+				for(String playerName : playersStatistics.keySet()){
+					uiState.put(playerName,
+							playersStatistics.get(playerName).getContriesWon());
+        		}
+				gameController.saveGame(uiState);
+			}
+		});
+		
 		footer.setCenter(humanPlayerView.getView());
 		footer.setRight(nextTurn);
 		borderPane.setBottom(footer);
@@ -124,6 +145,16 @@ public class PhaseView implements IView,Observer{
 	    borderPane.setCenter(playerHbox);
 	    borderPane.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
 	    
+	    if(isResume){
+	    	HashMap<String,String> newUIState = gameController.getUIState();
+	    	phaseStatus.setText(newUIState.get("PHASE_STATE"));
+	    	dominationView.dominationLabel.setText(newUIState.get("DOMIVATION_STATE"));
+	    	for(int i=1;i<=numberOfPlayers;i++){
+	    		playersStatistics.get(i-1).getContriesWonLabel().setText(
+	    				newUIState.get("Player "+i) );
+	    	}
+	    	
+	    }
 	    Scene scene = new Scene(borderPane);
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
@@ -144,10 +175,8 @@ public class PhaseView implements IView,Observer{
            		playersStatistics.get(tmp.getName()).setCountriesWon(trim(tmp.getState()));
            		    String s = (String)object;
            		    if(s.split(":")[0].equals("CardView")){
-           		       
-                       //dialog.show();
+           		    	dialog.show();
            			}
-
            	}else{
            		String s = (String)object;
            		if(s.split(":").length > 0){

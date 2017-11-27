@@ -43,11 +43,11 @@ public class CardView implements Observer{
 		 if(observable instanceof Player){
 			  String[] params = arg.toString().split(":");
 			  if(params[0].equals("CardView")){
-				  System.out.println("ewsfewgf");
 				  cardholder.getChildren().clear();
 				  Player player  = (Player) observable;
-				  ArrayList<Card> cards = player.getCardSet();
+				  ArrayList<Card> cards = player.getCards();
 				  for(Card card  :cards){
+					  System.out.println(card.getCardName()+" Army value "+card.getCardValue());
 					  Label card1 = new Label();
 					  card1.setStyle("-fx-padding: 5;" + "-fx-border-style: solid inside;"
 					            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
@@ -77,8 +77,8 @@ public class CardView implements Observer{
 
 	
    public void inti(){
-		cardholder = new HBox();
-		Label card1 = new Label();
+		  cardholder = new HBox();
+		  Label card1 = new Label();
 		  card1.setStyle("-fx-padding: 5;" + "-fx-border-style: solid inside;"
 		            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
 		            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");

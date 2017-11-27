@@ -15,7 +15,7 @@ public class Aggressive implements IStrategy,Serializable {
     
 	/**
 	 * Deserialization uses this number to ensure that a loaded class corresponds 
-	 * exactly to a serialized object while saving rhe game state 
+	 * exactly to a serialized object while saving the game state 
 	 */
 	private static final long serialVersionUID = 3617596243082091692L;
 

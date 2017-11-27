@@ -37,11 +37,6 @@ public class HumanPlayerView implements Observer{
 	
 	
 	/**
-	 * {@link Button} to take Game save sate input from user
-	 */
-	Button saveStateOfGame = null;
-	
-	/**
 	 * Constructor to initialize the  {@link #gameController}
 	 * @param new_gameController is the {@link GameController} is a controller to make state change through 
 	 * controller in MVC architecture
@@ -60,15 +55,7 @@ public class HumanPlayerView implements Observer{
 		HBox container  = new HBox();
 		
 		dialog = new TextInputDialog();
-		saveStateOfGame = new Button("Save game");
-		container.getChildren().add(saveStateOfGame);
-		
-		saveStateOfGame.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				gameController.saveGame();
-			}
-		});	
+			
 		
 		return container;
 	}

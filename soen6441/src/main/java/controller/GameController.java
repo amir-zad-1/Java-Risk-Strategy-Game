@@ -75,44 +75,21 @@ public class GameController {
 	/**
 	 * This method redirects save game request to model
 	 */
-	public void saveGame() {
+	public void saveGame(HashMap<String,String> uiState) {
 		try {
 			saveProcess.saveState(gameManager);
+			saveProcess.saveUIState(uiState);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * 
+	 * @return the GameManager State from previously saved state
 	 */
-	public GameManager resumeGame() {
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream("tempdata.tiger");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-	        GameManager gm = (GameManager) ois.readObject();
-	        fis = new FileInputStream("tempdata1.tiger");
-			ois = new ObjectInputStream(fis);
-	        MapDataBase.continents = (HashMap<String, HashMap<String, Territory>>)ois.readObject();
-	        fis = new FileInputStream("tempdata2.tiger");
-			ois = new ObjectInputStream(fis);
-	        MapDataBase.continentValues = (HashMap<String, Integer>)ois.readObject();
-	        isResumedGame = true;
-	        ois.close();
-	        return gm;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-       return null; 
+	public GameManager resumeGame() {	
+	   isResumedGame = true;
+       return saveProcess.getPreviousState();
 	}
 
 	/**
@@ -120,6 +97,14 @@ public class GameController {
 	 */
 	public void setGameManager(GameManager gameManager) {
 		this.gameManager = gameManager;
+	}
+
+	/**
+	 * 
+	 */
+	public HashMap<String,String> getUIState() {		
+		return saveProcess.getUIState();
+		
 	}
 
 }

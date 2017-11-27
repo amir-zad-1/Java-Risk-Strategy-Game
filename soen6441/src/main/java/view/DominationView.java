@@ -58,4 +58,11 @@ public class DominationView implements Observer{
 		}
 	}
 
+	/**
+	 * @return {@link String} contains the UI state in {@link #dominationLabel}
+	 */
+	public String getText() {		
+		return dominationLabel.getText();
+	}
+
 }
