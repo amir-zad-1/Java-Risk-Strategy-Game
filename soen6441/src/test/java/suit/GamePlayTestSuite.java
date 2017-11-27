@@ -2,6 +2,9 @@ package suit;
 
 import org.junit.runners.Suite;
 
+import controller.ReadControllerTest;
+import controller.WriteController;
+import controller.WriteControllerTest;
 import model.GpTest1;
 import model.GpTest10;
 import model.GpTest11;
@@ -13,6 +16,9 @@ import model.GpTest6;
 import model.GpTest7;
 import model.GpTest8;
 import model.GpTest9;
+import model.mapio.DataReaderTest;
+import model.mapio.MapValidityTest;
+import model.mapio.MapValidityTest1;
 
 import org.junit.runner.RunWith;
 
@@ -28,8 +34,11 @@ import org.junit.runner.RunWith;
                       GpTest9.class,
                       GpTest10.class,
                       GpTest11.class,
-                      //MapIOTest.class,
-                      //MapValidation.class
+                      ReadControllerTest.class,
+                      WriteControllerTest.class,
+                      DataReaderTest.class,
+                      MapValidityTest.class,
+                      MapValidityTest1.class
                     })
 
 

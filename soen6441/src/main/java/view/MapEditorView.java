@@ -322,7 +322,7 @@ public class MapEditorView implements IView{
 		for(ComboBox<String> selectBox : playerList){
 			tmp += ","+(selectBox.getValue()).toLowerCase().charAt(0);
 		}
-		return tmp;
+		return tmp.substring(1);
 	}
 
 	/**

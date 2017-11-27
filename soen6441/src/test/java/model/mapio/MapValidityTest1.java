@@ -3,7 +3,8 @@
  */
 package model.mapio;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +12,6 @@ import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.AssertionFailedError;
-import model.Map;
 import model.MapDataBase;
 import model.MapValidity;
 import model.Territory;
@@ -21,7 +20,7 @@ import model.Territory;
  * @author SA
  *
  */
-public class MapValidityTest {
+public class MapValidityTest1 {
 
 	/**
 	 * Load map file from into HashMap
@@ -29,8 +28,7 @@ public class MapValidityTest {
 	@Before
 	public void setUpBeforeClass()
 	{
-		 MapDataBase.clear();
-		 MapDataBase.continentValues.put("asia", 3);
+		 MapDataBase.clear(); 
 		 MapDataBase.continentValues.put("africa", 2);
 		 MapDataBase.continentValues.put("america", 2);
 		 
@@ -42,19 +40,20 @@ public class MapValidityTest {
 		 america.put("canada", territory);
 		 
 		 //adding territory usa
-		 adjacents = new ArrayList<>();
-		 adjacents.add("south africa");
-		 territory = new Territory("america", "usa", "x,y", adjacents);
-		 america.put("usa", territory);
+		 ArrayList<String> adjacents1 = new ArrayList<>();
+		 adjacents1.add("south africa");
+		 adjacents1.add("canada");
+		 Territory territory1 = new Territory("america", "usa", "x,y", adjacents1);
+		 america.put("usa", territory1);
 		 
 		 MapDataBase.continents.put("america",america);
 		 
 		 //adding territory south africa
 		 HashMap<String,Territory> africa = new HashMap<>();
-		 adjacents = new ArrayList<>();
-		 adjacents.add("usa");
-		 territory = new Territory("africa", "south africa", "x,y", adjacents);
-		 africa.put("south africa", territory);
+		 ArrayList<String> adjacents2 = new ArrayList<>();
+		 adjacents2.add("usa");
+		 Territory territory2 = new Territory("africa", "south africa", "x,y", adjacents2);
+		 africa.put("south africa", territory2);
 		 MapDataBase.continents.put("africa",africa);
 	 }
 	
@@ -66,7 +65,8 @@ public class MapValidityTest {
 	
 	 @Test
 	 public void isAnyDiconnectivityTest1(){
-		 assertFalse(MapValidity.isAnyDiconnectivity());		 
+		 assertTrue(MapValidity.isAnyDiconnectivity());		 
 	 }
-	  
+	
+	
 }
