@@ -30,6 +30,16 @@
 
 ##Coding Standards
 
+* in `if-then-else` u should have braces if the `if` or `else` block has more than one statement, but the below one is not encouraged, u could make it better if you add braces for both if and else;
+  
+```
+  if(/**some condition **/){
+    //statement 1
+    // statment 2
+  } else
+    //statement
+```
+
 * Use javadoc for every method and class
 * If a method has complex functionalities, do inline comments.
 * Method and variables should follow lowerCamelCase.
