@@ -2,7 +2,6 @@ package model;
 
 import model.GameManager;
 import model.Map;
-import model.contract.IMap;
 import model.contract.IPlayer;
 import org.junit.Assert;
 import org.junit.Test;

@@ -11,8 +11,11 @@ import util.LogMessageEnum;
  */
 public class Log extends Observable{
 
+	/**
+	 * a static log to send updates to Log View
+	 */
 	static Log logger = null;
-
+	
 
 	/**
 	 * This method logs the message with a tag
@@ -21,7 +24,7 @@ public class Log extends Observable{
 	 */
 	public static void log(LogMessageEnum tag, String message){
 		if(logger != null)
-			logger.sendNotify(tag + message);
+			logger.sendNotify("\n"+tag + message);
 	}
 
 	/**
@@ -61,4 +64,6 @@ public class Log extends Observable{
 	public static void setLogger(Log loggerController) {
 		Log.logger = loggerController;
 	}
+	
+		
 }

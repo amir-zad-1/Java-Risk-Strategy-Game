@@ -48,11 +48,8 @@ public class Logger implements Observer{
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	@Override
-	public void update(Observable o, Object arg) {
-		
-		 System.out.println("");
-	     System.out.println((String) arg);
-		
+	public void update(Observable o, Object arg) {		
+	     System.out.println((String) arg);		
 	}
 
 }
