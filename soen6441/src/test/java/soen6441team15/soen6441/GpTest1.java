@@ -1,5 +1,7 @@
 package soen6441team15.soen6441;
 import model.GameManager;
+import model.Map;
+import model.contract.IMap;
 import org.junit.Test;
 import util.expetion.InvalidNumOfPlayersException;
 
@@ -17,6 +19,21 @@ public class GpTest1 {
     {
         GameManager gm = new GameManager(1,"r", 500);
         gm.start();
+    }
+
+
+    /**
+     * creates a game with 3 player which is correct
+     * @throws InvalidNumOfPlayersException be careful
+     */
+    @Test()
+    public void testNormalPlayers() throws InvalidNumOfPlayersException
+    {
+        Map m = new Map();
+        m.clearData();
+        m.fakeData();
+
+        GameManager gm = new GameManager(m, 3,"r,r,r", 500);
     }
 
 }
