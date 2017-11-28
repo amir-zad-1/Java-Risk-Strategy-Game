@@ -20,7 +20,8 @@ public class Log extends Observable{
 	 * @param message message content
 	 */
 	public static void log(LogMessageEnum tag, String message){
-		logger.sendNotify(tag + message);
+		if(logger != null)
+			logger.sendNotify(tag + message);
 	}
 
 	/**
@@ -29,7 +30,8 @@ public class Log extends Observable{
 	 * @param message message content
 	 */
 	public static void log(String message){
-		logger.sendNotify(message);
+		if(logger != null)
+			logger.sendNotify(message);
 	}
 
 	
