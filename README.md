@@ -12,7 +12,7 @@
 - [x] Add startegaies input handler at UI side
 - [x] Implement stratagies handling at model side
 - [x] Implement Tournments at model side
-- [ ] Implement Tournaments UI input 
+- [x] Implement Tournaments UI input 
 - [ ] Resolve problem in Cards UI dialog
 - [x] UI for human interface - Should follow MVC architecture
 - [x] Strategies logic for aggressive, benevolent, random, cheater.
