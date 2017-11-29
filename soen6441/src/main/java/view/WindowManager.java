@@ -4,6 +4,7 @@ import bootstrap.CallBack;
 import controller.GameController;
 import controller.RWMapFileController;
 import controller.ReadController;
+import controller.TournamentController;
 import controller.WriteController;
 
 import javafx.application.Application;
@@ -26,6 +27,7 @@ public class WindowManager extends Application {
     
     
     static RWMapFileController rwMapFileController;
+    static TournamentController tournamentController;
 	static ReadController readController;
 	static GameController gameController;
 	static WriteController writeController;
@@ -42,7 +44,9 @@ public class WindowManager extends Application {
     	window.setTitle("Game");
     	
     	mapEditorView = new MapEditorView(readController,writeController);
-		welcomeView = new WelcomeView(gameController,window, rwMapFileController, mapEditorView); 
+		welcomeView = new WelcomeView(gameController,window, rwMapFileController, mapEditorView);
+		
+		
 		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
@@ -50,7 +54,7 @@ public class WindowManager extends Application {
         		String strategies = mapEditorView.getPlayersStrategies();
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		phaseView.setWindowStage(window);
-        		window.setScene(phaseView.getView());
+        		window.setScene(phaseView.getView(false));
         		callback[0].called(numberOfPlayers,strategies);
         		gameController.startGame(numberOfPlayers,strategies);
         		
@@ -58,7 +62,7 @@ public class WindowManager extends Application {
     	});   
        
 			
-		window.setScene(welcomeView.getView());
+		window.setScene(welcomeView.getView(false));
         
 		welcomeView.getResumeButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
@@ -68,9 +72,20 @@ public class WindowManager extends Application {
         		callback[1].called(0,"");
         		phaseView.setNumberOfPlayers(2);
         		phaseView.setWindowStage(window);
-        		window.setScene(phaseView.getView());        		
+        		window.setScene(phaseView.getView(true));        		
         	}
 		 });
+		
+		welcomeView.getTournamentButton().setOnAction( new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+			   TournamentView tournamentView = new TournamentView(window, rwMapFileController, tournamentController);	
+			   window.setScene(tournamentView.getView(false));		        
+			}
+			
+		});
+		
 		window.show();
     }
 
@@ -83,11 +98,12 @@ public class WindowManager extends Application {
 	 * @param new_gameController controlls the game start
 	 */
 	public static void addControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
-			WriteController new_writeController,GameController new_gameController) {		
+			WriteController new_writeController,GameController new_gameController, TournamentController new_tournamentController) {		
 		rwMapFileController = new_rwMapFileController;
 		readController = new_readController;
 		writeController = new_writeController;
-		gameController = new_gameController; 
+		gameController = new_gameController;
+		tournamentController = new_tournamentController;
 	}
 
 

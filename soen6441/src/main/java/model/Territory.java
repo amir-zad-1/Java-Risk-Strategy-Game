@@ -248,7 +248,6 @@ public class Territory  implements ITerritory,Serializable {
 	@Override
 	public ActionResponse killArmies(int count) {
 		ActionResponse res = new ActionResponse();
-
 		this.setNumberOfArmies(this.getArmies() - count);
 		res.setOk(true);
 		LoggerController.log(String.format("%s armies get killed in %s", count, this.getName()));

@@ -41,9 +41,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
     private ArrayList<Card> cards = new ArrayList<>();
     IStrategy strategy;
     private String statusMessage;
-    public String getStatusMessage() {
-		return this.statusMessage;
-	}
+    
 
 	private boolean status = true;
     private int trades = 1;
@@ -669,7 +667,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
      */
     @Override
     public ArrayList<Card> getCardSet() {
-        ArrayList<Card> result  = null;
+        ArrayList<Card> result  = new ArrayList<Card>();
 
         if(this.cards.size()>=3)
         {
@@ -683,7 +681,17 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
         return result;
     }
 
+    
+    /**
+     * Returns {@link ArrayList} of cards owned by this player
+     */
+    public ArrayList<Card> getCards() {
+    	return this.cards;
+    }
    
+    
+    
+    
     /**
      * return the number of cards this player has
      */

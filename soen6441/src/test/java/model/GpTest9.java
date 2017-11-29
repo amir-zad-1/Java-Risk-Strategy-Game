@@ -1,4 +1,4 @@
-package soen6441team15.soen6441;
+package model;
 
 import model.GameManager;
 import model.Map;

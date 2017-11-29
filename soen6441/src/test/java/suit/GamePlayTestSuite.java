@@ -1,6 +1,19 @@
-package soen6441team15.soen6441;
+package suit;
 
 import org.junit.runners.Suite;
+
+import model.GpTest1;
+import model.GpTest10;
+import model.GpTest11;
+import model.GpTest2;
+import model.GpTest3;
+import model.GpTest4;
+import model.GpTest5;
+import model.GpTest6;
+import model.GpTest7;
+import model.GpTest8;
+import model.GpTest9;
+
 import org.junit.runner.RunWith;
 
 @RunWith(Suite.class)

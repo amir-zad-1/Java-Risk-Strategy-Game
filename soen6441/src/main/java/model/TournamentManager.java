@@ -15,8 +15,9 @@ public class TournamentManager {
 	ArrayList<Map> mapsInTournament = new ArrayList<>();
 	
 	
-	public void start(){
-		
+	public void start(int numberOfPlayers, String playerStrategies){
+		t = new Tournament();
+		t.start(mapsInTournament, numberOfPlayers, playerStrategies, 4, 30);
 	}
 	
 	/**
@@ -33,7 +34,7 @@ public class TournamentManager {
 	
 	
 	/**
-	 * @param mapInTournament the new that being hte part of the Tournament
+	 * @param mapInTournament the new that being the part of the Tournament
 	 */
 	public void addMapsInTournament(Map mapInTournament) {
 		this.mapsInTournament.add(mapInTournament);

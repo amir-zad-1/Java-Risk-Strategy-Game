@@ -9,5 +9,5 @@ import javafx.scene.Scene;
  * @author SA
  */
 public interface IView {
-	public Scene getView();
+	public Scene getView(boolean isResume);
 }

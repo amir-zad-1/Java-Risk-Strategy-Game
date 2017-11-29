@@ -33,7 +33,7 @@ public class WelcomeView implements IView{
 	GameController gameController = null;
 	RWMapFileController maprwController = null;
 	static Scene welcomeScreen = null;
-	Button stratSavedGame = null;
+	Button stratSavedGame = null, tournamentButton = null;
 	
 
 	final FileChooser fileChooser = new FileChooser();
@@ -58,7 +58,8 @@ public class WelcomeView implements IView{
 	 * @return Welcome view Scene, a container which has UI elements and event listeners 
 	 * @see Scene
 	 */
-	public Scene getView(){
+	@Override
+	public Scene getView(boolean isResume){
 		    Button chooseMapButton = new Button();
 	        chooseMapButton.setMinWidth(200);
 	        chooseMapButton.setText("Choose Map file");
@@ -72,14 +73,20 @@ public class WelcomeView implements IView{
 	        gobackButton.setMinWidth(200);
 	        gobackButton.setText("Prevoius View");
 	        gobackButton.setVisible(false);
-	        
 	        stratSavedGame = new Button();
 	        stratSavedGame.setMinWidth(200);
-	        stratSavedGame.setText("Strat Saved Game");
+	        stratSavedGame.setText("Start Saved Game");
+	        
+	        tournamentButton = new Button();
+	        tournamentButton.setMinWidth(200);
+	        tournamentButton.setText("Start Tournament");
 	        
 	        Alert alert = new Alert(AlertType.ERROR);
 	        alert.setHeaderText("Map file is not valid");
 
+	        
+	        
+	        
 	        chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
@@ -87,7 +94,7 @@ public class WelcomeView implements IView{
 	                if(file != null){
 	                  boolean isValid = maprwController.loadMap(file); 
 	                  if(isValid)
-	                	  loadAnotherView(mapEditorView.getView());
+	                	  loadAnotherView(mapEditorView.getView(false));
 	                  else
 	                	 alert.showAndWait();	                  
 	                }
@@ -123,7 +130,7 @@ public class WelcomeView implements IView{
 	            @Override
 	            public void handle(ActionEvent event){
 	            	maprwController.clearData();
-	            	loadAnotherView(mapEditorView.getView());
+	            	loadAnotherView(mapEditorView.getView(false));
 	            }
 	        });
 	        
@@ -137,7 +144,7 @@ public class WelcomeView implements IView{
 	        gobackButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
-	            	loadAnotherView(mapEditorView.getView());
+	            	loadAnotherView(mapEditorView.getView(false));
 	            }
 	        });
 	        
@@ -145,10 +152,11 @@ public class WelcomeView implements IView{
 	        
 	        GridPane gridPane = new GridPane();
 	        gridPane.add(chooseMapButton,0,0);
-	        gridPane.add(saveMapButton,0,1);
-	        gridPane.add(stratSavedGame,0,2);
-	        gridPane.add(createMapButton,0,3);
-	        gridPane.add(gobackButton,0,4);
+	        gridPane.add(tournamentButton,0,1);
+	        gridPane.add(saveMapButton,0,2);
+	        gridPane.add(stratSavedGame,0,3);
+	        gridPane.add(createMapButton,0,4);
+	        gridPane.add(gobackButton,0,5);
 	        gridPane.setAlignment(Pos.CENTER);
 	        gridPane.setHgap(10);
 	        gridPane.setVgap(10);
@@ -171,6 +179,14 @@ public class WelcomeView implements IView{
 	 */
 	public Button getResumeButton() {
 		return stratSavedGame;
+	}
+
+
+	/**
+	 * @return the tournamentButton
+	 */
+	public Button getTournamentButton() {
+		return tournamentButton;
 	}
 
 }

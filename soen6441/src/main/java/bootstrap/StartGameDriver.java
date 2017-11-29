@@ -17,7 +17,6 @@ import model.GameManager;
 import model.Player;
 import model.SaveProcess;
 import model.TournamentManager;
-import model.contract.IPlayer;
 import model.contract.IStrategy;
 import model.strategy.Aggressive;
 import model.strategy.Benevolent;
@@ -96,7 +95,7 @@ public class StartGameDriver {
 		 
 		 
 		 //Sends all controllers to view manager, such that views can contact
-		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController);
+		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController,tournamentController);
 		 WindowManager.setView(phaseView,"phaseview");
 		 
 		 //Create Players objects and add observers only when users gives number of player inputs
@@ -104,12 +103,12 @@ public class StartGameDriver {
 			    public void called(int numberOfPlayers, String strategies){
 			    	gameManager.addObserver(dominationView);
 					gameManager.addObserver(phaseView);
-					gameManager.addObserver(cardView);
 					setStrategies(strategies);
 			    	for(int i=1;i<=numberOfPlayers;i++){
 			    		Player p = new Player("Player " + Integer.toString(i));
 			    		p.addObserver(dominationView);
-			    		p.addObserver(phaseView);			    
+			    		p.addObserver(phaseView);
+			    		p.addObserver(cardView);
 			    		gameManager.addPlayer(p);
 			    	}			    	
 			    }
@@ -120,6 +119,7 @@ public class StartGameDriver {
 			    	ArrayList<Player> playerList = gameManager.getPlayers();			    	
 			        for(Player p : playerList){
 			        	p.addObserver(dominationView);
+			        	p.addObserver(cardView);
 			    		p.addObserver(phaseView);	
 			        }
 			        gameManager.addObserver(dominationView);

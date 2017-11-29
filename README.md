@@ -12,7 +12,7 @@
 - [x] Add startegaies input handler at UI side
 - [x] Implement stratagies handling at model side
 - [x] Implement Tournments at model side
-- [ ] Implement Tournaments UI input 
+- [x] Implement Tournaments UI input 
 - [ ] Resolve problem in Cards UI dialog
 - [x] UI for human interface - Should follow MVC architecture
 - [x] Strategies logic for aggressive, benevolent, random, cheater.
@@ -29,6 +29,16 @@
 
 
 ##Coding Standards
+
+* in `if-then-else` u should have braces if the `if` or `else` block has more than one statement, but the below one is not encouraged, u could make it better if you add braces for both if and else;
+  
+```
+  if(/**some condition **/){
+    //statement 1
+    // statment 2
+  } else
+    //statement
+```
 
 * Use javadoc for every method and class
 * If a method has complex functionalities, do inline comments.
