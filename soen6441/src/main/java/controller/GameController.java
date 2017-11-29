@@ -1,17 +1,11 @@
 
 package controller;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.HashMap;
 
 import model.GameManager;
-import model.MapDataBase;
 import model.SaveProcess;
-import model.Territory;
-import model.strategy.Human;
 import util.expetion.InvalidNumOfPlayersException;
 
 /**
@@ -73,7 +67,7 @@ public class GameController {
 	}
 
 	/**
-	 * This method redirects save game request to model
+	 * This method redirects save game request to {@link #saveProcess} model
 	 */
 	public void saveGame(HashMap<String,String> uiState) {
 		try {
@@ -93,14 +87,15 @@ public class GameController {
 	}
 
 	/**
-	 * @param gameManager the gameManager to set
+	 * @param gameManager the GameManager that will be set only in case of resume game
 	 */
 	public void setGameManager(GameManager gameManager) {
 		this.gameManager = gameManager;
 	}
 
 	/**
-	 * 
+	 * @return the previously saved UI state of the game such that it can be used in 
+	 * resume game process
 	 */
 	public HashMap<String,String> getUIState() {		
 		return saveProcess.getUIState();

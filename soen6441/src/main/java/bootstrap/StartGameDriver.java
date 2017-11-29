@@ -30,10 +30,11 @@ import view.PhaseView;
 import view.WindowManager;
 
 /**
- * @author Manohar Guntur
+  
  * This class starts the game
- * And gives connection between View, Controller and Model Objects.
+ * And gives connection between Views, Controllers and Model Objects.
  * So its a driver class
+ * @author Manohar Gunturu
  */
 public class StartGameDriver {
 
@@ -49,6 +50,9 @@ public class StartGameDriver {
 	static boolean isHumanPlaying = false;
 	
 	
+	/**
+	 * {@link #humanPlayerView} takes care about the UI interface of Humna player
+	 */
 	static HumanPlayerView humanPlayerView = null;
 	
 	/** 
@@ -71,19 +75,19 @@ public class StartGameDriver {
 		 //Creates controller, which is responsible to redirect Write operations
 		 WriteController writeController = new WriteController(new DataWriter());
 		 
-		
+		 //Creates controller and manger who are responsible to play the tournament
 		 TournamentManager tournamentManager = new TournamentManager();
 		 TournamentController tournamentController = new TournamentController(tournamentManager);
 		 
 		 //Creates Game Manager and sends it to GameController
 		 gameManager = new GameManager();
+		 
 		 //To save the state of the game
 		 SaveProcess saveProcess = new SaveProcess();
 		 GameController gameController = new GameController(gameManager,saveProcess);
+
 		 
-	 
-		 
-		 //Creates Domination View and make it Observer
+		 //Creates Domination View and to make it Observer
 		 DominationView dominationView = new DominationView();
 		 
 		 //Instantiate the human player view
@@ -94,7 +98,7 @@ public class StartGameDriver {
 		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView,humanPlayerView);		 
 		 
 		 
-		 //Sends all controllers to view manager, such that views can contact
+		 //Sends all controllers to view manager, such that views can contact with view manager whenever they want a controller
 		 WindowManager.addControllers(rwMapFileController,readController,writeController,gameController,tournamentController);
 		 WindowManager.setView(phaseView,"phaseview");
 		 
@@ -114,6 +118,8 @@ public class StartGameDriver {
 			    }
 		 });
 		 
+		 
+		 //this callback is called whenever user want to resume the previous game
 		 WindowManager.addCallBack(new CallBack(){
 			    public void called(int numberOfPlayers, String strategies){
 			    	ArrayList<Player> playerList = gameManager.getPlayers();			    	
@@ -136,7 +142,7 @@ public class StartGameDriver {
 			    }
 		 });
 		
-		 
+		//this callback is called whenever user want to resume the previous game
 		 WindowManager.addCallBack(new CallBack(){
 			    public <T> void called(T object){
 			    	gameManager = (GameManager) object;
@@ -151,6 +157,7 @@ public class StartGameDriver {
 	
 	 /**
      * set strategies according to strategies string
+     * @param strategyString contains strategies of players going to play the game 
      * sample for 3 players with Human, Random and Aggressive strategies is h,r,a
      */
 	public static void setStrategies(String strategyString)

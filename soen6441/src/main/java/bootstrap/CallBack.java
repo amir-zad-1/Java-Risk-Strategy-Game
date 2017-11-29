@@ -36,6 +36,10 @@ public class CallBack {
 		
 	}
 	
+	/**
+	 * This call back method can be used to pass any java Object to listeners
+	 * @param object which is generic type
+	 */
 	public <T> void called(T object){
 		
 	}

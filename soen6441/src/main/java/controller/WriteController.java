@@ -62,6 +62,7 @@ public class WriteController{
 			new_adjacentContries = new ArrayList<String>();
 		}		 
         
+		//if isdeleteContinent is true delete the continent
 		if(isdeleteContinent){
 			dataWriter.deleteContinent(continent);
 		}else if(isdeleteCountry){

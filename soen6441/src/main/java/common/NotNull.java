@@ -6,7 +6,6 @@ package common;
  * @author Manohar Gunturu
  */
 public @interface NotNull {
-
 	
     /**
      * If a string claims it is NotNull and its value always gives empty string
