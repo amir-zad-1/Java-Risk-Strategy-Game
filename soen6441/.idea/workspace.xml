@@ -26,105 +26,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
+      <file leaf-file-name="Aggressive.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="106" column="11" lean-forward="false" selection-start-line="106" selection-start-column="11" selection-end-line="106" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest11.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamePlayTestSuite.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GamePlayTestSuite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+            <state relative-caret-position="288">
+              <caret line="122" column="22" lean-forward="true" selection-start-line="119" selection-start-column="8" selection-end-line="122" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GpTest5.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest5.java">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest7.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest7.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest10.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest10.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1458">
-              <caret line="89" column="8" lean-forward="false" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest1.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest6.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest6.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest8.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest8.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GpTest9.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest9.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1468">
-              <caret line="215" column="8" lean-forward="true" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
+            <state relative-caret-position="210">
+              <caret line="725" column="69" lean-forward="true" selection-start-line="725" selection-start-column="12" selection-end-line="725" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -142,9 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nextTurn</find>
-      <find>attac</find>
-      <find>randomS</find>
       <find>getRandomS</find>
       <find>attack()</find>
       <find>ownTerr</find>
@@ -156,7 +69,6 @@
       <find>Start Game</find>
       <find>startGameButton</find>
       <find>fortifi</find>
-      <find>attack</find>
       <find>===</find>
       <find>play</find>
       <find>play()</find>
@@ -169,9 +81,13 @@
       <find>PLAYIN</find>
       <find>reinfor</find>
       <find>45</find>
-      <find>forti</find>
       <find>own</find>
       <find>ownT</find>
+      <find>forti</find>
+      <find>remove</find>
+      <find>getw</find>
+      <find>attack</find>
+      <find>&amp;&amp;</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -214,10 +130,8 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Tournament.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/PlayerStatisticsView.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/contract/IPlayer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Cheater.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Human.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Random.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
@@ -233,6 +147,8 @@
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest9.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java" />
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GamePlayTestSuite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
       </list>
     </option>
   </component>
@@ -275,8 +191,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,8 +231,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,7 +243,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Player.java&#10;GameM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;Pl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Player.java&#10;Terr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Territory.java&#10;Ter&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;Hu&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/strategy/Human.java&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;playe&#9;PSI&#9;JAVA://view.PlayerStatisticsView&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Map.java&#10;Ma&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;tou&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Tournament.java&#10;IT&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITournament.java&#10;gamem&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;terri&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Territory.java&#10;iterr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;IPl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iconti&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IContinent.java&#10;territ&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;GameCon&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/controller/GameController.java&#10;istr&#9;PSI&#9;JAVA://model.contract.IStrategy&#10;pla&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;gamema&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;suit&#9;PSI&#9;JAVA://soen6441team15.soen6441.GamePlayTestSuite&#10;gameman&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;Log&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/controller/LoggerController.java&#10;atta&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/AttackPlan.java&#10;carDe&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/CardDeck.java&#10;IPL&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;norm&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Normal.java&#10;agg&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
+    <property name="SearchEverywhereHistoryKey" value="terri&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Territory.java&#10;terr&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;pl&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Player.java&#10;aggre&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;GameM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;Pl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Player.java&#10;Terr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Territory.java&#10;Ter&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;Hu&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/strategy/Human.java&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;playe&#9;PSI&#9;JAVA://view.PlayerStatisticsView&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Map.java&#10;Ma&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;tou&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Tournament.java&#10;IT&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITournament.java&#10;gamem&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;iterr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;IPl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iconti&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IContinent.java&#10;territ&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;GameCon&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/controller/GameController.java&#10;istr&#9;PSI&#9;JAVA://model.contract.IStrategy&#10;pla&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;gamema&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;suit&#9;PSI&#9;JAVA://soen6441team15.soen6441.GamePlayTestSuite&#10;gameman&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;Log&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/controller/LoggerController.java&#10;atta&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/AttackPlan.java&#10;carDe&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/CardDeck.java&#10;IPL&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;norm&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Normal.java&#10;agg&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -352,7 +268,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GamePlayTests">
+  <component name="RunManager" selected="Application.Window">
     <configuration name="GameManager" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="model.GameManager" />
@@ -531,7 +447,9 @@
       <workItem from="1511152213646" duration="404000" />
       <workItem from="1511187563178" duration="18699000" />
       <workItem from="1511885958193" duration="530000" />
-      <workItem from="1511886496854" duration="319000" />
+      <workItem from="1511886496854" duration="928000" />
+      <workItem from="1511893598690" duration="21000" />
+      <workItem from="1511966234990" duration="2054000" />
     </task>
     <servers />
   </component>
@@ -568,7 +486,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178599000" />
+    <option name="totallyTimeSpent" value="181283000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,18 +509,18 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.487055" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4644013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2540453" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2659091" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21439394" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.487055" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8252427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69417477" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -621,7 +539,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="82" />
+      <option name="time" value="87" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -662,7 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
           <caret line="109" column="1" lean-forward="false" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -670,7 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1566">
           <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,7 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -686,7 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,18 +640,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="69" lean-forward="false" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/DataWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="73" column="50" lean-forward="true" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -774,9 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -784,9 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="116" column="51" lean-forward="false" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,23 +697,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/ITerritory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Cheater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="method#getReinforcementArmies#0;class#Cheater#0" expanded="false" />
-            <element signature="method#getAttackPlan#0;class#Cheater#0" expanded="false" />
-            <element signature="method#getFortificationToTerritory#0;class#Cheater#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -828,25 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
           <caret line="233" column="4" lean-forward="false" selection-start-line="233" selection-start-column="4" selection-end-line="233" selection-end-column="4" />
-          <folding>
-            <element signature="method#getAttackAttempts#0;class#Human#0" expanded="false" />
-            <element signature="method#getInforcementTerritory#0;class#Human#0" expanded="false" />
-            <element signature="method#getReinforcementArmies#0;class#Human#0" expanded="false" />
-            <element signature="method#getAttackPlan#0;class#Human#0" expanded="false" />
-            <element signature="method#diceToAttack#0;class#Human#0" expanded="false" />
-            <element signature="method#diceToDefend#0;class#Human#0" expanded="false" />
-            <element signature="method#getMovingArmiesToNewTerritory#0;class#Human#0" expanded="false" />
-            <element signature="method#getFortificationFromTerritory#0;class#Human#0" expanded="false" />
-            <element signature="method#getFortificationToTerritory#0;class#Human#0" expanded="false" />
-            <element signature="method#getFortificationArmies#0;class#Human#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -875,7 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -890,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -898,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -906,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,23 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1584">
           <caret line="100" column="13" lean-forward="false" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Territory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2628">
-          <caret line="183" column="24" lean-forward="false" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,7 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -946,7 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -954,16 +799,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="1710">
           <caret line="106" column="11" lean-forward="false" selection-start-line="106" selection-start-column="11" selection-end-line="106" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -971,7 +815,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest7.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
-          <caret line="38" column="8" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -994,7 +838,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
+        <state relative-caret-position="486">
           <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
           <folding />
         </state>
@@ -1003,14 +847,14 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest6.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest8.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
+        <state relative-caret-position="234">
           <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
           <folding />
         </state>
@@ -1018,16 +862,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest9.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1468">
-          <caret line="215" column="8" lean-forward="true" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
+        <state relative-caret-position="3762">
+          <caret line="215" column="8" lean-forward="false" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GpTest11.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="75" column="8" lean-forward="true" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+        <state relative-caret-position="1134">
+          <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1036,8 +880,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GamePlayTestSuite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
+        <state relative-caret-position="270">
           <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/ITerritory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Territory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-770">
+          <caret line="219" column="0" lean-forward="false" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/contract/IStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="122" column="22" lean-forward="true" selection-start-line="119" selection-start-column="8" selection-end-line="122" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="725" column="69" lean-forward="true" selection-start-line="725" selection-start-column="12" selection-end-line="725" selection-end-column="69" />
           <folding />
         </state>
       </provider>

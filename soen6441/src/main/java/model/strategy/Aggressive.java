@@ -115,7 +115,13 @@ public class Aggressive implements IStrategy,Serializable {
      */
     @Override
     public int getMovingArmiesToNewTerritory(IPlayer p) {
-        return p.getWeakestTerritory().getArmies()-1;
+
+        //return p.getWeakestTerritory().getArmies()-1;
+        int result = p.getWeakestTerritory().getArmies()-1;
+        if (result<0)
+            result = 0;
+        return result;
+
     }
 
     /**
