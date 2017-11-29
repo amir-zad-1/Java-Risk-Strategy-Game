@@ -731,7 +731,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
         result = this.territories.get(0);
         for(ITerritory t: this.territories)
         {
-            if(t.getArmies() < result.getArmies() && t.getArmies()>1)
+                if(t.getArmies() < result.getArmies() && t.getArmies()>1)
                 result = t;
         }
 

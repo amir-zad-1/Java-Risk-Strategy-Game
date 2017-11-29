@@ -37,19 +37,19 @@ public class Tournament implements ITournament {
             for (int i=0; i<g; i++)
             {
                 GameManager gm = new GameManager(m, p, playerStrategies, d);
+                GameResult res = new GameResult(m.getName(), "Draw");
                 String gameName = String.format("Game %s", i+1);
                 gm.setName(gameName);
                 try
                 {
                     gm.start(false);
-                    gm.play(true);
+                    res = gm.play(true);
                 }
                 catch (Exception e)
                 {
-
+                    int l = 0;
                 }
 
-                GameResult res = gm.play(true);
                 playerText = gm.getPlayersText();
                 res.setGame(gameName);
                 results.add(res);
