@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * tests if a continent controls by a player
  */
-public class GpTest7 {
+public class IsPlayerKingTest {
 
     @Test()
     public void test1() throws InvalidNumOfPlayersException

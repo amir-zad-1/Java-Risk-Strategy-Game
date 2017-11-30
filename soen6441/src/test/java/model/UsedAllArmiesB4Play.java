@@ -10,7 +10,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * Players have used all their initial armies before playing
  */
-public class GpTest5 {
+public class UsedAllArmiesB4Play {
 
     @Test()
     public void test() throws InvalidNumOfPlayersException

@@ -2,19 +2,15 @@ package model;
 
 import model.GameManager;
 import model.Map;
-import model.contract.IMap;
 import model.contract.IPlayer;
-import model.contract.ITerritory;
 import org.junit.Assert;
 import org.junit.Test;
-import util.ActionResponse;
 import util.expetion.InvalidNumOfPlayersException;
 
-
 /**
- * Tests moving all armies form a territory
+ * Tests minimum reinforcement armies
  */
-public class GpTest8 {
+public class MinReinforceTest {
 
     @Test()
     public void test() throws InvalidNumOfPlayersException
@@ -27,12 +23,7 @@ public class GpTest8 {
         gm.start(false);
 
         IPlayer p = gm.nextPlayer();
-        ITerritory from = p.getRandomTerritory();
-        ITerritory to = p.getRandomTerritory();
-        ActionResponse result = p.moveArmies(from, to, from.getArmies());
-
-        Assert.assertFalse(result.getOk());
-
+        Assert.assertEquals(3, gm.calculateReinforcementArmies(p));
     }
 
 }

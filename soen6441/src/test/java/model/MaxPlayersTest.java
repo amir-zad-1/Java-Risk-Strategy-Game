@@ -6,7 +6,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * Tests number of players with MaxPlayers + 1
  */
-public class GpTest2 {
+public class MaxPlayersTest {
 
     /**
      * Creates a game with 7 players

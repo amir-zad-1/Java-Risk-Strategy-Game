@@ -17,7 +17,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * this class tests all strategies to make sure they are correct
  */
-public class GpTest11 {
+public class StrategiesTest {
 
 
     /**
