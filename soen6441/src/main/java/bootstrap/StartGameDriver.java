@@ -13,7 +13,7 @@ import controller.WriteController;
 import model.DataReader;
 import model.DataWriter;
 import model.GameManager;
-
+import model.Log;
 import model.Player;
 import model.SaveProcess;
 import model.TournamentManager;
@@ -26,6 +26,7 @@ import model.strategy.Random;
 import view.CardView;
 import view.DominationView;
 import view.HumanPlayerView;
+import view.Logger;
 import view.PhaseView;
 import view.WindowManager;
 
@@ -96,6 +97,11 @@ public class StartGameDriver {
 		 //Creates phaseView make it Observer
 		 CardView  cardView= new CardView();
 		 PhaseView phaseView = new PhaseView(dominationView,gameController,cardView,humanPlayerView);		 
+		 
+		 //Creates Log model and adds view as Observer
+		 Log log = new Log();
+		 log.addObserver(new Logger());
+		 Log.setLogger(log);
 		 
 		 
 		 //Sends all controllers to view manager, such that views can contact with view manager whenever they want a controller

@@ -17,7 +17,7 @@ public class Cheater implements IStrategy,Serializable{
     
 	/**
 	 * Deserialization uses this number to ensure that a loaded class corresponds 
-	 * exactly to a serialized object while saving rhe game state 
+	 * exactly to a serialized object while saving the game state 
 	 */
 	private static final long serialVersionUID = 8524490775170198242L;
 
@@ -31,7 +31,7 @@ public class Cheater implements IStrategy,Serializable{
     }
 
     /**
-     * name of the startegy
+     * name of the strategy
      * @return name
      */
     @Override
@@ -152,7 +152,7 @@ public class Cheater implements IStrategy,Serializable{
     }
 
     /**
-     * number of fortification armes
+     * number of fortification armies
      * @param p player
      * @param from origin of fortification
      * @return number of armies

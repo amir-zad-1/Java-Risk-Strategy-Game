@@ -10,8 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import controller.LoggerController;
-
 /**
  * Territory POJO class 
 */
@@ -143,7 +141,7 @@ public class Territory  implements ITerritory,Serializable {
 	@Override
     public void setOwner(IPlayer player) {
         this.owner = player;
-        LoggerController.log(this.territoryName + " is owned by " + player.getName());
+        Log.log(this.territoryName + " is owned by " + player.getName());
     }
 
     /**
@@ -230,11 +228,11 @@ public class Territory  implements ITerritory,Serializable {
 		{
 			this.setNumberOfArmies(this.getArmies() - count);
 			res.setOk(true);
-			LoggerController.log(String.format("%s armies left %s", count, this.getName()));
+			Log.log(String.format("%s armies left %s", count, this.getName()));
 		}
 		else
 		{
-			LoggerController.log(LogMessageEnum.ERROT, String.format("%s!, At least 1 army should be in %s", count, this.getName()));
+			Log.log(LogMessageEnum.ERROT, String.format("%s!, At least 1 army should be in %s", count, this.getName()));
 			res.setOk(false);
 		}
 
@@ -250,7 +248,7 @@ public class Territory  implements ITerritory,Serializable {
 		ActionResponse res = new ActionResponse();
 		this.setNumberOfArmies(this.getArmies() - count);
 		res.setOk(true);
-		LoggerController.log(String.format("%s armies get killed in %s", count, this.getName()));
+		Log.log(String.format("%s armies get killed in %s", count, this.getName()));
 
 		return res;
 	}

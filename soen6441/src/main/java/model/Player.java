@@ -1,7 +1,6 @@
 package model;
 
 
-import controller.LoggerController;
 import model.contract.IStrategy;
 import model.contract.ITerritory;
 import model.contract.IPlayer;
@@ -245,9 +244,9 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
         
         this.statusMessage = this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName();
         sendNotify();
-        LoggerController.log(this.statusMessage);
+        Log.log(this.statusMessage);
         
-        LoggerController.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
+        Log.log(this.getName() + " Unused armies = " + Integer.toString(this.getUnusedArmies()) +
                 ", Used armies = " + Integer.toString(this.getUsedArmies()));
         
         return new ActionResponse(true, String.format("%d armies placed in %s", count, territory.getName()));
@@ -331,7 +330,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
         if(from.hasAdjacencyWith(to))
         {
-            LoggerController.log(this.getState());
+            Log.log(this.getState());
             ActionResponse r = from.removeArmies(number);
             if (r.getOk())
             {
@@ -340,8 +339,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
                         number, from.getName(),to.getName());
                 
                 sendNotify();
-                LoggerController.log(this.statusMessage);
-                LoggerController.log(this.getState());
+                Log.log(this.statusMessage);
+                Log.log(this.getState());
             }
         }
         else
@@ -351,7 +350,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
                      , number, from.getName(), to.getName() );
              
              sendNotify();
-            LoggerController.log(LogMessageEnum.ERROT, this.statusMessage);
+            Log.log(LogMessageEnum.ERROT, this.statusMessage);
         }
 
         return result;
@@ -402,7 +401,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
      */
     public void reinforcement()
     {
-        LoggerController.log(String.format("============%s REINFORCEMENT STARTS===========", this.getName()));
+        Log.log(String.format("============%s REINFORCEMENT STARTS===========", this.getName()));
         this.gm.setPhase("REINFORCEMENT PHASE");
         //Step 1: Reinforcement
         int newArmies = this.gm.calculateReinforcementArmies(this);
@@ -411,7 +410,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
         //Step 2: Place armies
         this.gm.placeArmies(this);
         
-        LoggerController.log(String.format("============%s REINFORCEMENT DONE===========", this.getName()));
+        Log.log(String.format("============%s REINFORCEMENT DONE===========", this.getName()));
     }
 
 
@@ -430,13 +429,13 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
      */
     public void attack(int attempts)
     {
-        LoggerController.log(String.format("============%s ATTACK STARTS===========", this.getName()));
-        LoggerController.log(String.format("Strategy is %s", this.strategy.getName()));
+        Log.log(String.format("============%s ATTACK STARTS===========", this.getName()));
+        Log.log(String.format("Strategy is %s", this.strategy.getName()));
         this.gm.setPhase("ATTACK PHASE");
 
         for(int a=1; a<= attempts; a++)
         {
-            LoggerController.log(String.format("Attack %s ", a));
+            Log.log(String.format("Attack %s ", a));
 
             // Step 1: Design an attack plan
             AttackPlan ap = this.strategy.getAttackPlan(this);
@@ -444,7 +443,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
             {
             	this.statusMessage = "No territory found to attack.";
             	sendNotify();
-                LoggerController.log(LogMessageEnum.WARNING,"No territory found to attack.");
+                Log.log(LogMessageEnum.WARNING,"No territory found to attack.");
                 break;
             }
 
@@ -488,11 +487,11 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
                 this.statusMessage = String.format("%s(Attacker) rolled these dices %s",  attackFrom.getOwner().getName(),attackDices.toString());
             	sendNotify();
-                LoggerController.log(String.format("%s(Attacker) rolled these dices %s",  attackFrom.getOwner().getName(),attackDices.toString()));
+                Log.log(String.format("%s(Attacker) rolled these dices %s",  attackFrom.getOwner().getName(),attackDices.toString()));
                 
                 this.statusMessage = String.format("%s(Defender) rolled these dices %s",  attackTo.getOwner().getName(),defendDices.toString());
             	sendNotify();
-                LoggerController.log(String.format("%s(Defender) rolled these dices %s",  attackTo.getOwner().getName(),defendDices.toString()));
+                Log.log(String.format("%s(Defender) rolled these dices %s",  attackTo.getOwner().getName(),defendDices.toString()));
 
                 //Step 7: calculating number of fights
                 int fights = 0;
@@ -509,13 +508,13 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
                     if(attackDices.get(0) > defendDices.get(0))
                     {
                         // Attacker wins
-                        LoggerController.log(attackTo.getOwner().getState());
+                        Log.log(attackTo.getOwner().getState());
 
                         this.statusMessage = String.format("1 of the armies in %s(Defender) was killed.", attackTo.getName());
                         sendNotify();
                         Logger.log(String.format("1 of the armies in %s(Defender) was killed.", attackTo.getName()));
                         attackTo.killArmies(1);
-                        LoggerController.log(attackTo.getOwner().getState());
+                        Log.log(attackTo.getOwner().getState());
                         
                         
                         // checking for occupying the territory
@@ -524,29 +523,29 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
                         	this.statusMessage = String.format("%s occupies %s", attackFrom.getOwner().getName(),
                                     attackTo.getName());
                         	sendNotify();
-                            LoggerController.log(String.format("%s occupies %s", attackFrom.getOwner().getName(),
+                            Log.log(String.format("%s occupies %s", attackFrom.getOwner().getName(),
                                     attackTo.getName()));
-                            LoggerController.log(attackFrom.getOwner().getState());
+                            Log.log(attackFrom.getOwner().getState());
                             attackTo.getOwner().lostTerritory(attackTo);
                             attackFrom.getOwner().ownTerritory(attackTo);
                             Card crd = this.getGameManager().cardDeck.grantCard(this);
                             this.statusMessage = String.format("%s gets one card %s, %s", this.getName(),
                                     crd.getCardName(), crd.getCardValue());
                         	sendNotify();
-                            LoggerController.log(String.format("%s gets one card %s, %s", this.getName(),
+                            Log.log(String.format("%s gets one card %s, %s", this.getName(),
                                     crd.getCardName(), crd.getCardValue()));
-                            LoggerController.log(attackFrom.getOwner().getState());
+                            Log.log(attackFrom.getOwner().getState());
                         }
                     }
                     else
                     {
                         // Defender wins
-                        LoggerController.log(attackFrom.getOwner().getState());
+                        Log.log(attackFrom.getOwner().getState());
                         this.statusMessage = String.format("1 of the armies in %s(Attacker) was killed.",attackFrom.getName());
                         sendNotify();
                         Logger.log(String.format("1 of the armies in %s(Attacker) was killed.",attackFrom.getName()));
                         attackFrom.killArmies(1);
-                        LoggerController.log(attackFrom.getOwner().getState());
+                        Log.log(attackFrom.getOwner().getState());
                     }
 
                     attackDices.remove(0);
@@ -563,7 +562,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
                     this.statusMessage = String.format("%s places %s armies to occupied territory(%s)",
                             attackTo.getOwner().getName(), movingArmies, attackTo.getName());
                     sendNotify();
-                    LoggerController.log(String.format("%s places %s armies to occupied territory(%s)",
+                    Log.log(String.format("%s places %s armies to occupied territory(%s)",
                             attackTo.getOwner().getName(), movingArmies, attackTo.getName()));
                     Logger.log(this.getState());
                 }
@@ -581,11 +580,11 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
             this.statusMessage = String.format("Attack %s finished.", a);
             sendNotify();
-            LoggerController.log(String.format("Attack %s finished.", a));
+            Log.log(String.format("Attack %s finished.", a));
         }
 
 
-        LoggerController.log(String.format("============%s ATTACK DONE===========", this.getName()));
+        Log.log(String.format("============%s ATTACK DONE===========", this.getName()));
     }
 
 
@@ -595,7 +594,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
      */
     public void fortification()
     {
-        LoggerController.log(String.format("============%s FORTIFICATION STARTS===========", this.getName()));
+        Log.log(String.format("============%s FORTIFICATION STARTS===========", this.getName()));
         this.gm.setPhase("FORTIFICATION PHASE");
         sendNotification("PhaseChange:"+this.getName()+" Fortification");
         
@@ -607,7 +606,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
         this.moveArmies(from, to, number);
 
 
-        LoggerController.log(String.format("============%s FORTIFICATION DONE===========", this.getName()));
+        Log.log(String.format("============%s FORTIFICATION DONE===========", this.getName()));
         sendNotification("Done his fortification");
     }
 

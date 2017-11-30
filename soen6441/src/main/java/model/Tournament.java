@@ -63,16 +63,16 @@ public class Tournament implements ITournament {
             }
         }
 
-        System.out.println("");
-        System.out.print("M: ");
+        Log.log("");
+        Log.log("M: ");
         for(Map m : maps)
-            System.out.print(m.getName()+", ");
-        System.out.print("\nP: " + playerText);
-        System.out.print(String.format("\nG: %s", g));
-        System.out.print(String.format("\nD: %s", d));
-        System.out.println("");
-        System.out.println("");
-        System.out.print(getResult(results, maps.size(), g));
+        	Log.log(m.getName()+", ");
+        Log.log("\nP: " + playerText);
+        Log.log(String.format("\nG: %s", g));
+        Log.log(String.format("\nD: %s", d));
+        Log.log("");
+        Log.log("");
+        Log.log(getResult(results, maps.size(), g));
 
     }
 

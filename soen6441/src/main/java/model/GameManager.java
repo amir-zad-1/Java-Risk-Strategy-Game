@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
 
-import controller.LoggerController;
-
 
 /**
  * This is the main game manager that controls the whole game
@@ -214,19 +212,19 @@ public class GameManager extends Observable implements Serializable{
     public void initGame() throws InvalidNumOfPlayersException
     {
         //Step 1: Add players and give each them armies according to the rules
-        LoggerController.log("====1. Adding Players====");
+        Log.log("====1. Adding Players====");
         initPlayers();
 
         //Step 2: Allocate initial armies according to the rules
-        LoggerController.log("====2. Allocating Initial Armies====");
+        Log.log("====2. Allocating Initial Armies====");
         allocateInitialArmies();
 
         //Step 3: Randomly allocate the countries in the map
-        LoggerController.log("====3. Allocating Territories====");
+        Log.log("====3. Allocating Territories====");
         allocateTerritories();
 
         //Step 4: Place armies into territories in turn
-        LoggerController.log("====4. Placing armies one by one into territories====");
+        Log.log("====4. Placing armies one by one into territories====");
         placeInitialArmies();
 
     }
@@ -297,11 +295,11 @@ public class GameManager extends Observable implements Serializable{
         this.resetTurn();
         int i = 1;
         if(verbos)
-            LoggerController.log("====5. PLAYING====");
+            Log.log("====5. PLAYING====");
         while(this.isGameOn)
         {
             if(verbos)
-                LoggerController.log(String.format("====Turn %s====", i));
+                Log.log(String.format("====Turn %s====", i));
             
             //Step1:Selects a player in round robin 
             IPlayer p = nextPlayer();
@@ -316,7 +314,7 @@ public class GameManager extends Observable implements Serializable{
             
             if (winner == null)
             {
-                LoggerController.log("No winner, so next turn will start.");
+                Log.log("No winner, so next turn will start.");
             }
 
             i++;
@@ -326,7 +324,7 @@ public class GameManager extends Observable implements Serializable{
 
         if (verbos){
             String dominationView = this.domitantionResult(true, i);
-            LoggerController.log(dominationView);
+            Log.log(dominationView);
         }
         
         String winnerName = "Draw";
@@ -384,12 +382,12 @@ public class GameManager extends Observable implements Serializable{
         int i = 0;
         while(i<armiesToPlace )
         {
-            LoggerController.log(p.getState());
+            Log.log(p.getState());
             ITerritory playerRandomTerritory = p.getStrategy().getInforcementTerritory(p);
             int randomArmy = p.getStrategy().getReinforcementArmies(p);
             p.placeArmy(randomArmy, playerRandomTerritory);
             i += randomArmy;
-            LoggerController.log(p.getState());
+            Log.log(p.getState());
         }
 
     }
@@ -412,7 +410,7 @@ public class GameManager extends Observable implements Serializable{
             if(p.getUnusedArmies()==0)
                 continue;
 
-            LoggerController.log(p.getState());
+            Log.log(p.getState());
 
             ITerritory playerRandomTerritory  = p.getRandomTerritory();
             int randomArmy = 1;
@@ -420,7 +418,7 @@ public class GameManager extends Observable implements Serializable{
             p.placeArmy(randomArmy, playerRandomTerritory  );
             i += randomArmy;
 
-            LoggerController.log(p.getState());
+            Log.log(p.getState());
         }
 
     }
@@ -445,7 +443,7 @@ public class GameManager extends Observable implements Serializable{
                 this.playersText += p.getStrategy().getName() +", ";
                 p.setGameManager(this);
                 this.playerlist.add(p);
-                LoggerController.log(p.toString() + " was added to the game.");
+                Log.log(p.toString() + " was added to the game.");
         	}	
         }else{
         	for (int i=0; i<this.playerlist.size(); i++) {
@@ -454,7 +452,7 @@ public class GameManager extends Observable implements Serializable{
         		playerlist.get(i).setColor( colorManager.getRandomColor());
                 this.playersText += playerlist.get(i).getStrategy().getName() +", ";
         		playerlist.get(i).setGameManager(this);
-        		LoggerController.log(playerlist.get(i).toString() + " was added to the game.");
+        		Log.log(playerlist.get(i).toString() + " was added to the game.");
         	}
         }	
         colorManager = null;
@@ -502,7 +500,7 @@ public class GameManager extends Observable implements Serializable{
         {
             p.setUnusedArmies(initialArmies);
         }
-        LoggerController.log(String.format("%s armies allocated to each player.", initialArmies));
+        Log.log(String.format("%s armies allocated to each player.", initialArmies));
     }
 
 
@@ -623,7 +621,7 @@ public class GameManager extends Observable implements Serializable{
                     break;
             }
 
-            LoggerController.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
+            Log.log(String.format("%s received %s armies via card exchange(exchange no %s)", p.getName(),
                     exchangeValue, p.getTrades()));
         }
         return exchangeValue;
