@@ -28,9 +28,9 @@ public class TournamentManager {
 	 * @param numberOfPlayers is the number of players plating in the tournament
 	 * @param playerStrategies is the comma separated string having strategies of players 
 	 */
-	public void start(int numberOfPlayers, String playerStrategies){
+	public void start(int numberOfPlayers, String playerStrategies,int numberOfTurns, int numberOfGames){
 		t = new Tournament();
-		t.start(mapsInTournament, numberOfPlayers, playerStrategies, 4, 30);
+		t.start(mapsInTournament, numberOfPlayers, playerStrategies, numberOfGames, numberOfTurns);
 	}
 	
 	/**

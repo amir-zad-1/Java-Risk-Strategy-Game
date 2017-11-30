@@ -18,6 +18,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -65,6 +66,8 @@ public class MapEditorView implements IView{
 	private Button startGameButton = new Button();
 	private Button closeButton = new Button();
 
+	/** check box to check if game to be automated */
+	CheckBox isGameAutomatecheckBox;
 
 	/**
 	 * Constructor used to inject controller dependencies
@@ -279,7 +282,11 @@ public class MapEditorView implements IView{
 		startGameButton.setText("Start Game");
 		footer.setAlignment(Pos.CENTER_RIGHT);
 		footer.setPadding(new Insets(15, 12, 15, 12));
-		footer.getChildren().addAll(startGameButton,saveChanges);
+		//check box to check if game should be automated
+		isGameAutomatecheckBox = new  CheckBox("Automate");
+		isGameAutomatecheckBox.setText("Automate the game");
+		//add all elements to footer
+		footer.getChildren().addAll(startGameButton,saveChanges,isGameAutomatecheckBox);
 
 		borderPane.setBottom(footer);
 		borderPane.setCenter(gridPane);
@@ -339,6 +346,15 @@ public class MapEditorView implements IView{
 			return result.get();
 		}
 		return null;
+	}
+
+
+	/**
+	 * @return the isGameAutomatecheckBox
+	 * to check if game is automated or not
+	 */
+	public CheckBox getIsGameAutomatecheckBox() {
+		return isGameAutomatecheckBox;
 	}
 
 

@@ -30,9 +30,12 @@ public class TournamentController {
 	/**
 	 * @param numberOfPlayers are the number of players in the tournament
 	 * @param playerStrategies is comma separated string of strategies of players
+	 * @param turns tells number of turns
+	 * @param noOfGames tells number of games to play in tournament
 	 */
-	public void start(int numberOfPlayers, String playerStrategies){
-		tournamentManager.start(numberOfPlayers, playerStrategies);
+	public void start(int numberOfPlayers, String playerStrategies,String turns, String noOfGames){
+		tournamentManager.start(numberOfPlayers, playerStrategies,
+				Integer.parseInt(turns), Integer.parseInt(noOfGames));
 	}
 	
 	/**

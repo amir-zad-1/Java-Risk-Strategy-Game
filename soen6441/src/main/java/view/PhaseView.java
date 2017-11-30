@@ -71,7 +71,7 @@ public class PhaseView implements IView,Observer{
 	 * @param new_dominationView as the Domination view is subset of Phase View
 	 * @param new_gameController we need the game controller to ask for next turn
 	 * @param new_cardView is to initialize the Card View
-	 * @param new_humanPlayerView to initlize the Human Player View
+	 * @param new_humanPlayerView to initialize the Human Player View
 	 */
 	public PhaseView(DominationView new_dominationView,GameController new_gameController,CardView new_cardView,HumanPlayerView new_humanPlayerView) {
 		this.dominationView = new_dominationView;
@@ -181,7 +181,7 @@ public class PhaseView implements IView,Observer{
 	    }
 	    
 	    Scene scene = new Scene(parentPane);
-	    //adding google fonts to beautify
+	    //adding google fonts to beautify font style
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
 	}

@@ -42,12 +42,16 @@ public class GameController {
 	 * Initializes the Game Manager with number of players
 	 * @param numberOfPlayers tells numbers of players going to play the game
 	 * @param strategies is the comma separated string example b,r,c 
+	 * @param isGameAutomated to check if the game should be auotmated
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
-	public void startGame(int numberOfPlayers,String strategies) {		
+	public void startGame(int numberOfPlayers,String strategies,boolean isGameAutomated) {		
 			isResumedGame = false;
 		    try {
-				gameManager.startGame(numberOfPlayers,strategies);
+		    	if(isGameAutomated)
+		    		gameManager.startGame(numberOfPlayers,strategies);
+		    	else
+		    		new GameManager(numberOfPlayers,strategies,800).start(true);
 			} catch (InvalidNumOfPlayersException e) {
 				e.printStackTrace();
 			}	

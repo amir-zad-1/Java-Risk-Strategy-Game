@@ -46,17 +46,18 @@ public class WindowManager extends Application {
     	mapEditorView = new MapEditorView(readController,writeController);
 		welcomeView = new WelcomeView(gameController,window, rwMapFileController, mapEditorView);
 		
-		
+		//listener to check game start button event in Map Editor view
 		mapEditorView.getStartGameButton().setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
         		int numberOfPlayers = mapEditorView.getNumberOfPlayers();
         		String strategies = mapEditorView.getPlayersStrategies();
+        		boolean isGameAutomated = mapEditorView.getIsGameAutomatecheckBox().isSelected();
         		phaseView.setNumberOfPlayers(numberOfPlayers);
         		phaseView.setWindowStage(window);
         		window.setScene(phaseView.getView(false));
         		callback[0].called(numberOfPlayers,strategies);
-        		gameController.startGame(numberOfPlayers,strategies);
+        		gameController.startGame(numberOfPlayers,strategies,isGameAutomated);
         		
             }
     	});   

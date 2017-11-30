@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -79,9 +80,16 @@ public class TournamentView implements IView{
 		//Container to hold start button
 		VBox vboxStartContainer = new VBox();
 		Button startTournamentButton = new Button("Start");
+		//to take number of turns input
+		TextField turnsInput = new TextField();
+		turnsInput.setPromptText("Number of turns");
+		//to take number of games input
+		TextField numberOfGames = new TextField();
+		numberOfGames.setPromptText("Number of games");
 		vboxStartContainer.setPadding(new Insets(8));
 		vboxStartContainer.getChildren().add(startTournamentButton);
-		
+		vboxStartContainer.getChildren().add(turnsInput);
+		vboxStartContainer.getChildren().add(numberOfGames);
 		//to show alert in case of invalid .map
 		Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("Map file is not valid");
@@ -130,7 +138,7 @@ public class TournamentView implements IView{
 			}
 		});	
 		
-		
+		//on start tournament contact Tournament
 		startTournamentButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -139,7 +147,7 @@ public class TournamentView implements IView{
 				for(ComboBox<String> selectBox : playerList){
 					tmp += ","+(selectBox.getValue()).toLowerCase().charAt(0);
 				}
-				tournamentController.start(playerList.size(), tmp);
+				tournamentController.start(playerList.size(), tmp,turnsInput.getText(),numberOfGames.getText());
 				
 			}
 		});
