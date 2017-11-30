@@ -68,21 +68,22 @@ public class WelcomeView implements IView{
 	 */
 	@Override
 	public Scene getView(boolean isResume){
-		    //choose map button
+		
+		    //choose .map file button creation
 		    Button chooseMapButton = new Button();
 	        chooseMapButton.setMinWidth(200);
 	        chooseMapButton.setText("Choose Map file");
-	        //save map button
+	        //save map button creation
 	        Button saveMapButton = new Button();
 	        saveMapButton.setMinWidth(200);
 	        saveMapButton.setText("Save Map file");
 	        
-	        //create map button
+	        //create map button 
 	        Button createMapButton = new Button();
 	        createMapButton.setMinWidth(200);
 	        createMapButton.setText("Create Map file");
 	        
-	        //to go back to previous view
+	        //button to go back to previous view
 	        Button gobackButton = new Button();
 	        gobackButton.setMinWidth(200);
 	        gobackButton.setText("Prevoius View");
