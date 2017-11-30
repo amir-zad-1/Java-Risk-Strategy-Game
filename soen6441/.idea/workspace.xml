@@ -26,31 +26,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Aggressive.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1872">
-              <caret line="122" column="22" lean-forward="false" selection-start-line="119" selection-start-column="8" selection-end-line="122" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="710" column="4" lean-forward="true" selection-start-line="710" selection-start-column="4" selection-end-line="710" selection-end-column="4" />
+            <state relative-caret-position="176">
+              <caret line="88" column="22" lean-forward="false" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tournament.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tournament.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Tournament.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+            <state relative-caret-position="173">
+              <caret line="104" column="13" lean-forward="true" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlassViewEventHandler.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/javafx/tk/quantum/GlassViewEventHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="294" column="0" lean-forward="false" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/ArrayList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="432" column="0" lean-forward="false" selection-start-line="432" selection-start-column="0" selection-end-line="432" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -59,9 +69,18 @@
       <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="309" column="0" lean-forward="false" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="77">
+              <caret line="330" column="0" lean-forward="false" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
+              <folding>
+                <element signature="e#16942#16943#0" expanded="true" />
+                <element signature="e#16983#16984#0" expanded="true" />
+                <element signature="e#23194#23195#0" expanded="true" />
+                <element signature="e#23237#23238#0" expanded="true" />
+                <element signature="e#23360#23361#0" expanded="true" />
+                <element signature="e#23400#23401#0" expanded="true" />
+                <element signature="e#23515#23516#0" expanded="true" />
+                <element signature="e#23539#23540#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,30 +88,77 @@
       <file leaf-file-name="GameResult.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/GameResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
+            <state relative-caret-position="324">
               <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
-                <element signature="e#2880#2881#0" expanded="true" />
+                <marker date="1512056308454" expanded="true" signature="101:123" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="762:770" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="808:829" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TournamentManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TournamentManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/TournamentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="70" lean-forward="false" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="70" />
+            <state relative-caret-position="105">
+              <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+              <folding>
+                <element signature="e#922#923#0" expanded="true" />
+                <element signature="e#952#953#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/GameController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+              <folding>
+                <marker date="1512056308450" expanded="true" signature="2340:2345" ph="/**...*/" />
+                <marker date="1512056308450" expanded="true" signature="2390:2434" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Human.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Human.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1890">
+              <caret line="117" column="40" lean-forward="false" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+              <folding>
+                <marker date="1512056308454" expanded="true" signature="1356:1624" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="1630:1745" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="1809:1986" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="1992:2152" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="2223:3944" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="3950:4069" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="4128:4282" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="4288:4443" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="4502:4651" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="4657:4807" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="4883:5050" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="5056:5216" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="5299:5996" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="6002:6226" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="6333:7513" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="7519:7719" ph="/**...*/" />
+                <marker date="1512056308454" expanded="true" signature="7814:7963" ph="{...}" />
+                <marker date="1512056308454" expanded="true" signature="7976:8046" ph="/**...*/" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GpTest1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/model/GpTest1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -110,12 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ownTerr</find>
-      <find>getrandomS</find>
-      <find>addP</find>
-      <find>initP</find>
-      <find>Start</find>
-      <find>start game</find>
       <find>Start Game</find>
       <find>startGameButton</find>
       <find>fortifi</find>
@@ -140,6 +200,12 @@
       <find>&amp;&amp;</find>
       <find>Domination</find>
       <find>play(</find>
+      <find>playi</find>
+      <find>player 2 att</find>
+      <find>player 3 atta</find>
+      <find>getn</find>
+      <find>addPl</find>
+      <find>initgame()</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -150,7 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/util/Color.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Army.java" />
         <option value="$PROJECT_DIR$/src/main/java/util/Logger.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Agressive.java" />
@@ -184,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Benevolent.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Human.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Random.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/GameResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Map.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Territory.java" />
@@ -199,8 +263,10 @@
         <option value="$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/GamePlayTestSuite.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/strategy/Aggressive.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Tournament.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/TournamentManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Tournament.java" />
       </list>
     </option>
   </component>
@@ -223,7 +289,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="27" />
     <option name="width" value="683" />
     <option name="height" value="741" />
@@ -243,10 +309,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -263,27 +327,29 @@
               <item name="soen6441" type="b2602c69:ProjectViewProjectNode" />
               <item name="soen6441" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="soen6441" type="b2602c69:ProjectViewProjectNode" />
               <item name="soen6441" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="soen6441" type="b2602c69:ProjectViewProjectNode" />
               <item name="soen6441" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="suit" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,7 +361,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="SearchEverywhereHistoryKey" value="terri&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Territory.java&#10;terr&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;pl&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Player.java&#10;aggre&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;GameM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;Pl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Player.java&#10;Terr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Territory.java&#10;Ter&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;Hu&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/strategy/Human.java&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;playe&#9;PSI&#9;JAVA://view.PlayerStatisticsView&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Map.java&#10;Ma&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;tou&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Tournament.java&#10;IT&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITournament.java&#10;gamem&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;iterr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;IPl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iconti&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IContinent.java&#10;territ&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;GameCon&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/controller/GameController.java&#10;istr&#9;PSI&#9;JAVA://model.contract.IStrategy&#10;pla&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;gamema&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;suit&#9;PSI&#9;JAVA://soen6441team15.soen6441.GamePlayTestSuite&#10;gameman&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;Log&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/controller/LoggerController.java&#10;atta&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/AttackPlan.java&#10;carDe&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/CardDeck.java&#10;IPL&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;norm&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Normal.java&#10;agg&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
+    <property name="SearchEverywhereHistoryKey" value="pla&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Player.java&#10;tourn&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Tournament.java&#10;GameCon&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/controller/GameController.java&#10;terri&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Territory.java&#10;terr&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;pl&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/Player.java&#10;aggre&#9;FILE&#9;file:///home/tony/Desktop/nima/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;GameM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;ipl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;Pl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Player.java&#10;Terr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Territory.java&#10;Ter&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;Hu&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/strategy/Human.java&#10;player&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;playe&#9;PSI&#9;JAVA://view.PlayerStatisticsView&#10;IM&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;map&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Map.java&#10;Ma&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IMap.java&#10;game&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;tou&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/Tournament.java&#10;IT&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITournament.java&#10;gamem&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/GameManager.java&#10;iterr&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;IPl&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;iconti&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/IContinent.java&#10;territ&#9;FILE&#9;file:///home/tony/Workspace/6441/build3/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;istr&#9;PSI&#9;JAVA://model.contract.IStrategy&#10;gamema&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;suit&#9;PSI&#9;JAVA://soen6441team15.soen6441.GamePlayTestSuite&#10;gameman&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/GameManager.java&#10;Log&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/controller/LoggerController.java&#10;atta&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/AttackPlan.java&#10;carDe&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/CardDeck.java&#10;IPL&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/IPlayer.java&#10;norm&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Normal.java&#10;agg&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/strategy/Aggressive.java&#10;Logc&#9;PSI&#9;JAVA://controller.LoggerController&#10;iter&#9;FILE&#9;file:///home/tony/Workspace/6441/20171104/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;mapEd&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/view/MapEditorView.java&#10;dice&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Dice.java&#10;cont&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Continent.java&#10;card&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/Card.java&#10;gptest2&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest2.java&#10;gptest1&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/test/java/soen6441team15/soen6441/GpTest1.java&#10;Game&#9;FILE&#9;file:///home/tony/Workspace/6441/prj/6441-project/soen6441/src/main/java/model/GameManager.java&#10;gam&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/GameManager.java&#10;log&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/util/Logger.java&#10;it&#9;FILE&#9;file:///home/tony/Workspace/6441/projectFinal/6441-project/soen6441/src/main/java/model/contract/ITerritory.java&#10;conv&#9;PSI&#9;JAVA://util.CodingConvention" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -340,8 +406,8 @@
       <module name="soen6441" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="soen6441team15.soen6441" />
-      <option name="MAIN_CLASS_NAME" value="soen6441team15.soen6441.GamePlayTestSuite" />
+      <option name="PACKAGE_NAME" value="suit" />
+      <option name="MAIN_CLASS_NAME" value="suit.GamePlayTestSuite" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -502,17 +568,12 @@
       <workItem from="1511886496854" duration="928000" />
       <workItem from="1511893598690" duration="21000" />
       <workItem from="1511966234990" duration="2544000" />
-      <workItem from="1511985086138" duration="1166000" />
+      <workItem from="1511985086138" duration="5036000" />
+      <workItem from="1512053703996" duration="6440000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GamePlayTests - 2017.11.08 at 10h 20m 50s.xml">
-      <configuration name="GamePlayTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GamePlayTests - 2017.11.08 at 10h 33m 24s.xml">
-      <configuration name="GamePlayTests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GamePlayTests - 2017.11.08 at 11h 15m 13s.xml">
       <configuration name="GamePlayTests" configurationId="JUnit" />
     </history-entry>
@@ -537,9 +598,15 @@
     <history-entry file="GamePlayTests - 2017.11.28 at 11h 32m 24s.xml">
       <configuration name="GamePlayTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GamePlayTests - 2017.11.30 at 10h 55m 12s.xml">
+      <configuration name="GamePlayTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GamePlayTests - 2017.11.30 at 10h 55m 44s.xml">
+      <configuration name="GamePlayTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182939000" />
+    <option name="totallyTimeSpent" value="193249000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -551,7 +618,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <frame x="0" y="27" width="1366" height="741" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -561,19 +629,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.487055" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42394823" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6440129" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21742424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22121212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.487055" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36731392" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -593,13 +661,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/GameManager.java</url>
-          <line>306</line>
+          <url>file://$PROJECT_DIR$/src/main/java/model/Tournament.java</url>
+          <line>98</line>
           <properties />
-          <option name="timeStamp" value="88" />
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/Tournament.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="91" />
+      <option name="time" value="109" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -615,42 +689,8 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/soen6441team15/soen6441/MapValidation.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/RWMapFileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/CardDeck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="109" column="1" lean-forward="false" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Continent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/LoadMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/LoadMapUtility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/LoadMap.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/LoadMapUtility.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/view/WelcomeView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -673,13 +713,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/ReinforcementAction.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/MapEditorView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -730,13 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Human.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="233" column="4" lean-forward="false" selection-start-line="233" selection-start-column="4" selection-end-line="233" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -850,52 +876,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="710" column="4" lean-forward="true" selection-start-line="710" selection-start-column="4" selection-end-line="710" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        <state relative-caret-position="2088">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding>
-            <element signature="e#2880#2881#0" expanded="true" />
+            <marker date="1512056308454" expanded="true" signature="137:155" ph="/**...*/" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/GameResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
+        <state relative-caret-position="324">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1512056308454" expanded="true" signature="101:123" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="762:770" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="808:829" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/model/GpTest1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/strategy/Human.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="117" column="40" lean-forward="false" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+          <folding>
+            <marker date="1512056308454" expanded="true" signature="1356:1624" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="1630:1745" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="1809:1986" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="1992:2152" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="2223:3944" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="3950:4069" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="4128:4282" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="4288:4443" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="4502:4651" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="4657:4807" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="4883:5050" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="5056:5216" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="5299:5996" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="6002:6226" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="6333:7513" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="7519:7719" ph="/**...*/" />
+            <marker date="1512056308454" expanded="true" signature="7814:7963" ph="{...}" />
+            <marker date="1512056308454" expanded="true" signature="7976:8046" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+          <folding>
+            <marker date="1512056308450" expanded="true" signature="2340:2345" ph="/**...*/" />
+            <marker date="1512056308450" expanded="true" signature="2390:2434" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/TournamentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#952#953#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/suit/GamePlayTestSuite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="88" column="22" lean-forward="false" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/GameManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="309" column="0" lean-forward="false" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
+        <state relative-caret-position="77">
+          <caret line="330" column="0" lean-forward="false" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
+          <folding>
+            <element signature="e#16942#16943#0" expanded="true" />
+            <element signature="e#16983#16984#0" expanded="true" />
+            <element signature="e#23194#23195#0" expanded="true" />
+            <element signature="e#23237#23238#0" expanded="true" />
+            <element signature="e#23360#23361#0" expanded="true" />
+            <element signature="e#23400#23401#0" expanded="true" />
+            <element signature="e#23515#23516#0" expanded="true" />
+            <element signature="e#23539#23540#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/javafx/tk/quantum/GlassViewEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="294" column="0" lean-forward="false" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="432" column="0" lean-forward="false" selection-start-line="432" selection-start-column="0" selection-end-line="432" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Tournament.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="61" column="47" lean-forward="true" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/TournamentManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="70" lean-forward="false" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="70" />
+        <state relative-caret-position="173">
+          <caret line="104" column="13" lean-forward="true" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="13" />
           <folding />
         </state>
       </provider>

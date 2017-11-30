@@ -95,6 +95,7 @@ public class Tournament implements ITournament {
         }
         at.addRow(games);
 
+        int rindex = 0;
         for(Map m : this.maps)
         {
             at.addRule();
@@ -102,8 +103,10 @@ public class Tournament implements ITournament {
             cells[0] = m.getName();
             for(int i=0; i<gameCount; i++)
             {
-                cells[i+1] = results.get(i).winner;
+                //cells[i+1] = results.get(i).winner;
+                cells[i+1] = results.get(i+rindex).winner;
             }
+            rindex += gameCount;
             at.addRow(cells);
         }
 
