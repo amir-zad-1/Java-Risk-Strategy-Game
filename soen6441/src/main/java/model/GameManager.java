@@ -95,7 +95,8 @@ public class GameManager extends Observable implements Serializable{
      * finally game is started
      * @param players number of players
      * @param strategies is comma separated string with strategies
-     * @exception InvalidNumOfPlayersException be careful
+     * @param totalTurns is number of turns u want to play
+     * expect the InvalidNumOfPlayersException be careful
      */
     public GameManager(int players, String strategies, int totalTurns) {
         this.numberOfPlayers = players;
@@ -110,6 +111,7 @@ public class GameManager extends Observable implements Serializable{
     /**
      * Constructor to initialize the game
      * @param m is selected map
+     * @param players is number of players
      * @param strategies is comma separated string with strategies
      * @param totalTurns is number of turns the has to be played -for tournament
      */
@@ -278,14 +280,16 @@ public class GameManager extends Observable implements Serializable{
     
     
     /**
-     * <p> This is the method that handles the game play
+     *  This is the method that handles the game play
      *  It does the following steps until any player own entire map
+     *  <ul>
      *  <li>Step1: Selects a player in round robin </li>
      *  <li>Step2: Gives him reinforcement</li>
      *  <li>Step3: And the attack </li>
      *  <li>Step4: And then fortification</li>
      *  <li>Step5: Check if any player own entire map, if not continue</li>
-     * </p>
+     *  </ul>
+     * 
      * @param verbos logging will be done 
      * @return the result of the game
      */
@@ -825,6 +829,7 @@ public class GameManager extends Observable implements Serializable{
 
 	/**
 	 * sets answer given by user for Human player strategy
+	 * @param answerByHuman is the answer given by the Human player
 	 */
 	public void setAnswerForHuman(String answerByHuman) {
 		Human.sharedTmp = answerByHuman;		

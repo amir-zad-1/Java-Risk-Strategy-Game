@@ -24,10 +24,12 @@ import model.Player;
 
 /**
  * Phase view contains not only the current Phase of the game but also has
+ * <ul>
  * <li>DominationView</li>
  * <li>HumanPlayerView</li>
  * <li>PlayerStatisticsView</li>
  * <li>CardView</li>
+ * </ul>
  * @author SA
  */
 public class PhaseView implements IView,Observer{
@@ -68,6 +70,8 @@ public class PhaseView implements IView,Observer{
 	 * Constructor that initializes the {@link DominationView} 
 	 * @param new_dominationView as the Domination view is subset of Phase View
 	 * @param new_gameController we need the game controller to ask for next turn
+	 * @param new_cardView is to initialize the Card View
+	 * @param new_humanPlayerView to initlize the Human Player View
 	 */
 	public PhaseView(DominationView new_dominationView,GameController new_gameController,CardView new_cardView,HumanPlayerView new_humanPlayerView) {
 		this.dominationView = new_dominationView;

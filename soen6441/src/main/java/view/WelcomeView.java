@@ -49,6 +49,7 @@ public class WelcomeView implements IView{
 	
 	/**
 	 * Constructor which injects Controllers and View
+	 * @param new_gameController is the controller to play game
 	 * @param new_window is the main window on the UI check {@link javafx.stage.Stage}}
 	 * @param new_maprwController is the map file read and write controller, check {@link RWMapFileController} 
 	 * @param new_mapEditorView is the map editor view, welcome view is responsible to start Map Editor View
@@ -67,21 +68,22 @@ public class WelcomeView implements IView{
 	 */
 	@Override
 	public Scene getView(boolean isResume){
-		    //choose map button
+		
+		    //choose .map file button creation
 		    Button chooseMapButton = new Button();
 	        chooseMapButton.setMinWidth(200);
 	        chooseMapButton.setText("Choose Map file");
-	        //save map button
+	        //save map button creation
 	        Button saveMapButton = new Button();
 	        saveMapButton.setMinWidth(200);
 	        saveMapButton.setText("Save Map file");
 	        
-	        //create map button
+	        //create map button 
 	        Button createMapButton = new Button();
 	        createMapButton.setMinWidth(200);
 	        createMapButton.setText("Create Map file");
 	        
-	        //to go back to previous view
+	        //button to go back to previous view
 	        Button gobackButton = new Button();
 	        gobackButton.setMinWidth(200);
 	        gobackButton.setText("Prevoius View");
@@ -183,7 +185,7 @@ public class WelcomeView implements IView{
 	 /**
 	 * Loads new Scene(UI Container) into the window
 	 * @param scene will be showed in window
-	 * @see java.fx.Scene is has UI elements to load into  Window
+	 * @see Scene is has UI elements to load into  Window
 	 */
 	public  void loadAnotherView(Scene scene){
 	    	window.setScene(scene);	

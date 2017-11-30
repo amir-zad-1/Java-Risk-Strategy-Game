@@ -96,6 +96,7 @@ public class WindowManager extends Application {
 	 * @param new_readController is map reader controller
 	 * @param new_writeController is the map write controller
 	 * @param new_gameController controlls the game start
+	 * @param new_tournamentController to start the tournament if in tournament mode
 	 */
 	public static void addControllers(RWMapFileController new_rwMapFileController, ReadController new_readController,
 			WriteController new_writeController,GameController new_gameController, TournamentController new_tournamentController) {		

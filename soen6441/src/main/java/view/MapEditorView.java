@@ -80,7 +80,6 @@ public class MapEditorView implements IView{
 	/**
 	 * Returns Scene object a container having Map Editor UI elements
 	 * @return {@link Scene} instance
-	 * @see view.IView#getView()
 	 */
 	@NotNull
 	public Scene getView(boolean isResume){

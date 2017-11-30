@@ -31,6 +31,7 @@ public class GameController {
 	/**
 	 * Constructor that initializes the GameManager
 	 * @param new_gameManager is the reference of GameManager created in Driver class 
+	 * @param new_savePreocess to save the game through game controller
 	 */
 	public GameController(GameManager new_gameManager,SaveProcess new_savePreocess){
 		saveProcess = new_savePreocess;
@@ -40,6 +41,7 @@ public class GameController {
 	/**
 	 * Initializes the Game Manager with number of players
 	 * @param numberOfPlayers tells numbers of players going to play the game
+	 * @param strategies is the comma separated string example b,r,c 
 	 * Have to catch the <code>InvalidNumOfPlayersException</code> exception
 	 */
 	public void startGame(int numberOfPlayers,String strategies) {		
@@ -68,6 +70,7 @@ public class GameController {
 
 	/**
 	 * This method redirects save game request to {@link #saveProcess} model
+	 * @param uiState is state of UI in {@link HashMap} to save
 	 */
 	public void saveGame(HashMap<String,String> uiState) {
 		try {

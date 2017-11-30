@@ -32,7 +32,7 @@ public class GpTest9 {
 
     /**
      * 1st trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test2() throws InvalidNumOfPlayersException {
@@ -54,7 +54,7 @@ public class GpTest9 {
 
     /**
      * 2nd trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test3() throws InvalidNumOfPlayersException {
@@ -84,7 +84,7 @@ public class GpTest9 {
 
     /**
      * 3rd trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test4() throws InvalidNumOfPlayersException {
@@ -121,7 +121,7 @@ public class GpTest9 {
 
     /**
      * 4th trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test5() throws InvalidNumOfPlayersException {
@@ -162,7 +162,7 @@ public class GpTest9 {
 
     /**
      * 5th trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test6() throws InvalidNumOfPlayersException {
@@ -209,7 +209,7 @@ public class GpTest9 {
 
     /**
      * 6th trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test7() throws InvalidNumOfPlayersException {
@@ -262,7 +262,7 @@ public class GpTest9 {
 
     /**
      * 7th trade
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test()
     public void test8() throws InvalidNumOfPlayersException {

@@ -14,7 +14,7 @@ public class GpTest3 {
 
     /**
      * 3 palyers
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void test3_1() throws InvalidNumOfPlayersException
@@ -27,7 +27,7 @@ public class GpTest3 {
 
     /**
      * 2 palyers
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void test3_2() throws InvalidNumOfPlayersException
@@ -40,7 +40,7 @@ public class GpTest3 {
 
     /**
      * 4 palyers
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void test3_3() throws InvalidNumOfPlayersException
@@ -53,7 +53,7 @@ public class GpTest3 {
 
     /**
      * 5 palyers
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void test3_4() throws InvalidNumOfPlayersException
@@ -66,7 +66,7 @@ public class GpTest3 {
 
     /**
      * 6 palyers
-     * @throws InvalidNumOfPlayersException
+     * @throws InvalidNumOfPlayersException if number of player not as per game rules
      */
     @Test
     public void test3_5() throws InvalidNumOfPlayersException

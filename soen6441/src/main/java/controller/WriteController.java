@@ -10,11 +10,13 @@ import model.MapDataBase;
  *
  * Controls Write operations on {@link MapDataBase}
  * In order to do 
+ * <ul>
  * <li>Add a country</li>
  * <li>Delete a country</li>
  * <li>Delete a continent</li>
  * <li>Add a continent</li>
  * <li>Add adjacent territories</li>
+ * </ul>
  * call the methods in this class 
  */
 public class WriteController{
@@ -34,7 +36,7 @@ public class WriteController{
 	
 	/**
 	 * Writes new continent to map
-	 * @param continent_name is the Continent Name
+	 * @param continentName is the name of the continent u want to create
 	 */
 	public void writenewContinent(String continentName){
 		dataWriter.createContinent(continentName);
