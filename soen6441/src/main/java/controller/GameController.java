@@ -48,7 +48,7 @@ public class GameController {
 	public void startGame(int numberOfPlayers,String strategies,boolean isGameAutomated) {		
 			isResumedGame = false;
 		    try {
-		    	if(isGameAutomated)
+		    	if(!isGameAutomated)
 		    		gameManager.startGame(numberOfPlayers,strategies);
 		    	else
 		    		new GameManager(numberOfPlayers,strategies,800000).start(true);

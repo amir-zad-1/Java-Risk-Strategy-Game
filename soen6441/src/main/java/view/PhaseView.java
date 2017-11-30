@@ -194,13 +194,14 @@ public class PhaseView implements IView,Observer{
 	@Override
 	public void update(Observable model, Object object) {
 		   
-		  // if instance of Player else by GameManager
+		  //check if instance of Player else by GameManager
           if(model instanceof Player){
            		Player tmp = (Player) model;
            		previousPlayer = tmp.getName();
            		playersStatistics.get(tmp.getName()).setCurrentStatus(object.toString());
            		playersStatistics.get(tmp.getName()).setCountriesWon(trim(tmp.getState()));
            		    String s = (String)object;
+           		    //check if update string is to show the card view
            		    if(s.split(":")[0].equals("CardView")){
            		    	dialog.show();
            			}
