@@ -22,6 +22,9 @@ public class Human extends Observable implements IStrategy,Serializable {
 	 */
 	private static final long serialVersionUID = 5308462513531998981L;
 	
+	/**
+	 * shared variable to hold temporary data
+	 */
 	public static String sharedTmp = null;
 	
     /**
@@ -46,12 +49,11 @@ public class Human extends Observable implements IStrategy,Serializable {
 
     /**
      * where to reinforce
-     * @param p player
+     * @param p player 
      * @return territory
      */
     @Override
     public ITerritory getInforcementTerritory(IPlayer p) {
-
       
     	sendNotification("Tip: your weakest territory is : "+p.getWeakestTerritory().getName()+" \n"+
     			"Which territory do you want to reinforce?");

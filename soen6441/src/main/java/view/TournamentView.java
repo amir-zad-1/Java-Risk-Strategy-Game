@@ -25,19 +25,29 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
+ * Holds the UI of Tournament ad calls the TournamentController when required
  * @author SA
- *
  */
 public class TournamentView implements IView{
 
-	
-	Stage window = null;
+	/** Holds the parent window */
+	Stage window = null;	
+	/** Controller to add .map files */
 	RWMapFileController maprwController = null;
+	/** Controller to play tournament through */
 	TournamentController tournamentController = null;
+	/** To choose the path of a .map file */
 	final FileChooser fileChooser = new FileChooser();
+	/** To hold whole tournament screen */
 	static Scene tournamentScreen = null;
+	
+	
 	/**
-	 * 
+	 * Constructor to initialize the controllers
+	 * @param new_window is the parent window object
+	 * @param new_maprwController to initialize the maprwController so .map file
+	 * can be written into a data structure
+	 * @param new_tournamentController to initialize the tournamentController 
 	 */
 	public TournamentView(Stage new_window,RWMapFileController new_maprwController,TournamentController new_tournamentController){
 		tournamentController = new_tournamentController;
@@ -46,28 +56,34 @@ public class TournamentView implements IView{
 	}
 	
 	/** 
+	 * @return Scene that has all UI elements
 	 * @see view.IView#getView()
 	 */
 	@Override
 	public Scene getView(boolean isResume) {
-		// TODO Auto-generated method stub
+
+		//to hold the UI of players in the tournament
 		ArrayList<ComboBox<String>> playerList = new ArrayList<>();
 		
+		//Add map UI
 		VBox vboxMapContainer = new VBox();
 		Button addMapButton = new Button("Add Map");
 		vboxMapContainer.setPadding(new Insets(8));
 		vboxMapContainer.getChildren().add(addMapButton);
 		
+		//Add player UI
 		VBox vboxPlayerContainer = new VBox();
 		Button addPlayerButton = new Button("Add Player");
 		vboxPlayerContainer.setPadding(new Insets(8));
 		vboxPlayerContainer.getChildren().add(addPlayerButton);
 		
+		//Container to hold start button
 		VBox vboxStartContainer = new VBox();
 		Button startTournamentButton = new Button("Start");
 		vboxStartContainer.setPadding(new Insets(8));
 		vboxStartContainer.getChildren().add(startTournamentButton);
 		
+		//to show alert in case of invalid .map
 		Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("Map file is not valid");
 
@@ -75,7 +91,6 @@ public class TournamentView implements IView{
 		//ObservableList for selecting player strategies
 		ObservableList<String> options = 
 				FXCollections.observableArrayList(
-					        "Human",
 					        "Aggressive",
 					        "Benevolent",
 					        "Random",

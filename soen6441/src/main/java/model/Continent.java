@@ -76,7 +76,7 @@ public class Continent  implements IContinent,Serializable {
 
     
     /**
-     * @param p is the player who want to check check if he owns entire continent
+     * @param p is the player who want to check  if he owns entire continent
      * @return true if a players owns entire continent
      */
     @Override

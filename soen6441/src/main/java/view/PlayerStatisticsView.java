@@ -15,30 +15,36 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
- * Gives a player statistic view
+ * Gives a player statistic view 
+ * Every player in the game has his Statistics View
  * @author SA
  */
-public class
-PlayerStatisticsView{
+public class PlayerStatisticsView{
 
 	
+	/** Holds all statistics in a vertical box */
 	VBox playerBox = null;
+	
+	/** Holds the player name */
 	Label actorName = null;
-
+	/** Holds the status of the player */
 	TextArea status = null;
+	/** Holds the list if countries own by the player */
 	Label countriesWon = null;
 
 	
 	/**
-	 * 
+	 * Constructor to initialize the basic UI elements
 	 */
 	public PlayerStatisticsView() {
+		//initialize the parent container 
 		this.playerBox = new VBox();
 		playerBox.setPadding(new Insets(5));
 		this.actorName = new Label();
 		setFontColor(actorName, "#0076a3");
-		HBox profilepicContainer = new HBox(); 
 		
+		//Horizontal box to hold player name
+		HBox profilepicContainer = new HBox(); 		
 		profilepicContainer.getChildren().add(actorName);
 
 		this.status = new TextArea();
@@ -46,6 +52,7 @@ PlayerStatisticsView{
 		this.countriesWon = new Label();
 		setFontColor(countriesWon, "#F44336");
 
+		// add child elements to parent container 
 		this.playerBox.getChildren().add(profilepicContainer);
 		this.playerBox.getChildren().add(status);
 		this.playerBox.getChildren().add(countriesWon);
@@ -120,7 +127,7 @@ PlayerStatisticsView{
 
 
 	/**
-	 * 
+	 * clears the status of the player
 	 */
 	public void clearStatus() {
 		this.status.setText("");	

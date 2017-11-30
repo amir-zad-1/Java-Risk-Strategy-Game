@@ -76,7 +76,11 @@ public class CardView implements Observer{
 	}
 
 	
-   public void inti(){
+	
+	/**
+	 * to initialize the Card View
+	 */
+	public void inti(){
 		  cardholder = new HBox();
 		  Label card1 = new Label();
 		  card1.setStyle("-fx-padding: 5;" + "-fx-border-style: solid inside;"

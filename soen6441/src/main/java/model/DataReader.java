@@ -6,35 +6,35 @@ import java.util.Set;
 
 
 /**
- * This class does the data reading operations on the MapDatabase
+ * This class does the data read operations on the Map
  * @author SA 
  */
 public class DataReader {
 
-	/**
-	 * This method return the territories inside the map for passed continent name
-	 * @param continent is the continentName
-	 * @return All territories in a continent
-	 */
-	public HashMap<String, Territory> getContries(String continent) {
-		return MapDataBase.continents.get(continent);
-	}
+		/**
+		 * This method return the territories inside the map for passed continent name
+		 * @param continent is the continentName
+		 * @return All territories in a continent
+		 */
+		public HashMap<String, Territory> getContries(String continent) {
+			return MapDataBase.continents.get(continent);
+		}
 
-	/**
-	 * This method returns adjacent territories to a passed country detials
-	 * @param continent is the continent name
-	 * @param country  is the country name  
-	 * @return the {@link ArrayList} of {@link Territory}'s
-	 */
-	public ArrayList<String> getAdjacentTerritories(String continent, String country) {
-		HashMap<String, Territory> territories = getContries(continent);
-		for(String teritory_name:territories.keySet()){
-			   if(teritory_name.equals(country))
-				   return territories.get(country).getAdjacentTerritories();
-	     }
-		return new ArrayList<String>();
-        
-	}
+		/**
+		 * This method returns adjacent territories to a passed country details
+		 * @param continent is the continent name
+		 * @param country  is the country name  
+		 * @return the {@link ArrayList} of {@link Territory}'s
+		 */
+		public ArrayList<String> getAdjacentTerritories(String continent, String country) {
+			HashMap<String, Territory> territories = getContries(continent);
+			for(String teritory_name:territories.keySet()){
+				   if(teritory_name.equals(country))
+					   return territories.get(country).getAdjacentTerritories();
+		     }
+			return new ArrayList<String>();
+	        
+		}
 
 
 		/**

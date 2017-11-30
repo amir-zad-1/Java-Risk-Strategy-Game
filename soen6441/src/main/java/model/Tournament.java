@@ -7,9 +7,15 @@ import java.util.ArrayList;
 
 public class Tournament implements ITournament {
 
-    ArrayList<Map> maps;
+    
+	/**
+	 * Holds the array of maps {@link Map} objects that going to be played in the Tournament
+	 */
+	ArrayList<Map> maps = new ArrayList<>();
+    
+    
     /**
-     * constructor
+     * empty constructor to initialize the Tournament object
      */
     public Tournament()
     {
@@ -32,6 +38,7 @@ public class Tournament implements ITournament {
 
         ArrayList<GameResult> results = new ArrayList<>();
         String playerText = "";
+        //Play the game map by map
         for(Map m : maps)
         {
             for (int i=0; i<g; i++)
@@ -47,7 +54,7 @@ public class Tournament implements ITournament {
                 }
                 catch (Exception e)
                 {
-                    int l = 0;
+                   
                 }
 
                 playerText = gm.getPlayersText();
@@ -70,7 +77,7 @@ public class Tournament implements ITournament {
     }
 
     /**
-     * get result table
+     * get result table tells entire statistics of the play
      * @return result table
      */
     @Override
@@ -88,8 +95,6 @@ public class Tournament implements ITournament {
         }
         at.addRow(games);
 
-
-
         for(Map m : this.maps)
         {
             at.addRule();
@@ -100,7 +105,6 @@ public class Tournament implements ITournament {
                 cells[i+1] = results.get(i).winner;
             }
             at.addRow(cells);
-
         }
 
         at.addRule();

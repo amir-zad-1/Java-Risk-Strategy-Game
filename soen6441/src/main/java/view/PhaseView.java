@@ -23,28 +23,44 @@ import javafx.stage.Stage;
 import model.Player;
 
 /**
+ * Phase view contains not only the current Phase of the game but also has
+ * <li>DominationView</li>
+ * <li>HumanPlayerView</li>
+ * <li>PlayerStatisticsView</li>
+ * <li>CardView</li>
  * @author SA
- *
  */
 public class PhaseView implements IView,Observer{
 
 
 	/**
-	 * {@link Button} to take Game save sate input from user
+	 * {@link Button} to take Game save input from user
 	 */
 	Button saveStateOfGame = null;
-	
+	/** Holds individual view for every player */
 	HashMap<String,PlayerStatisticsView> playersStatistics= new HashMap<String,PlayerStatisticsView>();
+	/** to hold the domination view reference */
 	DominationView dominationView = null;
+	/** to hold the human player view reference */
 	HumanPlayerView humanPlayerView = null;
+	/** to hold the card view reference */
 	CardView cardView = null;
-	GameController gameController = null;
-	Label phaseStatus; String previousPlayer = "";
-	Button nextTurn= null;
-	int numberOfPlayers;
+	/** holds current phase of the game */
+	Label phaseStatus;
 	
+    /** gameController to change state of model through it **/
+	GameController gameController = null;
+	
+	/** tells number of players in the game */
+	int numberOfPlayers;
+	/** tells previously played player name based on round-robin */
+	String previousPlayer = "";
+	
+	/** button to take next turn input from user */
+	Button nextTurn= null;
+	
+	/** to store reference to parent window */
 	Stage windowStage = null; 	
-
 	Stage dialog = null;
 	
 	
@@ -64,32 +80,38 @@ public class PhaseView implements IView,Observer{
 	 * @return {@link Scene} which contains UI elements 
 	 */
 	public Scene getView(boolean isResume) {
+		//initialize the card view UI
 		cardView.inti();
-		BorderPane borderPane = new BorderPane();
+		
+		//parent layout to hold all UI elements
+		BorderPane parentPane = new BorderPane();
+		//Initialize the phaseStatus
 		phaseStatus = new Label();
 		phaseStatus.setTextFill(Color.GREEN);
 		phaseStatus.setPadding(new Insets(5,5,5,5));
 	
+		// create header
 		BorderPane header = new BorderPane();
 		header.setPadding(new Insets(10,5,0,0));
 		HBox phaseStatusHolder = new HBox( phaseStatus );
 		phaseStatusHolder.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
 	            + "-fx-border-width: 2;" + "-fx-border-insets: 5;"
-	            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");
-		
-		header.setLeft(phaseStatusHolder);
-	    
+	            + "-fx-border-radius: 5;" + "-fx-border-color: blue;");		
+		header.setLeft(phaseStatusHolder);	    
 		header.setRight(dominationView.getView());
+		
+		// create dialog to show card view
 		dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(windowStage);         
+        dialog.initOwner(windowStage);  
+        // adding card view to dialog
         Scene dialogScene = new Scene(cardView.getCardholder(), 300, 200);
         dialog.setScene(dialogScene);
 		nextTurn = new Button("Next turn");
+		
+		//create footer
 		BorderPane footer = new BorderPane();
-		footer.setPadding(new Insets(5));
-		
-		
+		footer.setPadding(new Insets(5));				
 		saveStateOfGame = new Button("Save game");
 		saveStateOfGame.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -104,13 +126,6 @@ public class PhaseView implements IView,Observer{
 				gameController.saveGame(uiState);
 			}
 		});
-		
-		footer.setLeft(saveStateOfGame);
-		footer.setCenter(humanPlayerView.getView());
-		footer.setRight(nextTurn);
-		borderPane.setBottom(footer);
-		borderPane.setTop(header);
-		
 		nextTurn.setOnAction(new EventHandler<ActionEvent>() {            
         	@Override
             public void handle(ActionEvent event){
@@ -121,9 +136,18 @@ public class PhaseView implements IView,Observer{
             }
     	});   
 		
-		HBox playerHbox = new HBox();
+		
+		footer.setLeft(saveStateOfGame);
+		footer.setCenter(humanPlayerView.getView());
+		footer.setRight(nextTurn);
+		
+		// add footer and header to parentPane
+		parentPane.setBottom(footer);
+		parentPane.setTop(header);
 		
 		
+		// create center container which holds PlayerStatisticsView
+		HBox playerHbox = new HBox();		
 		for(int i=1;i<=numberOfPlayers;i++){
 	    	VBox vbox= new VBox();
 	    	PlayerStatisticsView pview = new PlayerStatisticsView();
@@ -132,17 +156,15 @@ public class PhaseView implements IView,Observer{
 					"-fx-border-style: solid inside;" + 
 							"-fx-border-width: 0 1 0 0;" +  
 					"-fx-border-color: black;");
-			
 			vbox.getChildren().add(pview.getPlayerBox());
-			
-			
 			playerHbox.getChildren().add(vbox);
-	    
 	    	playersStatistics.put("Player "+i, pview);
 	    }
-	    borderPane.setCenter(playerHbox);
-	    borderPane.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
+		// add center container to parentPane
+		parentPane.setCenter(playerHbox);
+		parentPane.setStyle("-fx-font-family: 'Saira Semi Condensed', sans-serif;");
 	    
+		// if game is resumed then get the state from previously saved state
 	    if(isResume){
 	    	HashMap<String,String> newUIState = gameController.getUIState();
 	    	phaseStatus.setText(newUIState.get("PHASE_STATE"));
@@ -153,7 +175,9 @@ public class PhaseView implements IView,Observer{
 	    	}
 	    	
 	    }
-	    Scene scene = new Scene(borderPane);
+	    
+	    Scene scene = new Scene(parentPane);
+	    //adding google fonts to beautify
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 		return scene;
 	}
@@ -166,6 +190,7 @@ public class PhaseView implements IView,Observer{
 	@Override
 	public void update(Observable model, Object object) {
 		   
+		  // if instance of Player else by GameManager
           if(model instanceof Player){
            		Player tmp = (Player) model;
            		previousPlayer = tmp.getName();
@@ -208,10 +233,17 @@ public class PhaseView implements IView,Observer{
 	}
 	
 	
+	/**
+	 * @return {@link #windowStage}
+	 */
 	public Stage getWindowStage() {
 		return windowStage;
 	}
 
+	
+	/**
+	 * @param windowStage to set {@link #windowStage}
+	 */
 	public void setWindowStage(Stage windowStage) {
 		this.windowStage = windowStage;
 	}

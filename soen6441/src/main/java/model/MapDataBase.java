@@ -3,10 +3,7 @@
  */
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * This class holds the all data related to the Map

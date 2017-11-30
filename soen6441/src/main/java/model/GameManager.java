@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
-import java.util.Scanner;
 
 import controller.LoggerController;
 
@@ -31,32 +30,45 @@ public class GameManager extends Observable implements Serializable{
 	private static final long serialVersionUID = -6921437067469919760L;
 
 	/**
-	 * {@link #playerlist} points to the current turn of the player
+	 * {@link #playerCursor} points to the current turn of the player on {@link #playerlist}
 	 */
 	int playerCursor = 0;
 	
-    IPlayer temporarayPlyaerholder;
-    
-	private static int MIN_PLAYERS = 2;
-    private static int MAX_PLAYERS = 6;
-    
-    private int numberOfPlayers = 0;
+    /**
+     * {@link #temporarayPlayerholder} holds the object of {@link Player} who is in nthe current turn
+     */
+    IPlayer temporarayPlayerholder;
+
+    /** Holds the current turn of play */
     private int turn = -1;
-    private String name = "Game";
-    private String playersText = "";
-
     private int strategyTurn = -1;
+    
+    /** Holds name of the game */
+    private String name = "Game";
+    
+    /** Holds a string of all player names and there strategies  */
+    private String playersText = "";
     private String strategyString = "";
+    /** Holds the current Phase name */ 
+    private String currentPhase = "";
+    
+    /** Holds ArrayList of Strategies of players*/
     private ArrayList<IStrategy> strategies = new ArrayList<>();
-
-    public CardDeck cardDeck = new CardDeck();
-    public int turns = 500;
-
+    /** Holds ArrayList of players */
+    private ArrayList<Player> playerlist = new ArrayList<>();
+    
+    /** Holds the map on which the game is going to be played */
+    private Map map;
+    
+    /** Holds a deck of cards so players will get whenever then win on a territory */
+    CardDeck cardDeck = new CardDeck();
+    
+    private int totalTurnsinGame = 500;
+    private static int MIN_PLAYERS = 2;
+    private static int MAX_PLAYERS = 6;    
+    private int numberOfPlayers = 0;
     private boolean isGameOn=false;
 
-    private Map map;
-    private ArrayList<Player> playerlist = new ArrayList<>();
-    private String currentPhase = "";
 
 
     /**
@@ -66,13 +78,11 @@ public class GameManager extends Observable implements Serializable{
      * allocate countries randomly to players
      * finally game is started
      * @param players number of players
+     * @param strategies of the players
      * @throws InvalidNumOfPlayersException be careful
      */
     public void startGame(int players, String strategies) throws InvalidNumOfPlayersException {
-
-        this.numberOfPlayers = players;
-        //this.strategyString = strategies;
-        //this.setStrategies();
+        this.numberOfPlayers = players;     
         this.map = new Map();
         start();
     }
@@ -86,15 +96,15 @@ public class GameManager extends Observable implements Serializable{
      * allocate countries randomly to players
      * finally game is started
      * @param players number of players
+     * @param strategies is comma separated string with strategies
      * @exception InvalidNumOfPlayersException be careful
      */
     public GameManager(int players, String strategies, int totalTurns) {
-
         this.numberOfPlayers = players;
         this.map = new Map();
         this.strategyString = strategies;
         this.setStrategies();
-        this.turns = totalTurns;
+        this.totalTurnsinGame = totalTurns;
     }
 
     
@@ -102,7 +112,8 @@ public class GameManager extends Observable implements Serializable{
     /**
      * Constructor to initialize the game
      * @param m is selected map
-     * @param players number of players that user choose
+     * @param strategies is comma separated string with strategies
+     * @param totalTurns is number of turns the has to be played -for tournament
      */
     public GameManager(Map m,int players, String strategies, int totalTurns) {
 
@@ -110,7 +121,7 @@ public class GameManager extends Observable implements Serializable{
         this.map = m;
         this.strategyString = strategies;
         this.setStrategies();
-        this.turns = totalTurns;
+        this.totalTurnsinGame = totalTurns;
     }
 
     /**
@@ -151,7 +162,7 @@ public class GameManager extends Observable implements Serializable{
     }
 
 	/**
-     * Start the game
+     * method to start the game
      * @throws InvalidNumOfPlayersException be careful
      */
     public void start() throws InvalidNumOfPlayersException
@@ -164,12 +175,11 @@ public class GameManager extends Observable implements Serializable{
         this.setPhase("GamePlay");
         sendNotification("GameChange: StartUp phase finished \n Game Play is about to start");
         this.resetTurn();
- 
     }
 
 
     /**
-     * to start the game
+     * method to start the game
      * @param play should they start the game
      * @throws InvalidNumOfPlayersException is not provided as per game rules
      */
@@ -224,18 +234,18 @@ public class GameManager extends Observable implements Serializable{
     
     /**
      * This method moves the player to the next phase whenever it get called
-     * If a player finished his turn 3 phases then selects next player 
+     * If a player finished his 3 phases(reinforcement,attack,fortification) then selects next player 
      */
     public void takeNextTurn() {
     	if(playerCursor ==0){
-    		temporarayPlyaerholder = nextPlayer();
+    		temporarayPlayerholder = nextPlayer();
     	}else if(playerCursor == 1){
-    		temporarayPlyaerholder.sendNotify("CardView: Start showing");
-    		temporarayPlyaerholder.reinforcement();
+    		temporarayPlayerholder.sendNotify("CardView: Start showing");
+    		temporarayPlayerholder.reinforcement();
     	}else if(playerCursor == 2){
-    		 temporarayPlyaerholder.attack();
+    		 temporarayPlayerholder.attack();
     	}else if(playerCursor == 3){
-    		temporarayPlyaerholder.fortification();
+    		temporarayPlayerholder.fortification();
     	}
     	
     	playerCursor++; 
@@ -253,22 +263,33 @@ public class GameManager extends Observable implements Serializable{
     public void domitantionResult(){
     	 String tmp = "";
     	 int totalNoOfTerritories = 0;
+    	 //to get total number of territories in the map
     	 for(IPlayer p:this.playerlist)
          {
     		 totalNoOfTerritories += p.getTerritories().size();
          }
-    	 
+    	 //to get percentage of map occupied by each player
     	 for(IPlayer p:this.playerlist)
          {
     		 double control_percent = Math.round(((double) p.getTerritories().size() / totalNoOfTerritories) * 100);
              tmp += "\n"+ p.getName()+"="+control_percent;
          }
+    	 
     	 sendNotification("DominationView: "+tmp);
     }
     
     
     /**
-     * this is the method that handles the game play
+     * <p> This is the method that handles the game play
+     *  It does the following steps until any player own entire map
+     *  <li>Step1: Selects a player in round robin </li>
+     *  <li>Step2: Gives him reinforcement</li>
+     *  <li>Step3: And the attack </li>
+     *  <li>Step4: And then fortification</li>
+     *  <li>Step5: Check if any player own entire map, if not continue</li>
+     * </p>
+     * @param verbos logging will be done 
+     * @return the result of the game
      */
     public GameResult play(boolean verbos)
     {
@@ -281,22 +302,25 @@ public class GameManager extends Observable implements Serializable{
         {
             if(verbos)
                 LoggerController.log(String.format("====Turn %s====", i));
+            
+            //Step1:Selects a player in round robin 
             IPlayer p = nextPlayer();
-            
+            //Step2: Gives him reinforcement
             p.reinforcement();
-            
+            //Step3: And the attack
             p.attack();
-
+            //Step4: And then fortification
             p.fortification();
-
+            //Step5: Check if player own entire map, if not continue
             winner = getWinner();
+            
             if (winner == null)
             {
                 LoggerController.log("No winner, so next turn will start.");
             }
 
             i++;
-            if (winner!= null || i == turns)
+            if (winner!= null || i == totalTurnsinGame)
                 this.isGameOn=false;
         }
 
@@ -304,6 +328,7 @@ public class GameManager extends Observable implements Serializable{
             String dominationView = this.domitantionResult(true, i);
             LoggerController.log(dominationView);
         }
+        
         String winnerName = "Draw";
         if (winner != null)
             winnerName = winner.getStrategy().getName();
@@ -351,7 +376,7 @@ public class GameManager extends Observable implements Serializable{
 
     /**
      * this method helps players to move armies from a territory to another
-     * @param p player
+     * @param p player who wants to place armies
      */
     public void placeArmies(IPlayer p)
     {
@@ -371,7 +396,7 @@ public class GameManager extends Observable implements Serializable{
 
     /**
      * This method automatically place initial armies into territories one by one
-     * according to the game rules
+     * according to the game rules in the start-up phase
      */
     public void placeInitialArmies()
     {
@@ -410,8 +435,9 @@ public class GameManager extends Observable implements Serializable{
         if (this.numberOfPlayers > MAX_PLAYERS || this.numberOfPlayers < MIN_PLAYERS)
             throw new InvalidNumOfPlayersException();
   
-
+        //to give a random color to the players
         Color colorManager = new Color();
+        //if player list is empty create players else just add strategies
         if(this.playerlist.size() == 0){
         	for (int i=1; i<=this.numberOfPlayers; i++) {
                 IStrategy strategy = strategies.get(i-1);
@@ -496,9 +522,10 @@ public class GameManager extends Observable implements Serializable{
         }
     }
 
+    
     /**
      * returns next player based on turns
-     * @return player object
+     * @return player object based on round robin tournament 
      */
     public IPlayer nextPlayer()
     {
@@ -524,8 +551,7 @@ public class GameManager extends Observable implements Serializable{
         if(!getPhase().equals("Startup"))
         	sendNotification("GameChange: "+result.getName()+" Turn started");
         
-       
-        
+              
         return result;
     }
 
@@ -553,8 +579,8 @@ public class GameManager extends Observable implements Serializable{
 
     /**
      * card exchange logic
-     * @param p player
-     * @return number of armies to get
+     * @param p player who want to exchange the cards
+     * @return number of armies a player got
      */
     public int exchangeCard(IPlayer p)
     {
@@ -607,14 +633,14 @@ public class GameManager extends Observable implements Serializable{
     /**
      * Generate domination view string
      * @param verbos to generate texts or just calculate winner
-     * @return domination view
-     * @return trn tells the turn number of the play
+     * @param turn tells the current turn of the game
+     * @return {@link String} containing the domination result
      */
-    public String domitantionResult(boolean verbos, int trn)
+    public String domitantionResult(boolean verbos, int turn)
     {
         StringBuilder sb = new StringBuilder();
         if(verbos)
-            sb.append(String.format("===DOMINATION VIEW AT TURN %s===\n", trn));
+            sb.append(String.format("===DOMINATION VIEW AT TURN %s===\n", turn));
 
         int total_territories = 0;
         for(IPlayer p:this.playerlist)
@@ -656,7 +682,6 @@ public class GameManager extends Observable implements Serializable{
         this.domitantionResult(false,0);
 
         for(IPlayer p : this.playerlist)
-            //if(p.getDomination()>85.0)
             if(p.getDomination()>90.0)
             {
                 winner = p;
@@ -725,8 +750,8 @@ public class GameManager extends Observable implements Serializable{
 
 
     /**
-     * start of game manager
-     * @param args parameters
+     * start of game manager to check with GameManger itself
+     * @param args parameters passed 
      */
 	public static void main(String[] args)
     {
@@ -748,15 +773,12 @@ public class GameManager extends Observable implements Serializable{
         {
 
         }
-
-        //Tournament t = new Tournament();
-        //t.start(maps, 3, "c,r,r", 3,70);
     }
 
     /**
      * find a territory by its name
-     * @param name name
-     * @return the territory
+     * @param name of the territory
+     * @return the {@link Territory} object
      */
     public ITerritory getTerritory(String name)
     {
@@ -777,19 +799,19 @@ public class GameManager extends Observable implements Serializable{
 
     /**
      * set game name
-     * @param name name
+     * @param name name of the game
      */
     public void setName(String name) { this.name = name; }
 
     /**
-     * return name of the game
-     * @return name
+     * @return return name of the game
      */
     public String getName() { return this.name; }
 
+    
     /**
-     * returns players
-     * @return player strategies
+     * @return the {@link #playersText}
+     * which contains the strategies of all players
      */
     public String getPlayersText() { return this.playersText; }
 
@@ -812,7 +834,7 @@ public class GameManager extends Observable implements Serializable{
 
 
 	/**
-	 * @return all {@link Player} objects
+	 * @return all {@link Player} objects in {@link #playerlist}
 	 */
 	public ArrayList<Player> getPlayers() {
 		return playerlist;
@@ -820,7 +842,7 @@ public class GameManager extends Observable implements Serializable{
 
 
 	/**
-	 * @return the strategies
+	 * @return the strategies in the current game
 	 */
 	public ArrayList<IStrategy> getStrategies() {
 		return strategies;

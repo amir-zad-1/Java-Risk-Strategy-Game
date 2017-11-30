@@ -4,11 +4,10 @@
 package view;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 
 import controller.GameController;
 import controller.RWMapFileController;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -30,13 +29,21 @@ import javafx.stage.Stage;
 
 public class WelcomeView implements IView{
 
+	/**
+	 * Controller in order to contact the model for game play
+	 */
 	GameController gameController = null;
 	RWMapFileController maprwController = null;
+	
+	/** to choose a .map file */
+	final FileChooser fileChooser = new FileChooser();
+	
+	/** holds whole screen reference */
 	static Scene welcomeScreen = null;
 	Button stratSavedGame = null, tournamentButton = null;
 	
 
-	final FileChooser fileChooser = new FileChooser();
+	/** Welcome view has reference to {@link MapEditorView} */
 	static MapEditorView mapEditorView = null;
 	Stage window = null;
 	
@@ -60,33 +67,41 @@ public class WelcomeView implements IView{
 	 */
 	@Override
 	public Scene getView(boolean isResume){
+		    //choose map button
 		    Button chooseMapButton = new Button();
 	        chooseMapButton.setMinWidth(200);
 	        chooseMapButton.setText("Choose Map file");
+	        //save map button
 	        Button saveMapButton = new Button();
 	        saveMapButton.setMinWidth(200);
 	        saveMapButton.setText("Save Map file");
+	        
+	        //create map button
 	        Button createMapButton = new Button();
 	        createMapButton.setMinWidth(200);
 	        createMapButton.setText("Create Map file");
+	        
+	        //to go back to previous view
 	        Button gobackButton = new Button();
 	        gobackButton.setMinWidth(200);
 	        gobackButton.setText("Prevoius View");
 	        gobackButton.setVisible(false);
+	        
+	        // to start previously saved game
 	        stratSavedGame = new Button();
 	        stratSavedGame.setMinWidth(200);
 	        stratSavedGame.setText("Start Saved Game");
 	        
+	        // to start a tournament
 	        tournamentButton = new Button();
 	        tournamentButton.setMinWidth(200);
 	        tournamentButton.setText("Start Tournament");
 	        
+	        //to show alert in case of invalid map
 	        Alert alert = new Alert(AlertType.ERROR);
 	        alert.setHeaderText("Map file is not valid");
 
-	        
-	        
-	        
+	        //start of button listeners section
 	        chooseMapButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event){
@@ -149,7 +164,7 @@ public class WelcomeView implements IView{
 	        });
 	        
 	       
-	        
+	        // attach all the buttons to a container
 	        GridPane gridPane = new GridPane();
 	        gridPane.add(chooseMapButton,0,0);
 	        gridPane.add(tournamentButton,0,1);

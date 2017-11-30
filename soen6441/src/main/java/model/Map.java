@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * represents Map in the game
+ * represents the Map in the game in the form of {@link ArrayList}
  */
 public class Map implements IMap,Serializable {
 
@@ -18,13 +18,20 @@ public class Map implements IMap,Serializable {
 	 */
 	private static final long serialVersionUID = 5631589509991237355L;
 	
+    /** contains {@link ArrayList} of {@link Continent}'s */
     private ArrayList<IContinent> continents = new ArrayList<>();
-    private String name = "Map ";
+    
+    /** contains  name of the map */
+    private String name = "Map";
 
+    /**
+     * holds total number of territories in the map
+     */
     private int totalnumberOfTerritories = 0;
     
+    
     /**
-     * Constructor
+     * Constructor which initializes the data into {@link #continents} 
      */
     public Map()
     {
@@ -34,7 +41,7 @@ public class Map implements IMap,Serializable {
 
     /**
      *
-     * @return strategies of continents in the map
+     * @return {@link ArrayList} of continents on the map
      */
     @Override
     public ArrayList<IContinent> getContinents() {
@@ -43,7 +50,7 @@ public class Map implements IMap,Serializable {
 
 
     /**
-     * loads data
+     * loads data which converts the HashMap to {@link #continents}
      */
     private void loadData(){
     	this.continents = new ArrayList<>();
@@ -58,6 +65,7 @@ public class Map implements IMap,Serializable {
     	}
     }
 
+    
     /**
      * clears the continents from the map
      */
@@ -66,6 +74,7 @@ public class Map implements IMap,Serializable {
         this.continents = new ArrayList<>();
     }
 
+    
     /**
      * fills the map with the fake data
      */
@@ -95,8 +104,8 @@ public class Map implements IMap,Serializable {
     }
 
     /**
-     * sets name
-     * @param name name value
+     * sets name of the map {@link #name}
+     * @param name of the map
      */
     @Override
     public void setName(String name) {
@@ -104,8 +113,8 @@ public class Map implements IMap,Serializable {
     }
 
     /**
-     * get name
-     * @return name value
+     * get name of the map
+     * @return {@link #name} value
      */
     @Override
     public String getName() {
@@ -122,7 +131,7 @@ public class Map implements IMap,Serializable {
 
 
 	/**
-	 * @param totalnumberOfTerritories the totalnumberOfTerritories to set
+	 * @param totalnumberOfTerritories the {@link #totalnumberOfTerritories} to set
 	 */
 	public void setTotalnumberOfTerritories(int totalnumberOfTerritories) {
 		this.totalnumberOfTerritories = totalnumberOfTerritories;

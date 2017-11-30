@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * This class do's all the write operations on the map loaded into memory
+ * This class do's all the write operations on the map that was loaded into memory
  * @author SA
  */
 public class DataWriter {
@@ -25,7 +25,11 @@ public class DataWriter {
 	 */
 	public void deleteContinent(String continent) {
 		Set<String> contriesContinenthas = MapDataBase.continents.get(continent).keySet();
+		
+		//remove continent value
 		MapDataBase.continentValues.remove(continent);
+		
+		//remove adjacencies if any territory in this deleted continent is adjacent to other continent territories
 		for(HashMap<String,Territory> contries  : MapDataBase.continents.values()){
 		   	for(Territory t:contries.values()){
 		   		for(String s:contriesContinenthas){
@@ -41,7 +45,7 @@ public class DataWriter {
 	/**
 	 * This method is used to delete a country
 	 * @param continent is the country continent name
-	 * @param country is the name fo the country you want to delete
+	 * @param country is the name of the country you want to delete
 	 */
 	public void deleteCountry(String continent, String country) {
 		for(HashMap<String,Territory> contries  : MapDataBase.continents.values()){
@@ -54,6 +58,7 @@ public class DataWriter {
 		MapDataBase.continents.get(continent).remove(country);		
 	}
 
+	
 	/**
 	 * This method writes a new continent to the map which is loaded into memory
 	 * @param continent is the name of the continent

@@ -27,13 +27,17 @@ public class SaveProcess {
 	 * @throws IOException if unable to save state of Object to a file
 	 */
 	public void saveState(GameManager gameManager) throws IOException{
+		 
 		 FileOutputStream fos = new FileOutputStream("tempdata.tiger");
          ObjectOutputStream oos = new ObjectOutputStream(fos);
+         //save gameManager Object
          oos.writeObject(gameManager);
          fos = new FileOutputStream("tempdata1.tiger");
          oos = new ObjectOutputStream(fos);
+         //saves continents
          oos.writeObject(MapDataBase.continents);
          fos = new FileOutputStream("tempdata2.tiger");
+         //saves continent values
          oos = new ObjectOutputStream(fos);
          oos.writeObject(MapDataBase.continentValues);
          oos.close();
@@ -41,6 +45,7 @@ public class SaveProcess {
 	}
 
 	/**
+	 * used to save the passed UI state
 	 * @param uiState is the state of UI have to be saved
 	 * @throws IOException if unable to save state of Object to a file
 	 */
@@ -51,8 +56,9 @@ public class SaveProcess {
         fos.close();
 	}
 
+	
 	/**
-	 * 
+	 * @return {@link GameManager} which was saved before
 	 */
 	public GameManager getPreviousState() {
 		
@@ -80,6 +86,7 @@ public class SaveProcess {
 		return null;
 	}
 
+	
 	/**
 	 * @return the previously saved UI state
 	 */

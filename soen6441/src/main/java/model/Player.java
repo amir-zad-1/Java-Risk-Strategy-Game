@@ -16,8 +16,7 @@ import java.util.Collections;
 import java.util.Observable;
 
 /**
- * This is player class
- *
+ * This is player POJO Object
  * @author Amir
  * @version 0.1.0
  */
@@ -30,20 +29,36 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 	 */
 	private static final long serialVersionUID = 1012842278301009514L;
 	
-
+	/** name of the player */
     private String name;
+    /** holds the color of the player */
     private Color color;
+    
+    /** tells used and unused armies */
     private int unusedArmies = 0;
     private int usedArmies = 0;
+    
+    /** holds territories owned by the player*/
     private ArrayList<ITerritory> territories;
-    private GameManager gm;
-    private double domination = 0.0;
+    
+    /** holds the cards got for the player */ 
     private ArrayList<Card> cards = new ArrayList<>();
+    
+    /** holds the game manager of this player */
+    private GameManager gm;
+    
+    /** holds how much percentage the territories he own on the map */
+    private double domination = 0.0;
+    
+    
+    /** holds the strategy of the player */
     IStrategy strategy;
+    
+    /** holds the status message of the player */
     private String statusMessage;
     
-
-	private boolean status = true;
+    /** tells if player is active */
+	private boolean isActive = true;
     private int trades = 1;
 
     /**
@@ -107,20 +122,20 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
 
     /**
-     * set number of unused arimes for player
+     * set number of unused armies for player
      * @param armies number of new armies
      */
     @Override
     public void setUnusedArmies(int armies) { this.unusedArmies = armies; }
 
     /**
-     * set number of unused arimes for player
+     * set number of unused armies for player
      */
     @Override
     public int getUnusedArmies(){ return this.unusedArmies; }
 
     /**
-     *
+     * method is used to set the armies
      * @param armies number or unused armies to be set
      */
     @Override
@@ -133,22 +148,22 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
     @Override
     public int getUsedArmies(){ return this.usedArmies; }
 
+    
     /**
-     *
+     * this methos is used to set the color of the player
      * @param color is the new color for the player
      */
     public void setColor(Color color){ this.color = color; }
 
     /**
-     *
      * @return player's color
      */
     public Color getColor() { return this.color; }
 
     /**
-     * Called a player owns a territory
+     * Called if a player owns a territory
      * @param territory territory to be owned
-     * @return if the operation was successful or not
+     * @return if the operation was successful or not as {@link ActionResponse}
      */
     @Override
     public ActionResponse ownTerritory(ITerritory territory) {
@@ -158,17 +173,16 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
     	}
     	territory.setOwner(this);
         this.placeArmy(1, territory);
+        //as he own add it to his territories list
         this.territories.add(territory);
-
-        
         this.statusMessage = String.format("%s owns %s", this.getName(),territory.getName());
         sendNotify();
         return new ActionResponse(true,  statusMessage);
     }
 
     /**
-     * lose the territory
-     * @param territory territory to be removed
+     * called when a player lose the territory
+     * @param territory territory to be removed as {@link ActionResponse}
      * @return if the operation was successful
      */
     @Override
@@ -180,8 +194,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
     }
 
     /**
-     *
-     * @return strategies of player territories
+     * @return {@link ArrayList} of territories the player own
      */
     @Override
     public ArrayList<ITerritory> getTerritories() {
@@ -212,11 +225,11 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
         return sb.toString();
     }
 
+    
     /**
-     *
      * @param count number of armies to be place into the territory
-     * @param territory the territory
-     * @return if the action is done or not
+     * @param territory the territory he wants to place armies
+     * @return if the action is done or not as {@link ActionResponse}
      */
     @Override
     public ActionResponse placeArmy(int count, ITerritory territory) {
@@ -227,8 +240,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
         this.setUnusedArmies(this.unusedArmies - count);
         this.setUsedArmies(this.usedArmies + count);
+        //place armies into the territory
         territory.placeArmies(count); 
-        
         
         this.statusMessage = this.getName() + " placed " + Integer.toString(count)+" armies into " + territory.getName();
         sendNotify();
@@ -281,8 +294,8 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
     /**
      * finds a territory by its name
-     * @param territoryName name
-     * @return the territory
+     * @param territoryName is the name of the territory
+     * @return the {@link Territory} object associated with the passed argument
      */
     @Override
     public ITerritory getTerritoryByName(String territoryName)
@@ -642,7 +655,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
      */
     @Override
     public void setStatus(boolean status) {
-        this.status = status;
+        this.isActive = status;
     }
 
     /**
@@ -651,10 +664,11 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
      */
     @Override
     public boolean getStatus() {
-        return this.status;
+        return this.isActive;
     }
 
     /**
+     * adds a new card to {@link #cards}
      * @param newCard is the card that this player got
      */
     @Override
@@ -689,8 +703,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
     	return this.cards;
     }
    
-    
-    
+        
     
     /**
      * return the number of cards this player has
@@ -702,7 +715,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
     
     /**
-     * Notify the observers with this player status message
+     * Notify the observers with his {@link #statusMessage} player status message
      */
     public void sendNotify(){
     		setChanged();
@@ -722,7 +735,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
     /**
      * finds the weakest territory
-     * @return territory
+     * @return the weakest {@link Territory} among his territories
      */
     @Override
     public ITerritory getWeakestTerritory() {
@@ -740,7 +753,7 @@ public class Player extends Observable implements IPlayer, Comparable<IPlayer>, 
 
     /**
      * returns the strongest territory
-     * @return territory
+     * @return the strongest {@link Territory} among his territories
      */
     @Override
     public ITerritory getStrongestTerritory() {

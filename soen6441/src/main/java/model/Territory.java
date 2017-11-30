@@ -13,8 +13,8 @@ import java.util.HashMap;
 import controller.LoggerController;
 
 /**
- * territory class
- */
+ * Territory POJO class 
+*/
 public class Territory  implements ITerritory,Serializable {
 	
 	/**
@@ -180,7 +180,7 @@ public class Territory  implements ITerritory,Serializable {
     }
 
 	/**
-	 * gets continets objec
+	 * gets continents object to which this territory belongs
 	 * @return continent
 	 */
     @Override
@@ -189,7 +189,7 @@ public class Territory  implements ITerritory,Serializable {
 	}
 
 	/**
-	 * set continent
+	 * sets continent
 	 * @param c continent value
 	 */
 	@Override
@@ -270,7 +270,7 @@ public class Territory  implements ITerritory,Serializable {
 	
 	
 	/**
-	 * @return all adjacent territories Objects
+	 * @return all adjacent territories Objects for this territory
 	 */
 	public ArrayList<ITerritory> getAdjacentTerritoryObjects(){
 		ArrayList<ITerritory> adjacentTerritoriesObjects = new ArrayList<ITerritory>();
@@ -285,7 +285,7 @@ public class Territory  implements ITerritory,Serializable {
 	}
 
 	/**
-	 * @return {@link ArrayList} of adjacent {@link Territory}'s a player has won
+	 * @return {@link ArrayList} of adjacent {@link Territory}'s a player has own
 	 */
 	@Override
 	public ArrayList<ITerritory> getAdjacentNeighbours() {

@@ -110,6 +110,7 @@ public class MapEditorView implements IView{
 		ChoiceBox<String> continentChoiceBox = new ChoiceBox<String>();
 		ChoiceBox<String> countriesChoiceBox = new ChoiceBox<String>();
 		
+		// all the button is the UI
 		Button addContent = new Button("Add Continent");	     
 		Button addCountry = new Button("Add Country");	     
 		Button deleteContent = new Button("Delete Continent");	     
@@ -117,10 +118,11 @@ public class MapEditorView implements IView{
 		Button addMorePlayers = new Button("Add Players");
 		Button saveChanges = new Button("Save Changes");
 
-		
+		//text field to edit adjacent territories
 		TextField editadjacentContries = new TextField ();
 		editadjacentContries.setPrefWidth(800);
 		editadjacentContries.setPromptText("Adjacent Countries");
+		//text field to edit continent value
 		TextField editContinentValue = new TextField ();
 		editContinentValue.setPromptText("Continent Value");
 
@@ -157,7 +159,7 @@ public class MapEditorView implements IView{
 			}
 		});
 
-
+		// whenever add players is clicked a strategy choose popup box will be added
 		addMorePlayers.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -175,6 +177,7 @@ public class MapEditorView implements IView{
 			}
 		});	
 
+		//on save contact controller 
 		saveChanges.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -203,7 +206,7 @@ public class MapEditorView implements IView{
 		countriesChoiceBox.getItems().add("Countries");
 		countriesChoiceBox.setValue("Countries");
 
-
+		//listener such that on choose of continent update contries choice box
 		continentChoiceBox.valueProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue observable, String oldValue, String newValue){
@@ -258,7 +261,7 @@ public class MapEditorView implements IView{
 		gridPane.add(playerStratagiesContiner, 1, 4, 1, 4);
 
 		
-		
+		//divide the screen into header and footer
 		ToolBar header = new ToolBar(closeButton);
 		header.setStyle( 
 				"-fx-border-style: solid inside;" + 
@@ -266,7 +269,7 @@ public class MapEditorView implements IView{
 				"-fx-border-color: black;");
 		gridPane.setStyle("-fx-padding:10");
 		borderPane.setTop(header);
-		
+		//footer
 		HBox footer = new HBox();
 		footer.setStyle( 
 				"-fx-border-style: solid inside;" + 

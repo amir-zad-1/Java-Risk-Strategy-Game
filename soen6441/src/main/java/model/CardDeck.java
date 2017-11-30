@@ -87,7 +87,7 @@ public class CardDeck implements Serializable
     }
 
     /**
-     * grants a card to a plyer
+     * grants a card to a player
      * @param p receiver
      * @return given card
      */

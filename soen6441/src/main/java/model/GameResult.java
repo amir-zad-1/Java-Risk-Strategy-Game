@@ -8,7 +8,7 @@ public class GameResult {
     String game;
 
     /**
-     * Constructor
+     * Constructor that initializes below params
      * @param mapName name of the map
      * @param winner winner
      */
@@ -32,13 +32,13 @@ public class GameResult {
 
     /**
      * game name
-     * @return name
+     * @return name of the game
      */
     public String getGame() { return this.game; }
 
     /**
      * set game name
-     * @param game game name
+     * @param game name that has to be set
      */
     public void setGame(String game) { this.game = game; }
 
