@@ -24,7 +24,7 @@ public class DataReader {
 		 * This method returns adjacent territories to a passed country details
 		 * @param continent is the continent name
 		 * @param country  is the country name  
-		 * @return the {@link ArrayList} of {@link Territory}'s
+		 * @return the {@link ArrayList} of names of territories as {@link String}
 		 */
 		public ArrayList<String> getAdjacentTerritories(String continent, String country) {
 			HashMap<String, Territory> territories = getContries(continent);

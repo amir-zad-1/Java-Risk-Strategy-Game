@@ -24,6 +24,7 @@ public class WriteControllerTest {
 
 	static WriteController writeController;
 	DataReader dataReader;
+	
 	/**
 	 * Load map file from it location path
 	 * and use controllers to load it into memory
@@ -47,7 +48,7 @@ public class WriteControllerTest {
 	
 	
 	/**
-	 * Writes new continent to map
+	 * check if bale to writes new continent to map
 	 */
 	@Test
 	public void writenewContinentTest(){

@@ -26,6 +26,7 @@ public class ReadControllerTest {
 	static WriteController writeController;
 	static ReadController readController;
 	DataReader dataReader;
+	
 	/**
 	 * Load map file from it location path
 	 * and use controllers to load it into memory
@@ -49,12 +50,17 @@ public class ReadControllerTest {
 	     readController = new ReadController(dataReader);
 	}
 	
+	/**
+	 * Checks whether {@link ReadController} able to read the data as
+	 * to get a continent value
+	 */
 	@Test
 	public void getContinentValueTest(){
 		writeController.addData("[canada,newzland]", "Kontinent", "Kontry", "4", false, false);
 		assertTrue(readController.getContinentValue("Kontinent") == 4);
 	    assertTrue(readController.getAdjacentTerritories("Kontinent", "Kontry").contains("canada"));
 	}
+	
 	
 	@Test
 	public void getAdjacentTerritoriesTest(){
