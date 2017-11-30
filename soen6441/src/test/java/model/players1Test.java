@@ -8,7 +8,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * Tests number of players with minPlayers - 1
  */
-public class GpTest1 {
+public class players1Test {
 
     /**
      * creates a game with 1 player

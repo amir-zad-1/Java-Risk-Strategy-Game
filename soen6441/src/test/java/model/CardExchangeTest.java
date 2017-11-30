@@ -12,7 +12,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * testing card exchange logic with different trades
  */
-public class GpTest9 {
+public class CardExchangeTest {
 
     @Test()
     public void test1() throws InvalidNumOfPlayersException {

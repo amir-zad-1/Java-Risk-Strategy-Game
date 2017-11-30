@@ -9,7 +9,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * Start game without a map
  */
-public class GpTest4 {
+public class WithoutMapTest {
 
     @Test(expected = Exception.class)
     public void test() throws InvalidNumOfPlayersException

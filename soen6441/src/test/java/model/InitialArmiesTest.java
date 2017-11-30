@@ -10,7 +10,7 @@ import org.junit.Assert;
 /**
  * Tests number of initial armies
  */
-public class GpTest3 {
+public class InitialArmiesTest {
 
     /**
      * 3 palyers

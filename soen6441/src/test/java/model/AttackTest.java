@@ -13,7 +13,7 @@ import util.expetion.InvalidNumOfPlayersException;
 /**
  * testing attack logic
  */
-public class GpTest10 {
+public class AttackTest {
 
     /**
      * There should be no territory to attack
